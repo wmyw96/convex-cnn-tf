@@ -50,7 +50,9 @@ print('Experiment Logs will be written at {}'.format(log_dir))
 logger = LogWriter(log_dir, 'main.log')
 
 # model save log dir
-model_dir = os.path.join(args.modeldir, args.exp_id, datetime.datetime.now().strftime('[%m_%d_%H_%M]'))
+model_dir = os.path.join(args.modeldir, args.exp_id, datetime.datetime.now().strftime('%y-%m-%d-%H-%M'))
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
 
 # load dataset
 dataset = load_dataset(params)
@@ -64,9 +66,10 @@ train_scheduler = MultiStepLR(params['train']['milestone'], params['train']['gam
 warmup_scheduler = WarmupLR(iter_per_epoch * params['train']['warmup'])
 
 def train(ph, graph, targets, epoch, data_loader, train_scheduler, 
-    warmup_scheduler, debug=True):
+    warmup_scheduler, debug=False):
     base_lr = train_scheduler.step()
     train_log = {}
+    print('Epoch {}: lr decay = {}'.format(epoch, base_lr))
     for batch_idx in range(params['train']['iter_per_epoch']):
         if epoch < params['train']['warmup']:
             lr = base_lr * warmup_scheduler.step()
@@ -91,7 +94,7 @@ def train(ph, graph, targets, epoch, data_loader, train_scheduler,
 
     
 def eval(ph, graph, targets, epoch, domain, data_loader):
-    base_lr = train_scheduler.step()
+    #base_lr = train_scheduler.step()
     eval_log = {}
     for batch_idx in range(params[domain]['iter_per_epoch']):
         x, y = data_loader.next_batch(params[domain]['batch_size'])
@@ -99,8 +102,7 @@ def eval(ph, graph, targets, epoch, domain, data_loader):
             feed_dict={
                 ph['x']: x,
                 ph['y']: y,
-                ph['lr_decay']: lr,
-                ph['is_training']: True
+                ph['is_training']: False
             }
         )
         update_loss(fetch, eval_log)
@@ -122,6 +124,6 @@ for epoch in range(params['train']['num_epoches']):
     if valid_acc > max_valid_acc:
         max_valid_acc = valid_acc
 
-    print('== Max Test Accuracy: {0.4f}'.format(max_valid_acc))
+    print('== Max Test Accuracy: {}'.format(max_valid_acc))
     if epoch % params['train']['save_interval'] == 0:
         saver.save(sess, os.path.join(model_dir, 'epoch{}'.format(epoch), 'vgg.ckpt'))

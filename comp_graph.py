@@ -10,6 +10,12 @@ def show_params(domain, var_list):
         print('{}: {}'.format(var.name, var.shape))
 
 
+def show_grads(domain, gd_list):
+    print('Domain {}:'.format(domain))
+    for (grad, var) in gd_list:
+        if grad is not None:
+            print(var.name)
+
 def build_image_classfication_model(params):
     # build placeholder
 
@@ -39,6 +45,7 @@ def build_image_classfication_model(params):
                             input_x=inp_x, 
                             config=config[model_name],
                             num_classes=nclass,
+                            dropout_rate=params['network']['dropout'],
                             is_training=is_training,
                             batch_norm=use_bn)
 
@@ -55,18 +62,22 @@ def build_image_classfication_model(params):
     logits = modules['out']
     ce_loss = tf.nn.softmax_cross_entropy_with_logits(labels=graph['one_hot_y'], 
         logits=logits, dim=1)
+    ce_loss = tf.reduce_mean(ce_loss)
     acc = tf.reduce_mean(tf.cast(tf.equal(tf.argmax(logits, 1), ph['y']), tf.float32))   # [1,]
     update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, scope=model_name)
 
     regularizer = get_regularizer_loss(net_vars, params['network']['regularizer'])
 
     loss = ce_loss + regularizer * params['network']['regw']
-
-    sl_op = tf.train.GradientDescentOptimizer(params['train']['lr'] * ph['lr_decay'])
+    
+    #sl_op = tf.train.GradientDescentOptimizer(params['train']['lr'] * ph['lr_decay'])
+    sl_op = tf.train.MomentumOptimizer(params['train']['lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
     sl_grads = sl_op.compute_gradients(loss=loss, var_list=net_vars)
     sl_train_op = sl_op.apply_gradients(grads_and_vars=sl_grads)
     sl_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, scope=model_name)
-
+    
+    show_grads('network', sl_grads)
+    
     train = {
         'train': sl_train_op,
         'update': sl_update_ops,
@@ -75,7 +86,9 @@ def build_image_classfication_model(params):
         'reg_loss': regularizer,
         'acc_loss': acc
     }
-
+    #for gd, var in sl_grads:
+    #    train[var.name + '_gd_loss'] = tf.reduce_mean(tf.abs(gd)) - 5e-4 * tf.reduce_mean(tf.abs(var))
+    
     test = {
         'overall_loss': loss,
         'ce_loss': ce_loss,

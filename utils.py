@@ -13,7 +13,7 @@ class MultiStepLR(object):
     def step(self):
         out = self.lr
         self.iter += 1
-        if self.point == self.milestone:
+        if self.point == len(self.milestone):
             return out
         if self.milestone[self.point] == self.iter:
             self.lr *= self.gamma
