@@ -154,7 +154,7 @@ def build_grafting_onecut_model(params):
         save_vars += net_vars[domain]
 
     targets = {}
-    # two default-training doamin
+    # two default-training domain
     for domain in ['net1', 'net2']:
 
         # build tragets
@@ -197,6 +197,10 @@ def build_grafting_onecut_model(params):
             'train': train,
             'test': test
         }
+    # assign weights
+    for domain in ['net1', 'net2']:
+        
+
 
     return ph, graph, save_vars, net_vars, targets
 
