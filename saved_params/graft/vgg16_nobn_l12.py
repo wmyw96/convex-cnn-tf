@@ -34,11 +34,18 @@ def generate_params():
         'regularizer': 'l12'
     }
 
+    graft = {
+        'nlayers': 16,
+        'nanase': 5,
+        'diffw': 1.0,
+    }
+
     params = {
         'data': data,
         'train': train,
         'test': test, 
-        'network': network
+        'network': network,
+        'grafting': graft
     }
 
     return params

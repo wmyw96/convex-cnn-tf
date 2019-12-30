@@ -40,11 +40,11 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
 
         h = slim.flatten(layers[-1])
         h = slim.dropout(h, dropout_rate, is_training=is_training, scope='dropout0')
-        fc1 = slim.fully_connected(h, 4096, activation_fn=tf.nn.relu, scope='l{}.fc1'.format(nc + 1))
+        fc1 = slim.fully_connected(h, 4096, activation_fn=tf.nn.relu, scope='l{}-fc1'.format(nc + 1))
         fc1_drop = slim.dropout(fc1, dropout_rate, is_training=is_training, scope='dropout1')
-        fc2 = slim.fully_connected(fc1_drop, 4096, activation_fn=tf.nn.relu, scope='l{}.fc2'.format(nc + 2))
+        fc2 = slim.fully_connected(fc1_drop, 4096, activation_fn=tf.nn.relu, scope='l{}-fc2'.format(nc + 2))
         fc2_drop = slim.dropout(fc2, dropout_rate, is_training=is_training, scope='dropout2')
-        out = slim.fully_connected(fc2_drop, num_classes, activation_fn=None, scope='l{}.output'.format(nc + 3))
+        out = slim.fully_connected(fc2_drop, num_classes, activation_fn=None, scope='l{}-output'.format(nc + 3))
 
         modules['fc1'], modules['fc2'], modules['out'] = fc1, fc2, out
         return modules
