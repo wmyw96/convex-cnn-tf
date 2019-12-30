@@ -195,7 +195,7 @@ def build_grafting_onecut_model(params):
 
         targets[domain] = {
             'train': train,
-            'test': test
+            'eval': test
         }
 
     return ph, graph, save_vars, net_vars, targets
