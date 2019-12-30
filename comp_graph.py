@@ -16,6 +16,18 @@ def show_grads(domain, gd_list):
         if grad is not None:
             print(var.name)
 
+def create_var_dict(var_list):
+    var_dict = {}
+    for var in var_list:
+        var_dict[var.name] = var
+    return var_dict
+
+def find_layer_feature_map(modules, name):
+    for key, value in modules.item()
+        if name in key:
+            print('Find Layer {} Feature Map'.format(name))
+            return value
+
 def build_image_classfication_model(params):
     # build placeholder
 
@@ -154,9 +166,8 @@ def build_grafting_onecut_model(params):
         save_vars += net_vars[domain]
 
     targets = {}
-    # two default-training doamin
+    # two default-training domain
     for domain in ['net1', 'net2']:
-
         # build tragets
         logits = modules[domain]['out']
         ce_loss = tf.nn.softmax_cross_entropy_with_logits(labels=graph['one_hot_y'], 
@@ -173,7 +184,7 @@ def build_grafting_onecut_model(params):
         sl_train_op = sl_op.apply_gradients(grads_and_vars=sl_grads)
         sl_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, scope=domain)
     
-        show_grads('network', sl_grads)
+        show_grads(domain, sl_grads)
     
         train = {
             'train': sl_train_op,
@@ -197,6 +208,70 @@ def build_grafting_onecut_model(params):
             'train': train,
             'eval': test
         }
+
+    var_dict = create_var_dict(net_vars['grafting'])
+    targets['grafting'] = {}
+    # assign weights
+    for domain in ['net1', 'net2']:
+        op_name = 'assign_{}'.format(domain)
+        targets['grafting'][op_name] = {}
+
+        for layer_id in range(params['grafting']['nlayers']):
+            # fetch all weights in layer l
+            weights = []
+            for weight in net_vars[domain]:
+                if ('l{}-'.format(layer_id + 1)) in weight.name:
+                    weights.append(weight)
+
+            assigns = []
+            for weight in weights:
+                weight_name = weight.name[len(domain)+1:]
+                assigns.append(tf.assign(var_dict['grafting/' + weight_name], weight))
+            targets['grafting'][op_name]['l{}'.format(layer_id + 1)] = assigns
+    
+    # fetch trainable weights
+    layer_name = 'l{}-'.format(params['grafting']['nanase'])
+    train_weights = [weight for weight in net_vars['grafting'] if layer_name in weight.name]
+    show_params('grafting', train_weights)
+
+    # to check
+    logits = modules['grafting']['out']
+    ce_loss = tf.nn.softmax_cross_entropy_with_logits(labels=graph['one_hot_y'], 
+        logits=logits, dim=1)
+    ce_loss = tf.reduce_mean(ce_loss)
+    acc = tf.reduce_mean(tf.cast(tf.equal(tf.argmax(logits, 1), ph['y']), tf.float32))   # [1,]
+    
+    net2_feature = find_layer_feature_map(modules['net2'], layer_name)
+    graft_feature = find_layer_feature_map(modules['grafting'], layer_name)
+
+    regularizer = get_regularizer_loss(net_vars['grafting'], params['network']['regularizer'])
+    l2_diff = tf.reduce_mean(tf.square(net2_feature - graft_feature))
+    loss = ce_loss + regularizer * params['network']['regw'] + l2_diff * params['grafting']['diffw']
+    
+    graft_op = tf.train.MomentumOptimizer(params['grafting']['lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
+    graft_grads = graft_op.compute_gradients(loss=loss, var_list=train_weights)
+    graft_train_op = graft_op.apply_gradients(grads_and_vars=graft_grads)
+    graft_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, scope='grafting')
+    
+    show_grads('grafting', sl_grads)
+    
+    targets['grafting']['train'] = {
+        'train': graft_train_op,
+        'update': graft_update_ops,
+        'overall_loss': loss,
+        'ce_loss': ce_loss,
+        'reg_loss': regularizer,
+        'acc_loss': acc,
+        'l2diff_loss': l2_diff
+    }
+
+    targets['grafting']['valid'] = {
+        'overall_loss': loss,
+        'ce_loss': ce_loss,
+        'reg_loss': regularizer,
+        'acc_loss': acc,
+        'l2_diff': l2_diff
+    }
 
     return ph, graph, save_vars, net_vars, targets
 
