@@ -23,7 +23,7 @@ def create_var_dict(var_list):
     return var_dict
 
 def find_layer_feature_map(modules, name):
-    for key, value in modules.item()
+    for key, value in modules.items():
         if name in key:
             print('Find Layer {} Feature Map'.format(name))
             return value
@@ -226,7 +226,10 @@ def build_grafting_onecut_model(params):
             assigns = []
             for weight in weights:
                 weight_name = weight.name[len(domain)+1:]
+                print('drafting variable {}'.format(var_dict['grafting/' + weight_name].name))
                 assigns.append(tf.assign(var_dict['grafting/' + weight_name], weight))
+            print('Assign Model')
+            print(assigns)
             targets['grafting'][op_name]['l{}'.format(layer_id + 1)] = assigns
     
     # fetch trainable weights
@@ -246,7 +249,7 @@ def build_grafting_onecut_model(params):
 
     regularizer = get_regularizer_loss(net_vars['grafting'], params['network']['regularizer'])
     l2_diff = tf.reduce_mean(tf.square(net2_feature - graft_feature))
-    loss = ce_loss + regularizer * params['network']['regw'] + l2_diff * params['grafting']['diffw']
+    loss = regularizer * params['network']['regw'] + l2_diff * params['grafting']['diffw']
     
     graft_op = tf.train.MomentumOptimizer(params['grafting']['lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
     graft_grads = graft_op.compute_gradients(loss=loss, var_list=train_weights)
@@ -265,7 +268,7 @@ def build_grafting_onecut_model(params):
         'l2diff_loss': l2_diff
     }
 
-    targets['grafting']['valid'] = {
+    targets['grafting']['eval'] = {
         'overall_loss': loss,
         'ce_loss': ce_loss,
         'reg_loss': regularizer,

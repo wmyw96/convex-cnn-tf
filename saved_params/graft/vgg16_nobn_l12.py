@@ -18,7 +18,7 @@ def generate_params():
         'batch_size': 64,
         'num_epoches': 200,
         'iter_per_epoch': 780,
-        'save_interval': 10,
+        'save_interval': [5, 10, 20, 30, 40, 50, 80, 100, 120, 180],
     }
 
     test = {
@@ -35,9 +35,16 @@ def generate_params():
     }
 
     graft = {
+        'lr': 0.01,
+        'milestone': [60, 120, 180],
+        'gamma': 0.2,
+        'warmup': 1,
+        'batch_size': 64,
+        'num_epoches': 200,
+        'iter_per_epoch': 780,
         'nlayers': 16,
         'nanase': 5,
-        'diffw': 1.0,
+        'diffw': 5.0,
     }
 
     params = {
