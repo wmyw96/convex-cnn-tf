@@ -32,7 +32,7 @@ def generate_params():
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',
-        'layer_mask': [True] * 13
+        'layer_mask': [True, True, True, True, True, True, True, True, False, False, True, False, False]
     }
 
     graft = {

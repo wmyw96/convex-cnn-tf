@@ -9,7 +9,7 @@ config = {
     'vgg19': [[64, 64], [128, 128], [256, 256, 256, 256], [512, 512, 512, 512], [512, 512, 512, 512]],
 }
 
-def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False):
+def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None):
     modules = {}
     layers = [input_x]
     nc = 0
@@ -29,7 +29,11 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                     h = tf.layers.batch_normalization(h, training=is_training)
                 h = tf.nn.relu(h)
                 modules[unit_name] = h
-                layers.append(h)
+                if layer_mask is not None:
+                    if layer_mask[nc - 1]: 
+                        layers.append(h)
+                else:
+                    layers.append(h)
 
             # pooling layers in one block
             h = layers[-1]

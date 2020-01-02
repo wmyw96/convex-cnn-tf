@@ -153,7 +153,8 @@ def build_grafting_onecut_model(params):
                                 num_classes=nclass,
                                 dropout_rate=params['network']['dropout'],
                                 is_training=is_training,
-                                batch_norm=use_bn)
+                                batch_norm=use_bn,
+                                layer_mask=params['network']['layer_mask'])
         graph[domain] = modules[domain]
 
     net_vars = {}
