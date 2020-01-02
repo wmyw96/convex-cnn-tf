@@ -24,6 +24,7 @@ parser.add_argument('--seed', default=0, type=int)
 parser.add_argument('--exp_id', default='sl.vgg16_nobn_l2', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
+parser.add_argument('--model1dir', default='', type=str)
 parser.add_argument('--nanase', default=5, type=int)
 args = parser.parse_args()
 
@@ -54,7 +55,7 @@ print('Experiment Logs will be written at {}'.format(log_dir))
 logger = LogWriter(log_dir, 'main.log')
 
 # model save log dir
-model_dir = args.model_dir
+model_dir = args.modeldir
 
 # load dataset
 dataset = load_dataset(params)
@@ -62,10 +63,11 @@ train_loader, test_loader = dataset['train'], dataset['test']
 
 # build model
 ph, graph, save_vars, graph_vars, targets = build_grafting_onecut_model(params)
-saver = tf.train.Saver(var_list=save_vars)
+saver = tf.train.Saver(var_list=graph_vars['net1'] + graph_vars['net2'])
 iter_per_epoch = params['train']['iter_per_epoch']
 train_scheduler = MultiStepLR(params['grafting']['milestone'], params['grafting']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['grafting']['warmup'])
+time.sleep(5)
 
 def train(ph, graph, targets, epoch, data_loader, train_scheduler, 
     warmup_scheduler, debug=False):
@@ -119,18 +121,25 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_plac
 sess.run(tf.global_variables_initializer())
 
 def assign_weights(assign_handle, layer_l, layer_r):
-    for i in range(layer_r - layer_l):
+    for i in range(layer_r - layer_l + 1):
         layer_id = layer_l + i
         sess.run(assign_handle['l{}'.format(layer_id)])
 
+if len(args.model1dir) > 5:
+    saver1 = tf.train.Saver(var_list=graph_vars['net1'])
+    saver1.restore(sess, os.path.join(args.model1dir, 'vgg2.ckpt'))
+    assign_weights(targets['grafting']['assign_net1'], 1, params['grafting']['nlayers'])
 
-saver.load(sess, os.path.join(model_dir, 'vgg2.ckpt'))
-assign_weights(targets['grafting']['assign_net1'], 1, params['grafting']['nlayers'])
+saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
 eval(ph, graph, targets, -1, 'train', train_loader)
 eval(ph, graph, targets, -1, 'test', test_loader)
 
+#assign_weights(targets['grafting']['assign_net1'], 1, params['grafting']['nlayers'])
+#eval(ph, graph, targets, -1, 'train', train_loader)
+#eval(ph, graph, targets, -1, 'test', test_loader)
 
-assign_weights(targets['grafting']['assign_net1'], 1, args.nanase - 1)
+
+#assign_weights(targets['grafting']['assign_net1'], 1, args.nanase - 1)
 assign_weights(targets['grafting']['assign_net2'], args.nanase, params['grafting']['nlayers'])
 eval(ph, graph, targets, -1, 'train', train_loader)
 eval(ph, graph, targets, -1, 'test', test_loader)

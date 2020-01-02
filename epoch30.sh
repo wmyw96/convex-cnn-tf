@@ -1,0 +1,5 @@
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/20-01-01-14-07/epoch180/ --model1dir ../../data/cifar-100-models/graft.vgg16_nobn_l12/20-01-01-14-07/epoch30/ --exp_id graft.vgg16_nobn_l12 --gpu 2 --seed 0 --nanase $i >vgg16_epoch30_$i.log
+done
+
