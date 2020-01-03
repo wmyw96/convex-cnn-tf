@@ -21,6 +21,9 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                 h = layers[-1]
                 nc += 1
                 unit_name = 'l{}-conv{}.{}'.format(nc, block_id, layer_id)
+                if layer_mask is not None:
+                    if not layer_mask[nc - 2] and layer_mask[nc - 1]:
+                        unit_name += 'graft'
                 h = slim.conv2d(h, num_outputs=channels, kernel_size=3, stride=1,
                     activation_fn=None, weights_initializer=tf.contrib.layers.variance_scaling_initializer(),#tf.truncated_normal_initializer(stddev=0.01), 
                     biases_initializer=tf.zeros_initializer(), #tf.contrib.layers.xavier_initializer(uniform=False),
@@ -40,6 +43,10 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
             unit_name = 'pooling{}'.format(block_id)
             h = slim.max_pool2d(h, [2, 2], scope=unit_name)
             modules[unit_name] = h
+            #if layer_mask is not None:
+            #    if layer_mask[nc - 1]:
+            #        layers.append(h)
+            #else:
             layers.append(h)
 
         h = slim.flatten(layers[-1])

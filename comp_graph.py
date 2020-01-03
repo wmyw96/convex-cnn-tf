@@ -11,7 +11,7 @@ def show_params(domain, var_list):
 
 
 def show_grads(domain, gd_list):
-    print('Domain {}:'.format(domain))
+    print('Grad Domain {}:'.format(domain))
     for (grad, var) in gd_list:
         if grad is not None:
             print(var.name)
@@ -146,6 +146,9 @@ def build_grafting_onecut_model(params):
         'one_hot_y': tf.one_hot(label, nclass)
     }
     for domain in domains:
+        mask = params['network']['layer_mask']
+        if 'graft' in domain:
+            mask = params['grafting']['layer_mask']
         modules[domain] = \
             make_layers_vgg_net(scope=domain,
                                 input_x=inp_x, 
@@ -154,7 +157,7 @@ def build_grafting_onecut_model(params):
                                 dropout_rate=params['network']['dropout'],
                                 is_training=is_training,
                                 batch_norm=use_bn,
-                                layer_mask=params['network']['layer_mask'])
+                                layer_mask=mask)
         graph[domain] = modules[domain]
 
     net_vars = {}
@@ -163,6 +166,8 @@ def build_grafting_onecut_model(params):
     for domain in domains:
         net_vars[domain] = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, 
             scope=domain)
+        if not ('graft' in domain):
+            net_vars[domain] = [weight for weight in net_vars[domain] if 'graft' not in weight.name]
         show_params(domain, net_vars[domain])
         save_vars += net_vars[domain]
 
@@ -216,14 +221,17 @@ def build_grafting_onecut_model(params):
     for domain in ['net1', 'net2']:
         op_name = 'assign_{}'.format(domain)
         targets['grafting'][op_name] = {}
-
+        
         for layer_id in range(params['grafting']['nlayers']):
             # fetch all weights in layer l
             weights = []
             for weight in net_vars[domain]:
                 if ('l{}-'.format(layer_id + 1)) in weight.name:
                     weights.append(weight)
-
+            if not params['grafting']['layer_mask'][layer_id]:
+                continue
+            if layer_id >= 1 and not params['grafting']['layer_mask'][layer_id - 1]:
+                continue
             assigns = []
             for weight in weights:
                 weight_name = weight.name[len(domain)+1:]

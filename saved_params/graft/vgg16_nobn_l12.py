@@ -46,6 +46,7 @@ def generate_params():
         'nlayers': 16,
         'nanase': 5,
         'diffw': 5.0,
+        'layer_mask': [True] * 16
     }
 
     params = {
