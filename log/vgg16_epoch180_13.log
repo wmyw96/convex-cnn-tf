@@ -1,7 +1,6 @@
 GPU COMPATIBLE RUN...
 Booting with exp params: graft.vgg16_nobn_l12...
-[True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True]
-Experiment Logs will be written at ../../data/cifar-100-logs/[01_04_07_56]graft.vgg16_nobn_l12
+Experiment Logs will be written at ../../data/cifar-100-logs/[01_04_00_30]graft.vgg16_nobn_l12
 Dataset
 - Image Scale = 2.0245562281644633
 - Image Shape = (50000, 32, 32, 3)
@@ -21,10 +20,10 @@ grafting/l4-conv1.1/weights:0: (3, 3, 128, 128)
 grafting/l4-conv1.1/biases:0: (128,)
 grafting/l5-conv2.0/weights:0: (3, 3, 128, 256)
 grafting/l5-conv2.0/biases:0: (256,)
-grafting/l6-conv2.1/weights:0: (3, 3, 128, 256)
+grafting/l6-conv2.1/weights:0: (3, 3, 256, 256)
 grafting/l6-conv2.1/biases:0: (256,)
-grafting/l7-conv2.2graft/weights:0: (3, 3, 128, 256)
-grafting/l7-conv2.2graft/biases:0: (256,)
+grafting/l7-conv2.2/weights:0: (3, 3, 256, 256)
+grafting/l7-conv2.2/biases:0: (256,)
 grafting/l8-conv3.0/weights:0: (3, 3, 256, 512)
 grafting/l8-conv3.0/biases:0: (512,)
 grafting/l9-conv3.1/weights:0: (3, 3, 512, 512)
@@ -223,142 +222,140 @@ drafting variable grafting/l4-conv1.1/weights:0
 drafting variable grafting/l4-conv1.1/biases:0
 Assign Model
 [<tf.Tensor 'Assign_6:0' shape=(3, 3, 128, 128) dtype=float32_ref>, <tf.Tensor 'Assign_7:0' shape=(128,) dtype=float32_ref>]
+drafting variable grafting/l5-conv2.0/weights:0
+drafting variable grafting/l5-conv2.0/biases:0
+Assign Model
+[<tf.Tensor 'Assign_8:0' shape=(3, 3, 128, 256) dtype=float32_ref>, <tf.Tensor 'Assign_9:0' shape=(256,) dtype=float32_ref>]
+drafting variable grafting/l6-conv2.1/weights:0
+drafting variable grafting/l6-conv2.1/biases:0
+Assign Model
+[<tf.Tensor 'Assign_10:0' shape=(3, 3, 256, 256) dtype=float32_ref>, <tf.Tensor 'Assign_11:0' shape=(256,) dtype=float32_ref>]
+drafting variable grafting/l7-conv2.2/weights:0
+drafting variable grafting/l7-conv2.2/biases:0
+Assign Model
+[<tf.Tensor 'Assign_12:0' shape=(3, 3, 256, 256) dtype=float32_ref>, <tf.Tensor 'Assign_13:0' shape=(256,) dtype=float32_ref>]
 drafting variable grafting/l8-conv3.0/weights:0
 drafting variable grafting/l8-conv3.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_8:0' shape=(3, 3, 256, 512) dtype=float32_ref>, <tf.Tensor 'Assign_9:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_14:0' shape=(3, 3, 256, 512) dtype=float32_ref>, <tf.Tensor 'Assign_15:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l9-conv3.1/weights:0
 drafting variable grafting/l9-conv3.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_10:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_11:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_16:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_17:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l10-conv3.2/weights:0
 drafting variable grafting/l10-conv3.2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_12:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_13:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_18:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_19:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l11-conv4.0/weights:0
 drafting variable grafting/l11-conv4.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_14:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_15:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_20:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_21:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l12-conv4.1/weights:0
 drafting variable grafting/l12-conv4.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_16:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_17:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_22:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_23:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l13-conv4.2/weights:0
 drafting variable grafting/l13-conv4.2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_18:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_19:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_24:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_25:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l14-fc1/weights:0
 drafting variable grafting/l14-fc1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_20:0' shape=(512, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_21:0' shape=(4096,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_26:0' shape=(512, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_27:0' shape=(4096,) dtype=float32_ref>]
 drafting variable grafting/l15-fc2/weights:0
 drafting variable grafting/l15-fc2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_22:0' shape=(4096, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_23:0' shape=(4096,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_28:0' shape=(4096, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_29:0' shape=(4096,) dtype=float32_ref>]
 drafting variable grafting/l16-output/weights:0
 drafting variable grafting/l16-output/biases:0
 Assign Model
-[<tf.Tensor 'Assign_24:0' shape=(4096, 100) dtype=float32_ref>, <tf.Tensor 'Assign_25:0' shape=(100,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_30:0' shape=(4096, 100) dtype=float32_ref>, <tf.Tensor 'Assign_31:0' shape=(100,) dtype=float32_ref>]
 drafting variable grafting/l1-conv0.0/weights:0
 drafting variable grafting/l1-conv0.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_26:0' shape=(3, 3, 3, 64) dtype=float32_ref>, <tf.Tensor 'Assign_27:0' shape=(64,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_32:0' shape=(3, 3, 3, 64) dtype=float32_ref>, <tf.Tensor 'Assign_33:0' shape=(64,) dtype=float32_ref>]
 drafting variable grafting/l2-conv0.1/weights:0
 drafting variable grafting/l2-conv0.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_28:0' shape=(3, 3, 64, 64) dtype=float32_ref>, <tf.Tensor 'Assign_29:0' shape=(64,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_34:0' shape=(3, 3, 64, 64) dtype=float32_ref>, <tf.Tensor 'Assign_35:0' shape=(64,) dtype=float32_ref>]
 drafting variable grafting/l3-conv1.0/weights:0
 drafting variable grafting/l3-conv1.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_30:0' shape=(3, 3, 64, 128) dtype=float32_ref>, <tf.Tensor 'Assign_31:0' shape=(128,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_36:0' shape=(3, 3, 64, 128) dtype=float32_ref>, <tf.Tensor 'Assign_37:0' shape=(128,) dtype=float32_ref>]
 drafting variable grafting/l4-conv1.1/weights:0
 drafting variable grafting/l4-conv1.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_32:0' shape=(3, 3, 128, 128) dtype=float32_ref>, <tf.Tensor 'Assign_33:0' shape=(128,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_38:0' shape=(3, 3, 128, 128) dtype=float32_ref>, <tf.Tensor 'Assign_39:0' shape=(128,) dtype=float32_ref>]
+drafting variable grafting/l5-conv2.0/weights:0
+drafting variable grafting/l5-conv2.0/biases:0
+Assign Model
+[<tf.Tensor 'Assign_40:0' shape=(3, 3, 128, 256) dtype=float32_ref>, <tf.Tensor 'Assign_41:0' shape=(256,) dtype=float32_ref>]
+drafting variable grafting/l6-conv2.1/weights:0
+drafting variable grafting/l6-conv2.1/biases:0
+Assign Model
+[<tf.Tensor 'Assign_42:0' shape=(3, 3, 256, 256) dtype=float32_ref>, <tf.Tensor 'Assign_43:0' shape=(256,) dtype=float32_ref>]
+drafting variable grafting/l7-conv2.2/weights:0
+drafting variable grafting/l7-conv2.2/biases:0
+Assign Model
+[<tf.Tensor 'Assign_44:0' shape=(3, 3, 256, 256) dtype=float32_ref>, <tf.Tensor 'Assign_45:0' shape=(256,) dtype=float32_ref>]
 drafting variable grafting/l8-conv3.0/weights:0
 drafting variable grafting/l8-conv3.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_34:0' shape=(3, 3, 256, 512) dtype=float32_ref>, <tf.Tensor 'Assign_35:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_46:0' shape=(3, 3, 256, 512) dtype=float32_ref>, <tf.Tensor 'Assign_47:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l9-conv3.1/weights:0
 drafting variable grafting/l9-conv3.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_36:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_37:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_48:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_49:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l10-conv3.2/weights:0
 drafting variable grafting/l10-conv3.2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_38:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_39:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_50:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_51:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l11-conv4.0/weights:0
 drafting variable grafting/l11-conv4.0/biases:0
 Assign Model
-[<tf.Tensor 'Assign_40:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_41:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_52:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_53:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l12-conv4.1/weights:0
 drafting variable grafting/l12-conv4.1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_42:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_43:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_54:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_55:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l13-conv4.2/weights:0
 drafting variable grafting/l13-conv4.2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_44:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_45:0' shape=(512,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_56:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_57:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l14-fc1/weights:0
 drafting variable grafting/l14-fc1/biases:0
 Assign Model
-[<tf.Tensor 'Assign_46:0' shape=(512, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_47:0' shape=(4096,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_58:0' shape=(512, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_59:0' shape=(4096,) dtype=float32_ref>]
 drafting variable grafting/l15-fc2/weights:0
 drafting variable grafting/l15-fc2/biases:0
 Assign Model
-[<tf.Tensor 'Assign_48:0' shape=(4096, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_49:0' shape=(4096,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_60:0' shape=(4096, 4096) dtype=float32_ref>, <tf.Tensor 'Assign_61:0' shape=(4096,) dtype=float32_ref>]
 drafting variable grafting/l16-output/weights:0
 drafting variable grafting/l16-output/biases:0
 Assign Model
-[<tf.Tensor 'Assign_50:0' shape=(4096, 100) dtype=float32_ref>, <tf.Tensor 'Assign_51:0' shape=(100,) dtype=float32_ref>]
+[<tf.Tensor 'Assign_62:0' shape=(4096, 100) dtype=float32_ref>, <tf.Tensor 'Assign_63:0' shape=(100,) dtype=float32_ref>]
 Domain grafting:
-grafting/l7-conv2.2graft/weights:0: (3, 3, 128, 256)
-grafting/l7-conv2.2graft/biases:0: (256,)
-Find Layer l7- Feature Map
-Find Layer l7- Feature Map
+grafting/l13-conv4.2/weights:0: (3, 3, 512, 512)
+grafting/l13-conv4.2/biases:0: (512,)
+Find Layer l13- Feature Map
+Find Layer l13- Feature Map
 calculate l12 norm: variable grafting/l1-conv0.0/weights:0, shape = (3, 3, 3, 64)
 calculate l12 norm: variable grafting/l2-conv0.1/weights:0, shape = (3, 3, 64, 64)
 calculate l12 norm: variable grafting/l3-conv1.0/weights:0, shape = (3, 3, 64, 128)
 calculate l12 norm: variable grafting/l4-conv1.1/weights:0, shape = (3, 3, 128, 128)
-calculate l12 norm: variable grafting/l5-conv2.0/weights:0, shape = (3, 3, 128, 256)
-calculate l12 norm: variable grafting/l6-conv2.1/weights:0, shape = (3, 3, 128, 256)
-calculate l12 norm: variable grafting/l7-conv2.2graft/weights:0, shape = (3, 3, 128, 256)
-calculate l12 norm: variable grafting/l8-conv3.0/weights:0, shape = (3, 3, 256, 512)
-calculate l12 norm: variable grafting/l9-conv3.1/weights:0, shape = (3, 3, 512, 512)
-calculate l12 norm: variable grafting/l10-conv3.2/weights:0, shape = (3, 3, 512, 512)
-calculate l12 norm: variable grafting/l11-conv4.0/weights:0, shape = (3, 3, 512, 512)
-calculate l12 norm: variable grafting/l12-conv4.1/weights:0, shape = (3, 3, 512, 512)
-calculate l12 norm: variable grafting/l13-conv4.2/weights:0, shape = (3, 3, 512, 512)
-calculate l12 norm: variable grafting/l14-fc1/weights:0, shape = (512, 4096)
-calculate l12 norm: variable grafting/l15-fc2/weights:0, shape = (4096, 4096)
-calculate l12 norm: variable grafting/l16-output/weights:0, shape = (4096, 100)
-Grad Domain grafting:
-net2/l1-conv0.0/weights:0
-net2/l1-conv0.0/biases:0
-net2/l2-conv0.1/weights:0
-net2/l2-conv0.1/biases:0
-net2/l3-conv1.0/weights:0
-net2/l3-conv1.0/biases:0
-net2/l4-conv1.1/weights:0
-net2/l4-conv1.1/biases:0
-net2/l5-conv2.0/weights:0
-net2/l5-conv2.0/biases:0
-net2/l6-conv2.1/weights:0
-net2/l6-conv2.1/biases:0
-net2/l7-conv2.2/weights:0
-net2/l7-conv2.2/biases:0Device mapping:
-/job:localhost/replica:0/task:0/device:GPU:0 -> device: 0, name: TITAN Xp, pci bus id: 0000:83:00.0, compute capability: 6.1
+calculate l12 norm: variable grafting/l5-conv2.0/weights:0, shape = (3, 3, 128, 256)Device mapping:
+/job:localhost/replica:0/task:0/device:GPU:0 -> device: 0, name: TITAN Xp, pci bus id: 0000:02:00.0, compute capability: 6.1
 save/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
-grafting/l7-conv2.2graft/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range: (Range): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range: (Range): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Prod_1: (Prod): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
@@ -367,11 +364,11 @@ gradients_2/add_50_grad/tuple/control_dependency_1: (Identity): /job:localhost/r
 gradients_2/add_50_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/mul_101_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/mul_100_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/add: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/mod: (FloorMod): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/DynamicStitch: (DynamicStitch): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/floordiv: (FloorDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/add: (Add): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/mod: (FloorMod): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/DynamicStitch: (DynamicStitch): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/floordiv: (FloorDiv): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Sub_1: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Slice_1/begin: (Pack): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Sub: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2310,13 +2307,13 @@ net1/l1-conv0.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/
 net1/l1-conv0.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 net1/l1-conv0.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_51: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_25: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_63: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_31: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_50: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_24: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_62: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_30: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_47: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_98: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2329,14 +2326,14 @@ grafting/l16-output/weights/Initializer/random_uniform/mul: (Mul): /job:localhos
 grafting/l16-output/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_49: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_23: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_61: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_29: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_48: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_22: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_60: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_28: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_46: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_96: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2349,14 +2346,14 @@ grafting/l15-fc2/weights/Initializer/random_uniform/mul: (Mul): /job:localhost/r
 grafting/l15-fc2/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_47: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_21: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_59: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_27: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_46: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_20: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_58: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_26: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_45: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_94: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2369,14 +2366,15 @@ grafting/l14-fc1/weights/Initializer/random_uniform/mul: (Mul): /job:localhost/r
 grafting/l14-fc1/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_45: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_19: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_57: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_25: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_44: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_18: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_56: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_24: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Abs_44_grad/Sign: (Sign): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_44: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_92: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_94: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2387,13 +2385,13 @@ grafting/l13-conv4.2/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l13-conv4.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_43: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_17: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_55: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_23: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_42: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_16: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_54: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_22: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_43: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_90: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2405,13 +2403,13 @@ grafting/l12-conv4.1/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l12-conv4.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_41: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_15: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_53: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_21: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_40: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_14: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_52: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_20: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_42: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_88: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2423,13 +2421,13 @@ grafting/l11-conv4.0/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l11-conv4.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_39: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_13: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_51: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_19: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_38: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_12: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_50: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_18: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_41: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_86: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2441,13 +2439,13 @@ grafting/l10-conv3.2/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l10-conv3.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_37: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_11: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_49: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_17: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_36: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_10: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_48: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_16: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_40: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_84: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2459,13 +2457,13 @@ grafting/l9-conv3.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l9-conv3.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_35: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_9: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_47: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_15: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_34: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_8: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_46: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_14: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_39: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_82: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2476,25 +2474,32 @@ grafting/l8-conv3.0/weights/Initializer/truncated_normal/TruncatedNormal: (Trunc
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Abs_38_grad/Sign: (Sign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_45: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_13: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_44: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_12: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_38: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_80: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_82: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
 mul_81: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_83: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_43: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_11: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_42: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_10: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_37: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_78: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2506,9 +2511,13 @@ grafting/l6-conv2.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l6-conv2.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_41: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_9: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_40: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_8: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_36: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_76: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2520,12 +2529,12 @@ grafting/l5-conv2.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l5-conv2.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_33: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_39: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_7: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_32: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_38: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_6: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_35: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2538,12 +2547,12 @@ grafting/l4-conv1.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l4-conv1.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_31: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_37: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_5: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_30: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_36: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_4: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_34: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2556,12 +2565,12 @@ grafting/l3-conv1.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l3-conv1.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_29: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_35: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_3: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_28: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_34: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_2: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_33: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2574,12 +2583,12 @@ grafting/l2-conv0.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l2-conv0.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_27: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_33: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_1: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_26: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_32: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_32: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2618,47 +2627,29 @@ gradients_2/add_47_grad/tuple/control_dependency_1: (Identity): /job:localhost/r
 gradients_2/add_47_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/add_46_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/add_46_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_46_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Sum_1: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Reshape_1: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Abs_38_grad/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Sum_1: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Reshape_1: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Abs_44_grad/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/add_46_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_100: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2763,7 +2754,6 @@ gradients_1/net2/l7-conv2.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica
 net2/l7-conv2.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l7-conv2.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Relu_6: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/sub_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_1/net2/l8-conv3.0/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
@@ -2790,6 +2780,7 @@ gradients_1/net2/l13-conv4.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replic
 net2/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/sub_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/pooling4/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_1/net2/Flatten/flatten/Reshape_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Flatten/flatten/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
@@ -3695,10 +3686,36 @@ grafting/l4-conv1.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU
 grafting/l4-conv1.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Relu_3: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/pooling1/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l5-conv2.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l5-conv2.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_4: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l6-conv2.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l6-conv2.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_5: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Relu_6: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l8-conv3.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_7: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l9-conv3.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l9-conv3.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_8: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_9: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/pooling3/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l11-conv4.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l11-conv4.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_10: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l12-conv4.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l12-conv4.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_11: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/Shape_1: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
 sub: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
@@ -3725,43 +3742,23 @@ gradients_2/sub_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/Relu_6_grad/ReluGrad: (ReluGrad): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-Momentum_2/update_grafting/l7-conv2.2graft/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/Relu_12_grad/ReluGrad: (ReluGrad): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l13-conv4.2/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN_1: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Momentum_2/update_grafting/l7-conv2.2graft/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l13-conv4.2/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
 Momentum_2: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_101: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 add_50: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l8-conv3.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_7: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l9-conv3.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l9-conv3.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_8: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_9: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/pooling3/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l11-conv4.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l11-conv4.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_10: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l12-conv4.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l12-conv4.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_11: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/pooling4/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Flatten/flatten/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Flatten/flatten/strided_slice: (StridedSlice): /job:localhost/replica:0/task:0/device:GPU:0
@@ -3825,35 +3822,29 @@ softmax_cross_entropy_with_logits_sg_2/Shape: (Shape): /job:localhost/replica:0/
 softmax_cross_entropy_with_logits_sg_2/Slice_2: (Slice): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Reshape_2: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_68: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l6-conv2.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l6-conv2.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_5: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l5-conv2.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l5-conv2.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_4: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 save/RestoreV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/RestoreV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/SaveV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/SaveV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/Const: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 Momentum_2/momentum: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Fill/value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range/delta: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range/start: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Size: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Fill/value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range/delta: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range/start: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Size: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -4888,11 +4879,11 @@ grafting/l8-conv3.0/biases/Initializer/zeros: (Const): /job:localhost/replica:0/
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -4972,16 +4963,16 @@ gradients/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Square_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 save_1/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
 save/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
-grafting/l7-conv2.2graft/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range: (Range): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range: (Range): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Prod_1: (Prod): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
@@ -4990,11 +4981,11 @@ gradients_2/add_50_grad/tuple/control_dependency_1: (Identity): /job:localhost/r
 gradients_2/add_50_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/mul_101_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/mul_100_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/add: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/mod: (FloorMod): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/DynamicStitch: (DynamicStitch): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/floordiv: (FloorDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/add: (Add): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/mod: (FloorMod): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/DynamicStitch: (DynamicStitch): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/floordiv: (FloorDiv): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Sub_1: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Slice_1/begin: (Pack): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Sub: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
@@ -6968,13 +6959,13 @@ net1/l1-conv0.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/
 net1/l1-conv0.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 net1/l1-conv0.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_51: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_25: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_63: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_31: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_50: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_24: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_62: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_30: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_47: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_98: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -6987,14 +6978,14 @@ grafting/l16-output/weights/Initializer/random_uniform/mul: (Mul): /job:localhos
 grafting/l16-output/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l16-output/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_49: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_23: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_61: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_29: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_48: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_22: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_60: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_28: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_46: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_96: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7007,14 +6998,14 @@ grafting/l15-fc2/weights/Initializer/random_uniform/mul: (Mul): /job:localhost/r
 grafting/l15-fc2/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l15-fc2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_47: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_21: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_59: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_27: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_46: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_20: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_58: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_26: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_45: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_94: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7027,14 +7018,15 @@ grafting/l14-fc1/weights/Initializer/random_uniform/mul: (Mul): /job:localhost/r
 grafting/l14-fc1/weights/Initializer/random_uniform: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l14-fc1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_45: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_19: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_57: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_25: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_44: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_18: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_56: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_24: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Abs_44_grad/Sign: (Sign): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_44: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_92: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_94: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7045,13 +7037,13 @@ grafting/l13-conv4.2/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l13-conv4.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l13-conv4.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_43: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_17: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_55: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_23: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_42: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_16: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_54: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_22: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_43: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_90: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7063,13 +7055,13 @@ grafting/l12-conv4.1/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l12-conv4.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l12-conv4.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_41: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_15: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_53: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_21: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_40: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_14: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_52: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_20: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_42: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_88: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7081,13 +7073,13 @@ grafting/l11-conv4.0/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l11-conv4.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l11-conv4.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_39: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_13: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_51: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_19: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_38: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_12: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_50: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_18: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_41: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_86: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7099,13 +7091,13 @@ grafting/l10-conv3.2/weights/Initializer/truncated_normal/mul: (Mul): /job:local
 grafting/l10-conv3.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l10-conv3.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_37: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_11: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_49: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_17: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_36: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_10: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_48: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_16: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_40: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_84: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7117,13 +7109,13 @@ grafting/l9-conv3.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l9-conv3.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l9-conv3.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_35: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_9: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_47: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_15: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_34: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_8: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_46: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_14: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_39: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_82: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7134,25 +7126,32 @@ grafting/l8-conv3.0/weights/Initializer/truncated_normal/TruncatedNormal: (Trunc
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Abs_38_grad/Sign: (Sign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_45: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_13: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_44: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_12: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_38: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_80: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_82: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
 mul_81: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_83: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_43: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_11: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_42: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_10: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_37: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_78: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7164,9 +7163,13 @@ grafting/l6-conv2.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l6-conv2.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_41: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_9: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_40: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_8: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_36: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
 mul_76: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7178,12 +7181,12 @@ grafting/l5-conv2.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l5-conv2.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l5-conv2.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_33: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_39: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_7: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_32: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_38: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_6: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_35: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7196,12 +7199,12 @@ grafting/l4-conv1.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l4-conv1.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l4-conv1.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_31: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_37: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_5: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_30: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_36: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_4: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_34: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7214,12 +7217,12 @@ grafting/l3-conv1.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l3-conv1.0/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l3-conv1.0/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_29: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_35: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_3: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_28: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_34: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_2: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_33: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7232,12 +7235,12 @@ grafting/l2-conv0.1/weights/Initializer/truncated_normal/mul: (Mul): /job:localh
 grafting/l2-conv0.1/weights/Initializer/truncated_normal: (Add): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l2-conv0.1/weights/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_27: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_33: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign_1: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/biases/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-Assign_26: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+Assign_32: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 Abs_32: (Abs): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7276,47 +7279,29 @@ gradients_2/add_47_grad/tuple/control_dependency_1: (Identity): /job:localhost/r
 gradients_2/add_47_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/add_46_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/add_46_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_46_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_45_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_44_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_43_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_42_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_41_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_81_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_93_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Sum_1: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Reshape_1: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Abs_38_grad/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/add_40_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Tile: (Tile): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/truediv: (RealDiv): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Sum_1: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Reshape_1: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Abs_44_grad/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/add_46_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_100: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/Initializer/truncated_normal/TruncatedNormal: (TruncatedNormal): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l1-conv0.0/weights/Initializer/truncated_normal/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7421,7 +7406,6 @@ gradients_1/net2/l7-conv2.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica
 net2/l7-conv2.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l7-conv2.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Relu_6: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/sub_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_1/net2/l8-conv3.0/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
@@ -7448,6 +7432,7 @@ gradients_1/net2/l13-conv4.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replic
 net2/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
 net2/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/sub_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/pooling4/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_1/net2/Flatten/flatten/Reshape_grad/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 net2/Flatten/flatten/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
@@ -8353,10 +8338,36 @@ grafting/l4-conv1.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU
 grafting/l4-conv1.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Relu_3: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/pooling1/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l5-conv2.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l5-conv2.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_4: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l6-conv2.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l6-conv2.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_5: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Relu_6: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l8-conv3.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_7: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l9-conv3.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l9-conv3.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_8: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_9: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/pooling3/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l11-conv4.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l11-conv4.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_10: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l12-conv4.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l12-conv4.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_11: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/ShapeN: (ShapeN): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/Shape_1: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/BroadcastGradientArgs: (BroadcastGradientArgs): /job:localhost/replica:0/task:0/device:GPU:0
 sub: (Sub): /job:localhost/replica:0/task:0/device:GPU:0
@@ -8383,43 +8394,23 @@ gradients_2/sub_grad/Sum: (Sum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/Reshape: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/Relu_6_grad/ReluGrad: (ReluGrad): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-Momentum_2/update_grafting/l7-conv2.2graft/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/Relu_12_grad/ReluGrad: (ReluGrad): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l13-conv4.2/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN_1: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Momentum_2/update_grafting/l7-conv2.2graft/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l13-conv4.2/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
 Momentum_2: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_101: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
 add_50: (Add): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/pooling2/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l8-conv3.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l8-conv3.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_7: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l9-conv3.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l9-conv3.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_8: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_9: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/pooling3/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l11-conv4.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l11-conv4.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_10: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l12-conv4.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l12-conv4.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_11: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l13-conv4.2/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l13-conv4.2/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_12: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/pooling4/MaxPool: (MaxPool): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Flatten/flatten/Shape: (Shape): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/Flatten/flatten/strided_slice: (StridedSlice): /job:localhost/replica:0/task:0/device:GPU:0
@@ -8483,12 +8474,6 @@ softmax_cross_entropy_with_logits_sg_2/Shape: (Shape): /job:localhost/replica:0/
 softmax_cross_entropy_with_logits_sg_2/Slice_2: (Slice): /job:localhost/replica:0/task:0/device:GPU:0
 softmax_cross_entropy_with_logits_sg_2/Reshape_2: (Reshape): /job:localhost/replica:0/task:0/device:GPU:0
 Mean_68: (Mean): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l6-conv2.1/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l6-conv2.1/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_5: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l5-conv2.0/Conv2D: (Conv2D): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l5-conv2.0/BiasAdd: (BiasAdd): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/Relu_4: (Relu): /job:localhost/replica:0/task:0/device:GPU:0
 save_1/RestoreV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save_1/RestoreV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save_1/SaveV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
@@ -8500,23 +8485,23 @@ save/SaveV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CP
 save/SaveV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/Const: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 Momentum_2/momentum: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/mul_80_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Fill/value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range/delta: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/range/start: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Size: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_82_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/Mean_83_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_2/grafting/l7-conv2.2graft/Conv2D_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l13-conv4.2/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/mul_92_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Fill/value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range/delta: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/range/start: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Shape_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Size: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_94_grad/Shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/grafting/l13-conv4.2/Conv2D_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_2/Mean_95_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Maximum/y: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Const_1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_102_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -9551,11 +9536,11 @@ grafting/l8-conv3.0/biases/Initializer/zeros: (Const): /job:localhost/replica:0/
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l8-conv3.0/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l7-conv2.2graft/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/mean: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l7-conv2.2/weights/Initializer/truncated_normal/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/dilation_rate: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/biases/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/l6-conv2.1/weights/Initializer/truncated_normal/stddev: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -9612,26 +9597,33 @@ net1/dropout0/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/d
 grafting/dropout2/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout2/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout2/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout1/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout1/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout1/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout0/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout0/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout0/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-label: (Placeholder): /job:localhost/replica:0/task:0/device:GPU:0
-x: (Placeholder): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros_5/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros_4/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros_3/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros_2/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros_1/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients_1/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros_5/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros_4/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros_3/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros_2/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros_1/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-gradients/zeros/Const: (Const): 
+grafting/dropout1/cond/dropout/random_uniform/m
+calculate l12 norm: variable grafting/l6-conv2.1/weights:0, shape = (3, 3, 256, 256)
+calculate l12 norm: variable grafting/l7-conv2.2/weights:0, shape = (3, 3, 256, 256)
+calculate l12 norm: variable grafting/l8-conv3.0/weights:0, shape = (3, 3, 256, 512)
+calculate l12 norm: variable grafting/l9-conv3.1/weights:0, shape = (3, 3, 512, 512)
+calculate l12 norm: variable grafting/l10-conv3.2/weights:0, shape = (3, 3, 512, 512)
+calculate l12 norm: variable grafting/l11-conv4.0/weights:0, shape = (3, 3, 512, 512)
+calculate l12 norm: variable grafting/l12-conv4.1/weights:0, shape = (3, 3, 512, 512)
+calculate l12 norm: variable grafting/l13-conv4.2/weights:0, shape = (3, 3, 512, 512)
+calculate l12 norm: variable grafting/l14-fc1/weights:0, shape = (512, 4096)
+calculate l12 norm: variable grafting/l15-fc2/weights:0, shape = (4096, 4096)
+calculate l12 norm: variable grafting/l16-output/weights:0, shape = (4096, 100)
+Grad Domain grafting:
+net2/l1-conv0.0/weights:0
+net2/l1-conv0.0/biases:0
+net2/l2-conv0.1/weights:0
+net2/l2-conv0.1/biases:0
+net2/l3-conv1.0/weights:0
+net2/l3-conv1.0/biases:0
+net2/l4-conv1.1/weights:0
+net2/l4-conv1.1/biases:0
+net2/l5-conv2.0/weights:0
+net2/l5-conv2.0/biases:0
+net2/l6-conv2.1/weights:0
+net2/l6-conv2.1/biases:0
+net2/l7-conv2.2/weights:0
+net2/l7-conv2.2/biases:0
 net2/l8-conv3.0/weights:0
 net2/l8-conv3.0/biases:0
 net2/l9-conv3.1/weights:0
@@ -9650,249 +9642,628 @@ net2/l15-fc2/weights:0
 net2/l15-fc2/biases:0
 net2/l16-output/weights:0
 net2/l16-output/biases:0
-grafting train epoch -1   overall_loss: 36.956165,  ce_loss: 4.741122, reg_loss: 3.785174, acc_loss: 0.008393
-grafting test epoch -1   overall_loss: 37.717876,  ce_loss: 4.74324, reg_loss: 3.785175, acc_loss: 0.007512
-grafting train epoch -1   overall_loss: 30.63185,  ce_loss: 7.453815, reg_loss: 0.629447, acc_loss: 0.012139
-grafting test epoch -1   overall_loss: 31.403517,  ce_loss: 7.520818, reg_loss: 0.629447, acc_loss: 0.012119
+grafting train epoch -1   overall_loss: 25.774086,  ce_loss: 0.027146, reg_loss: 0.265225, acc_loss: 0.992007
+grafting test epoch -1   overall_loss: 26.01989,  ce_loss: 2.342385, reg_loss: 0.265225, acc_loss: 0.669171
+grafting train epoch -1   overall_loss: 13.65256,  ce_loss: 5.557346, reg_loss: 0.265486, acc_loss: 0.004948
+grafting test epoch -1   overall_loss: 13.843858,  ce_loss: 5.554109, reg_loss: 0.265486, acc_loss: 0.00641
 Epoch 0: lr decay = 1.0
-grafting train epoch 0   overall_loss: 9.462334,  ce_loss: 5.73773, reg_loss: 0.620843, acc_loss: 0.043009, l2diff_loss: 1.64413
-grafting test epoch 0   overall_loss: 9.153453,  ce_loss: 5.320636, reg_loss: 0.607132, acc_loss: 0.108974
+grafting train epoch 0   overall_loss: 3.991799,  ce_loss: 0.91532, reg_loss: 0.269647, acc_loss: 0.797015, l2diff_loss: 0.690501
+grafting test epoch 0   overall_loss: 2.554208,  ce_loss: 2.223417, reg_loss: 0.272762, acc_loss: 0.654347
 Epoch 1: lr decay = 1.0
-grafting train epoch 1   overall_loss: 7.439712,  ce_loss: 4.921172, reg_loss: 0.591108, acc_loss: 0.180068, l2diff_loss: 1.251499
-grafting test epoch 1   overall_loss: 7.839768,  ce_loss: 5.084123, reg_loss: 0.57748, acc_loss: 0.236178
+grafting train epoch 1   overall_loss: 2.006196,  ce_loss: 0.158818, reg_loss: 0.27409, acc_loss: 0.958594, l2diff_loss: 0.291603
+grafting test epoch 1   overall_loss: 2.31696,  ce_loss: 2.245746, reg_loss: 0.275147, acc_loss: 0.657853
 Epoch 2: lr decay = 1.0
-grafting train epoch 2   overall_loss: 6.621904,  ce_loss: 4.235146, reg_loss: 0.567445, acc_loss: 0.28099, l2diff_loss: 1.097403
-grafting test epoch 2   overall_loss: 7.136929,  ce_loss: 4.315027, reg_loss: 0.558904, acc_loss: 0.303285
+grafting train epoch 2   overall_loss: 1.85614,  ce_loss: 0.139171, reg_loss: 0.275853, acc_loss: 0.960857, l2diff_loss: 0.260887
+grafting test epoch 2   overall_loss: 2.242606,  ce_loss: 2.234906, reg_loss: 0.276489, acc_loss: 0.658654
 Epoch 3: lr decay = 1.0
-grafting train epoch 3   overall_loss: 6.180636,  ce_loss: 3.538307, reg_loss: 0.552596, acc_loss: 0.355008, l2diff_loss: 1.015088
-grafting test epoch 3   overall_loss: 6.821036,  ce_loss: 4.039858, reg_loss: 0.547148, acc_loss: 0.33734
+grafting train epoch 3   overall_loss: 1.809602,  ce_loss: 0.124908, reg_loss: 0.276998, acc_loss: 0.963802, l2diff_loss: 0.251121
+grafting test epoch 3   overall_loss: 2.223751,  ce_loss: 2.282714, reg_loss: 0.277455, acc_loss: 0.659555
 Epoch 4: lr decay = 1.0
-grafting train epoch 4   overall_loss: 5.99748,  ce_loss: 3.3481, reg_loss: 0.543001, acc_loss: 0.379928, l2diff_loss: 0.982296
-grafting test epoch 4   overall_loss: 6.669766,  ce_loss: 3.994656, reg_loss: 0.539454, acc_loss: 0.35026
+grafting train epoch 4   overall_loss: 1.787054,  ce_loss: 0.122435, reg_loss: 0.27784, acc_loss: 0.964203, l2diff_loss: 0.246275
+grafting test epoch 4   overall_loss: 2.203395,  ce_loss: 2.270717, reg_loss: 0.278143, acc_loss: 0.660958
 Epoch 5: lr decay = 1.0
-grafting train epoch 5   overall_loss: 5.848424,  ce_loss: 3.232607, reg_loss: 0.536807, acc_loss: 0.397436, l2diff_loss: 0.954962
-grafting test epoch 5   overall_loss: 6.51687,  ce_loss: 3.923658, reg_loss: 0.53442, acc_loss: 0.360777
+grafting train epoch 5   overall_loss: 1.773186,  ce_loss: 0.117528, reg_loss: 0.278483, acc_loss: 0.965004, l2diff_loss: 0.243244
+grafting test epoch 5   overall_loss: 2.18084,  ce_loss: 2.257928, reg_loss: 0.278806, acc_loss: 0.660156
 Epoch 6: lr decay = 1.0
-grafting train epoch 6   overall_loss: 5.739626,  ce_loss: 3.106976, reg_loss: 0.532572, acc_loss: 0.418329, l2diff_loss: 0.934896
-grafting test epoch 6   overall_loss: 6.405186,  ce_loss: 3.747828, reg_loss: 0.530814, acc_loss: 0.377103
+grafting train epoch 6   overall_loss: 1.74446,  ce_loss: 0.109919, reg_loss: 0.27907, acc_loss: 0.966206, l2diff_loss: 0.237264
+grafting test epoch 6   overall_loss: 2.179426,  ce_loss: 2.282052, reg_loss: 0.279283, acc_loss: 0.661458
 Epoch 7: lr decay = 1.0
-grafting train epoch 7   overall_loss: 5.665259,  ce_loss: 2.971848, reg_loss: 0.529474, acc_loss: 0.432993, l2diff_loss: 0.921262
-grafting test epoch 7   overall_loss: 6.32143,  ce_loss: 3.719152, reg_loss: 0.528224, acc_loss: 0.386518
+grafting train epoch 7   overall_loss: 1.737109,  ce_loss: 0.106223, reg_loss: 0.279487, acc_loss: 0.967788, l2diff_loss: 0.235627
+grafting test epoch 7   overall_loss: 2.168152,  ce_loss: 2.283465, reg_loss: 0.279655, acc_loss: 0.661158
 Epoch 8: lr decay = 1.0
-grafting train epoch 8   overall_loss: 5.604842,  ce_loss: 2.919026, reg_loss: 0.527164, acc_loss: 0.441206, l2diff_loss: 0.910103
-grafting test epoch 8   overall_loss: 6.278584,  ce_loss: 3.709826, reg_loss: 0.526135, acc_loss: 0.388121
+grafting train epoch 8   overall_loss: 1.732756,  ce_loss: 0.104996, reg_loss: 0.27985, acc_loss: 0.967808, l2diff_loss: 0.234611
+grafting test epoch 8   overall_loss: 2.166861,  ce_loss: 2.272155, reg_loss: 0.280005, acc_loss: 0.66246
 Epoch 9: lr decay = 1.0
-grafting train epoch 9   overall_loss: 5.567176,  ce_loss: 2.904344, reg_loss: 0.525265, acc_loss: 0.444331, l2diff_loss: 0.903329
-grafting test epoch 9   overall_loss: 6.236686,  ce_loss: 3.631271, reg_loss: 0.524416, acc_loss: 0.394631
+grafting train epoch 9   overall_loss: 1.720815,  ce_loss: 0.104009, reg_loss: 0.280201, acc_loss: 0.968089, l2diff_loss: 0.232082
+grafting test epoch 9   overall_loss: 2.146935,  ce_loss: 2.273403, reg_loss: 0.280323, acc_loss: 0.661258
 Epoch 10: lr decay = 1.0
-grafting train epoch 10   overall_loss: 5.531764,  ce_loss: 2.841603, reg_loss: 0.523749, acc_loss: 0.452704, l2diff_loss: 0.896854
-grafting test epoch 10   overall_loss: 6.173728,  ce_loss: 3.598462, reg_loss: 0.523164, acc_loss: 0.400641
+grafting train epoch 10   overall_loss: 1.728611,  ce_loss: 0.103896, reg_loss: 0.280471, acc_loss: 0.968089, l2diff_loss: 0.233534
+grafting test epoch 10   overall_loss: 2.151376,  ce_loss: 2.287275, reg_loss: 0.280655, acc_loss: 0.661959
 Epoch 11: lr decay = 1.0
-grafting train epoch 11   overall_loss: 5.482069,  ce_loss: 2.771678, reg_loss: 0.522604, acc_loss: 0.462981, l2diff_loss: 0.887372
-grafting test epoch 11   overall_loss: 6.137105,  ce_loss: 3.605874, reg_loss: 0.522082, acc_loss: 0.404647
+grafting train epoch 11   overall_loss: 1.704264,  ce_loss: 0.101224, reg_loss: 0.280733, acc_loss: 0.968109, l2diff_loss: 0.22856
+grafting test epoch 11   overall_loss: 2.138713,  ce_loss: 2.27461, reg_loss: 0.280884, acc_loss: 0.66246
 Epoch 12: lr decay = 1.0
-grafting train epoch 12   overall_loss: 5.453526,  ce_loss: 2.712858, reg_loss: 0.52171, acc_loss: 0.46881, l2diff_loss: 0.882021
-grafting test epoch 12   overall_loss: 6.086076,  ce_loss: 3.530178, reg_loss: 0.521414, acc_loss: 0.411058
+grafting train epoch 12   overall_loss: 1.697493,  ce_loss: 0.100474, reg_loss: 0.28097, acc_loss: 0.96877, l2diff_loss: 0.227111
+grafting test epoch 12   overall_loss: 2.122521,  ce_loss: 2.28187, reg_loss: 0.281056, acc_loss: 0.662059
 Epoch 13: lr decay = 1.0
-grafting train epoch 13   overall_loss: 5.400431,  ce_loss: 2.659102, reg_loss: 0.521162, acc_loss: 0.479708, l2diff_loss: 0.871622
-grafting test epoch 13   overall_loss: 6.041256,  ce_loss: 3.486041, reg_loss: 0.520869, acc_loss: 0.419972
+grafting train epoch 13   overall_loss: 1.684539,  ce_loss: 0.100719, reg_loss: 0.281101, acc_loss: 0.96889, l2diff_loss: 0.224467
+grafting test epoch 13   overall_loss: 2.117508,  ce_loss: 2.276495, reg_loss: 0.281134, acc_loss: 0.66256
 Epoch 14: lr decay = 1.0
-grafting train epoch 14   overall_loss: 5.373362,  ce_loss: 2.611876, reg_loss: 0.520674, acc_loss: 0.490224, l2diff_loss: 0.866403
-grafting test epoch 14   overall_loss: 5.999584,  ce_loss: 3.475389, reg_loss: 0.520477, acc_loss: 0.422977
+grafting train epoch 14   overall_loss: 1.691195,  ce_loss: 0.097282, reg_loss: 0.281213, acc_loss: 0.969611, l2diff_loss: 0.225754
+grafting test epoch 14   overall_loss: 2.117205,  ce_loss: 2.264779, reg_loss: 0.281218, acc_loss: 0.661959
 Epoch 15: lr decay = 1.0
-grafting train epoch 15   overall_loss: 5.333196,  ce_loss: 2.593229, reg_loss: 0.520336, acc_loss: 0.495092, l2diff_loss: 0.858505
-grafting test epoch 15   overall_loss: 5.924493,  ce_loss: 3.437616, reg_loss: 0.520335, acc_loss: 0.433594
+grafting train epoch 15   overall_loss: 1.680626,  ce_loss: 0.096686, reg_loss: 0.281302, acc_loss: 0.970112, l2diff_loss: 0.223604
+grafting test epoch 15   overall_loss: 2.1177,  ce_loss: 2.27525, reg_loss: 0.281383, acc_loss: 0.663361
 Epoch 16: lr decay = 1.0
-grafting train epoch 16   overall_loss: 5.253168,  ce_loss: 2.544634, reg_loss: 0.520407, acc_loss: 0.503005, l2diff_loss: 0.842471
-grafting test epoch 16   overall_loss: 5.885452,  ce_loss: 3.462822, reg_loss: 0.52031, acc_loss: 0.425881
+grafting train epoch 16   overall_loss: 1.67494,  ce_loss: 0.097895, reg_loss: 0.281471, acc_loss: 0.970994, l2diff_loss: 0.222399
+grafting test epoch 16   overall_loss: 2.113795,  ce_loss: 2.283908, reg_loss: 0.281522, acc_loss: 0.663261
 Epoch 17: lr decay = 1.0
-grafting train epoch 17   overall_loss: 5.232052,  ce_loss: 2.511885, reg_loss: 0.520309, acc_loss: 0.504067, l2diff_loss: 0.838287
-grafting test epoch 17   overall_loss: 5.86482,  ce_loss: 3.428316, reg_loss: 0.520215, acc_loss: 0.430789
+grafting train epoch 17   overall_loss: 1.684951,  ce_loss: 0.096474, reg_loss: 0.28157, acc_loss: 0.970212, l2diff_loss: 0.224362
+grafting test epoch 17   overall_loss: 2.129821,  ce_loss: 2.29153, reg_loss: 0.281641, acc_loss: 0.661458
 Epoch 18: lr decay = 1.0
-grafting train epoch 18   overall_loss: 5.199858,  ce_loss: 2.434467, reg_loss: 0.52044, acc_loss: 0.51869, l2diff_loss: 0.831796
-grafting test epoch 18   overall_loss: 5.779354,  ce_loss: 3.286379, reg_loss: 0.520688, acc_loss: 0.447516
+grafting train epoch 18   overall_loss: 1.667535,  ce_loss: 0.097488, reg_loss: 0.281652, acc_loss: 0.970032, l2diff_loss: 0.220846
+grafting test epoch 18   overall_loss: 2.107943,  ce_loss: 2.288957, reg_loss: 0.28169, acc_loss: 0.661659
 Epoch 19: lr decay = 1.0
-grafting train epoch 19   overall_loss: 5.118462,  ce_loss: 2.363824, reg_loss: 0.521191, acc_loss: 0.527163, l2diff_loss: 0.815216
-grafting test epoch 19   overall_loss: 5.691493,  ce_loss: 3.31097, reg_loss: 0.521573, acc_loss: 0.448718
+grafting train epoch 19   overall_loss: 1.668591,  ce_loss: 0.095337, reg_loss: 0.281727, acc_loss: 0.971534, l2diff_loss: 0.221027
+grafting test epoch 19   overall_loss: 2.104792,  ce_loss: 2.292978, reg_loss: 0.281778, acc_loss: 0.66266
 Epoch 20: lr decay = 1.0
-grafting train epoch 20   overall_loss: 5.04658,  ce_loss: 2.321553, reg_loss: 0.521969, acc_loss: 0.53766, l2diff_loss: 0.800528
-grafting test epoch 20   overall_loss: 5.617484,  ce_loss: 3.301738, reg_loss: 0.522357, acc_loss: 0.454127
+grafting train epoch 20   overall_loss: 1.665949,  ce_loss: 0.093643, reg_loss: 0.281818, acc_loss: 0.970954, l2diff_loss: 0.220463
+grafting test epoch 20   overall_loss: 2.101149,  ce_loss: 2.277214, reg_loss: 0.281836, acc_loss: 0.663562
 Epoch 21: lr decay = 1.0
-grafting train epoch 21   overall_loss: 4.996612,  ce_loss: 2.269002, reg_loss: 0.522569, acc_loss: 0.546795, l2diff_loss: 0.790295
-grafting test epoch 21   overall_loss: 5.572475,  ce_loss: 3.23882, reg_loss: 0.522831, acc_loss: 0.463942
+grafting train epoch 21   overall_loss: 1.662636,  ce_loss: 0.096885, reg_loss: 0.281884, acc_loss: 0.970413, l2diff_loss: 0.219774
+grafting test epoch 21   overall_loss: 2.098349,  ce_loss: 2.279223, reg_loss: 0.281883, acc_loss: 0.66236
 Epoch 22: lr decay = 1.0
-grafting train epoch 22   overall_loss: 4.975764,  ce_loss: 2.227274, reg_loss: 0.523034, acc_loss: 0.551943, l2diff_loss: 0.785939
-grafting test epoch 22   overall_loss: 5.548378,  ce_loss: 3.22789, reg_loss: 0.523184, acc_loss: 0.463542
+grafting train epoch 22   overall_loss: 1.673633,  ce_loss: 0.09633, reg_loss: 0.281966, acc_loss: 0.970673, l2diff_loss: 0.22194
+grafting test epoch 22   overall_loss: 2.102284,  ce_loss: 2.280977, reg_loss: 0.281997, acc_loss: 0.66276
 Epoch 23: lr decay = 1.0
-grafting train epoch 23   overall_loss: 4.952237,  ce_loss: 2.197138, reg_loss: 0.523359, acc_loss: 0.553365, l2diff_loss: 0.781104
-grafting test epoch 23   overall_loss: 5.509548,  ce_loss: 3.204583, reg_loss: 0.523597, acc_loss: 0.464143
+grafting train epoch 23   overall_loss: 1.658549,  ce_loss: 0.09131, reg_loss: 0.28203, acc_loss: 0.972176, l2diff_loss: 0.218898
+grafting test epoch 23   overall_loss: 2.100251,  ce_loss: 2.297959, reg_loss: 0.28209, acc_loss: 0.662861
 Epoch 24: lr decay = 1.0
-grafting train epoch 24   overall_loss: 4.913574,  ce_loss: 2.166322, reg_loss: 0.523923, acc_loss: 0.561058, l2diff_loss: 0.773146
-grafting test epoch 24   overall_loss: 5.458062,  ce_loss: 3.213875, reg_loss: 0.524239, acc_loss: 0.470353
+grafting train epoch 24   overall_loss: 1.65707,  ce_loss: 0.092091, reg_loss: 0.282122, acc_loss: 0.971354, l2diff_loss: 0.218565
+grafting test epoch 24   overall_loss: 2.097767,  ce_loss: 2.284195, reg_loss: 0.282127, acc_loss: 0.663261
 Epoch 25: lr decay = 1.0
-grafting train epoch 25   overall_loss: 4.887958,  ce_loss: 2.126657, reg_loss: 0.524521, acc_loss: 0.566026, l2diff_loss: 0.767783
-grafting test epoch 25   overall_loss: 5.427068,  ce_loss: 3.128605, reg_loss: 0.524791, acc_loss: 0.474058
+grafting train epoch 25   overall_loss: 1.654455,  ce_loss: 0.090186, reg_loss: 0.282156, acc_loss: 0.971835, l2diff_loss: 0.218029
+grafting test epoch 25   overall_loss: 2.096238,  ce_loss: 2.296557, reg_loss: 0.282187, acc_loss: 0.663361
 Epoch 26: lr decay = 1.0
-grafting train epoch 26   overall_loss: 4.853724,  ce_loss: 2.071793, reg_loss: 0.525152, acc_loss: 0.57496, l2diff_loss: 0.760684
-grafting test epoch 26   overall_loss: 5.39413,  ce_loss: 3.140792, reg_loss: 0.52546, acc_loss: 0.48107
+grafting train epoch 26   overall_loss: 1.655602,  ce_loss: 0.091139, reg_loss: 0.282183, acc_loss: 0.972236, l2diff_loss: 0.218247
+grafting test epoch 26   overall_loss: 2.09412,  ce_loss: 2.285588, reg_loss: 0.282169, acc_loss: 0.66266
 Epoch 27: lr decay = 1.0
-grafting train epoch 27   overall_loss: 4.818918,  ce_loss: 1.999216, reg_loss: 0.525798, acc_loss: 0.583273, l2diff_loss: 0.753464
-grafting test epoch 27   overall_loss: 5.349998,  ce_loss: 3.028094, reg_loss: 0.526207, acc_loss: 0.488381
+grafting train epoch 27   overall_loss: 1.644862,  ce_loss: 0.089199, reg_loss: 0.282191, acc_loss: 0.972015, l2diff_loss: 0.216096
+grafting test epoch 27   overall_loss: 2.094984,  ce_loss: 2.271396, reg_loss: 0.282212, acc_loss: 0.663862
 Epoch 28: lr decay = 1.0
-grafting train epoch 28   overall_loss: 4.788046,  ce_loss: 1.965576, reg_loss: 0.526598, acc_loss: 0.589143, l2diff_loss: 0.74697
-grafting test epoch 28   overall_loss: 5.318896,  ce_loss: 3.052463, reg_loss: 0.526985, acc_loss: 0.486078
+grafting train epoch 28   overall_loss: 1.659784,  ce_loss: 0.093961, reg_loss: 0.282247, acc_loss: 0.971014, l2diff_loss: 0.219058
+grafting test epoch 28   overall_loss: 2.102038,  ce_loss: 2.313696, reg_loss: 0.282316, acc_loss: 0.663562
 Epoch 29: lr decay = 1.0
-grafting train epoch 29   overall_loss: 4.775738,  ce_loss: 1.942309, reg_loss: 0.527187, acc_loss: 0.592067, l2diff_loss: 0.744273
-grafting test epoch 29   overall_loss: 5.299028,  ce_loss: 3.053089, reg_loss: 0.52744, acc_loss: 0.49389
+grafting train epoch 29   overall_loss: 1.654175,  ce_loss: 0.093073, reg_loss: 0.282292, acc_loss: 0.971174, l2diff_loss: 0.217918
+grafting test epoch 29   overall_loss: 2.092154,  ce_loss: 2.279296, reg_loss: 0.282282, acc_loss: 0.663161
 Epoch 30: lr decay = 1.0
-grafting train epoch 30   overall_loss: 4.74265,  ce_loss: 1.881821, reg_loss: 0.527865, acc_loss: 0.602123, l2diff_loss: 0.737384
-grafting test epoch 30   overall_loss: 5.25115,  ce_loss: 2.983116, reg_loss: 0.528374, acc_loss: 0.499499
+grafting train epoch 30   overall_loss: 1.645999,  ce_loss: 0.090635, reg_loss: 0.282317, acc_loss: 0.972296, l2diff_loss: 0.216273
+grafting test epoch 30   overall_loss: 2.086082,  ce_loss: 2.28329, reg_loss: 0.282324, acc_loss: 0.663862
 Epoch 31: lr decay = 1.0
-grafting train epoch 31   overall_loss: 4.707842,  ce_loss: 1.819443, reg_loss: 0.528838, acc_loss: 0.61236, l2diff_loss: 0.730033
-grafting test epoch 31   overall_loss: 5.218316,  ce_loss: 2.92655, reg_loss: 0.529263, acc_loss: 0.504307
+grafting train epoch 31   overall_loss: 1.652262,  ce_loss: 0.092017, reg_loss: 0.282372, acc_loss: 0.970733, l2diff_loss: 0.217503
+grafting test epoch 31   overall_loss: 2.087202,  ce_loss: 2.289962, reg_loss: 0.282401, acc_loss: 0.664663
 Epoch 32: lr decay = 1.0
-grafting train epoch 32   overall_loss: 4.690268,  ce_loss: 1.794255, reg_loss: 0.529485, acc_loss: 0.614163, l2diff_loss: 0.72626
-grafting test epoch 32   overall_loss: 5.215119,  ce_loss: 2.96517, reg_loss: 0.529658, acc_loss: 0.504207
+grafting train epoch 32   overall_loss: 1.648865,  ce_loss: 0.090756, reg_loss: 0.2824, acc_loss: 0.972236, l2diff_loss: 0.216813
+grafting test epoch 32   overall_loss: 2.089234,  ce_loss: 2.264639, reg_loss: 0.282392, acc_loss: 0.664062
 Epoch 33: lr decay = 1.0
-grafting train epoch 33   overall_loss: 4.67783,  ce_loss: 1.78076, reg_loss: 0.529906, acc_loss: 0.618289, l2diff_loss: 0.723604
-grafting test epoch 33   overall_loss: 5.185312,  ce_loss: 2.913928, reg_loss: 0.530182, acc_loss: 0.509615
+grafting train epoch 33   overall_loss: 1.648866,  ce_loss: 0.091857, reg_loss: 0.282416, acc_loss: 0.971595, l2diff_loss: 0.216807
+grafting test epoch 33   overall_loss: 2.085904,  ce_loss: 2.287702, reg_loss: 0.282412, acc_loss: 0.663562
 Epoch 34: lr decay = 1.0
-grafting train epoch 34   overall_loss: 4.653548,  ce_loss: 1.750898, reg_loss: 0.530428, acc_loss: 0.622035, l2diff_loss: 0.718538
-grafting test epoch 34   overall_loss: 5.15772,  ce_loss: 2.874413, reg_loss: 0.530764, acc_loss: 0.511819
+grafting train epoch 34   overall_loss: 1.646012,  ce_loss: 0.089382, reg_loss: 0.282406, acc_loss: 0.971755, l2diff_loss: 0.21624
+grafting test epoch 34   overall_loss: 2.089809,  ce_loss: 2.28984, reg_loss: 0.282402, acc_loss: 0.662961
 Epoch 35: lr decay = 1.0
-grafting train epoch 35   overall_loss: 4.638116,  ce_loss: 1.72087, reg_loss: 0.53096, acc_loss: 0.627624, l2diff_loss: 0.715239
-grafting test epoch 35   overall_loss: 5.152656,  ce_loss: 2.902957, reg_loss: 0.531078, acc_loss: 0.511919
+grafting train epoch 35   overall_loss: 1.637503,  ce_loss: 0.091474, reg_loss: 0.282423, acc_loss: 0.971655, l2diff_loss: 0.214531
+grafting test epoch 35   overall_loss: 2.088033,  ce_loss: 2.296354, reg_loss: 0.282411, acc_loss: 0.662861
 Epoch 36: lr decay = 1.0
-grafting train epoch 36   overall_loss: 4.637944,  ce_loss: 1.713642, reg_loss: 0.531208, acc_loss: 0.628045, l2diff_loss: 0.715106
-grafting test epoch 36   overall_loss: 5.153119,  ce_loss: 2.916753, reg_loss: 0.531276, acc_loss: 0.509916
+grafting train epoch 36   overall_loss: 1.649084,  ce_loss: 0.092062, reg_loss: 0.282461, acc_loss: 0.970994, l2diff_loss: 0.216832
+grafting test epoch 36   overall_loss: 2.077719,  ce_loss: 2.282196, reg_loss: 0.282492, acc_loss: 0.663061
 Epoch 37: lr decay = 1.0
-grafting train epoch 37   overall_loss: 4.633022,  ce_loss: 1.720602, reg_loss: 0.531352, acc_loss: 0.626703, l2diff_loss: 0.714064
-grafting test epoch 37   overall_loss: 5.151715,  ce_loss: 2.884532, reg_loss: 0.531346, acc_loss: 0.51262
+grafting train epoch 37   overall_loss: 1.632543,  ce_loss: 0.090297, reg_loss: 0.282497, acc_loss: 0.971855, l2diff_loss: 0.21351
+grafting test epoch 37   overall_loss: 2.081607,  ce_loss: 2.29174, reg_loss: 0.282464, acc_loss: 0.663562
 Epoch 38: lr decay = 1.0
-grafting train epoch 38   overall_loss: 4.632406,  ce_loss: 1.725095, reg_loss: 0.531434, acc_loss: 0.626983, l2diff_loss: 0.713907
-grafting test epoch 38   overall_loss: 5.148243,  ce_loss: 2.874304, reg_loss: 0.531559, acc_loss: 0.516226
+grafting train epoch 38   overall_loss: 1.644056,  ce_loss: 0.090335, reg_loss: 0.282485, acc_loss: 0.971595, l2diff_loss: 0.215817
+grafting test epoch 38   overall_loss: 2.086351,  ce_loss: 2.282325, reg_loss: 0.282487, acc_loss: 0.664163
 Epoch 39: lr decay = 1.0
-grafting train epoch 39   overall_loss: 4.631124,  ce_loss: 1.716379, reg_loss: 0.531609, acc_loss: 0.63149, l2diff_loss: 0.713581
-grafting test epoch 39   overall_loss: 5.150046,  ce_loss: 2.905058, reg_loss: 0.53165, acc_loss: 0.509716
+grafting train epoch 39   overall_loss: 1.645653,  ce_loss: 0.086294, reg_loss: 0.28253, acc_loss: 0.973157, l2diff_loss: 0.216119
+grafting test epoch 39   overall_loss: 2.078863,  ce_loss: 2.263726, reg_loss: 0.282539, acc_loss: 0.663562
 Epoch 40: lr decay = 1.0
-grafting train epoch 40   overall_loss: 4.631432,  ce_loss: 1.720822, reg_loss: 0.531632, acc_loss: 0.629888, l2diff_loss: 0.713634
-grafting test epoch 40   overall_loss: 5.148091,  ce_loss: 2.865583, reg_loss: 0.531666, acc_loss: 0.513622
+grafting train epoch 40   overall_loss: 1.640789,  ce_loss: 0.090424, reg_loss: 0.282582, acc_loss: 0.971995, l2diff_loss: 0.215125
+grafting test epoch 40   overall_loss: 2.084086,  ce_loss: 2.296348, reg_loss: 0.282639, acc_loss: 0.663361
 Epoch 41: lr decay = 1.0
-grafting train epoch 41   overall_loss: 4.630759,  ce_loss: 1.719572, reg_loss: 0.531688, acc_loss: 0.629547, l2diff_loss: 0.713477
-grafting test epoch 41   overall_loss: 5.146736,  ce_loss: 2.860029, reg_loss: 0.531656, acc_loss: 0.516526
+grafting train epoch 41   overall_loss: 1.632093,  ce_loss: 0.08935, reg_loss: 0.282606, acc_loss: 0.972516, l2diff_loss: 0.213376
+grafting test epoch 41   overall_loss: 2.074722,  ce_loss: 2.274456, reg_loss: 0.282607, acc_loss: 0.664163
 Epoch 42: lr decay = 1.0
-grafting train epoch 42   overall_loss: 4.628162,  ce_loss: 1.6994, reg_loss: 0.531654, acc_loss: 0.633834, l2diff_loss: 0.712971
-grafting test epoch 42   overall_loss: 5.150223,  ce_loss: 2.864904, reg_loss: 0.531718, acc_loss: 0.514724
+grafting train epoch 42   overall_loss: 1.647329,  ce_loss: 0.088312, reg_loss: 0.282602, acc_loss: 0.972456, l2diff_loss: 0.216425
+grafting test epoch 42   overall_loss: 2.083855,  ce_loss: 2.298665, reg_loss: 0.282609, acc_loss: 0.663361
 Epoch 43: lr decay = 1.0
-grafting train epoch 43   overall_loss: 4.632872,  ce_loss: 1.704666, reg_loss: 0.53177, acc_loss: 0.630789, l2diff_loss: 0.713867
-grafting test epoch 43   overall_loss: 5.15188,  ce_loss: 2.866296, reg_loss: 0.531779, acc_loss: 0.514623
+grafting train epoch 43   overall_loss: 1.648124,  ce_loss: 0.090148, reg_loss: 0.282602, acc_loss: 0.971795, l2diff_loss: 0.216584
+grafting test epoch 43   overall_loss: 2.084343,  ce_loss: 2.292906, reg_loss: 0.282597, acc_loss: 0.663462
 Epoch 44: lr decay = 1.0
-grafting train epoch 44   overall_loss: 4.633476,  ce_loss: 1.715482, reg_loss: 0.531722, acc_loss: 0.63143, l2diff_loss: 0.714006
-grafting test epoch 44   overall_loss: 5.147186,  ce_loss: 2.859429, reg_loss: 0.531784, acc_loss: 0.513922
+grafting train epoch 44   overall_loss: 1.632064,  ce_loss: 0.088157, reg_loss: 0.282626, acc_loss: 0.972556, l2diff_loss: 0.213362
+grafting test epoch 44   overall_loss: 2.079532,  ce_loss: 2.293255, reg_loss: 0.282636, acc_loss: 0.663962
 Epoch 45: lr decay = 1.0
-grafting train epoch 45   overall_loss: 4.625302,  ce_loss: 1.716091, reg_loss: 0.53176, acc_loss: 0.628766, l2diff_loss: 0.712356
-grafting test epoch 45   overall_loss: 5.145546,  ce_loss: 2.861879, reg_loss: 0.531804, acc_loss: 0.514724
+grafting train epoch 45   overall_loss: 1.623087,  ce_loss: 0.090033, reg_loss: 0.282655, acc_loss: 0.971895, l2diff_loss: 0.211555
+grafting test epoch 45   overall_loss: 2.10489,  ce_loss: 2.31923, reg_loss: 0.282702, acc_loss: 0.66226
 Epoch 46: lr decay = 1.0
-grafting train epoch 46   overall_loss: 4.635244,  ce_loss: 1.69381, reg_loss: 0.53183, acc_loss: 0.63155, l2diff_loss: 0.714317
-grafting test epoch 46   overall_loss: 5.146312,  ce_loss: 2.876479, reg_loss: 0.53181, acc_loss: 0.515725
+grafting train epoch 46   overall_loss: 1.638979,  ce_loss: 0.087081, reg_loss: 0.282683, acc_loss: 0.972616, l2diff_loss: 0.214723
+grafting test epoch 46   overall_loss: 2.075541,  ce_loss: 2.293165, reg_loss: 0.282694, acc_loss: 0.664363
 Epoch 47: lr decay = 1.0
-grafting train epoch 47   overall_loss: 4.628182,  ce_loss: 1.701093, reg_loss: 0.531818, acc_loss: 0.63103, l2diff_loss: 0.712909
-grafting test epoch 47   overall_loss: 5.147974,  ce_loss: 2.88505, reg_loss: 0.531823, acc_loss: 0.515024
+grafting train epoch 47   overall_loss: 1.637923,  ce_loss: 0.088022, reg_loss: 0.28271, acc_loss: 0.972516, l2diff_loss: 0.214501
+grafting test epoch 47   overall_loss: 2.07424,  ce_loss: 2.29897, reg_loss: 0.28273, acc_loss: 0.663662
 Epoch 48: lr decay = 1.0
-grafting train epoch 48   overall_loss: 4.632366,  ce_loss: 1.71629, reg_loss: 0.531849, acc_loss: 0.629006, l2diff_loss: 0.713734
-grafting test epoch 48   overall_loss: 5.144131,  ce_loss: 2.886418, reg_loss: 0.531819, acc_loss: 0.515725
+grafting train epoch 48   overall_loss: 1.630585,  ce_loss: 0.091084, reg_loss: 0.282744, acc_loss: 0.972055, l2diff_loss: 0.213019
+grafting test epoch 48   overall_loss: 2.072896,  ce_loss: 2.289048, reg_loss: 0.282759, acc_loss: 0.664563
 Epoch 49: lr decay = 1.0
-grafting train epoch 49   overall_loss: 4.631429,  ce_loss: 1.707722, reg_loss: 0.53182, acc_loss: 0.630829, l2diff_loss: 0.713558
-grafting test epoch 49   overall_loss: 5.145546,  ce_loss: 2.901328, reg_loss: 0.531838, acc_loss: 0.509415
+grafting train epoch 49   overall_loss: 1.635125,  ce_loss: 0.088986, reg_loss: 0.282746, acc_loss: 0.972656, l2diff_loss: 0.213926
+grafting test epoch 49   overall_loss: 2.07721,  ce_loss: 2.297855, reg_loss: 0.282758, acc_loss: 0.663662
 Epoch 50: lr decay = 1.0
-grafting train epoch 50   overall_loss: 4.626162,  ce_loss: 1.711572, reg_loss: 0.531851, acc_loss: 0.632432, l2diff_loss: 0.712492
-grafting test epoch 50   overall_loss: 5.147224,  ce_loss: 2.868932, reg_loss: 0.531864, acc_loss: 0.513922
+grafting train epoch 50   overall_loss: 1.628234,  ce_loss: 0.087405, reg_loss: 0.282735, acc_loss: 0.972776, l2diff_loss: 0.212553
+grafting test epoch 50   overall_loss: 2.085329,  ce_loss: 2.291005, reg_loss: 0.282798, acc_loss: 0.663462
 Epoch 51: lr decay = 1.0
-grafting train epoch 51   overall_loss: 4.629333,  ce_loss: 1.716617, reg_loss: 0.53189, acc_loss: 0.63157, l2diff_loss: 0.71311
-grafting test epoch 51   overall_loss: 5.147706,  ce_loss: 2.854462, reg_loss: 0.531872, acc_loss: 0.517328
+grafting train epoch 51   overall_loss: 1.636575,  ce_loss: 0.087627, reg_loss: 0.282778, acc_loss: 0.972436, l2diff_loss: 0.214204
+grafting test epoch 51   overall_loss: 2.069718,  ce_loss: 2.287396, reg_loss: 0.282758, acc_loss: 0.664263
 Epoch 52: lr decay = 1.0
-grafting train epoch 52   overall_loss: 4.629366,  ce_loss: 1.700062, reg_loss: 0.531887, acc_loss: 0.630689, l2diff_loss: 0.713119
-grafting test epoch 52   overall_loss: 5.148202,  ce_loss: 2.875402, reg_loss: 0.531867, acc_loss: 0.513722
+grafting train epoch 52   overall_loss: 1.630967,  ce_loss: 0.086453, reg_loss: 0.282805, acc_loss: 0.973778, l2diff_loss: 0.213071
+grafting test epoch 52   overall_loss: 2.074945,  ce_loss: 2.283307, reg_loss: 0.282821, acc_loss: 0.663762
 Epoch 53: lr decay = 1.0
-grafting train epoch 53   overall_loss: 4.631694,  ce_loss: 1.712788, reg_loss: 0.53189, acc_loss: 0.628866, l2diff_loss: 0.713583
-grafting test epoch 53   overall_loss: 5.145167,  ce_loss: 2.891473, reg_loss: 0.531901, acc_loss: 0.514724
+grafting train epoch 53   overall_loss: 1.643206,  ce_loss: 0.089901, reg_loss: 0.282844, acc_loss: 0.972356, l2diff_loss: 0.215504
+grafting test epoch 53   overall_loss: 2.085821,  ce_loss: 2.304764, reg_loss: 0.282859, acc_loss: 0.664764
 Epoch 54: lr decay = 1.0
-grafting train epoch 54   overall_loss: 4.629776,  ce_loss: 1.698731, reg_loss: 0.531908, acc_loss: 0.633454, l2diff_loss: 0.713192
-grafting test epoch 54   overall_loss: 5.143657,  ce_loss: 2.885474, reg_loss: 0.531908, acc_loss: 0.517328
+grafting train epoch 54   overall_loss: 1.627837,  ce_loss: 0.084985, reg_loss: 0.282847, acc_loss: 0.973738, l2diff_loss: 0.212428
+grafting test epoch 54   overall_loss: 2.072589,  ce_loss: 2.2776, reg_loss: 0.282823, acc_loss: 0.665565
 Epoch 55: lr decay = 1.0
-grafting train epoch 55   overall_loss: 4.62562,  ce_loss: 1.703769, reg_loss: 0.53187, acc_loss: 0.631671, l2diff_loss: 0.712376
-grafting test epoch 55   overall_loss: 5.14477,  ce_loss: 2.868034, reg_loss: 0.531901, acc_loss: 0.514523
+grafting train epoch 55   overall_loss: 1.622488,  ce_loss: 0.08651, reg_loss: 0.282865, acc_loss: 0.973978, l2diff_loss: 0.211351
+grafting test epoch 55   overall_loss: 2.076016,  ce_loss: 2.276551, reg_loss: 0.282874, acc_loss: 0.663161
 Epoch 56: lr decay = 1.0
-grafting train epoch 56   overall_loss: 4.627471,  ce_loss: 1.696974, reg_loss: 0.531903, acc_loss: 0.632592, l2diff_loss: 0.712733
-grafting test epoch 56   overall_loss: 5.14649,  ce_loss: 2.861894, reg_loss: 0.531879, acc_loss: 0.516627
+grafting train epoch 56   overall_loss: 1.62403,  ce_loss: 0.086295, reg_loss: 0.282891, acc_loss: 0.973417, l2diff_loss: 0.21165
+grafting test epoch 56   overall_loss: 2.071314,  ce_loss: 2.279863, reg_loss: 0.282881, acc_loss: 0.665264
 Epoch 57: lr decay = 1.0
-grafting train epoch 57   overall_loss: 4.633724,  ce_loss: 1.706098, reg_loss: 0.531947, acc_loss: 0.632452, l2diff_loss: 0.713966
-grafting test epoch 57   overall_loss: 5.142544,  ce_loss: 2.884711, reg_loss: 0.531924, acc_loss: 0.515224
+grafting train epoch 57   overall_loss: 1.628304,  ce_loss: 0.084502, reg_loss: 0.282878, acc_loss: 0.974079, l2diff_loss: 0.21251
+grafting test epoch 57   overall_loss: 2.068184,  ce_loss: 2.303626, reg_loss: 0.282899, acc_loss: 0.663662
 Epoch 58: lr decay = 1.0
-grafting train epoch 58   overall_loss: 4.63315,  ce_loss: 1.714311, reg_loss: 0.531957, acc_loss: 0.627744, l2diff_loss: 0.713847
-grafting test epoch 58   overall_loss: 5.149781,  ce_loss: 2.892243, reg_loss: 0.531908, acc_loss: 0.514824
+grafting train epoch 58   overall_loss: 1.627932,  ce_loss: 0.085255, reg_loss: 0.282913, acc_loss: 0.973177, l2diff_loss: 0.212421
+grafting test epoch 58   overall_loss: 2.071052,  ce_loss: 2.275323, reg_loss: 0.282895, acc_loss: 0.664663
 Epoch 59: lr decay = 1.0
-grafting train epoch 59   overall_loss: 4.630012,  ce_loss: 1.699576, reg_loss: 0.531931, acc_loss: 0.632933, l2diff_loss: 0.71323
-grafting test epoch 59   overall_loss: 5.14627,  ce_loss: 2.873487, reg_loss: 0.531933, acc_loss: 0.515425
+grafting train epoch 59   overall_loss: 1.62602,  ce_loss: 0.087428, reg_loss: 0.282922, acc_loss: 0.972977, l2diff_loss: 0.212035
+grafting test epoch 59   overall_loss: 2.065824,  ce_loss: 2.29113, reg_loss: 0.282902, acc_loss: 0.663862
 Epoch 60: lr decay = 0.2
-grafting train epoch 60   overall_loss: 4.612404,  ce_loss: 1.704533, reg_loss: 0.531714, acc_loss: 0.629327, l2diff_loss: 0.709795
-grafting test epoch 60   overall_loss: 5.130558,  ce_loss: 2.888392, reg_loss: 0.531578, acc_loss: 0.515124
+grafting train epoch 60   overall_loss: 1.612179,  ce_loss: 0.084629, reg_loss: 0.282826, acc_loss: 0.973718, l2diff_loss: 0.209305
+grafting test epoch 60   overall_loss: 2.060573,  ce_loss: 2.284023, reg_loss: 0.282774, acc_loss: 0.664163
 Epoch 61: lr decay = 0.2
-grafting train epoch 61   overall_loss: 4.613628,  ce_loss: 1.686157, reg_loss: 0.53149, acc_loss: 0.634956, l2diff_loss: 0.710129
-grafting test epoch 61   overall_loss: 5.130282,  ce_loss: 2.882175, reg_loss: 0.531415, acc_loss: 0.516026
+grafting train epoch 61   overall_loss: 1.606194,  ce_loss: 0.085049, reg_loss: 0.282764, acc_loss: 0.973478, l2diff_loss: 0.208133
+grafting test epoch 61   overall_loss: 2.061111,  ce_loss: 2.286428, reg_loss: 0.282743, acc_loss: 0.664363
 Epoch 62: lr decay = 0.2
-grafting train epoch 62   overall_loss: 4.615514,  ce_loss: 1.69862, reg_loss: 0.531356, acc_loss: 0.633674, l2diff_loss: 0.71056
-grafting test epoch 62   overall_loss: 5.130852,  ce_loss: 2.888345, reg_loss: 0.531303, acc_loss: 0.513421
+grafting train epoch 62   overall_loss: 1.611536,  ce_loss: 0.089082, reg_loss: 0.282748, acc_loss: 0.972516, l2diff_loss: 0.209208
+grafting test epoch 62   overall_loss: 2.064341,  ce_loss: 2.296165, reg_loss: 0.282745, acc_loss: 0.664363
 Epoch 63: lr decay = 0.2
-grafting train epoch 63   overall_loss: 4.611694,  ce_loss: 1.696145, reg_loss: 0.531254, acc_loss: 0.631671, l2diff_loss: 0.709837
-grafting test epoch 63   overall_loss: 5.129338,  ce_loss: 2.887588, reg_loss: 0.531216, acc_loss: 0.513622
+grafting train epoch 63   overall_loss: 1.61138,  ce_loss: 0.083208, reg_loss: 0.282739, acc_loss: 0.97468, l2diff_loss: 0.20918
+grafting test epoch 63   overall_loss: 2.063493,  ce_loss: 2.292589, reg_loss: 0.282741, acc_loss: 0.664263
 Epoch 64: lr decay = 0.2
-grafting train epoch 64   overall_loss: 4.61122,  ce_loss: 1.69806, reg_loss: 0.531176, acc_loss: 0.63109, l2diff_loss: 0.709773
-grafting test epoch 64   overall_loss: 5.130798,  ce_loss: 2.868317, reg_loss: 0.531156, acc_loss: 0.515825
+grafting train epoch 64   overall_loss: 1.614188,  ce_loss: 0.08499, reg_loss: 0.282737, acc_loss: 0.973417, l2diff_loss: 0.209743
+grafting test epoch 64   overall_loss: 2.066625,  ce_loss: 2.292825, reg_loss: 0.282746, acc_loss: 0.664163
 Epoch 65: lr decay = 0.2
-grafting train epoch 65   overall_loss: 4.613515,  ce_loss: 1.705467, reg_loss: 0.531131, acc_loss: 0.63127, l2diff_loss: 0.710251
-grafting test epoch 65   overall_loss: 5.129064,  ce_loss: 2.886962, reg_loss: 0.531109, acc_loss: 0.514323
+grafting train epoch 65   overall_loss: 1.61886,  ce_loss: 0.085974, reg_loss: 0.282728, acc_loss: 0.973097, l2diff_loss: 0.210681
+grafting test epoch 65   overall_loss: 2.061336,  ce_loss: 2.29103, reg_loss: 0.282725, acc_loss: 0.664663
 Epoch 66: lr decay = 0.2
-grafting train epoch 66   overall_loss: 4.610134,  ce_loss: 1.70787, reg_loss: 0.531078, acc_loss: 0.628506, l2diff_loss: 0.709595
-grafting test epoch 66   overall_loss: 5.128834,  ce_loss: 2.889394, reg_loss: 0.531051, acc_loss: 0.515024
+grafting train epoch 66   overall_loss: 1.607405,  ce_loss: 0.085359, reg_loss: 0.282728, acc_loss: 0.973498, l2diff_loss: 0.20839
+grafting test epoch 66   overall_loss: 2.061427,  ce_loss: 2.28295, reg_loss: 0.282722, acc_loss: 0.664463
 Epoch 67: lr decay = 0.2
-grafting train epoch 67   overall_loss: 4.608333,  ce_loss: 1.685362, reg_loss: 0.53103, acc_loss: 0.638802, l2diff_loss: 0.709255
-grafting test epoch 67   overall_loss: 5.129348,  ce_loss: 2.892048, reg_loss: 0.531005, acc_loss: 0.513121
+grafting train epoch 67   overall_loss: 1.612379,  ce_loss: 0.083793, reg_loss: 0.282722, acc_loss: 0.973818, l2diff_loss: 0.209387
+grafting test epoch 67   overall_loss: 2.06259,  ce_loss: 2.293322, reg_loss: 0.282736, acc_loss: 0.663662
 Epoch 68: lr decay = 0.2
-grafting train epoch 68   overall_loss: 4.612075,  ce_loss: 1.697378, reg_loss: 0.530997, acc_loss: 0.632031, l2diff_loss: 0.710016
-grafting test epoch 68   overall_loss: 5.128744,  ce_loss: 2.876872, reg_loss: 0.530978, acc_loss: 0.515825
+grafting train epoch 68   overall_loss: 1.616186,  ce_loss: 0.084019, reg_loss: 0.28273, acc_loss: 0.973838, l2diff_loss: 0.210145
+grafting test epoch 68   overall_loss: 2.053002,  ce_loss: 2.282594, reg_loss: 0.282731, acc_loss: 0.664062
 Epoch 69: lr decay = 0.2
-grafting train epoch 69   overall_loss: 4.614232,  ce_loss: 1.712323, reg_loss: 0.530969, acc_loss: 0.630769, l2diff_loss: 0.710459
-grafting test epoch 69   overall_loss: 5.127114,  ce_loss: 2.885938, reg_loss: 0.530959, acc_loss: 0.515124
+grafting train epoch 69   overall_loss: 1.613209,  ce_loss: 0.087072, reg_loss: 0.282735, acc_loss: 0.973237, l2diff_loss: 0.209548
+grafting test epoch 69   overall_loss: 2.061817,  ce_loss: 2.285738, reg_loss: 0.282734, acc_loss: 0.664263
 Epoch 70: lr decay = 0.2
-grafting train epoch 70   overall_loss: 4.612362,  ce_loss: 1.690334, reg_loss: 0.530938, acc_loss: 0.631911, l2diff_loss: 0.710097
-grafting test epoch 70   overall_loss: 5.12625,  ce_loss: 2.874739, reg_loss: 0.530929, acc_loss: 0.515124
+grafting train epoch 70   overall_loss: 1.621554,  ce_loss: 0.086081, reg_loss: 0.282746, acc_loss: 0.973718, l2diff_loss: 0.211212
+grafting test epoch 70   overall_loss: 2.063099,  ce_loss: 2.285874, reg_loss: 0.282749, acc_loss: 0.664964
 Epoch 71: lr decay = 0.2
-grafting train epoch 71   overall_loss: 4.612672,  ce_loss: 1.711571, reg_loss: 0.530922, acc_loss: 0.628526, l2diff_loss: 0.710165
-grafting test epoch 71   overall_loss: 5.128088,  ce_loss: 2.892948, reg_loss: 0.530916, acc_loss: 0.515625
+grafting train epoch 71   overall_loss: 1.606344,  ce_loss: 0.086578, reg_loss: 0.282735, acc_loss: 0.973077, l2diff_loss: 0.208175
+grafting test epoch 71   overall_loss: 2.060272,  ce_loss: 2.28406, reg_loss: 0.282731, acc_loss: 0.665164
 Epoch 72: lr decay = 0.2
-grafting train epoch 72   overall_loss: 4.614536,  ce_loss: 1.698106, reg_loss: 0.530907, acc_loss: 0.63125, l2diff_loss: 0.710544
-grafting test epoch 72   overall_loss: 5.129156,  ce_loss: 2.881385, reg_loss: 0.530896, acc_loss: 0.514123
+grafting train epoch 72   overall_loss: 1.617462,  ce_loss: 0.085626, reg_loss: 0.282735, acc_loss: 0.973157, l2diff_loss: 0.210398
+grafting test epoch 72   overall_loss: 2.06467,  ce_loss: 2.29587, reg_loss: 0.282742, acc_loss: 0.664864
 Epoch 73: lr decay = 0.2
-grafting train epoch 73   overall_loss: 4.609517,  ce_loss: 1.703034, reg_loss: 0.530894, acc_loss: 0.632672, l2diff_loss: 0.709546
-grafting test epoch 73   overall_loss: 5.130022,  ce_loss: 2.882693, reg_loss: 0.530885, acc_loss: 0.515625
+grafting train epoch 73   overall_loss: 1.610264,  ce_loss: 0.084997, reg_loss: 0.28274, acc_loss: 0.973217, l2diff_loss: 0.208957
+grafting test epoch 73   overall_loss: 2.058168,  ce_loss: 2.285556, reg_loss: 0.282736, acc_loss: 0.664463
 Epoch 74: lr decay = 0.2
-grafting train epoch 74   overall_loss: 4.614626,  ce_loss: 1.698138, reg_loss: 0.530877, acc_loss: 0.633233, l2diff_loss: 0.710574
-grafting test epoch 74   overall_loss: 5.129212,  ce_loss: 2.895294, reg_loss: 0.530873, acc_loss: 0.514323
+grafting train epoch 74   overall_loss: 1.612879,  ce_loss: 0.083714, reg_loss: 0.282738, acc_loss: 0.974599, l2diff_loss: 0.20948
+grafting test epoch 74   overall_loss: 2.06,  ce_loss: 2.288308, reg_loss: 0.282727, acc_loss: 0.664563
 Epoch 75: lr decay = 0.2
-grafting train epoch 75   overall_loss: 4.611238,  ce_loss: 1.700531, reg_loss: 0.530866, acc_loss: 0.632492, l2diff_loss: 0.709901
-grafting test epoch 75   overall_loss: 5.128638,  ce_loss: 2.879084, reg_loss: 0.530858, acc_loss: 0.513922
+grafting train epoch 75   overall_loss: 1.609147,  ce_loss: 0.082945, reg_loss: 0.282732, acc_loss: 0.973898, l2diff_loss: 0.208736
+grafting test epoch 75   overall_loss: 2.062955,  ce_loss: 2.295793, reg_loss: 0.282738, acc_loss: 0.664163
 Epoch 76: lr decay = 0.2
-grafting train epoch 76   overall_loss: 4.614706,  ce_loss: 1.701645, reg_loss: 0.530853, acc_loss: 0.630809, l2diff_loss: 0.7106
-grafting test epoch 76   overall_loss: 5.129005,  ce_loss: 2.875867, reg_loss: 0.53085, acc_loss: 0.516426
+grafting train epoch 76   overall_loss: 1.610818,  ce_loss: 0.085354, reg_loss: 0.282737, acc_loss: 0.972877, l2diff_loss: 0.209069
+grafting test epoch 76   overall_loss: 2.058814,  ce_loss: 2.277541, reg_loss: 0.282724, acc_loss: 0.664563
 Epoch 77: lr decay = 0.2
-grafting train epoch 77   overall_loss: 4.61439,  ce_loss: 1.693977, reg_loss: 0.530854, acc_loss: 0.633714, l2diff_loss: 0.710537
-grafting test epoch 77   overall_loss: 5.130469,  ce_loss: 2.879472, reg_loss: 0.530848, acc_loss: 0.513622
+grafting train epoch 77   overall_loss: 1.612564,  ce_loss: 0.084072, reg_loss: 0.282734, acc_loss: 0.972957, l2diff_loss: 0.209419
+grafting test epoch 77   overall_loss: 2.0579,  ce_loss: 2.279173, reg_loss: 0.282725, acc_loss: 0.664864
 Epoch 78: lr decay = 0.2
-grafting train epoch 78   overall_loss: 4.614258,  ce_loss: 1.701003, reg_loss: 0.530835, acc_loss: 0.631731, l2diff_loss: 0.710518
-grafting test epoch 78   overall_loss: 5.127636,  ce_loss: 2.879018, reg_loss: 0.53083, acc_loss: 0.516727
+grafting train epoch 78   overall_loss: 1.617333,  ce_loss: 0.084929, reg_loss: 0.282741, acc_loss: 0.973077, l2diff_loss: 0.21037
+grafting test epoch 78   overall_loss: 2.060211,  ce_loss: 2.29437, reg_loss: 0.282748, acc_loss: 0.664062
 Epoch 79: lr decay = 0.2
-grafting train epoch 79   overall_loss: 4.613336,  ce_loss: 1.699381, reg_loss: 0.530825, acc_loss: 0.630889, l2diff_loss: 0.710337
-grafting test epoch 79   overall_loss: 5.127908,  ce_loss: 2.886246, reg_loss: 0.530832, acc_loss: 0.515925
-/job:localhost/replica:0/task:0/device:GPU:0
+grafting train epoch 79   overall_loss: 1.617751,  ce_loss: 0.083562, reg_loss: 0.282744, acc_loss: 0.97506, l2diff_loss: 0.210453
+grafting test epoch 79   overall_loss: 2.057224,  ce_loss: 2.283662, reg_loss: 0.282738, acc_loss: 0.664263
+Epoch 80: lr decay = 0.2
+grafting train epoch 80   overall_loss: 1.614799,  ce_loss: 0.083525, reg_loss: 0.282745, acc_loss: 0.973377, l2diff_loss: 0.209862
+grafting test epoch 80   overall_loss: 2.058128,  ce_loss: 2.285709, reg_loss: 0.282732, acc_loss: 0.664663
+Epoch 81: lr decay = 0.2
+grafting train epoch 81   overall_loss: 1.606694,  ce_loss: 0.082779, reg_loss: 0.282735, acc_loss: 0.974139, l2diff_loss: 0.208245
+grafting test epoch 81   overall_loss: 2.063407,  ce_loss: 2.30328, reg_loss: 0.282734, acc_loss: 0.664363
+Epoch 82: lr decay = 0.2
+grafting train epoch 82   overall_loss: 1.613016,  ce_loss: 0.082788, reg_loss: 0.282731, acc_loss: 0.97506, l2diff_loss: 0.209511
+grafting test epoch 82   overall_loss: 2.059494,  ce_loss: 2.290988, reg_loss: 0.282718, acc_loss: 0.664263
+Epoch 83: lr decay = 0.2
+grafting train epoch 83   overall_loss: 1.60267,  ce_loss: 0.081279, reg_loss: 0.282734, acc_loss: 0.974319, l2diff_loss: 0.20744
+grafting test epoch 83   overall_loss: 2.064405,  ce_loss: 2.297811, reg_loss: 0.28275, acc_loss: 0.664263
+Epoch 84: lr decay = 0.2
+grafting train epoch 84   overall_loss: 1.604213,  ce_loss: 0.08697, reg_loss: 0.282751, acc_loss: 0.972816, l2diff_loss: 0.207742
+grafting test epoch 84   overall_loss: 2.060738,  ce_loss: 2.278778, reg_loss: 0.282739, acc_loss: 0.664864
+Epoch 85: lr decay = 0.2
+grafting train epoch 85   overall_loss: 1.614208,  ce_loss: 0.083536, reg_loss: 0.282741, acc_loss: 0.974499, l2diff_loss: 0.209745
+grafting test epoch 85   overall_loss: 2.059948,  ce_loss: 2.303162, reg_loss: 0.282755, acc_loss: 0.663562
+Epoch 86: lr decay = 0.2
+grafting train epoch 86   overall_loss: 1.605239,  ce_loss: 0.085157, reg_loss: 0.282757, acc_loss: 0.973558, l2diff_loss: 0.207945
+grafting test epoch 86   overall_loss: 2.063536,  ce_loss: 2.300786, reg_loss: 0.282763, acc_loss: 0.664363
+Epoch 87: lr decay = 0.2
+grafting train epoch 87   overall_loss: 1.616798,  ce_loss: 0.082347, reg_loss: 0.282768, acc_loss: 0.974639, l2diff_loss: 0.210253
+grafting test epoch 87   overall_loss: 2.061826,  ce_loss: 2.300274, reg_loss: 0.282768, acc_loss: 0.664163
+Epoch 88: lr decay = 0.2
+grafting train epoch 88   overall_loss: 1.610188,  ce_loss: 0.084083, reg_loss: 0.282762, acc_loss: 0.973798, l2diff_loss: 0.208933
+grafting test epoch 88   overall_loss: 2.060104,  ce_loss: 2.294768, reg_loss: 0.282771, acc_loss: 0.664263
+Epoch 89: lr decay = 0.2
+grafting train epoch 89   overall_loss: 1.598655,  ce_loss: 0.0813, reg_loss: 0.282768, acc_loss: 0.975581, l2diff_loss: 0.206624
+grafting test epoch 89   overall_loss: 2.054496,  ce_loss: 2.285605, reg_loss: 0.282757, acc_loss: 0.663762
+Epoch 90: lr decay = 0.2
+grafting train epoch 90   overall_loss: 1.612138,  ce_loss: 0.08633, reg_loss: 0.28277, acc_loss: 0.974199, l2diff_loss: 0.20932
+grafting test epoch 90   overall_loss: 2.056884,  ce_loss: 2.291585, reg_loss: 0.282764, acc_loss: 0.664563
+Epoch 91: lr decay = 0.2
+grafting train epoch 91   overall_loss: 1.612612,  ce_loss: 0.083167, reg_loss: 0.282773, acc_loss: 0.974239, l2diff_loss: 0.209413
+grafting test epoch 91   overall_loss: 2.060898,  ce_loss: 2.291808, reg_loss: 0.282767, acc_loss: 0.664964
+Epoch 92: lr decay = 0.2
+grafting train epoch 92   overall_loss: 1.612986,  ce_loss: 0.083237, reg_loss: 0.282774, acc_loss: 0.974519, l2diff_loss: 0.209487
+grafting test epoch 92   overall_loss: 2.056592,  ce_loss: 2.291681, reg_loss: 0.282779, acc_loss: 0.663862
+Epoch 93: lr decay = 0.2
+grafting train epoch 93   overall_loss: 1.593787,  ce_loss: 0.082327, reg_loss: 0.282765, acc_loss: 0.974239, l2diff_loss: 0.205651
+grafting test epoch 93   overall_loss: 2.060765,  ce_loss: 2.294936, reg_loss: 0.282776, acc_loss: 0.664263
+Epoch 94: lr decay = 0.2
+grafting train epoch 94   overall_loss: 1.608343,  ce_loss: 0.085506, reg_loss: 0.282776, acc_loss: 0.973758, l2diff_loss: 0.208558
+grafting test epoch 94   overall_loss: 2.058718,  ce_loss: 2.294234, reg_loss: 0.282766, acc_loss: 0.664663
+Epoch 95: lr decay = 0.2
+grafting train epoch 95   overall_loss: 1.606093,  ce_loss: 0.083606, reg_loss: 0.282777, acc_loss: 0.974379, l2diff_loss: 0.208108
+grafting test epoch 95   overall_loss: 2.05963,  ce_loss: 2.295958, reg_loss: 0.282772, acc_loss: 0.664163
+Epoch 96: lr decay = 0.2
+grafting train epoch 96   overall_loss: 1.600946,  ce_loss: 0.08284, reg_loss: 0.282778, acc_loss: 0.974379, l2diff_loss: 0.207078
+grafting test epoch 96   overall_loss: 2.060547,  ce_loss: 2.271626, reg_loss: 0.282772, acc_loss: 0.665365
+Epoch 97: lr decay = 0.2
+grafting train epoch 97   overall_loss: 1.610401,  ce_loss: 0.082293, reg_loss: 0.282771, acc_loss: 0.973518, l2diff_loss: 0.208972
+grafting test epoch 97   overall_loss: 2.058708,  ce_loss: 2.294755, reg_loss: 0.282771, acc_loss: 0.664062
+Epoch 98: lr decay = 0.2
+grafting train epoch 98   overall_loss: 1.616434,  ce_loss: 0.082637, reg_loss: 0.282776, acc_loss: 0.974259, l2diff_loss: 0.210177
+grafting test epoch 98   overall_loss: 2.05892,  ce_loss: 2.292023, reg_loss: 0.282789, acc_loss: 0.664563
+Epoch 99: lr decay = 0.2
+grafting train epoch 99   overall_loss: 1.613167,  ce_loss: 0.081747, reg_loss: 0.282785, acc_loss: 0.97488, l2diff_loss: 0.209519
+grafting test epoch 99   overall_loss: 2.058075,  ce_loss: 2.297342, reg_loss: 0.282782, acc_loss: 0.663862
+Epoch 100: lr decay = 0.2
+grafting train epoch 100   overall_loss: 1.597019,  ce_loss: 0.08017, reg_loss: 0.282784, acc_loss: 0.975881, l2diff_loss: 0.20629
+grafting test epoch 100   overall_loss: 2.056446,  ce_loss: 2.287632, reg_loss: 0.282778, acc_loss: 0.664263
+Epoch 101: lr decay = 0.2
+grafting train epoch 101   overall_loss: 1.60238,  ce_loss: 0.078398, reg_loss: 0.282781, acc_loss: 0.976022, l2diff_loss: 0.207364
+grafting test epoch 101   overall_loss: 2.065033,  ce_loss: 2.299307, reg_loss: 0.282796, acc_loss: 0.664163
+Epoch 102: lr decay = 0.2
+grafting train epoch 102   overall_loss: 1.61799,  ce_loss: 0.080589, reg_loss: 0.282791, acc_loss: 0.9753, l2diff_loss: 0.210482
+grafting test epoch 102   overall_loss: 2.059782,  ce_loss: 2.295164, reg_loss: 0.282781, acc_loss: 0.664764
+Epoch 103: lr decay = 0.2
+grafting train epoch 103   overall_loss: 1.610359,  ce_loss: 0.081115, reg_loss: 0.282785, acc_loss: 0.975341, l2diff_loss: 0.208958
+grafting test epoch 103   overall_loss: 2.058693,  ce_loss: 2.29392, reg_loss: 0.282784, acc_loss: 0.664964
+Epoch 104: lr decay = 0.2
+grafting train epoch 104   overall_loss: 1.612946,  ce_loss: 0.080021, reg_loss: 0.282796, acc_loss: 0.975982, l2diff_loss: 0.209471
+grafting test epoch 104   overall_loss: 2.060723,  ce_loss: 2.298702, reg_loss: 0.282794, acc_loss: 0.663962
+Epoch 105: lr decay = 0.2
+grafting train epoch 105   overall_loss: 1.603932,  ce_loss: 0.082025, reg_loss: 0.282798, acc_loss: 0.974639, l2diff_loss: 0.207667
+grafting test epoch 105   overall_loss: 2.056799,  ce_loss: 2.288712, reg_loss: 0.282793, acc_loss: 0.663962
+Epoch 106: lr decay = 0.2
+grafting train epoch 106   overall_loss: 1.611086,  ce_loss: 0.081467, reg_loss: 0.28281, acc_loss: 0.9749, l2diff_loss: 0.209093
+grafting test epoch 106   overall_loss: 2.06148,  ce_loss: 2.297815, reg_loss: 0.282808, acc_loss: 0.663762
+Epoch 107: lr decay = 0.2
+grafting train epoch 107   overall_loss: 1.610803,  ce_loss: 0.081676, reg_loss: 0.282803, acc_loss: 0.974539, l2diff_loss: 0.209039
+grafting test epoch 107   overall_loss: 2.057457,  ce_loss: 2.285538, reg_loss: 0.282806, acc_loss: 0.664864
+Epoch 108: lr decay = 0.2
+grafting train epoch 108   overall_loss: 1.600733,  ce_loss: 0.081605, reg_loss: 0.28281, acc_loss: 0.9747, l2diff_loss: 0.207023
+grafting test epoch 108   overall_loss: 2.059039,  ce_loss: 2.292392, reg_loss: 0.282812, acc_loss: 0.663562
+Epoch 109: lr decay = 0.2
+grafting train epoch 109   overall_loss: 1.602838,  ce_loss: 0.078674, reg_loss: 0.282806, acc_loss: 0.975821, l2diff_loss: 0.207445
+grafting test epoch 109   overall_loss: 2.061408,  ce_loss: 2.301719, reg_loss: 0.282812, acc_loss: 0.663862
+Epoch 110: lr decay = 0.2
+grafting train epoch 110   overall_loss: 1.60753,  ce_loss: 0.081328, reg_loss: 0.282817, acc_loss: 0.97502, l2diff_loss: 0.208379
+grafting test epoch 110   overall_loss: 2.056301,  ce_loss: 2.293718, reg_loss: 0.282815, acc_loss: 0.664163
+Epoch 111: lr decay = 0.2
+grafting train epoch 111   overall_loss: 1.604058,  ce_loss: 0.078801, reg_loss: 0.282813, acc_loss: 0.97508, l2diff_loss: 0.207686
+grafting test epoch 111   overall_loss: 2.055777,  ce_loss: 2.282022, reg_loss: 0.282813, acc_loss: 0.664463
+Epoch 112: lr decay = 0.2
+grafting train epoch 112   overall_loss: 1.614788,  ce_loss: 0.081749, reg_loss: 0.28282, acc_loss: 0.9749, l2diff_loss: 0.209829
+grafting test epoch 112   overall_loss: 2.058963,  ce_loss: 2.283018, reg_loss: 0.282805, acc_loss: 0.664864
+Epoch 113: lr decay = 0.2
+grafting train epoch 113   overall_loss: 1.595571,  ce_loss: 0.083042, reg_loss: 0.282807, acc_loss: 0.97494, l2diff_loss: 0.205992
+grafting test epoch 113   overall_loss: 2.056532,  ce_loss: 2.289253, reg_loss: 0.282799, acc_loss: 0.663562
+Epoch 114: lr decay = 0.2
+grafting train epoch 114   overall_loss: 1.609125,  ce_loss: 0.080354, reg_loss: 0.282815, acc_loss: 0.975401, l2diff_loss: 0.208699
+grafting test epoch 114   overall_loss: 2.057143,  ce_loss: 2.275701, reg_loss: 0.282812, acc_loss: 0.665064
+Epoch 115: lr decay = 0.2
+grafting train epoch 115   overall_loss: 1.599447,  ce_loss: 0.080351, reg_loss: 0.28281, acc_loss: 0.97508, l2diff_loss: 0.206765
+grafting test epoch 115   overall_loss: 2.058369,  ce_loss: 2.288105, reg_loss: 0.282799, acc_loss: 0.664463
+Epoch 116: lr decay = 0.2
+grafting train epoch 116   overall_loss: 1.606636,  ce_loss: 0.080159, reg_loss: 0.28282, acc_loss: 0.975421, l2diff_loss: 0.208199
+grafting test epoch 116   overall_loss: 2.057566,  ce_loss: 2.286415, reg_loss: 0.282815, acc_loss: 0.664864
+Epoch 117: lr decay = 0.2
+grafting train epoch 117   overall_loss: 1.595218,  ce_loss: 0.077277, reg_loss: 0.282817, acc_loss: 0.976763, l2diff_loss: 0.205917
+grafting test epoch 117   overall_loss: 2.056542,  ce_loss: 2.287393, reg_loss: 0.282821, acc_loss: 0.664062
+Epoch 118: lr decay = 0.2
+grafting train epoch 118   overall_loss: 1.604373,  ce_loss: 0.083627, reg_loss: 0.282817, acc_loss: 0.973698, l2diff_loss: 0.207748
+grafting test epoch 118   overall_loss: 2.061495,  ce_loss: 2.303281, reg_loss: 0.282827, acc_loss: 0.663361
+Epoch 119: lr decay = 0.2
+grafting train epoch 119   overall_loss: 1.603537,  ce_loss: 0.082732, reg_loss: 0.282827, acc_loss: 0.973858, l2diff_loss: 0.207577
+grafting test epoch 119   overall_loss: 2.059857,  ce_loss: 2.289845, reg_loss: 0.282826, acc_loss: 0.663962
+Epoch 120: lr decay = 0.04000000000000001
+grafting train epoch 120   overall_loss: 1.600942,  ce_loss: 0.082146, reg_loss: 0.282798, acc_loss: 0.97508, l2diff_loss: 0.207069
+grafting test epoch 120   overall_loss: 2.055494,  ce_loss: 2.284095, reg_loss: 0.282784, acc_loss: 0.664563
+Epoch 121: lr decay = 0.04000000000000001
+grafting train epoch 121   overall_loss: 1.614972,  ce_loss: 0.08116, reg_loss: 0.282782, acc_loss: 0.97474, l2diff_loss: 0.209881
+grafting test epoch 121   overall_loss: 2.055801,  ce_loss: 2.296448, reg_loss: 0.282782, acc_loss: 0.664663
+Epoch 122: lr decay = 0.04000000000000001
+grafting train epoch 122   overall_loss: 1.606212,  ce_loss: 0.083075, reg_loss: 0.282777, acc_loss: 0.974119, l2diff_loss: 0.208132
+grafting test epoch 122   overall_loss: 2.056838,  ce_loss: 2.291839, reg_loss: 0.282774, acc_loss: 0.664163
+Epoch 123: lr decay = 0.04000000000000001
+grafting train epoch 123   overall_loss: 1.606305,  ce_loss: 0.085906, reg_loss: 0.282775, acc_loss: 0.973097, l2diff_loss: 0.208151
+grafting test epoch 123   overall_loss: 2.058177,  ce_loss: 2.298436, reg_loss: 0.282776, acc_loss: 0.664263
+Epoch 124: lr decay = 0.04000000000000001
+grafting train epoch 124   overall_loss: 1.598648,  ce_loss: 0.082122, reg_loss: 0.282769, acc_loss: 0.974079, l2diff_loss: 0.206622
+grafting test epoch 124   overall_loss: 2.05525,  ce_loss: 2.291422, reg_loss: 0.282765, acc_loss: 0.664864
+Epoch 125: lr decay = 0.04000000000000001
+grafting train epoch 125   overall_loss: 1.611942,  ce_loss: 0.083815, reg_loss: 0.282767, acc_loss: 0.973337, l2diff_loss: 0.209282
+grafting test epoch 125   overall_loss: 2.056354,  ce_loss: 2.294503, reg_loss: 0.282768, acc_loss: 0.663862
+Epoch 126: lr decay = 0.04000000000000001
+grafting train epoch 126   overall_loss: 1.606489,  ce_loss: 0.085552, reg_loss: 0.282768, acc_loss: 0.973758, l2diff_loss: 0.208191
+grafting test epoch 126   overall_loss: 2.056727,  ce_loss: 2.288961, reg_loss: 0.282765, acc_loss: 0.663962
+Epoch 127: lr decay = 0.04000000000000001
+grafting train epoch 127   overall_loss: 1.597544,  ce_loss: 0.081802, reg_loss: 0.282767, acc_loss: 0.97468, l2diff_loss: 0.206402
+grafting test epoch 127   overall_loss: 2.054097,  ce_loss: 2.293086, reg_loss: 0.282766, acc_loss: 0.664363
+Epoch 128: lr decay = 0.04000000000000001
+grafting train epoch 128   overall_loss: 1.607005,  ce_loss: 0.082312, reg_loss: 0.282767, acc_loss: 0.974199, l2diff_loss: 0.208294
+grafting test epoch 128   overall_loss: 2.054505,  ce_loss: 2.291368, reg_loss: 0.282761, acc_loss: 0.664263
+Epoch 129: lr decay = 0.04000000000000001
+grafting train epoch 129   overall_loss: 1.608837,  ce_loss: 0.083262, reg_loss: 0.28276, acc_loss: 0.974159, l2diff_loss: 0.208663
+grafting test epoch 129   overall_loss: 2.055937,  ce_loss: 2.291204, reg_loss: 0.282764, acc_loss: 0.664062
+Epoch 130: lr decay = 0.04000000000000001
+grafting train epoch 130   overall_loss: 1.603122,  ce_loss: 0.082554, reg_loss: 0.282761, acc_loss: 0.974419, l2diff_loss: 0.20752
+grafting test epoch 130   overall_loss: 2.055296,  ce_loss: 2.296224, reg_loss: 0.282762, acc_loss: 0.664163
+Epoch 131: lr decay = 0.04000000000000001
+grafting train epoch 131   overall_loss: 1.605544,  ce_loss: 0.082271, reg_loss: 0.282763, acc_loss: 0.974479, l2diff_loss: 0.208004
+grafting test epoch 131   overall_loss: 2.056562,  ce_loss: 2.291432, reg_loss: 0.282762, acc_loss: 0.664463
+Epoch 132: lr decay = 0.04000000000000001
+grafting train epoch 132   overall_loss: 1.605418,  ce_loss: 0.081013, reg_loss: 0.282761, acc_loss: 0.975361, l2diff_loss: 0.207979
+grafting test epoch 132   overall_loss: 2.056403,  ce_loss: 2.29389, reg_loss: 0.282764, acc_loss: 0.665064
+Epoch 133: lr decay = 0.04000000000000001
+grafting train epoch 133   overall_loss: 1.599307,  ce_loss: 0.082757, reg_loss: 0.282761, acc_loss: 0.9749, l2diff_loss: 0.206757
+grafting test epoch 133   overall_loss: 2.05437,  ce_loss: 2.285763, reg_loss: 0.282755, acc_loss: 0.664663
+Epoch 134: lr decay = 0.04000000000000001
+grafting train epoch 134   overall_loss: 1.594458,  ce_loss: 0.082383, reg_loss: 0.282757, acc_loss: 0.97488, l2diff_loss: 0.205789
+grafting test epoch 134   overall_loss: 2.05541,  ce_loss: 2.286524, reg_loss: 0.282753, acc_loss: 0.664163
+Epoch 135: lr decay = 0.04000000000000001
+grafting train epoch 135   overall_loss: 1.604798,  ce_loss: 0.08163, reg_loss: 0.282757, acc_loss: 0.9749, l2diff_loss: 0.207857
+grafting test epoch 135   overall_loss: 2.055748,  ce_loss: 2.294588, reg_loss: 0.282759, acc_loss: 0.663962
+Epoch 136: lr decay = 0.04000000000000001
+grafting train epoch 136   overall_loss: 1.609762,  ce_loss: 0.08015, reg_loss: 0.282762, acc_loss: 0.97474, l2diff_loss: 0.208848
+grafting test epoch 136   overall_loss: 2.05521,  ce_loss: 2.29265, reg_loss: 0.282759, acc_loss: 0.664363
+Epoch 137: lr decay = 0.04000000000000001
+grafting train epoch 137   overall_loss: 1.598366,  ce_loss: 0.076786, reg_loss: 0.28276, acc_loss: 0.976903, l2diff_loss: 0.206569
+grafting test epoch 137   overall_loss: 2.055903,  ce_loss: 2.293665, reg_loss: 0.282763, acc_loss: 0.665064
+Epoch 138: lr decay = 0.04000000000000001
+grafting train epoch 138   overall_loss: 1.603876,  ce_loss: 0.084578, reg_loss: 0.28276, acc_loss: 0.973838, l2diff_loss: 0.207671
+grafting test epoch 138   overall_loss: 2.05363,  ce_loss: 2.294576, reg_loss: 0.282762, acc_loss: 0.664864
+Epoch 139: lr decay = 0.04000000000000001
+grafting train epoch 139   overall_loss: 1.600097,  ce_loss: 0.081605, reg_loss: 0.282762, acc_loss: 0.97496, l2diff_loss: 0.206915
+grafting test epoch 139   overall_loss: 2.056056,  ce_loss: 2.296579, reg_loss: 0.282763, acc_loss: 0.664163
+Epoch 140: lr decay = 0.04000000000000001
+grafting train epoch 140   overall_loss: 1.607706,  ce_loss: 0.083672, reg_loss: 0.28276, acc_loss: 0.973397, l2diff_loss: 0.208437
+grafting test epoch 140   overall_loss: 2.055014,  ce_loss: 2.291599, reg_loss: 0.28276, acc_loss: 0.664764
+Epoch 141: lr decay = 0.04000000000000001
+grafting train epoch 141   overall_loss: 1.596932,  ce_loss: 0.081971, reg_loss: 0.282758, acc_loss: 0.97468, l2diff_loss: 0.206283
+grafting test epoch 141   overall_loss: 2.054851,  ce_loss: 2.289293, reg_loss: 0.282757, acc_loss: 0.664964
+Epoch 142: lr decay = 0.04000000000000001
+grafting train epoch 142   overall_loss: 1.611328,  ce_loss: 0.083356, reg_loss: 0.282759, acc_loss: 0.974459, l2diff_loss: 0.209162
+grafting test epoch 142   overall_loss: 2.055646,  ce_loss: 2.284823, reg_loss: 0.282755, acc_loss: 0.665064
+Epoch 143: lr decay = 0.04000000000000001
+grafting train epoch 143   overall_loss: 1.608319,  ce_loss: 0.083486, reg_loss: 0.282758, acc_loss: 0.974099, l2diff_loss: 0.20856
+grafting test epoch 143   overall_loss: 2.055431,  ce_loss: 2.291209, reg_loss: 0.282755, acc_loss: 0.664563
+Epoch 144: lr decay = 0.04000000000000001
+grafting train epoch 144   overall_loss: 1.607166,  ce_loss: 0.079856, reg_loss: 0.282761, acc_loss: 0.973938, l2diff_loss: 0.208329
+grafting test epoch 144   overall_loss: 2.056375,  ce_loss: 2.29486, reg_loss: 0.282763, acc_loss: 0.664163
+Epoch 145: lr decay = 0.04000000000000001
+grafting train epoch 145   overall_loss: 1.601505,  ce_loss: 0.079838, reg_loss: 0.282762, acc_loss: 0.975581, l2diff_loss: 0.207196
+grafting test epoch 145   overall_loss: 2.056144,  ce_loss: 2.289249, reg_loss: 0.28276, acc_loss: 0.664563
+Epoch 146: lr decay = 0.04000000000000001
+grafting train epoch 146   overall_loss: 1.598881,  ce_loss: 0.082979, reg_loss: 0.282756, acc_loss: 0.97484, l2diff_loss: 0.206674
+grafting test epoch 146   overall_loss: 2.056786,  ce_loss: 2.292034, reg_loss: 0.282755, acc_loss: 0.663962
+Epoch 147: lr decay = 0.04000000000000001
+grafting train epoch 147   overall_loss: 1.604897,  ce_loss: 0.079361, reg_loss: 0.282757, acc_loss: 0.975461, l2diff_loss: 0.207877
+grafting test epoch 147   overall_loss: 2.055923,  ce_loss: 2.291183, reg_loss: 0.282753, acc_loss: 0.664563
+Epoch 148: lr decay = 0.04000000000000001
+grafting train epoch 148   overall_loss: 1.605163,  ce_loss: 0.083241, reg_loss: 0.282757, acc_loss: 0.97488, l2diff_loss: 0.20793
+grafting test epoch 148   overall_loss: 2.055258,  ce_loss: 2.291394, reg_loss: 0.282756, acc_loss: 0.664764
+Epoch 149: lr decay = 0.04000000000000001
+grafting train epoch 149   overall_loss: 1.613448,  ce_loss: 0.081247, reg_loss: 0.282763, acc_loss: 0.975361, l2diff_loss: 0.209584
+grafting test epoch 149   overall_loss: 2.054483,  ce_loss: 2.289996, reg_loss: 0.282755, acc_loss: 0.664563
+Epoch 150: lr decay = 0.04000000000000001
+grafting train epoch 150   overall_loss: 1.598644,  ce_loss: 0.082137, reg_loss: 0.282756, acc_loss: 0.974319, l2diff_loss: 0.206626
+grafting test epoch 150   overall_loss: 2.050415,  ce_loss: 2.288, reg_loss: 0.282756, acc_loss: 0.664563
+Epoch 151: lr decay = 0.04000000000000001
+grafting train epoch 151   overall_loss: 1.596177,  ce_loss: 0.083259, reg_loss: 0.282754, acc_loss: 0.97518, l2diff_loss: 0.206134
+grafting test epoch 151   overall_loss: 2.056914,  ce_loss: 2.295821, reg_loss: 0.28276, acc_loss: 0.664263
+Epoch 152: lr decay = 0.04000000000000001
+grafting train epoch 152   overall_loss: 1.608505,  ce_loss: 0.080186, reg_loss: 0.282759, acc_loss: 0.97532, l2diff_loss: 0.208598
+grafting test epoch 152   overall_loss: 2.054609,  ce_loss: 2.289876, reg_loss: 0.282757, acc_loss: 0.664463
+Epoch 153: lr decay = 0.04000000000000001
+grafting train epoch 153   overall_loss: 1.613745,  ce_loss: 0.08097, reg_loss: 0.282759, acc_loss: 0.97474, l2diff_loss: 0.209645
+grafting test epoch 153   overall_loss: 2.053447,  ce_loss: 2.288782, reg_loss: 0.282755, acc_loss: 0.664563
+Epoch 154: lr decay = 0.04000000000000001
+grafting train epoch 154   overall_loss: 1.606013,  ce_loss: 0.080268, reg_loss: 0.282758, acc_loss: 0.97518, l2diff_loss: 0.208099
+grafting test epoch 154   overall_loss: 2.0552,  ce_loss: 2.294203, reg_loss: 0.282757, acc_loss: 0.664663
+Epoch 155: lr decay = 0.04000000000000001
+grafting train epoch 155   overall_loss: 1.595832,  ce_loss: 0.081639, reg_loss: 0.282756, acc_loss: 0.97478, l2diff_loss: 0.206064
+grafting test epoch 155   overall_loss: 2.053423,  ce_loss: 2.292236, reg_loss: 0.282754, acc_loss: 0.663962
+Epoch 156: lr decay = 0.04000000000000001
+grafting train epoch 156   overall_loss: 1.597969,  ce_loss: 0.080794, reg_loss: 0.282757, acc_loss: 0.97486, l2diff_loss: 0.206491
+grafting test epoch 156   overall_loss: 2.05546,  ce_loss: 2.293054, reg_loss: 0.282758, acc_loss: 0.664363
+Epoch 157: lr decay = 0.04000000000000001
+grafting train epoch 157   overall_loss: 1.601927,  ce_loss: 0.081377, reg_loss: 0.282758, acc_loss: 0.9751, l2diff_loss: 0.207282
+grafting test epoch 157   overall_loss: 2.055312,  ce_loss: 2.296304, reg_loss: 0.282758, acc_loss: 0.664363
+Epoch 158: lr decay = 0.04000000000000001
+grafting train epoch 158   overall_loss: 1.602622,  ce_loss: 0.079462, reg_loss: 0.28276, acc_loss: 0.975581, l2diff_loss: 0.20742
+grafting test epoch 158   overall_loss: 2.056192,  ce_loss: 2.29363, reg_loss: 0.282763, acc_loss: 0.664463
+Epoch 159: lr decay = 0.04000000000000001
+grafting train epoch 159   overall_loss: 1.598271,  ce_loss: 0.080494, reg_loss: 0.282761, acc_loss: 0.975641, l2diff_loss: 0.20655
+grafting test epoch 159   overall_loss: 2.055068,  ce_loss: 2.296499, reg_loss: 0.282761, acc_loss: 0.664363
+Epoch 160: lr decay = 0.04000000000000001
+grafting train epoch 160   overall_loss: 1.60801,  ce_loss: 0.080513, reg_loss: 0.282761, acc_loss: 0.97516, l2diff_loss: 0.208498
+grafting test epoch 160   overall_loss: 2.05531,  ce_loss: 2.292793, reg_loss: 0.28276, acc_loss: 0.664263
+Epoch 161: lr decay = 0.04000000000000001
+grafting train epoch 161   overall_loss: 1.601107,  ce_loss: 0.079715, reg_loss: 0.282757, acc_loss: 0.97528, l2diff_loss: 0.207119
+grafting test epoch 161   overall_loss: 2.055192,  ce_loss: 2.293829, reg_loss: 0.282759, acc_loss: 0.664163
+Epoch 162: lr decay = 0.04000000000000001
+grafting train epoch 162   overall_loss: 1.609342,  ce_loss: 0.080676, reg_loss: 0.282762, acc_loss: 0.975541, l2diff_loss: 0.208764
+grafting test epoch 162   overall_loss: 2.054623,  ce_loss: 2.292945, reg_loss: 0.282763, acc_loss: 0.664363
+Epoch 163: lr decay = 0.04000000000000001
+grafting train epoch 163   overall_loss: 1.600736,  ce_loss: 0.082334, reg_loss: 0.282762, acc_loss: 0.974119, l2diff_loss: 0.207042
+grafting test epoch 163   overall_loss: 2.055288,  ce_loss: 2.29082, reg_loss: 0.282759, acc_loss: 0.664263
+Epoch 164: lr decay = 0.04000000000000001
+grafting train epoch 164   overall_loss: 1.598881,  ce_loss: 0.078063, reg_loss: 0.28276, acc_loss: 0.975741, l2diff_loss: 0.206672
+grafting test epoch 164   overall_loss: 2.053723,  ce_loss: 2.291489, reg_loss: 0.282762, acc_loss: 0.664864
+Epoch 165: lr decay = 0.04000000000000001
+grafting train epoch 165   overall_loss: 1.599273,  ce_loss: 0.080896, reg_loss: 0.282762, acc_loss: 0.974579, l2diff_loss: 0.20675
+grafting test epoch 165   overall_loss: 2.054054,  ce_loss: 2.289652, reg_loss: 0.282758, acc_loss: 0.664163
+Epoch 166: lr decay = 0.04000000000000001
+grafting train epoch 166   overall_loss: 1.600168,  ce_loss: 0.07871, reg_loss: 0.282762, acc_loss: 0.975721, l2diff_loss: 0.206929
+grafting test epoch 166   overall_loss: 2.056313,  ce_loss: 2.294886, reg_loss: 0.282762, acc_loss: 0.664263
+Epoch 167: lr decay = 0.04000000000000001
+grafting train epoch 167   overall_loss: 1.607649,  ce_loss: 0.081076, reg_loss: 0.282763, acc_loss: 0.97502, l2diff_loss: 0.208425
+grafting test epoch 167   overall_loss: 2.05401,  ce_loss: 2.291641, reg_loss: 0.282763, acc_loss: 0.664764
+Epoch 168: lr decay = 0.04000000000000001
+grafting train epoch 168   overall_loss: 1.602984,  ce_loss: 0.079842, reg_loss: 0.282762, acc_loss: 0.975361, l2diff_loss: 0.207492
+grafting test epoch 168   overall_loss: 2.056525,  ce_loss: 2.295614, reg_loss: 0.282764, acc_loss: 0.664363
+Epoch 169: lr decay = 0.04000000000000001
+grafting train epoch 169   overall_loss: 1.596903,  ce_loss: 0.078711, reg_loss: 0.282762, acc_loss: 0.975501, l2diff_loss: 0.206276
+grafting test epoch 169   overall_loss: 2.054018,  ce_loss: 2.294663, reg_loss: 0.282758, acc_loss: 0.664663
+Epoch 170: lr decay = 0.04000000000000001
+grafting train epoch 170   overall_loss: 1.603978,  ce_loss: 0.080203, reg_loss: 0.28276, acc_loss: 0.975701, l2diff_loss: 0.207691
+grafting test epoch 170   overall_loss: 2.055031,  ce_loss: 2.288276, reg_loss: 0.282761, acc_loss: 0.664563
+Epoch 171: lr decay = 0.04000000000000001
+grafting train epoch 171   overall_loss: 1.594133,  ce_loss: 0.078354, reg_loss: 0.282758, acc_loss: 0.976022, l2diff_loss: 0.205723
+grafting test epoch 171   overall_loss: 2.055126,  ce_loss: 2.294038, reg_loss: 0.28276, acc_loss: 0.664163
+Epoch 172: lr decay = 0.04000000000000001
+grafting train epoch 172   overall_loss: 1.605508,  ce_loss: 0.075259, reg_loss: 0.282765, acc_loss: 0.976562, l2diff_loss: 0.207996
+grafting test epoch 172   overall_loss: 2.054404,  ce_loss: 2.297007, reg_loss: 0.282768, acc_loss: 0.664263
+Epoch 173: lr decay = 0.04000000000000001
+grafting train epoch 173   overall_loss: 1.603901,  ce_loss: 0.075846, reg_loss: 0.282766, acc_loss: 0.976603, l2diff_loss: 0.207674
+grafting test epoch 173   overall_loss: 2.053737,  ce_loss: 2.293532, reg_loss: 0.282764, acc_loss: 0.664163
+Epoch 174: lr decay = 0.04000000000000001
+grafting train epoch 174   overall_loss: 1.601073,  ce_loss: 0.082068, reg_loss: 0.282765, acc_loss: 0.974239, l2diff_loss: 0.207109
+grafting test epoch 174   overall_loss: 2.053823,  ce_loss: 2.292264, reg_loss: 0.282763, acc_loss: 0.664163
+Epoch 175: lr decay = 0.04000000000000001
+grafting train epoch 175   overall_loss: 1.610622,  ce_loss: 0.074959, reg_loss: 0.282766, acc_loss: 0.977083, l2diff_loss: 0.209018
+grafting test epoch 175   overall_loss: 2.055688,  ce_loss: 2.283606, reg_loss: 0.282767, acc_loss: 0.664563
+Epoch 176: lr decay = 0.04000000000000001
+grafting train epoch 176   overall_loss: 1.605644,  ce_loss: 0.073676, reg_loss: 0.282765, acc_loss: 0.977744, l2diff_loss: 0.208023
+grafting test epoch 176   overall_loss: 2.056552,  ce_loss: 2.294881, reg_loss: 0.282768, acc_loss: 0.664663
+Epoch 177: lr decay = 0.04000000000000001
+grafting train epoch 177   overall_loss: 1.590585,  ce_loss: 0.073389, reg_loss: 0.282765, acc_loss: 0.977905, l2diff_loss: 0.205011
+grafting test epoch 177   overall_loss: 2.057243,  ce_loss: 2.297803, reg_loss: 0.282774, acc_loss: 0.664463
+Epoch 178: lr decay = 0.04000000000000001
+grafting train epoch 178   overall_loss: 1.608971,  ce_loss: 0.079415, reg_loss: 0.282773, acc_loss: 0.975721, l2diff_loss: 0.208685
+grafting test epoch 178   overall_loss: 2.054497,  ce_loss: 2.294308, reg_loss: 0.282768, acc_loss: 0.664463
+Epoch 179: lr decay = 0.04000000000000001
+grafting train epoch 179   overall_loss: 1.610051,  ce_loss: 0.089472, reg_loss: 0.282768, acc_loss: 0.971975, l2diff_loss: 0.208903
+grafting test epoch 179   overall_loss: 2.052237,  ce_loss: 2.286449, reg_loss: 0.282765, acc_loss: 0.664663
+Epoch 180: lr decay = 0.008000000000000002
+grafting train epoch 180   overall_loss: 1.605704,  ce_loss: 0.084576, reg_loss: 0.282759, acc_loss: 0.973898, l2diff_loss: 0.208037
+grafting test epoch 180   overall_loss: 2.054391,  ce_loss: 2.290151, reg_loss: 0.282757, acc_loss: 0.664864
+Epoch 181: lr decay = 0.008000000000000002
+grafting train epoch 181   overall_loss: 1.604606,  ce_loss: 0.085308, reg_loss: 0.282755, acc_loss: 0.973798, l2diff_loss: 0.207819
+grafting test epoch 181   overall_loss: 2.055015,  ce_loss: 2.291978, reg_loss: 0.282754, acc_loss: 0.664563
+Epoch 182: lr decay = 0.008000000000000002
+grafting train epoch 182   overall_loss: 1.603912,  ce_loss: 0.084399, reg_loss: 0.282753, acc_loss: 0.973598, l2diff_loss: 0.207681
+grafting test epoch 182   overall_loss: 2.055071,  ce_loss: 2.292052, reg_loss: 0.282752, acc_loss: 0.664864
+Epoch 183: lr decay = 0.008000000000000002
+grafting train epoch 183   overall_loss: 1.608455,  ce_loss: 0.083096, reg_loss: 0.282752, acc_loss: 0.973818, l2diff_loss: 0.20859
+grafting test epoch 183   overall_loss: 2.054727,  ce_loss: 2.290683, reg_loss: 0.282751, acc_loss: 0.664764
+Epoch 184: lr decay = 0.008000000000000002
+grafting train epoch 184   overall_loss: 1.592385,  ce_loss: 0.087453, reg_loss: 0.282751, acc_loss: 0.972276, l2diff_loss: 0.205377
+grafting test epoch 184   overall_loss: 2.052881,  ce_loss: 2.294874, reg_loss: 0.282751, acc_loss: 0.664263
+Epoch 185: lr decay = 0.008000000000000002
+grafting train epoch 185   overall_loss: 1.604865,  ce_loss: 0.089933, reg_loss: 0.28275, acc_loss: 0.972436, l2diff_loss: 0.207873
+grafting test epoch 185   overall_loss: 2.054596,  ce_loss: 2.291635, reg_loss: 0.282749, acc_loss: 0.664663
+Epoch 186: lr decay = 0.008000000000000002
+grafting train epoch 186   overall_loss: 1.613927,  ce_loss: 0.088417, reg_loss: 0.282749, acc_loss: 0.972376, l2diff_loss: 0.209686
+grafting test epoch 186   overall_loss: 2.05451,  ce_loss: 2.2908, reg_loss: 0.282747, acc_loss: 0.664563
+Epoch 187: lr decay = 0.008000000000000002
+grafting train epoch 187   overall_loss: 1.607317,  ce_loss: 0.086178, reg_loss: 0.282748, acc_loss: 0.973137, l2diff_loss: 0.208364
+grafting test epoch 187   overall_loss: 2.053891,  ce_loss: 2.290187, reg_loss: 0.282747, acc_loss: 0.664163
+Epoch 188: lr decay = 0.008000000000000002
+grafting train epoch 188   overall_loss: 1.607175,  ce_loss: 0.084096, reg_loss: 0.282746, acc_loss: 0.973998, l2diff_loss: 0.208337
+grafting test epoch 188   overall_loss: 2.054434,  ce_loss: 2.291216, reg_loss: 0.282745, acc_loss: 0.664163
+Epoch 189: lr decay = 0.008000000000000002
+grafting train epoch 189   overall_loss: 1.604745,  ce_loss: 0.084192, reg_loss: 0.282745, acc_loss: 0.973778, l2diff_loss: 0.207851
+grafting test epoch 189   overall_loss: 2.053751,  ce_loss: 2.292392, reg_loss: 0.282745, acc_loss: 0.664663
+Epoch 190: lr decay = 0.008000000000000002
+grafting train epoch 190   overall_loss: 1.610733,  ce_loss: 0.085961, reg_loss: 0.282744, acc_loss: 0.973377, l2diff_loss: 0.209049
+grafting test epoch 190   overall_loss: 2.05409,  ce_loss: 2.290963, reg_loss: 0.282744, acc_loss: 0.664563
+Epoch 191: lr decay = 0.008000000000000002
+grafting train epoch 191   overall_loss: 1.606214,  ce_loss: 0.085021, reg_loss: 0.282745, acc_loss: 0.973257, l2diff_loss: 0.208145
+grafting test epoch 191   overall_loss: 2.055591,  ce_loss: 2.295482, reg_loss: 0.282745, acc_loss: 0.664263
+Epoch 192: lr decay = 0.008000000000000002
+grafting train epoch 192   overall_loss: 1.607999,  ce_loss: 0.087091, reg_loss: 0.282744, acc_loss: 0.972917, l2diff_loss: 0.208502
+grafting test epoch 192   overall_loss: 2.054628,  ce_loss: 2.292579, reg_loss: 0.282744, acc_loss: 0.664363
+Epoch 193: lr decay = 0.008000000000000002
+grafting train epoch 193   overall_loss: 1.603168,  ce_loss: 0.088023, reg_loss: 0.282744, acc_loss: 0.972636, l2diff_loss: 0.207536
+grafting test epoch 193   overall_loss: 2.054222,  ce_loss: 2.288202, reg_loss: 0.282744, acc_loss: 0.664764
+Epoch 194: lr decay = 0.008000000000000002
+grafting train epoch 194   overall_loss: 1.608162,  ce_loss: 0.086005, reg_loss: 0.282744, acc_loss: 0.973538, l2diff_loss: 0.208535
+grafting test epoch 194   overall_loss: 2.054985,  ce_loss: 2.292655, reg_loss: 0.282744, acc_loss: 0.664663
+Epoch 195: lr decay = 0.008000000000000002
+grafting train epoch 195   overall_loss: 1.604202,  ce_loss: 0.085279, reg_loss: 0.282743, acc_loss: 0.973498, l2diff_loss: 0.207743
+grafting test epoch 195   overall_loss: 2.05296,  ce_loss: 2.291941, reg_loss: 0.282742, acc_loss: 0.664363
+Epoch 196: lr decay = 0.008000000000000002
+grafting train epoch 196   overall_loss: 1.602206,  ce_loss: 0.086974, reg_loss: 0.282742, acc_loss: 0.972837, l2diff_loss: 0.207344
+grafting test epoch 196   overall_loss: 2.055293,  ce_loss: 2.286816, reg_loss: 0.282742, acc_loss: 0.664663
+Epoch 197: lr decay = 0.008000000000000002
+grafting train epoch 197   overall_loss: 1.608338,  ce_loss: 0.084992, reg_loss: 0.282742, acc_loss: 0.973277, l2diff_loss: 0.208571
+grafting test epoch 197   overall_loss: 2.054525,  ce_loss: 2.289583, reg_loss: 0.282741, acc_loss: 0.664563
+Epoch 198: lr decay = 0.008000000000000002
+grafting train epoch 198   overall_loss: 1.599936,  ce_loss: 0.084254, reg_loss: 0.282741, acc_loss: 0.974079, l2diff_loss: 0.206891
+grafting test epoch 198   overall_loss: 2.053429,  ce_loss: 2.289631, reg_loss: 0.282741, acc_loss: 0.664263
+Epoch 199: lr decay = 0.008000000000000002
+grafting train epoch 199   overall_loss: 1.611154,  ce_loss: 0.088871, reg_loss: 0.282743, acc_loss: 0.972917, l2diff_loss: 0.209134
+grafting test epoch 199   overall_loss: 2.052599,  ce_loss: 2.288653, reg_loss: 0.282742, acc_loss: 0.664463
+ax: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout1/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout1/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout0/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout0/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout0/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+label: (Placeholder): /job:localhost/replica:0/task:0/device:GPU:0
+x: (Placeholder): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros_5/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros_4/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros_3/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros_2/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros_1/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients_1/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros_5/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros_4/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros_3/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros_2/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros_1/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+gradients/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Square_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
