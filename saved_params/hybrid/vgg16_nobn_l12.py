@@ -55,7 +55,7 @@ def generate_params():
         'train': train,
         'test': test, 
         'network': network,
-        'grafting': graft
+        'hybrid': hybrid
     }
 
     return params
