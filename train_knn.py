@@ -64,7 +64,7 @@ saver = tf.train.Saver(var_list=save_vars, max_to_keep=10)
 iter_per_epoch = params['train']['iter_per_epoch']
 train_scheduler = MultiStepLR(params['train']['milestone'], params['train']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['train']['warmup'])
-dnets = ['net' + str(k) for k in params['hybrid']['num_nets']]
+dnets = ['net' + str(k) for k in range(params['hybrid']['num_nets'])]
 
 
 def train(ph, graph, targets, epoch, data_loader, train_scheduler, 
