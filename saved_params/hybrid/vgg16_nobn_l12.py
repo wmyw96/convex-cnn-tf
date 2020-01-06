@@ -37,7 +37,7 @@ def generate_params():
 
     hybrid = {
         'lr': 0.01,
-        'milestone': [60, 120, 180],
+        'milestone': [30, 60, 90],
         'gamma': 0.2,
         'warmup': 1,
         'batch_size': 64,
@@ -45,8 +45,9 @@ def generate_params():
         'iter_per_epoch': 780,
         'nlayers': 16,
         'num_nets': 3,
-        'diffw': 5.0,
-        'layer_mask': [True] * 16
+        'fmw': 10.0,
+        'layer_mask': [True] * 16,
+        'cum': False
     }
 
     params = {

@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow as tft
 import numpy as np
 
 
@@ -30,3 +30,24 @@ def get_regularizer_loss(weights, reg_type):
         return reg_loss
     else:
         raise NotImplemented
+
+
+def compute_kernel_lst(x, y, sigma):
+    # x: [... , nx]
+    # y: [... , ny]
+    rk = int(x.shape.ndims)
+    nx = int(tf.shape(x)[rk - 1])
+    ny = int(tf.shape(y)[rk - 1])
+    tiled_x = tf.tile(tf.expand_dims(x, rk), tf.stack([1] * rk + [ny]))
+    tilde_y = tf.tile(tf.expand_dims(y, rk - 1), tf.stack([1] * rk + [nx, 1]))
+    l2_dist = tf.square(tilde_x - tilde_y) / (2 * sigma**2)
+    return tf.reduce_mean(tf.exp(-l2_dist))
+
+
+def mmd_loss_lst(x, y, sigmas):
+    mmd_loss_avg = 0.
+    for sigma in sigmas:
+        x_kernel = compute_kernel_lst(x, x)
+        y_kernel = compute_kernel_lst(y, y)
+        xy_kernel = compute_kernel_lst(x, y)
+        mmd_loss_avg == tf.reduce_mean(x_kernel) + tf.reduce_mean(y_kernel) - 2 * tf.reduce_mean(xy_kernel)

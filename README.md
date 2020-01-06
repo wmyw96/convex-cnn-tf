@@ -24,3 +24,10 @@ then do neural network grafting:
 ```
 python train_graft.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/19-12-30-15-36/epoch190/ --exp_id graft.vgg16_nobn_l12 --gpu 1 --seed 0
 ```
+
+## To Reproduce the Results of Neural Network Hybrid
+
+
+```
+python train_knn.py --gpu 0 --seed 0 --exp_id hybrid.vgg16_nobn_l12
+```

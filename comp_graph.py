@@ -386,6 +386,98 @@ def build_neural_network_hybrid_model(params):
             'eval': test
         }
 
+    reg_loss = 0
+    fm_loss = 0
+    train_weights = []
+    # layer-wise feature matching
+    for lid in range(params['hybrid']['nlayers'] - 1):
+        layer_name = 'l{}-'.format(lid + 1)
+        weight_lid = [weight for weight in net_vars['hybrid'] if layer_name in weight.name]
+        nets_feature = []
+        for k in range(num_nets):
+            netk_feature = find_layer_feature_map(modules['net' + str(k)], layer_name)
+            nets_feature.append(netk_feature)
+        all_feature = tf.concat(nets_feature, -1)
+        hybrid_feature = find_layer_feature_map(modules['hybrid'], layer_name)
+
+        fm_loss_l = mmd_loss_lst(hybrid_feature, all_feature)
+        reg_loss_l = get_regularizer_loss(weight_lid, params['network']['regularizer'])
+
+        if params['hybrid']['cum']:
+            reg_loss += reg_loss_l
+            fm_loss += fm_loss_l
+            train_weights += weight_lid
+        else:
+            reg_loss = reg_loss_l
+            fm_loss = fm_loss_l
+            train_weights = weight_lid            
+
+        loss = fm_loss * params['hybrid']['fmw'] + reg_loss * params['network']['regw']
+
+        fml_op = tf.train.MomentumOptimizer(params['hybrid']['fm_lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
+        fml_grads = sl_op.compute_gradients(loss=loss, var_list=train_weights)
+        fml_train_op = sl_op.apply_gradients(grads_and_vars=fml_grads)
+    
+        show_grads('hybrid layer {}'.format(lid + 1), fml_grads)
+
+        train = {
+            'train': fml_train_op,
+            'overall_loss': loss,
+            'fml_loss': fm_loss,
+            'regl_loss': reg_loss,
+        }
+
+        test = {
+            'overall_loss': loss,
+            'fml_loss': fm_loss,
+            'regl_loss': reg_loss,
+        }
+
+        targets['hybrid']['layer{}'.format(lid + 1)] = {
+            'train': train,
+            'eval': test
+        }
+
+    for domain in domains:
+        logits = modules[domain]['out']
+        ce_loss = tf.nn.softmax_cross_entropy_with_logits(labels=graph['one_hot_y'], 
+            logits=logits, dim=1)
+        ce_loss = tf.reduce_mean(ce_loss)
+        acc = tf.reduce_mean(tf.cast(tf.equal(tf.argmax(logits, 1), ph['y']), tf.float32))   # [1,]
+
+        regularizer = get_regularizer_loss(net_vars[domain], params['network']['regularizer'])
+
+        loss = ce_loss + regularizer * params['network']['regw']
+        lst_weights = [weight for weight in net_vars[domain] if 'output' in weight.name]
+
+        lst_op = tf.train.MomentumOptimizer(params['train']['lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
+        lst_grads = sl_op.compute_gradients(loss=loss, var_list=lst_weights)
+        lst_train_op = sl_op.apply_gradients(grads_and_vars=lst_grads)
+    
+        show_grads(domain + ' lst', lst_grads)
+    
+        train = {
+            'train': lst_train_op,
+            'overall_loss': loss,
+            'ce_loss': ce_loss,
+            'reg_loss': regularizer,
+            'acc_loss': acc
+        }
+        #for gd, var in sl_grads:
+        #    train[var.name + '_gd_loss'] = tf.reduce_mean(tf.abs(gd)) - 5e-4 * tf.reduce_mean(tf.abs(var))
+    
+        test = {
+            'overall_loss': loss,
+            'ce_loss': ce_loss,
+            'reg_loss': regularizer,
+            'acc_loss': acc
+        }
+
+        targets[domain]['lst'] = {
+            'train': train,
+            'eval': test
+        }
+
     return ph, graph, save_vars, net_vars, targets
 
 
