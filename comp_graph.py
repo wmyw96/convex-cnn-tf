@@ -4,6 +4,16 @@ from network import *
 from loss import *
 
 
+def random_select(x, m):
+    n = int(x.get_shape()[-1])
+    prob = [1.0/n] * n
+    dist = tf.contrib.distributions.Categorical(tf.log(prob))
+    samples = dist.sample(m)
+    vv = tf.gather(x, samples, axis=int(x.shape.ndims) - 1)
+    print(samples.get_shape())
+    print('random select {}'.format(vv.get_shape()))
+    return vv
+
 def show_params(domain, var_list):
     print('Domain {}:'.format(domain))
     for var in var_list:
@@ -24,8 +34,9 @@ def create_var_dict(var_list):
 
 def find_layer_feature_map(modules, name):
     for key, value in modules.items():
+        print(key)
         if name in key:
-            print('Find Layer {} Feature Map'.format(name))
+            print('Find Layer {} Feature Map: shape = {}'.format(name, value.shape))
             return value
 
 def build_image_classfication_model(params):
@@ -386,12 +397,14 @@ def build_neural_network_hybrid_model(params):
             'eval': test
         }
 
+    targets['hybrid'] = {}
     reg_loss = 0
     fm_loss = 0
     train_weights = []
     # layer-wise feature matching
     for lid in range(params['hybrid']['nlayers'] - 1):
         layer_name = 'l{}-'.format(lid + 1)
+        print('Layerwise Feature Matching Building at Layer {}'.format(lid + 1))
         weight_lid = [weight for weight in net_vars['hybrid'] if layer_name in weight.name]
         nets_feature = []
         for k in range(num_nets):
@@ -399,8 +412,10 @@ def build_neural_network_hybrid_model(params):
             nets_feature.append(netk_feature)
         all_feature = tf.concat(nets_feature, -1)
         hybrid_feature = find_layer_feature_map(modules['hybrid'], layer_name)
-
-        fm_loss_l = mmd_loss_lst(hybrid_feature, all_feature)
+        
+        all_feature = random_select(all_feature, params['hybrid']['matchk'])
+        hybrid_feature = random_select(hybrid_feature, params['hybrid']['matchk'])
+        fm_loss_l = mmd_loss_lst(hybrid_feature, all_feature, params['hybrid']['sigmas'])
         reg_loss_l = get_regularizer_loss(weight_lid, params['network']['regularizer'])
 
         if params['hybrid']['cum']:

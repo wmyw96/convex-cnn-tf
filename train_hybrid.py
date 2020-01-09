@@ -42,7 +42,7 @@ mod = importlib.import_module('saved_params.' + args.exp_id)
 params = mod.generate_params()
 
 # set grafting layer
-params['grafting']['nanase'] = args.nanase
+#params['grafting']['nanase'] = args.nanase
 
 # set seed
 params['train']['seed'] = args.seed
@@ -62,12 +62,12 @@ dataset = load_dataset(params)
 train_loader, test_loader = dataset['train'], dataset['test']
 
 # build model
-ph, graph, save_vars, graph_vars, targets = build_grafting_onecut_model(params)
-saver = tf.train.Saver(var_list=graph_vars['net1'] + graph_vars['net2'])
+ph, graph, save_vars, graph_vars, targets = build_neural_network_hybrid_model(params)
+saver = tf.train.Saver(var_list=save_vars)
 iter_per_epoch = params['train']['iter_per_epoch']
 time.sleep(5)
 
-dnets = ['net' + str(k) for k in params['hybrid']['num_nets']] + ['hybrid']
+dnets = ['net' + str(k) for k in range(params['hybrid']['num_nets'])] + ['hybrid']
 
 
 def train_layerwise(lid, ph, graph, targets, epoch, data_loader, train_scheduler, 
@@ -75,7 +75,7 @@ def train_layerwise(lid, ph, graph, targets, epoch, data_loader, train_scheduler
     base_lr = train_scheduler.step()
     train_log = {}
     layern = 'layer{}'.format(lid)
-    print('Train Layer {} Epoch {}: lr decay = {}'.format(epoch, base_lr))
+    print('Train Layer {} Epoch {}: lr decay = {}'.format(lid, epoch, base_lr))
     for batch_idx in range(params['train']['iter_per_epoch']):
         if epoch < params['hybrid']['warmup']:
             lr = base_lr * warmup_scheduler.step()
@@ -96,7 +96,7 @@ def train_layerwise(lid, ph, graph, targets, epoch, data_loader, train_scheduler
         )
         update_loss(fetch, train_log)
     print_log('hybrid train', epoch, train_log)
-    logger.print(epoch, 'hybrid train', train_log)
+    logger.print(epoch, 'hybrid layer {} train'.format(lid), train_log)
 
     
 def eval_layerwise(lid, ph, graph, targets, epoch, dsdomain, data_loader):
@@ -183,22 +183,22 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_plac
 sess.run(tf.global_variables_initializer())
 
 saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
-
+'''
 train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])
 for epoch in range(params['hybrid']['num_epoches']):
     train_lst(ph, graph, targets, epoch, train_loader,
               train_scheduler, warmup_scheduler)
     eval_lst(ph, graph, targets, epoch, 'test', test_loader)
-
-for lid in range(params['hybrid']['nlayers'])
+'''
+for lid in range(params['hybrid']['nlayers']):
     train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
     warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])
 
     for epoch in range(params['hybrid']['num_epoches']):
-        train(lid + 1, ph, graph, targets, epoch, train_loader,
+        train_layerwise(lid + 1, ph, graph, targets, epoch, train_loader,
             train_scheduler, warmup_scheduler)
-        eval(lid + 1, ph, graph, targets, epoch, 'test', test_loader)
+        eval_layerwise(lid + 1, ph, graph, targets, epoch, 'test', test_loader)
 
 train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])

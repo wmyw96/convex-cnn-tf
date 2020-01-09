@@ -28,28 +28,25 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2,
+        'regw': 5e-4,
         'batch_norm': False,
         'dropout': 0.5,
-        'regularizer': 'l12',
+        'regularizer': 'l2',
         'layer_mask': [True] * 13
     }
 
-    hybrid = {
-        'fm_lr': 0.01,
-        'milestone': [30, 60, 90],
+    graft = {
+        'lr': 0.01,
+        'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
-        'batch_size': 8,
+        'batch_size': 64,
         'num_epoches': 200,
-        'iter_per_epoch': 780 * 4 * 2,
+        'iter_per_epoch': 780,
         'nlayers': 16,
-        'num_nets': 2,
-        'fmw': 10.0,
-        'layer_mask': [True] * 16,
-        'cum': False,
-        'matchk': 100,
-        'sigmas': [0.1, 0.5, 1, 2, 4, 8, 16]
+        'nanase': 5,
+        'diffw': 5.0,
+        'layer_mask': [True] * 16
     }
 
     params = {
@@ -57,7 +54,7 @@ def generate_params():
         'train': train,
         'test': test, 
         'network': network,
-        'hybrid': hybrid
+        'grafting': graft
     }
 
     return params

@@ -57,5 +57,5 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
         fc2_drop = slim.dropout(fc2, dropout_rate, is_training=is_training, scope='dropout2')
         out = slim.fully_connected(fc2_drop, num_classes, activation_fn=None, scope='l{}-output'.format(nc + 3))
 
-        modules['fc1'], modules['fc2'], modules['out'] = fc1, fc2, out
+        modules['l{}-fc1'.format(nc + 1)], modules['l{}-fc2'.format(nc + 2)], modules['out'] = fc1, fc2, out
         return modules
