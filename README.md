@@ -31,3 +31,8 @@ python train_graft.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l1
 ```
 python train_knn.py --gpu 0 --seed 0 --exp_id hybrid.vgg16_nobn_l12
 ```
+
+```
+python train_hybrid.py --modeldir ../../data/cifar-100-models/hybrid.vgg16_nobn_l12/20-01-06-02-47/epoch180/ --exp_id hybrid.vgg16_nobn_l12 --gpu 1 --seed 0
+
+```

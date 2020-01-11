@@ -39,6 +39,13 @@ def find_layer_feature_map(modules, name):
             print('Find Layer {} Feature Map: shape = {}'.format(name, value.shape))
             return value
 
+def find_weight(var_list, name):
+    for weight in var_list:
+        if name in weight.name and 'weight' in weight.name:
+            print('Hit weight name [{}] in dict: name = {}'.format(name. weight.name))
+            return weight
+
+
 def build_image_classfication_model(params):
     # build placeholder
 
@@ -298,6 +305,56 @@ def build_grafting_onecut_model(params):
         'acc_loss': acc,
         'l2_diff': l2_diff
     }
+
+    targets['cp2net'] = {}
+    # comparison of net1 and net2
+    for layer_id in range(params['grafting']['nlayers'] - 1):
+        layer_name = 'l{}-'.format(layer_id + 1)
+        net1_feat = find_layer_feature_map(modules['net1'], layer_name)
+        net2_feat = find_layer_feature_map(modules['net2'], layer_name)
+
+        nchannels = int(net1_feat.get_shape()[-1])
+        print('layer {} feature shape = {}, # channels = {}'.format(
+            layer_id + 1, net1_feat.get_shape(), nchannels))
+        net1_feat_c = tf.transpose(tf.reshape(net1_feat, [-1, nchannels]))
+        net2_feat_c = tf.transpose(tf.reshape(net2_feat, [-1, nchannels]))
+
+        l2_dist = compute_pairwise_l2_dist(net1_feat_c, net2_feat_c)
+        l2_ndist = compute_pairwise_l2_ndist(net1_feat_c, net2_feat_c)
+        assert l2_dist.shape.as_list() == [nchannels, nchannels]
+
+        def reduce_value(vvalue):
+            shape = vvalue.get_shape()
+            if len(shape) == 2:
+                return tf.reduce_mean(vvalue, 0)
+            elif len(shape) == 4:
+                return tf.reduce_mean(vvalue, [0, 1, 2])
+
+        grad_net1 = reduce_value(compute_gradient_l2_norm(modules['net1']['out'], net1_feat))
+        grad_net2 = reduce_value(compute_gradient_l2_norm(modules['net2']['out'], net2_feat))
+
+        nextw_net1 = find_weight(net_vars['net1'], layer_id + 2)
+        nextw_net2 = find_weight(net_vars['net2'], layer_id + 2)
+
+        net1v = {
+            'gradnorm': grad_net1,
+            'l1_norm': getw_l1_norm(nextw_net1),
+            'l2_norm': getw_l2_norm(nextw_net1),
+            'std': tf.reduce_std(net1_feat_c, 0)
+        }
+        net2v = {
+            'gradnorm': grad_net2,
+            'l1_norm': getw_l1_norm(nextw_net2),
+            'l2_norm': getw_l2_norm(nextw_net2),
+            'std': tf.reduce_std(net2_feat_c, 0)
+        }
+
+        targets['cp2net']['l{}'.format(layer_id + 1)] = {
+            'l2_dist': l2_dist,
+            'l2_ndist': l2_ndist
+            'net1': net1v,
+            'net2': net2v
+        }
 
     return ph, graph, save_vars, net_vars, targets
 
