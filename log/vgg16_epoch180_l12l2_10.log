@@ -1,6 +1,6 @@
 GPU COMPATIBLE RUN...
-Booting with exp params: graft.vgg16_nobn_nol...
-Experiment Logs will be written at ../../data/cifar-100-logs/[01_09_16_13]graft.vgg16_nobn_nol
+Booting with exp params: graft.vgg16_nobn_l2...
+Experiment Logs will be written at ../../data/cifar-100-logs/[01_10_06_41]graft.vgg16_nobn_l2
 Dataset
 - Image Scale = 2.0245562281644633
 - Image Shape = (50000, 32, 32, 3)
@@ -215,28 +215,15 @@ drafting variable grafting/l10-conv3.2/biases:0
 Assign Model
 [<tf.Tensor 'Assign_18:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_19:0' shape=(512,) dtype=float32_ref>]
 drafting variable grafting/l11-conv4.0/weights:0Device mapping:
-/job:localhost/replica:0/task:0/device:GPU:0 -> device: 0, name: TITAN Xp, pci bus id: 0000:83:00.0, compute capability: 6.1
+/job:localhost/replica:0/task:0/device:GPU:0 -> device: 0, name: TITAN Xp, pci bus id: 0000:03:00.0, compute capability: 6.1
 save/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
-grafting/l10-conv3.2/biases/Adam_1: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_6_grad/Prod_1: (Prod): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_6_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
@@ -3644,19 +3631,15 @@ gradients_2/grafting/l10-conv3.2/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:l
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/update_grafting/l10-conv3.2/biases/ApplyAdam: (ApplyAdam): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l10-conv3.2/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN_1: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/update_grafting/l10-conv3.2/weights/ApplyAdam: (ApplyAdam): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/Assign_1: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Adam: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l10-conv3.2/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_197: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -3739,17 +3722,10 @@ save/RestoreV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU
 save/SaveV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/SaveV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/Const: (Const): /job:localhost/replica:0/task:0/device:CPU:0
-Adam/epsilon: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/beta2: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/beta1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/initial_value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/initial_value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/momentum: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_82_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_82_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_83_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -4633,26 +4609,13 @@ gradients/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Square_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 save_1/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
 save/RestoreV2: (RestoreV2): /job:localhost/replica:0/task:0/device:CPU:0
-grafting/l10-conv3.2/biases/Adam_1: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum: (VariableV2): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/read: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_6_grad/Prod_1: (Prod): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Mean_6_grad/Maximum: (Maximum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Fill: (Fill): /job:localhost/replica:0/task:0/device:GPU:0
@@ -8095,19 +8058,15 @@ gradients_2/grafting/l10-conv3.2/BiasAdd_grad/BiasAddGrad: (BiasAddGrad): /job:l
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/update_grafting/l10-conv3.2/biases/ApplyAdam: (ApplyAdam): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l10-conv3.2/biases/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/BiasAdd_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/Conv2DBackpropFilter: (Conv2DBackpropFilter): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/Conv2DBackpropInput: (Conv2DBackpropInput): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/group_deps: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/control_dependency_1: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/AddN_1: (AddN): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/update_grafting/l10-conv3.2/weights/ApplyAdam: (ApplyAdam): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/mul_1: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/Assign_1: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/mul: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/Assign: (Assign): /job:localhost/replica:0/task:0/device:GPU:0
-Adam: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/update_grafting/l10-conv3.2/weights/ApplyMomentum: (ApplyMomentum): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2: (NoOp): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/grafting/l10-conv3.2/Conv2D_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/sub_grad/tuple/control_dependency: (Identity): /job:localhost/replica:0/task:0/device:GPU:0
 mul_197: (Mul): /job:localhost/replica:0/task:0/device:GPU:0
@@ -8195,17 +8154,10 @@ save/RestoreV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU
 save/SaveV2/shape_and_slices: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/SaveV2/tensor_names: (Const): /job:localhost/replica:0/task:0/device:CPU:0
 save/Const: (Const): /job:localhost/replica:0/task:0/device:CPU:0
-Adam/epsilon: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/beta2: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-Adam/beta1: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam_1/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/biases/Adam/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam_1/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/l10-conv3.2/weights/Adam/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-beta2_power/initial_value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-beta1_power/initial_value: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+Momentum_2/momentum: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/biases/Momentum/Initializer/zeros: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/l10-conv3.2/weights/Momentum/Initializer/zeros/shape_as_tensor: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_82_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_82_grad/Reshape/shape: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 gradients_2/Sum_83_grad/Const: (Const): /job:localhost/replica:0/task:0/device:GPU:0
@@ -9065,9 +9017,7 @@ net1/dropout0/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0
 net1/dropout0/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout2/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout2/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout2/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout1/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
-grafting/dropout1/cond/d
+grafting/dropout2/cond/dropout/keep_prob: (Const): /j
 drafting variable grafting/l11-conv4.0/biases:0
 Assign Model
 [<tf.Tensor 'Assign_20:0' shape=(3, 3, 512, 512) dtype=float32_ref>, <tf.Tensor 'Assign_21:0' shape=(512,) dtype=float32_ref>]
@@ -9219,611 +9169,613 @@ net2/l15-fc2/weights:0
 net2/l15-fc2/biases:0
 net2/l16-output/weights:0
 net2/l16-output/biases:0
-grafting train epoch -1   overall_loss: 2640.1826,  ce_loss: 0.047232, reg_loss: 16680.89, acc_loss: 0.986198
-grafting test epoch -1   overall_loss: 2853.8328,  ce_loss: 2.794007, reg_loss: 16680.889, acc_loss: 0.65625
-grafting train epoch -1   overall_loss: 1391.9136,  ce_loss: 7.187256, reg_loss: 16735.422, acc_loss: 0.012059
-grafting test epoch -1   overall_loss: 1500.9202,  ce_loss: 7.145322, reg_loss: 16735.418, acc_loss: 0.013522
+grafting train epoch -1   overall_loss: 1.40847,  ce_loss: 0.027559, reg_loss: 1928.6818, acc_loss: 0.991687
+grafting test epoch -1   overall_loss: 1.473009,  ce_loss: 2.342385, reg_loss: 1928.6823, acc_loss: 0.669171
+grafting train epoch -1   overall_loss: 0.901802,  ce_loss: 13.39329, reg_loss: 1612.429, acc_loss: 0.007873
+grafting test epoch -1   overall_loss: 0.913881,  ce_loss: 13.28189, reg_loss: 1612.429, acc_loss: 0.007312
 Epoch 0: lr decay = 1.0
-grafting train epoch 0   overall_loss: 1317.3811,  ce_loss: 7.051445, reg_loss: 16755.734, acc_loss: 0.011679, l2diff_loss: 263.47623
-grafting test epoch 0   overall_loss: 1366.5782,  ce_loss: 6.996484, reg_loss: 16775.498, acc_loss: 0.011919
+grafting train epoch 0   overall_loss: 0.878463,  ce_loss: 10.781301, reg_loss: 1611.142, acc_loss: 0.015785, l2diff_loss: 0.014578
+grafting test epoch 0   overall_loss: 0.871236,  ce_loss: 7.307555, reg_loss: 1608.9862, acc_loss: 0.045673
 Epoch 1: lr decay = 1.0
-grafting train epoch 1   overall_loss: 1235.8556,  ce_loss: 6.57839, reg_loss: 16784.084, acc_loss: 0.028666, l2diff_loss: 247.17116
-grafting test epoch 1   overall_loss: 1290.3691,  ce_loss: 6.423454, reg_loss: 16789.83, acc_loss: 0.042268
+grafting train epoch 1   overall_loss: 0.860136,  ce_loss: 5.968048, reg_loss: 1606.2377, acc_loss: 0.107492, l2diff_loss: 0.011403
+grafting test epoch 1   overall_loss: 0.861668,  ce_loss: 4.803996, reg_loss: 1603.5842, acc_loss: 0.173177
 Epoch 2: lr decay = 1.0
-grafting train epoch 2   overall_loss: 1168.2909,  ce_loss: 5.8331, reg_loss: 16792.195, acc_loss: 0.076562, l2diff_loss: 233.65817
-grafting test epoch 2   overall_loss: 1234.6466,  ce_loss: 5.909636, reg_loss: 16793.486, acc_loss: 0.077324
+grafting train epoch 2   overall_loss: 0.852965,  ce_loss: 4.23092, reg_loss: 1601.0881, acc_loss: 0.228706, l2diff_loss: 0.010484
+grafting test epoch 2   overall_loss: 0.855128,  ce_loss: 3.768087, reg_loss: 1598.6506, acc_loss: 0.278646
 Epoch 3: lr decay = 1.0
-grafting train epoch 3   overall_loss: 1125.6764,  ce_loss: 5.099534, reg_loss: 16793.342, acc_loss: 0.140284, l2diff_loss: 225.13525
-grafting test epoch 3   overall_loss: 1187.4679,  ce_loss: 5.263937, reg_loss: 16792.416, acc_loss: 0.135016
+grafting train epoch 3   overall_loss: 0.847371,  ce_loss: 3.269506, reg_loss: 1596.338, acc_loss: 0.340284, l2diff_loss: 0.00984
+grafting test epoch 3   overall_loss: 0.849283,  ce_loss: 3.156412, reg_loss: 1594.0756, acc_loss: 0.363081
 Epoch 4: lr decay = 1.0
-grafting train epoch 4   overall_loss: 1082.5421,  ce_loss: 4.238674, reg_loss: 16790.633, acc_loss: 0.236679, l2diff_loss: 216.5084
-grafting test epoch 4   overall_loss: 1136.8854,  ce_loss: 4.474676, reg_loss: 16788.916, acc_loss: 0.22496
+grafting train epoch 4   overall_loss: 0.842,  ce_loss: 2.654393, reg_loss: 1591.932, acc_loss: 0.43131, l2diff_loss: 0.009207
+grafting test epoch 4   overall_loss: 0.844022,  ce_loss: 2.795603, reg_loss: 1589.8328, acc_loss: 0.429187
 Epoch 5: lr decay = 1.0
-grafting train epoch 5   overall_loss: 1038.1199,  ce_loss: 3.485672, reg_loss: 16786.277, acc_loss: 0.335276, l2diff_loss: 207.62398
-grafting test epoch 5   overall_loss: 1096.4241,  ce_loss: 3.978464, reg_loss: 16783.514, acc_loss: 0.283854
+grafting train epoch 5   overall_loss: 0.837309,  ce_loss: 2.207254, reg_loss: 1587.8455, acc_loss: 0.505248, l2diff_loss: 0.008677
+grafting test epoch 5   overall_loss: 0.839242,  ce_loss: 2.5617, reg_loss: 1585.9031, acc_loss: 0.473758
 Epoch 6: lr decay = 1.0
-grafting train epoch 6   overall_loss: 1008.79913,  ce_loss: 2.940354, reg_loss: 16780.645, acc_loss: 0.412039, l2diff_loss: 201.75984
-grafting test epoch 6   overall_loss: 1065.7786,  ce_loss: 3.555339, reg_loss: 16777.594, acc_loss: 0.335236
+grafting train epoch 6   overall_loss: 0.833091,  ce_loss: 1.909667, reg_loss: 1584.0612, acc_loss: 0.560357, l2diff_loss: 0.008212
+grafting test epoch 6   overall_loss: 0.834884,  ce_loss: 2.413849, reg_loss: 1582.2614, acc_loss: 0.508013
 Epoch 7: lr decay = 1.0
-grafting train epoch 7   overall_loss: 980.86346,  ce_loss: 2.483099, reg_loss: 16773.703, acc_loss: 0.479848, l2diff_loss: 196.1727
-grafting test epoch 7   overall_loss: 1035.1526,  ce_loss: 3.192821, reg_loss: 16769.486, acc_loss: 0.38782
+grafting train epoch 7   overall_loss: 0.828985,  ce_loss: 1.687855, reg_loss: 1580.5621, acc_loss: 0.606931, l2diff_loss: 0.007741
+grafting test epoch 7   overall_loss: 0.83068,  ce_loss: 2.331882, reg_loss: 1578.9016, acc_loss: 0.534756
 Epoch 8: lr decay = 1.0
-grafting train epoch 8   overall_loss: 948.73816,  ce_loss: 2.120078, reg_loss: 16765.281, acc_loss: 0.539243, l2diff_loss: 189.74763
-grafting test epoch 8   overall_loss: 1008.21387,  ce_loss: 2.876777, reg_loss: 16761.193, acc_loss: 0.432692
+grafting train epoch 8   overall_loss: 0.825237,  ce_loss: 1.530672, reg_loss: 1577.3308, acc_loss: 0.641887, l2diff_loss: 0.007314
+grafting test epoch 8   overall_loss: 0.826858,  ce_loss: 2.278043, reg_loss: 1575.7977, acc_loss: 0.554287
 Epoch 9: lr decay = 1.0
-grafting train epoch 9   overall_loss: 923.171,  ce_loss: 1.843438, reg_loss: 16756.71, acc_loss: 0.58768, l2diff_loss: 184.6342
-grafting test epoch 9   overall_loss: 984.43427,  ce_loss: 2.689676, reg_loss: 16752.027, acc_loss: 0.469251
+grafting train epoch 9   overall_loss: 0.82164,  ce_loss: 1.394941, reg_loss: 1574.3516, acc_loss: 0.671274, l2diff_loss: 0.006893
+grafting test epoch 9   overall_loss: 0.823309,  ce_loss: 2.239599, reg_loss: 1572.9379, acc_loss: 0.569712
 Epoch 10: lr decay = 1.0
-grafting train epoch 10   overall_loss: 902.8012,  ce_loss: 1.63618, reg_loss: 16747.475, acc_loss: 0.625441, l2diff_loss: 180.56026
-grafting test epoch 10   overall_loss: 966.8578,  ce_loss: 2.548303, reg_loss: 16742.596, acc_loss: 0.49349
+grafting train epoch 10   overall_loss: 0.818419,  ce_loss: 1.27058, reg_loss: 1571.6112, acc_loss: 0.69988, l2diff_loss: 0.006523
+grafting test epoch 10   overall_loss: 0.819981,  ce_loss: 2.207062, reg_loss: 1570.3125, acc_loss: 0.585236
 Epoch 11: lr decay = 1.0
-grafting train epoch 11   overall_loss: 886.019,  ce_loss: 1.483258, reg_loss: 16737.543, acc_loss: 0.65595, l2diff_loss: 177.20381
-grafting test epoch 11   overall_loss: 944.912,  ce_loss: 2.443735, reg_loss: 16732.865, acc_loss: 0.51242
+grafting train epoch 11   overall_loss: 0.815363,  ce_loss: 1.174591, reg_loss: 1569.0929, acc_loss: 0.723077, l2diff_loss: 0.006163
+grafting test epoch 11   overall_loss: 0.816989,  ce_loss: 2.197507, reg_loss: 1567.9089, acc_loss: 0.598758
 Epoch 12: lr decay = 1.0
-grafting train epoch 12   overall_loss: 865.3809,  ce_loss: 1.355747, reg_loss: 16727.959, acc_loss: 0.683073, l2diff_loss: 173.0762
-grafting test epoch 12   overall_loss: 921.97687,  ce_loss: 2.351028, reg_loss: 16722.97, acc_loss: 0.530248
+grafting train epoch 12   overall_loss: 0.812573,  ce_loss: 1.096552, reg_loss: 1566.7906, acc_loss: 0.738602, l2diff_loss: 0.005836
+grafting test epoch 12   overall_loss: 0.814109,  ce_loss: 2.180435, reg_loss: 1565.6973, acc_loss: 0.608674
 Epoch 13: lr decay = 1.0
-grafting train epoch 13   overall_loss: 847.4089,  ce_loss: 1.247974, reg_loss: 16717.746, acc_loss: 0.702965, l2diff_loss: 169.48177
-grafting test epoch 13   overall_loss: 908.7961,  ce_loss: 2.28419, reg_loss: 16712.834, acc_loss: 0.546074
+grafting train epoch 13   overall_loss: 0.80993,  ce_loss: 1.027706, reg_loss: 1564.6748, acc_loss: 0.754447, l2diff_loss: 0.005518
+grafting test epoch 13   overall_loss: 0.811488,  ce_loss: 2.186692, reg_loss: 1563.6781, acc_loss: 0.614784
 Epoch 14: lr decay = 1.0
-grafting train epoch 14   overall_loss: 832.47107,  ce_loss: 1.183968, reg_loss: 16708.043, acc_loss: 0.716947, l2diff_loss: 166.49422
-grafting test epoch 14   overall_loss: 896.91,  ce_loss: 2.248422, reg_loss: 16702.889, acc_loss: 0.553586
+grafting train epoch 14   overall_loss: 0.807509,  ce_loss: 0.974901, reg_loss: 1562.7428, acc_loss: 0.768109, l2diff_loss: 0.005227
+grafting test epoch 14   overall_loss: 0.809148,  ce_loss: 2.186793, reg_loss: 1561.8307, acc_loss: 0.621394
 Epoch 15: lr decay = 1.0
-grafting train epoch 15   overall_loss: 821.38007,  ce_loss: 1.113888, reg_loss: 16697.736, acc_loss: 0.731751, l2diff_loss: 164.27602
-grafting test epoch 15   overall_loss: 883.53827,  ce_loss: 2.20438, reg_loss: 16692.646, acc_loss: 0.567408
+grafting train epoch 15   overall_loss: 0.805404,  ce_loss: 0.926534, reg_loss: 1560.9761, acc_loss: 0.780068, l2diff_loss: 0.004983
+grafting test epoch 15   overall_loss: 0.80706,  ce_loss: 2.180775, reg_loss: 1560.1456, acc_loss: 0.627204
 Epoch 16: lr decay = 1.0
-grafting train epoch 16   overall_loss: 808.92615,  ce_loss: 1.062822, reg_loss: 16687.822, acc_loss: 0.744231, l2diff_loss: 161.78523
-grafting test epoch 16   overall_loss: 871.53406,  ce_loss: 2.17089, reg_loss: 16682.916, acc_loss: 0.575721
+grafting train epoch 16   overall_loss: 0.803488,  ce_loss: 0.874213, reg_loss: 1559.372, acc_loss: 0.791426, l2diff_loss: 0.00476
+grafting test epoch 16   overall_loss: 0.805165,  ce_loss: 2.184384, reg_loss: 1558.619, acc_loss: 0.632312
 Epoch 17: lr decay = 1.0
-grafting train epoch 17   overall_loss: 794.746,  ce_loss: 1.009824, reg_loss: 16677.83, acc_loss: 0.754848, l2diff_loss: 158.9492
-grafting test epoch 17   overall_loss: 858.8931,  ce_loss: 2.155892, reg_loss: 16672.86, acc_loss: 0.579928
+grafting train epoch 17   overall_loss: 0.801637,  ce_loss: 0.833554, reg_loss: 1557.9135, acc_loss: 0.798958, l2diff_loss: 0.004536
+grafting test epoch 17   overall_loss: 0.803376,  ce_loss: 2.185042, reg_loss: 1557.2294, acc_loss: 0.635016
 Epoch 18: lr decay = 1.0
-grafting train epoch 18   overall_loss: 784.89825,  ce_loss: 0.963562, reg_loss: 16667.629, acc_loss: 0.765325, l2diff_loss: 156.97964
-grafting test epoch 18   overall_loss: 848.1409,  ce_loss: 2.136789, reg_loss: 16662.658, acc_loss: 0.587841
+grafting train epoch 18   overall_loss: 0.800098,  ce_loss: 0.793116, reg_loss: 1556.5908, acc_loss: 0.808774, l2diff_loss: 0.00436
+grafting test epoch 18   overall_loss: 0.801824,  ce_loss: 2.186361, reg_loss: 1555.9672, acc_loss: 0.640024
 Epoch 19: lr decay = 1.0
-grafting train epoch 19   overall_loss: 770.18396,  ce_loss: 0.930984, reg_loss: 16658.084, acc_loss: 0.771615, l2diff_loss: 154.0368
-grafting test epoch 19   overall_loss: 836.9382,  ce_loss: 2.128578, reg_loss: 16652.96, acc_loss: 0.59365
+grafting train epoch 19   overall_loss: 0.7987,  ce_loss: 0.770215, reg_loss: 1555.391, acc_loss: 0.813041, l2diff_loss: 0.004201
+grafting test epoch 19   overall_loss: 0.800477,  ce_loss: 2.188798, reg_loss: 1554.829, acc_loss: 0.643029
 Epoch 20: lr decay = 1.0
-grafting train epoch 20   overall_loss: 763.1314,  ce_loss: 0.905916, reg_loss: 16648.402, acc_loss: 0.778085, l2diff_loss: 152.62628
-grafting test epoch 20   overall_loss: 822.611,  ce_loss: 2.126022, reg_loss: 16643.781, acc_loss: 0.598758
+grafting train epoch 20   overall_loss: 0.79746,  ce_loss: 0.741446, reg_loss: 1554.3029, acc_loss: 0.820833, l2diff_loss: 0.004062
+grafting test epoch 20   overall_loss: 0.799242,  ce_loss: 2.191298, reg_loss: 1553.7943, acc_loss: 0.644331
 Epoch 21: lr decay = 1.0
-grafting train epoch 21   overall_loss: 750.92957,  ce_loss: 0.863991, reg_loss: 16639.408, acc_loss: 0.78764, l2diff_loss: 150.1859
-grafting test epoch 21   overall_loss: 812.6533,  ce_loss: 2.121575, reg_loss: 16635.281, acc_loss: 0.604167
+grafting train epoch 21   overall_loss: 0.796299,  ce_loss: 0.712022, reg_loss: 1553.3208, acc_loss: 0.827304, l2diff_loss: 0.003928
+grafting test epoch 21   overall_loss: 0.79803,  ce_loss: 2.189212, reg_loss: 1552.8629, acc_loss: 0.645934
 Epoch 22: lr decay = 1.0
-grafting train epoch 22   overall_loss: 743.41797,  ce_loss: 0.859384, reg_loss: 16630.838, acc_loss: 0.791366, l2diff_loss: 148.68358
-grafting test epoch 22   overall_loss: 802.18536,  ce_loss: 2.132923, reg_loss: 16626.605, acc_loss: 0.607472
+grafting train epoch 22   overall_loss: 0.795253,  ce_loss: 0.69414, reg_loss: 1552.4314, acc_loss: 0.83115, l2diff_loss: 0.003807
+grafting test epoch 22   overall_loss: 0.796989,  ce_loss: 2.18179, reg_loss: 1552.0148, acc_loss: 0.650441
 Epoch 23: lr decay = 1.0
-grafting train epoch 23   overall_loss: 730.9757,  ce_loss: 0.843637, reg_loss: 16622.305, acc_loss: 0.796394, l2diff_loss: 146.19514
-grafting test epoch 23   overall_loss: 792.2151,  ce_loss: 2.135406, reg_loss: 16618.02, acc_loss: 0.608974
+grafting train epoch 23   overall_loss: 0.79426,  ce_loss: 0.667819, reg_loss: 1551.6302, acc_loss: 0.834776, l2diff_loss: 0.003689
+grafting test epoch 23   overall_loss: 0.796096,  ce_loss: 2.172711, reg_loss: 1551.2571, acc_loss: 0.652644
 Epoch 24: lr decay = 1.0
-grafting train epoch 24   overall_loss: 725.1649,  ce_loss: 0.815364, reg_loss: 16613.646, acc_loss: 0.802304, l2diff_loss: 145.03297
-grafting test epoch 24   overall_loss: 785.86163,  ce_loss: 2.138456, reg_loss: 16609.414, acc_loss: 0.613081
+grafting train epoch 24   overall_loss: 0.793413,  ce_loss: 0.65101, reg_loss: 1550.9082, acc_loss: 0.839383, l2diff_loss: 0.003592
+grafting test epoch 24   overall_loss: 0.795338,  ce_loss: 2.17021, reg_loss: 1550.5685, acc_loss: 0.653045
 Epoch 25: lr decay = 1.0
-grafting train epoch 25   overall_loss: 715.7202,  ce_loss: 0.797847, reg_loss: 16605.336, acc_loss: 0.806611, l2diff_loss: 143.14403
-grafting test epoch 25   overall_loss: 777.90027,  ce_loss: 2.1456, reg_loss: 16600.889, acc_loss: 0.614583
+grafting train epoch 25   overall_loss: 0.792788,  ce_loss: 0.636867, reg_loss: 1550.255, acc_loss: 0.841927, l2diff_loss: 0.003532
+grafting test epoch 25   overall_loss: 0.79465,  ce_loss: 2.175698, reg_loss: 1549.954, acc_loss: 0.654247
 Epoch 26: lr decay = 1.0
-grafting train epoch 26   overall_loss: 710.44415,  ce_loss: 0.785619, reg_loss: 16596.896, acc_loss: 0.808894, l2diff_loss: 142.08884
-grafting test epoch 26   overall_loss: 772.6022,  ce_loss: 2.151478, reg_loss: 16593.098, acc_loss: 0.615685
+grafting train epoch 26   overall_loss: 0.792165,  ce_loss: 0.635452, reg_loss: 1549.6708, acc_loss: 0.845332, l2diff_loss: 0.003466
+grafting test epoch 26   overall_loss: 0.794108,  ce_loss: 2.175837, reg_loss: 1549.3984, acc_loss: 0.655148
 Epoch 27: lr decay = 1.0
-grafting train epoch 27   overall_loss: 702.0054,  ce_loss: 0.78697, reg_loss: 16589.111, acc_loss: 0.810857, l2diff_loss: 140.40108
-grafting test epoch 27   overall_loss: 767.7588,  ce_loss: 2.164784, reg_loss: 16584.629, acc_loss: 0.617989
+grafting train epoch 27   overall_loss: 0.791628,  ce_loss: 0.630579, reg_loss: 1549.142, acc_loss: 0.845853, l2diff_loss: 0.003411
+grafting test epoch 27   overall_loss: 0.793605,  ce_loss: 2.16559, reg_loss: 1548.8956, acc_loss: 0.656751
 Epoch 28: lr decay = 1.0
-grafting train epoch 28   overall_loss: 697.30304,  ce_loss: 0.769864, reg_loss: 16580.764, acc_loss: 0.814343, l2diff_loss: 139.46062
-grafting test epoch 28   overall_loss: 757.3324,  ce_loss: 2.146865, reg_loss: 16576.979, acc_loss: 0.622296
+grafting train epoch 28   overall_loss: 0.791205,  ce_loss: 0.614933, reg_loss: 1548.6678, acc_loss: 0.848037, l2diff_loss: 0.003374
+grafting test epoch 28   overall_loss: 0.793137,  ce_loss: 2.167444, reg_loss: 1548.4506, acc_loss: 0.65615
 Epoch 29: lr decay = 1.0
-grafting train epoch 29   overall_loss: 687.52014,  ce_loss: 0.768607, reg_loss: 16572.871, acc_loss: 0.814263, l2diff_loss: 137.50403
-grafting test epoch 29   overall_loss: 750.78436,  ce_loss: 2.154934, reg_loss: 16568.877, acc_loss: 0.626502
+grafting train epoch 29   overall_loss: 0.790733,  ce_loss: 0.612325, reg_loss: 1548.2452, acc_loss: 0.849139, l2diff_loss: 0.003322
+grafting test epoch 29   overall_loss: 0.792688,  ce_loss: 2.162935, reg_loss: 1548.047, acc_loss: 0.657352
 Epoch 30: lr decay = 1.0
-grafting train epoch 30   overall_loss: 680.067,  ce_loss: 0.756011, reg_loss: 16565.94, acc_loss: 0.819311, l2diff_loss: 136.01338
-grafting test epoch 30   overall_loss: 739.6878,  ce_loss: 2.1627, reg_loss: 16563.125, acc_loss: 0.6252
+grafting train epoch 30   overall_loss: 0.790311,  ce_loss: 0.602731, reg_loss: 1547.8644, acc_loss: 0.851723, l2diff_loss: 0.003276
+grafting test epoch 30   overall_loss: 0.792334,  ce_loss: 2.158554, reg_loss: 1547.6849, acc_loss: 0.658153
 Epoch 31: lr decay = 1.0
-grafting train epoch 31   overall_loss: 671.4293,  ce_loss: 0.742168, reg_loss: 16559.695, acc_loss: 0.822095, l2diff_loss: 134.28587
-grafting test epoch 31   overall_loss: 734.55347,  ce_loss: 2.16694, reg_loss: 16556.549, acc_loss: 0.627704
+grafting train epoch 31   overall_loss: 0.790058,  ce_loss: 0.595494, reg_loss: 1547.5209, acc_loss: 0.852504, l2diff_loss: 0.003259
+grafting test epoch 31   overall_loss: 0.792032,  ce_loss: 2.163712, reg_loss: 1547.3583, acc_loss: 0.658654
 Epoch 32: lr decay = 1.0
-grafting train epoch 32   overall_loss: 669.42084,  ce_loss: 0.736503, reg_loss: 16553.178, acc_loss: 0.822416, l2diff_loss: 133.88417
-grafting test epoch 32   overall_loss: 729.619,  ce_loss: 2.188236, reg_loss: 16550.102, acc_loss: 0.628405
+grafting train epoch 32   overall_loss: 0.78975,  ce_loss: 0.594061, reg_loss: 1547.2045, acc_loss: 0.853145, l2diff_loss: 0.00323
+grafting test epoch 32   overall_loss: 0.791742,  ce_loss: 2.157342, reg_loss: 1547.0616, acc_loss: 0.658053
 Epoch 33: lr decay = 1.0
-grafting train epoch 33   overall_loss: 662.72174,  ce_loss: 0.723629, reg_loss: 16547.363, acc_loss: 0.826603, l2diff_loss: 132.54436
-grafting test epoch 33   overall_loss: 727.5858,  ce_loss: 2.192096, reg_loss: 16544.219, acc_loss: 0.630509
+grafting train epoch 33   overall_loss: 0.789535,  ce_loss: 0.585903, reg_loss: 1546.929, acc_loss: 0.852624, l2diff_loss: 0.003214
+grafting test epoch 33   overall_loss: 0.791516,  ce_loss: 2.154323, reg_loss: 1546.7987, acc_loss: 0.659555
 Epoch 34: lr decay = 1.0
-grafting train epoch 34   overall_loss: 657.5553,  ce_loss: 0.727567, reg_loss: 16541.584, acc_loss: 0.828005, l2diff_loss: 131.51106
-grafting test epoch 34   overall_loss: 722.64087,  ce_loss: 2.1852, reg_loss: 16538.834, acc_loss: 0.629908
+grafting train epoch 34   overall_loss: 0.789192,  ce_loss: 0.589151, reg_loss: 1546.6772, acc_loss: 0.852704, l2diff_loss: 0.003171
+grafting test epoch 34   overall_loss: 0.791271,  ce_loss: 2.151221, reg_loss: 1546.5609, acc_loss: 0.659655
 Epoch 35: lr decay = 1.0
-grafting train epoch 35   overall_loss: 655.5318,  ce_loss: 0.713138, reg_loss: 16536.166, acc_loss: 0.830729, l2diff_loss: 131.10637
-grafting test epoch 35   overall_loss: 719.7211,  ce_loss: 2.184198, reg_loss: 16533.459, acc_loss: 0.63111
+grafting train epoch 35   overall_loss: 0.789114,  ce_loss: 0.574526, reg_loss: 1546.4558, acc_loss: 0.856611, l2diff_loss: 0.003177
+grafting test epoch 35   overall_loss: 0.791101,  ce_loss: 2.151108, reg_loss: 1546.3527, acc_loss: 0.661258
 Epoch 36: lr decay = 1.0
-grafting train epoch 36   overall_loss: 652.99243,  ce_loss: 0.71538, reg_loss: 16531.047, acc_loss: 0.83099, l2diff_loss: 130.59848
-grafting test epoch 36   overall_loss: 712.32825,  ce_loss: 2.203023, reg_loss: 16528.832, acc_loss: 0.632412
+grafting train epoch 36   overall_loss: 0.788954,  ce_loss: 0.576018, reg_loss: 1546.2598, acc_loss: 0.857833, l2diff_loss: 0.003165
+grafting test epoch 36   overall_loss: 0.790951,  ce_loss: 2.144915, reg_loss: 1546.164, acc_loss: 0.660958
 Epoch 37: lr decay = 1.0
-grafting train epoch 37   overall_loss: 643.28864,  ce_loss: 0.706881, reg_loss: 16526.377, acc_loss: 0.833173, l2diff_loss: 128.65773
-grafting test epoch 37   overall_loss: 708.4416,  ce_loss: 2.201476, reg_loss: 16523.682, acc_loss: 0.633113
+grafting train epoch 37   overall_loss: 0.78873,  ce_loss: 0.570726, reg_loss: 1546.0773, acc_loss: 0.857672, l2diff_loss: 0.003138
+grafting test epoch 37   overall_loss: 0.790805,  ce_loss: 2.140442, reg_loss: 1545.988, acc_loss: 0.660657
 Epoch 38: lr decay = 1.0
-grafting train epoch 38   overall_loss: 641.4593,  ce_loss: 0.698743, reg_loss: 16521.277, acc_loss: 0.834856, l2diff_loss: 128.29185
-grafting test epoch 38   overall_loss: 704.767,  ce_loss: 2.221132, reg_loss: 16519.027, acc_loss: 0.634916
+grafting train epoch 38   overall_loss: 0.788622,  ce_loss: 0.57345, reg_loss: 1545.9099, acc_loss: 0.85625, l2diff_loss: 0.003133
+grafting test epoch 38   overall_loss: 0.790648,  ce_loss: 2.142473, reg_loss: 1545.8331, acc_loss: 0.661158
 Epoch 39: lr decay = 1.0
-grafting train epoch 39   overall_loss: 638.5256,  ce_loss: 0.697566, reg_loss: 16517.018, acc_loss: 0.834094, l2diff_loss: 127.70511
-grafting test epoch 39   overall_loss: 701.0142,  ce_loss: 2.21521, reg_loss: 16514.832, acc_loss: 0.632512
+grafting train epoch 39   overall_loss: 0.78857,  ce_loss: 0.568409, reg_loss: 1545.7648, acc_loss: 0.857392, l2diff_loss: 0.003138
+grafting test epoch 39   overall_loss: 0.790529,  ce_loss: 2.142812, reg_loss: 1545.7003, acc_loss: 0.659455
 Epoch 40: lr decay = 1.0
-grafting train epoch 40   overall_loss: 630.5537,  ce_loss: 0.689873, reg_loss: 16512.387, acc_loss: 0.83744, l2diff_loss: 126.11075
-grafting test epoch 40   overall_loss: 697.89246,  ce_loss: 2.228563, reg_loss: 16510.486, acc_loss: 0.635216
+grafting train epoch 40   overall_loss: 0.788381,  ce_loss: 0.564806, reg_loss: 1545.6342, acc_loss: 0.857492, l2diff_loss: 0.003113
+grafting test epoch 40   overall_loss: 0.790423,  ce_loss: 2.14258, reg_loss: 1545.5731, acc_loss: 0.660056
 Epoch 41: lr decay = 1.0
-grafting train epoch 41   overall_loss: 628.25507,  ce_loss: 0.691602, reg_loss: 16508.705, acc_loss: 0.839563, l2diff_loss: 125.651024
-grafting test epoch 41   overall_loss: 696.094,  ce_loss: 2.232899, reg_loss: 16506.764, acc_loss: 0.63742
+grafting train epoch 41   overall_loss: 0.788273,  ce_loss: 0.563278, reg_loss: 1545.518, acc_loss: 0.859956, l2diff_loss: 0.003103
+grafting test epoch 41   overall_loss: 0.790307,  ce_loss: 2.138016, reg_loss: 1545.4584, acc_loss: 0.660357
 Epoch 42: lr decay = 1.0
-grafting train epoch 42   overall_loss: 625.89087,  ce_loss: 0.685245, reg_loss: 16504.959, acc_loss: 0.840064, l2diff_loss: 125.17816
-grafting test epoch 42   overall_loss: 692.5314,  ce_loss: 2.246969, reg_loss: 16502.842, acc_loss: 0.635316
+grafting train epoch 42   overall_loss: 0.788212,  ce_loss: 0.550894, reg_loss: 1545.4097, acc_loss: 0.860096, l2diff_loss: 0.003101
+grafting test epoch 42   overall_loss: 0.79022,  ce_loss: 2.133074, reg_loss: 1545.359, acc_loss: 0.660156
 Epoch 43: lr decay = 1.0
-grafting train epoch 43   overall_loss: 625.84973,  ce_loss: 0.683313, reg_loss: 16501.314, acc_loss: 0.840264, l2diff_loss: 125.16995
-grafting test epoch 43   overall_loss: 689.5019,  ce_loss: 2.259282, reg_loss: 16499.861, acc_loss: 0.636018
+grafting train epoch 43   overall_loss: 0.788159,  ce_loss: 0.554502, reg_loss: 1545.3151, acc_loss: 0.859475, l2diff_loss: 0.0031
+grafting test epoch 43   overall_loss: 0.790156,  ce_loss: 2.138136, reg_loss: 1545.2733, acc_loss: 0.659856
 Epoch 44: lr decay = 1.0
-grafting train epoch 44   overall_loss: 624.74646,  ce_loss: 0.676934, reg_loss: 16498.818, acc_loss: 0.841707, l2diff_loss: 124.9493
-grafting test epoch 44   overall_loss: 686.67413,  ce_loss: 2.245179, reg_loss: 16497.486, acc_loss: 0.638922
+grafting train epoch 44   overall_loss: 0.788033,  ce_loss: 0.559588, reg_loss: 1545.2314, acc_loss: 0.860156, l2diff_loss: 0.003083
+grafting test epoch 44   overall_loss: 0.790096,  ce_loss: 2.13491, reg_loss: 1545.1926, acc_loss: 0.661158
 Epoch 45: lr decay = 1.0
-grafting train epoch 45   overall_loss: 616.1836,  ce_loss: 0.666977, reg_loss: 16496.174, acc_loss: 0.843149, l2diff_loss: 123.23671
-grafting test epoch 45   overall_loss: 684.65155,  ce_loss: 2.259983, reg_loss: 16494.5, acc_loss: 0.639423
+grafting train epoch 45   overall_loss: 0.787985,  ce_loss: 0.557228, reg_loss: 1545.1573, acc_loss: 0.860337, l2diff_loss: 0.003081
+grafting test epoch 45   overall_loss: 0.790025,  ce_loss: 2.131772, reg_loss: 1545.1207, acc_loss: 0.660857
 Epoch 46: lr decay = 1.0
-grafting train epoch 46   overall_loss: 618.00684,  ce_loss: 0.671315, reg_loss: 16493.307, acc_loss: 0.84395, l2diff_loss: 123.60137
-grafting test epoch 46   overall_loss: 682.6497,  ce_loss: 2.270338, reg_loss: 16491.86, acc_loss: 0.640325
+grafting train epoch 46   overall_loss: 0.787971,  ce_loss: 0.549414, reg_loss: 1545.0903, acc_loss: 0.863061, l2diff_loss: 0.003085
+grafting test epoch 46   overall_loss: 0.789973,  ce_loss: 2.136232, reg_loss: 1545.0599, acc_loss: 0.659956
 Epoch 47: lr decay = 1.0
-grafting train epoch 47   overall_loss: 614.7907,  ce_loss: 0.666164, reg_loss: 16490.783, acc_loss: 0.843069, l2diff_loss: 122.95815
-grafting test epoch 47   overall_loss: 680.4619,  ce_loss: 2.248608, reg_loss: 16489.781, acc_loss: 0.642328
+grafting train epoch 47   overall_loss: 0.787887,  ce_loss: 0.551187, reg_loss: 1545.0265, acc_loss: 0.860577, l2diff_loss: 0.003075
+grafting test epoch 47   overall_loss: 0.789916,  ce_loss: 2.135619, reg_loss: 1544.9944, acc_loss: 0.659255
 Epoch 48: lr decay = 1.0
-grafting train epoch 48   overall_loss: 613.29333,  ce_loss: 0.672419, reg_loss: 16488.633, acc_loss: 0.84377, l2diff_loss: 122.65868
-grafting test epoch 48   overall_loss: 679.3767,  ce_loss: 2.269328, reg_loss: 16487.629, acc_loss: 0.642328
+grafting train epoch 48   overall_loss: 0.787874,  ce_loss: 0.548082, reg_loss: 1544.9653, acc_loss: 0.860998, l2diff_loss: 0.003078
+grafting test epoch 48   overall_loss: 0.78989,  ce_loss: 2.138374, reg_loss: 1544.9426, acc_loss: 0.660357
 Epoch 49: lr decay = 1.0
-grafting train epoch 49   overall_loss: 610.3579,  ce_loss: 0.669783, reg_loss: 16486.38, acc_loss: 0.844531, l2diff_loss: 122.071594
-grafting test epoch 49   overall_loss: 677.3202,  ce_loss: 2.270966, reg_loss: 16485.264, acc_loss: 0.642628
+grafting train epoch 49   overall_loss: 0.787854,  ce_loss: 0.543593, reg_loss: 1544.9164, acc_loss: 0.861699, l2diff_loss: 0.003079
+grafting test epoch 49   overall_loss: 0.789888,  ce_loss: 2.138638, reg_loss: 1544.895, acc_loss: 0.659455
 Epoch 50: lr decay = 1.0
-grafting train epoch 50   overall_loss: 610.2418,  ce_loss: 0.662564, reg_loss: 16484.213, acc_loss: 0.845673, l2diff_loss: 122.048355
-grafting test epoch 50   overall_loss: 675.56696,  ce_loss: 2.278067, reg_loss: 16483.533, acc_loss: 0.643229
+grafting train epoch 50   overall_loss: 0.787821,  ce_loss: 0.550724, reg_loss: 1544.8745, acc_loss: 0.861398, l2diff_loss: 0.003077
+grafting test epoch 50   overall_loss: 0.789828,  ce_loss: 2.13322, reg_loss: 1544.8566, acc_loss: 0.660457
 Epoch 51: lr decay = 1.0
-grafting train epoch 51   overall_loss: 605.3198,  ce_loss: 0.660601, reg_loss: 16482.777, acc_loss: 0.847276, l2diff_loss: 121.063965
-grafting test epoch 51   overall_loss: 672.3135,  ce_loss: 2.27939, reg_loss: 16481.861, acc_loss: 0.643229
+grafting train epoch 51   overall_loss: 0.787793,  ce_loss: 0.55414, reg_loss: 1544.8347, acc_loss: 0.860357, l2diff_loss: 0.003075
+grafting test epoch 51   overall_loss: 0.789779,  ce_loss: 2.126815, reg_loss: 1544.8124, acc_loss: 0.660557
 Epoch 52: lr decay = 1.0
-grafting train epoch 52   overall_loss: 606.7074,  ce_loss: 0.666611, reg_loss: 16481.213, acc_loss: 0.845914, l2diff_loss: 121.34147
-grafting test epoch 52   overall_loss: 670.97894,  ce_loss: 2.284326, reg_loss: 16480.375, acc_loss: 0.643329
+grafting train epoch 52   overall_loss: 0.787748,  ce_loss: 0.55554, reg_loss: 1544.7991, acc_loss: 0.861498, l2diff_loss: 0.00307
+grafting test epoch 52   overall_loss: 0.789785,  ce_loss: 2.132767, reg_loss: 1544.7797, acc_loss: 0.660557
 Epoch 53: lr decay = 1.0
-grafting train epoch 53   overall_loss: 602.9287,  ce_loss: 0.650103, reg_loss: 16479.781, acc_loss: 0.847376, l2diff_loss: 120.58574
-grafting test epoch 53   overall_loss: 669.3099,  ce_loss: 2.279754, reg_loss: 16478.914, acc_loss: 0.645032
+grafting train epoch 53   overall_loss: 0.787734,  ce_loss: 0.551974, reg_loss: 1544.7648, acc_loss: 0.860797, l2diff_loss: 0.00307
+grafting test epoch 53   overall_loss: 0.789731,  ce_loss: 2.126933, reg_loss: 1544.7534, acc_loss: 0.660357
 Epoch 54: lr decay = 1.0
-grafting train epoch 54   overall_loss: 602.83997,  ce_loss: 0.660443, reg_loss: 16478.482, acc_loss: 0.848758, l2diff_loss: 120.567986
-grafting test epoch 54   overall_loss: 667.5336,  ce_loss: 2.283748, reg_loss: 16478.234, acc_loss: 0.641927
+grafting train epoch 54   overall_loss: 0.787687,  ce_loss: 0.547123, reg_loss: 1544.7375, acc_loss: 0.862159, l2diff_loss: 0.003064
+grafting test epoch 54   overall_loss: 0.789706,  ce_loss: 2.132523, reg_loss: 1544.7214, acc_loss: 0.660757
 Epoch 55: lr decay = 1.0
-grafting train epoch 55   overall_loss: 598.5297,  ce_loss: 0.651361, reg_loss: 16477.441, acc_loss: 0.847296, l2diff_loss: 119.70594
-grafting test epoch 55   overall_loss: 667.24634,  ce_loss: 2.295475, reg_loss: 16476.777, acc_loss: 0.644531
+grafting train epoch 55   overall_loss: 0.787645,  ce_loss: 0.547258, reg_loss: 1544.7101, acc_loss: 0.86282, l2diff_loss: 0.003058
+grafting test epoch 55   overall_loss: 0.789678,  ce_loss: 2.131538, reg_loss: 1544.6956, acc_loss: 0.660457
 Epoch 56: lr decay = 1.0
-grafting train epoch 56   overall_loss: 598.7862,  ce_loss: 0.653698, reg_loss: 16476.45, acc_loss: 0.8497, l2diff_loss: 119.75725
-grafting test epoch 56   overall_loss: 664.63574,  ce_loss: 2.2981, reg_loss: 16475.955, acc_loss: 0.645533
+grafting train epoch 56   overall_loss: 0.787677,  ce_loss: 0.543784, reg_loss: 1544.6879, acc_loss: 0.861578, l2diff_loss: 0.003067
+grafting test epoch 56   overall_loss: 0.789674,  ce_loss: 2.133175, reg_loss: 1544.6777, acc_loss: 0.660757
 Epoch 57: lr decay = 1.0
-grafting train epoch 57   overall_loss: 601.8488,  ce_loss: 0.662899, reg_loss: 16475.86, acc_loss: 0.848397, l2diff_loss: 120.36976
-grafting test epoch 57   overall_loss: 664.0488,  ce_loss: 2.286199, reg_loss: 16475.605, acc_loss: 0.645533
+grafting train epoch 57   overall_loss: 0.787661,  ce_loss: 0.536912, reg_loss: 1544.6691, acc_loss: 0.864543, l2diff_loss: 0.003065
+grafting test epoch 57   overall_loss: 0.789662,  ce_loss: 2.13706, reg_loss: 1544.6622, acc_loss: 0.660757
 Epoch 58: lr decay = 1.0
-grafting train epoch 58   overall_loss: 596.49506,  ce_loss: 0.654857, reg_loss: 16475.223, acc_loss: 0.847656, l2diff_loss: 119.29901
-grafting test epoch 58   overall_loss: 663.297,  ce_loss: 2.295338, reg_loss: 16474.916, acc_loss: 0.647937
+grafting train epoch 58   overall_loss: 0.787593,  ce_loss: 0.546341, reg_loss: 1544.65, acc_loss: 0.861398, l2diff_loss: 0.003054
+grafting test epoch 58   overall_loss: 0.789664,  ce_loss: 2.132042, reg_loss: 1544.6415, acc_loss: 0.660657
 Epoch 59: lr decay = 1.0
-grafting train epoch 59   overall_loss: 597.45087,  ce_loss: 0.670939, reg_loss: 16474.592, acc_loss: 0.846695, l2diff_loss: 119.49017
-grafting test epoch 59   overall_loss: 661.4084,  ce_loss: 2.312142, reg_loss: 16474.38, acc_loss: 0.644431
+grafting train epoch 59   overall_loss: 0.787616,  ce_loss: 0.545985, reg_loss: 1544.6322, acc_loss: 0.863261, l2diff_loss: 0.00306
+grafting test epoch 59   overall_loss: 0.789638,  ce_loss: 2.133243, reg_loss: 1544.627, acc_loss: 0.661558
 Epoch 60: lr decay = 0.2
-grafting train epoch 60   overall_loss: 590.21875,  ce_loss: 0.659376, reg_loss: 16473.836, acc_loss: 0.848678, l2diff_loss: 118.04375
-grafting test epoch 60   overall_loss: 657.9047,  ce_loss: 2.306773, reg_loss: 16473.156, acc_loss: 0.645332
+grafting train epoch 60   overall_loss: 0.787566,  ce_loss: 0.547736, reg_loss: 1544.6241, acc_loss: 0.862179, l2diff_loss: 0.003051
+grafting test epoch 60   overall_loss: 0.78962,  ce_loss: 2.12991, reg_loss: 1544.6228, acc_loss: 0.661959
 Epoch 61: lr decay = 0.2
-grafting train epoch 61   overall_loss: 590.1365,  ce_loss: 0.647193, reg_loss: 16472.572, acc_loss: 0.850361, l2diff_loss: 118.027306
-grafting test epoch 61   overall_loss: 657.6426,  ce_loss: 2.30906, reg_loss: 16471.969, acc_loss: 0.645232
+grafting train epoch 61   overall_loss: 0.787561,  ce_loss: 0.54106, reg_loss: 1544.6193, acc_loss: 0.8628, l2diff_loss: 0.00305
+grafting test epoch 61   overall_loss: 0.789607,  ce_loss: 2.129004, reg_loss: 1544.6171, acc_loss: 0.661058
 Epoch 62: lr decay = 0.2
-grafting train epoch 62   overall_loss: 591.2198,  ce_loss: 0.64277, reg_loss: 16471.299, acc_loss: 0.850901, l2diff_loss: 118.24397
-grafting test epoch 62   overall_loss: 657.38025,  ce_loss: 2.308071, reg_loss: 16470.734, acc_loss: 0.646034
+grafting train epoch 62   overall_loss: 0.787605,  ce_loss: 0.555334, reg_loss: 1544.6165, acc_loss: 0.859996, l2diff_loss: 0.003059
+grafting test epoch 62   overall_loss: 0.789603,  ce_loss: 2.129798, reg_loss: 1544.6144, acc_loss: 0.661058
 Epoch 63: lr decay = 0.2
-grafting train epoch 63   overall_loss: 587.7463,  ce_loss: 0.646152, reg_loss: 16470.057, acc_loss: 0.851102, l2diff_loss: 117.549255
-grafting test epoch 63   overall_loss: 656.93604,  ce_loss: 2.312035, reg_loss: 16469.355, acc_loss: 0.647236
+grafting train epoch 63   overall_loss: 0.787471,  ce_loss: 0.545935, reg_loss: 1544.6125, acc_loss: 0.864323, l2diff_loss: 0.003033
+grafting test epoch 63   overall_loss: 0.789606,  ce_loss: 2.127442, reg_loss: 1544.6102, acc_loss: 0.661158
 Epoch 64: lr decay = 0.2
-grafting train epoch 64   overall_loss: 587.01556,  ce_loss: 0.648927, reg_loss: 16468.846, acc_loss: 0.850521, l2diff_loss: 117.40311
-grafting test epoch 64   overall_loss: 655.74457,  ce_loss: 2.31184, reg_loss: 16468.271, acc_loss: 0.646134
+grafting train epoch 64   overall_loss: 0.787529,  ce_loss: 0.54446, reg_loss: 1544.6075, acc_loss: 0.860537, l2diff_loss: 0.003045
+grafting test epoch 64   overall_loss: 0.789599,  ce_loss: 2.126654, reg_loss: 1544.6057, acc_loss: 0.661458
 Epoch 65: lr decay = 0.2
-grafting train epoch 65   overall_loss: 587.9313,  ce_loss: 0.642498, reg_loss: 16467.719, acc_loss: 0.852163, l2diff_loss: 117.58626
-grafting test epoch 65   overall_loss: 655.74524,  ce_loss: 2.308848, reg_loss: 16467.17, acc_loss: 0.645934
+grafting train epoch 65   overall_loss: 0.787525,  ce_loss: 0.551266, reg_loss: 1544.6034, acc_loss: 0.862019, l2diff_loss: 0.003045
+grafting test epoch 65   overall_loss: 0.789602,  ce_loss: 2.129659, reg_loss: 1544.6024, acc_loss: 0.661058
 Epoch 66: lr decay = 0.2
-grafting train epoch 66   overall_loss: 587.50946,  ce_loss: 0.64369, reg_loss: 16466.688, acc_loss: 0.850621, l2diff_loss: 117.5019
-grafting test epoch 66   overall_loss: 655.2105,  ce_loss: 2.307796, reg_loss: 16466.217, acc_loss: 0.646534
+grafting train epoch 66   overall_loss: 0.78754,  ce_loss: 0.547911, reg_loss: 1544.6003, acc_loss: 0.861819, l2diff_loss: 0.003048
+grafting test epoch 66   overall_loss: 0.789589,  ce_loss: 2.126875, reg_loss: 1544.599, acc_loss: 0.660557
 Epoch 67: lr decay = 0.2
-grafting train epoch 67   overall_loss: 586.846,  ce_loss: 0.648803, reg_loss: 16465.623, acc_loss: 0.851382, l2diff_loss: 117.3692
-grafting test epoch 67   overall_loss: 654.7116,  ce_loss: 2.307036, reg_loss: 16465.123, acc_loss: 0.646735
+grafting train epoch 67   overall_loss: 0.787504,  ce_loss: 0.550514, reg_loss: 1544.5978, acc_loss: 0.86274, l2diff_loss: 0.003041
+grafting test epoch 67   overall_loss: 0.789594,  ce_loss: 2.127108, reg_loss: 1544.5967, acc_loss: 0.660457
 Epoch 68: lr decay = 0.2
-grafting train epoch 68   overall_loss: 586.2215,  ce_loss: 0.648683, reg_loss: 16464.564, acc_loss: 0.85014, l2diff_loss: 117.2443
-grafting test epoch 68   overall_loss: 654.43866,  ce_loss: 2.304681, reg_loss: 16464.049, acc_loss: 0.648037
+grafting train epoch 68   overall_loss: 0.787528,  ce_loss: 0.542182, reg_loss: 1544.5957, acc_loss: 0.861338, l2diff_loss: 0.003046
+grafting test epoch 68   overall_loss: 0.789592,  ce_loss: 2.128913, reg_loss: 1544.5935, acc_loss: 0.660557
 Epoch 69: lr decay = 0.2
-grafting train epoch 69   overall_loss: 585.9323,  ce_loss: 0.63343, reg_loss: 16463.469, acc_loss: 0.853706, l2diff_loss: 117.18647
-grafting test epoch 69   overall_loss: 654.15515,  ce_loss: 2.313199, reg_loss: 16463.014, acc_loss: 0.647536
+grafting train epoch 69   overall_loss: 0.787498,  ce_loss: 0.554854, reg_loss: 1544.5924, acc_loss: 0.860076, l2diff_loss: 0.00304
+grafting test epoch 69   overall_loss: 0.78959,  ce_loss: 2.12751, reg_loss: 1544.5912, acc_loss: 0.661158
 Epoch 70: lr decay = 0.2
-grafting train epoch 70   overall_loss: 586.0298,  ce_loss: 0.650906, reg_loss: 16462.46, acc_loss: 0.851282, l2diff_loss: 117.20594
-grafting test epoch 70   overall_loss: 653.6384,  ce_loss: 2.317352, reg_loss: 16461.896, acc_loss: 0.647837
+grafting train epoch 70   overall_loss: 0.787509,  ce_loss: 0.547334, reg_loss: 1544.5895, acc_loss: 0.863061, l2diff_loss: 0.003043
+grafting test epoch 70   overall_loss: 0.789573,  ce_loss: 2.12633, reg_loss: 1544.587, acc_loss: 0.660457
 Epoch 71: lr decay = 0.2
-grafting train epoch 71   overall_loss: 587.06824,  ce_loss: 0.647816, reg_loss: 16461.465, acc_loss: 0.850461, l2diff_loss: 117.41365
-grafting test epoch 71   overall_loss: 654.08624,  ce_loss: 2.317136, reg_loss: 16460.951, acc_loss: 0.648538
+grafting train epoch 71   overall_loss: 0.787498,  ce_loss: 0.553705, reg_loss: 1544.5852, acc_loss: 0.861659, l2diff_loss: 0.003041
+grafting test epoch 71   overall_loss: 0.789572,  ce_loss: 2.124043, reg_loss: 1544.5831, acc_loss: 0.661358
 Epoch 72: lr decay = 0.2
-grafting train epoch 72   overall_loss: 586.5075,  ce_loss: 0.646725, reg_loss: 16460.49, acc_loss: 0.84998, l2diff_loss: 117.301506
-grafting test epoch 72   overall_loss: 652.9843,  ce_loss: 2.314911, reg_loss: 16459.996, acc_loss: 0.647035
+grafting train epoch 72   overall_loss: 0.787488,  ce_loss: 0.543368, reg_loss: 1544.5825, acc_loss: 0.863902, l2diff_loss: 0.003039
+grafting test epoch 72   overall_loss: 0.789578,  ce_loss: 2.130678, reg_loss: 1544.5817, acc_loss: 0.660557
 Epoch 73: lr decay = 0.2
-grafting train epoch 73   overall_loss: 585.52057,  ce_loss: 0.643856, reg_loss: 16459.543, acc_loss: 0.853325, l2diff_loss: 117.1041
-grafting test epoch 73   overall_loss: 653.93774,  ce_loss: 2.317199, reg_loss: 16459.105, acc_loss: 0.647536
+grafting train epoch 73   overall_loss: 0.787448,  ce_loss: 0.544459, reg_loss: 1544.5798, acc_loss: 0.86222, l2diff_loss: 0.003032
+grafting test epoch 73   overall_loss: 0.789586,  ce_loss: 2.1247, reg_loss: 1544.5781, acc_loss: 0.660958
 Epoch 74: lr decay = 0.2
-grafting train epoch 74   overall_loss: 584.9939,  ce_loss: 0.63955, reg_loss: 16458.648, acc_loss: 0.852945, l2diff_loss: 116.99878
-grafting test epoch 74   overall_loss: 653.5114,  ce_loss: 2.319649, reg_loss: 16458.123, acc_loss: 0.647536
+grafting train epoch 74   overall_loss: 0.787567,  ce_loss: 0.543515, reg_loss: 1544.5773, acc_loss: 0.862941, l2diff_loss: 0.003056
+grafting test epoch 74   overall_loss: 0.789578,  ce_loss: 2.12942, reg_loss: 1544.5762, acc_loss: 0.660256
 Epoch 75: lr decay = 0.2
-grafting train epoch 75   overall_loss: 584.1887,  ce_loss: 0.63998, reg_loss: 16457.637, acc_loss: 0.851843, l2diff_loss: 116.83774
-grafting test epoch 75   overall_loss: 653.0998,  ce_loss: 2.313068, reg_loss: 16457.22, acc_loss: 0.646635
+grafting train epoch 75   overall_loss: 0.78751,  ce_loss: 0.550134, reg_loss: 1544.5754, acc_loss: 0.861538, l2diff_loss: 0.003044
+grafting test epoch 75   overall_loss: 0.789577,  ce_loss: 2.12741, reg_loss: 1544.5729, acc_loss: 0.660256
 Epoch 76: lr decay = 0.2
-grafting train epoch 76   overall_loss: 587.1313,  ce_loss: 0.647936, reg_loss: 16456.773, acc_loss: 0.850921, l2diff_loss: 117.42626
-grafting test epoch 76   overall_loss: 652.78735,  ce_loss: 2.313296, reg_loss: 16456.39, acc_loss: 0.648137
+grafting train epoch 76   overall_loss: 0.787507,  ce_loss: 0.545385, reg_loss: 1544.5724, acc_loss: 0.861759, l2diff_loss: 0.003044
+grafting test epoch 76   overall_loss: 0.789584,  ce_loss: 2.127246, reg_loss: 1544.5721, acc_loss: 0.661058
 Epoch 77: lr decay = 0.2
-grafting train epoch 77   overall_loss: 585.4421,  ce_loss: 0.657326, reg_loss: 16455.902, acc_loss: 0.851442, l2diff_loss: 117.08841
-grafting test epoch 77   overall_loss: 652.6955,  ce_loss: 2.318791, reg_loss: 16455.414, acc_loss: 0.648037
+grafting train epoch 77   overall_loss: 0.787538,  ce_loss: 0.54621, reg_loss: 1544.5706, acc_loss: 0.862179, l2diff_loss: 0.003051
+grafting test epoch 77   overall_loss: 0.789573,  ce_loss: 2.126959, reg_loss: 1544.5692, acc_loss: 0.660757
 Epoch 78: lr decay = 0.2
-grafting train epoch 78   overall_loss: 583.6699,  ce_loss: 0.642326, reg_loss: 16454.982, acc_loss: 0.851963, l2diff_loss: 116.73399
-grafting test epoch 78   overall_loss: 652.46454,  ce_loss: 2.311488, reg_loss: 16454.572, acc_loss: 0.647937
+grafting train epoch 78   overall_loss: 0.787457,  ce_loss: 0.545548, reg_loss: 1544.5671, acc_loss: 0.862119, l2diff_loss: 0.003035
+grafting test epoch 78   overall_loss: 0.789572,  ce_loss: 2.123911, reg_loss: 1544.566, acc_loss: 0.660457
 Epoch 79: lr decay = 0.2
-grafting train epoch 79   overall_loss: 584.0479,  ce_loss: 0.637849, reg_loss: 16454.174, acc_loss: 0.852564, l2diff_loss: 116.80958
-grafting test epoch 79   overall_loss: 651.6498,  ce_loss: 2.312634, reg_loss: 16453.809, acc_loss: 0.646935
+grafting train epoch 79   overall_loss: 0.787502,  ce_loss: 0.545988, reg_loss: 1544.5656, acc_loss: 0.864022, l2diff_loss: 0.003044
+grafting test epoch 79   overall_loss: 0.789555,  ce_loss: 2.127602, reg_loss: 1544.5635, acc_loss: 0.660657
 Epoch 80: lr decay = 0.2
-grafting train epoch 80   overall_loss: 583.8749,  ce_loss: 0.64339, reg_loss: 16453.33, acc_loss: 0.853205, l2diff_loss: 116.77498
-grafting test epoch 80   overall_loss: 651.4954,  ce_loss: 2.31832, reg_loss: 16452.793, acc_loss: 0.647035
+grafting train epoch 80   overall_loss: 0.787539,  ce_loss: 0.551256, reg_loss: 1544.5645, acc_loss: 0.861018, l2diff_loss: 0.003051
+grafting test epoch 80   overall_loss: 0.78956,  ce_loss: 2.124946, reg_loss: 1544.5625, acc_loss: 0.660958
 Epoch 81: lr decay = 0.2
-grafting train epoch 81   overall_loss: 585.0402,  ce_loss: 0.650628, reg_loss: 16452.377, acc_loss: 0.851863, l2diff_loss: 117.00804
-grafting test epoch 81   overall_loss: 651.3713,  ce_loss: 2.318697, reg_loss: 16452.014, acc_loss: 0.648237
+grafting train epoch 81   overall_loss: 0.787512,  ce_loss: 0.543352, reg_loss: 1544.5615, acc_loss: 0.864062, l2diff_loss: 0.003046
+grafting test epoch 81   overall_loss: 0.789561,  ce_loss: 2.1309, reg_loss: 1544.5625, acc_loss: 0.660256
 Epoch 82: lr decay = 0.2
-grafting train epoch 82   overall_loss: 583.01733,  ce_loss: 0.631794, reg_loss: 16451.65, acc_loss: 0.853446, l2diff_loss: 116.60346
-grafting test epoch 82   overall_loss: 651.3877,  ce_loss: 2.320067, reg_loss: 16451.223, acc_loss: 0.647636
+grafting train epoch 82   overall_loss: 0.787502,  ce_loss: 0.537069, reg_loss: 1544.5615, acc_loss: 0.864323, l2diff_loss: 0.003044
+grafting test epoch 82   overall_loss: 0.789558,  ce_loss: 2.127329, reg_loss: 1544.5598, acc_loss: 0.660757
 Epoch 83: lr decay = 0.2
-grafting train epoch 83   overall_loss: 581.46985,  ce_loss: 0.645669, reg_loss: 16450.834, acc_loss: 0.851522, l2diff_loss: 116.29397
-grafting test epoch 83   overall_loss: 651.21796,  ce_loss: 2.314644, reg_loss: 16450.506, acc_loss: 0.648738
+grafting train epoch 83   overall_loss: 0.787501,  ce_loss: 0.544523, reg_loss: 1544.559, acc_loss: 0.861619, l2diff_loss: 0.003044
+grafting test epoch 83   overall_loss: 0.789558,  ce_loss: 2.12803, reg_loss: 1544.5566, acc_loss: 0.660657
 Epoch 84: lr decay = 0.2
-grafting train epoch 84   overall_loss: 585.3977,  ce_loss: 0.648271, reg_loss: 16450.018, acc_loss: 0.852384, l2diff_loss: 117.07954
-grafting test epoch 84   overall_loss: 650.86755,  ce_loss: 2.321576, reg_loss: 16449.656, acc_loss: 0.647837
+grafting train epoch 84   overall_loss: 0.787526,  ce_loss: 0.54161, reg_loss: 1544.558, acc_loss: 0.86262, l2diff_loss: 0.003049
+grafting test epoch 84   overall_loss: 0.789547,  ce_loss: 2.130024, reg_loss: 1544.5554, acc_loss: 0.660056
 Epoch 85: lr decay = 0.2
-grafting train epoch 85   overall_loss: 583.2464,  ce_loss: 0.647063, reg_loss: 16449.273, acc_loss: 0.852845, l2diff_loss: 116.64928
-grafting test epoch 85   overall_loss: 650.66113,  ce_loss: 2.319636, reg_loss: 16448.86, acc_loss: 0.648438
+grafting train epoch 85   overall_loss: 0.787484,  ce_loss: 0.530142, reg_loss: 1544.5542, acc_loss: 0.865385, l2diff_loss: 0.003041
+grafting test epoch 85   overall_loss: 0.789559,  ce_loss: 2.129136, reg_loss: 1544.5538, acc_loss: 0.660857
 Epoch 86: lr decay = 0.2
-grafting train epoch 86   overall_loss: 582.3022,  ce_loss: 0.639539, reg_loss: 16448.459, acc_loss: 0.854868, l2diff_loss: 116.460434
-grafting test epoch 86   overall_loss: 650.60846,  ce_loss: 2.320189, reg_loss: 16448.094, acc_loss: 0.648638
+grafting train epoch 86   overall_loss: 0.787481,  ce_loss: 0.547689, reg_loss: 1544.5529, acc_loss: 0.862861, l2diff_loss: 0.003041
+grafting test epoch 86   overall_loss: 0.789553,  ce_loss: 2.130141, reg_loss: 1544.5527, acc_loss: 0.660256
 Epoch 87: lr decay = 0.2
-grafting train epoch 87   overall_loss: 581.80743,  ce_loss: 0.648507, reg_loss: 16447.736, acc_loss: 0.852824, l2diff_loss: 116.361496
-grafting test epoch 87   overall_loss: 650.7806,  ce_loss: 2.325533, reg_loss: 16447.416, acc_loss: 0.648738
+grafting train epoch 87   overall_loss: 0.787487,  ce_loss: 0.544964, reg_loss: 1544.5516, acc_loss: 0.861258, l2diff_loss: 0.003042
+grafting test epoch 87   overall_loss: 0.789556,  ce_loss: 2.128001, reg_loss: 1544.5496, acc_loss: 0.660857
 Epoch 88: lr decay = 0.2
-grafting train epoch 88   overall_loss: 584.30273,  ce_loss: 0.644775, reg_loss: 16447.111, acc_loss: 0.852804, l2diff_loss: 116.86055
-grafting test epoch 88   overall_loss: 650.2439,  ce_loss: 2.326925, reg_loss: 16446.795, acc_loss: 0.647236
+grafting train epoch 88   overall_loss: 0.787551,  ce_loss: 0.537196, reg_loss: 1544.5491, acc_loss: 0.862921, l2diff_loss: 0.003055
+grafting test epoch 88   overall_loss: 0.789545,  ce_loss: 2.127946, reg_loss: 1544.5491, acc_loss: 0.660857
 Epoch 89: lr decay = 0.2
-grafting train epoch 89   overall_loss: 583.06696,  ce_loss: 0.63329, reg_loss: 16446.45, acc_loss: 0.853125, l2diff_loss: 116.61338
-grafting test epoch 89   overall_loss: 650.11523,  ce_loss: 2.329634, reg_loss: 16446.035, acc_loss: 0.647536
+grafting train epoch 89   overall_loss: 0.787461,  ce_loss: 0.546678, reg_loss: 1544.5477, acc_loss: 0.8626, l2diff_loss: 0.003037
+grafting test epoch 89   overall_loss: 0.789553,  ce_loss: 2.126996, reg_loss: 1544.5469, acc_loss: 0.661158
 Epoch 90: lr decay = 0.2
-grafting train epoch 90   overall_loss: 583.1773,  ce_loss: 0.637645, reg_loss: 16445.623, acc_loss: 0.853045, l2diff_loss: 116.63547
-grafting test epoch 90   overall_loss: 650.3342,  ce_loss: 2.328794, reg_loss: 16445.266, acc_loss: 0.648337
+grafting train epoch 90   overall_loss: 0.787506,  ce_loss: 0.540869, reg_loss: 1544.5471, acc_loss: 0.86244, l2diff_loss: 0.003046
+grafting test epoch 90   overall_loss: 0.789546,  ce_loss: 2.128346, reg_loss: 1544.5455, acc_loss: 0.660156
 Epoch 91: lr decay = 0.2
-grafting train epoch 91   overall_loss: 581.9526,  ce_loss: 0.633318, reg_loss: 16445.002, acc_loss: 0.853526, l2diff_loss: 116.3905
-grafting test epoch 91   overall_loss: 649.7204,  ce_loss: 2.321008, reg_loss: 16444.709, acc_loss: 0.649139
+grafting train epoch 91   overall_loss: 0.787498,  ce_loss: 0.540674, reg_loss: 1544.5449, acc_loss: 0.863261, l2diff_loss: 0.003045
+grafting test epoch 91   overall_loss: 0.789558,  ce_loss: 2.128953, reg_loss: 1544.546, acc_loss: 0.660557
 Epoch 92: lr decay = 0.2
-grafting train epoch 92   overall_loss: 582.3034,  ce_loss: 0.640836, reg_loss: 16444.271, acc_loss: 0.853385, l2diff_loss: 116.46068
-grafting test epoch 92   overall_loss: 649.1174,  ce_loss: 2.328029, reg_loss: 16443.871, acc_loss: 0.64984
+grafting train epoch 92   overall_loss: 0.787463,  ce_loss: 0.552672, reg_loss: 1544.5449, acc_loss: 0.861639, l2diff_loss: 0.003038
+grafting test epoch 92   overall_loss: 0.789539,  ce_loss: 2.125454, reg_loss: 1544.5441, acc_loss: 0.661058
 Epoch 93: lr decay = 0.2
-grafting train epoch 93   overall_loss: 581.4772,  ce_loss: 0.637336, reg_loss: 16443.523, acc_loss: 0.852624, l2diff_loss: 116.29543
-grafting test epoch 93   overall_loss: 649.6853,  ce_loss: 2.332685, reg_loss: 16443.08, acc_loss: 0.649239
+grafting train epoch 93   overall_loss: 0.787521,  ce_loss: 0.540477, reg_loss: 1544.5436, acc_loss: 0.863642, l2diff_loss: 0.00305
+grafting test epoch 93   overall_loss: 0.789551,  ce_loss: 2.129296, reg_loss: 1544.5433, acc_loss: 0.661058
 Epoch 94: lr decay = 0.2
-grafting train epoch 94   overall_loss: 580.7444,  ce_loss: 0.63677, reg_loss: 16442.834, acc_loss: 0.851663, l2diff_loss: 116.14888
-grafting test epoch 94   overall_loss: 649.7807,  ce_loss: 2.326574, reg_loss: 16442.504, acc_loss: 0.648638
+grafting train epoch 94   overall_loss: 0.787477,  ce_loss: 0.542981, reg_loss: 1544.5414, acc_loss: 0.86234, l2diff_loss: 0.003041
+grafting test epoch 94   overall_loss: 0.789553,  ce_loss: 2.126642, reg_loss: 1544.5404, acc_loss: 0.660857
 Epoch 95: lr decay = 0.2
-grafting train epoch 95   overall_loss: 584.08356,  ce_loss: 0.64022, reg_loss: 16442.205, acc_loss: 0.852143, l2diff_loss: 116.81672
-grafting test epoch 95   overall_loss: 649.49384,  ce_loss: 2.325919, reg_loss: 16441.918, acc_loss: 0.649339
+grafting train epoch 95   overall_loss: 0.787449,  ce_loss: 0.543808, reg_loss: 1544.5394, acc_loss: 0.863562, l2diff_loss: 0.003036
+grafting test epoch 95   overall_loss: 0.789545,  ce_loss: 2.129654, reg_loss: 1544.5381, acc_loss: 0.660457
 Epoch 96: lr decay = 0.2
-grafting train epoch 96   overall_loss: 580.6765,  ce_loss: 0.634798, reg_loss: 16441.658, acc_loss: 0.853786, l2diff_loss: 116.13531
-grafting test epoch 96   overall_loss: 648.6891,  ce_loss: 2.325898, reg_loss: 16441.355, acc_loss: 0.649139
+grafting train epoch 96   overall_loss: 0.787515,  ce_loss: 0.543891, reg_loss: 1544.5377, acc_loss: 0.863922, l2diff_loss: 0.003049
+grafting test epoch 96   overall_loss: 0.789546,  ce_loss: 2.126527, reg_loss: 1544.5365, acc_loss: 0.661058
 Epoch 97: lr decay = 0.2
-grafting train epoch 97   overall_loss: 580.3963,  ce_loss: 0.640879, reg_loss: 16441.064, acc_loss: 0.852504, l2diff_loss: 116.079254
-grafting test epoch 97   overall_loss: 648.20465,  ce_loss: 2.332477, reg_loss: 16440.72, acc_loss: 0.650441
+grafting train epoch 97   overall_loss: 0.787464,  ce_loss: 0.537152, reg_loss: 1544.5348, acc_loss: 0.863742, l2diff_loss: 0.003039
+grafting test epoch 97   overall_loss: 0.789525,  ce_loss: 2.130481, reg_loss: 1544.5361, acc_loss: 0.660256
 Epoch 98: lr decay = 0.2
-grafting train epoch 98   overall_loss: 580.8537,  ce_loss: 0.638394, reg_loss: 16440.484, acc_loss: 0.852524, l2diff_loss: 116.17075
-grafting test epoch 98   overall_loss: 649.0358,  ce_loss: 2.331011, reg_loss: 16440.158, acc_loss: 0.649439
+grafting train epoch 98   overall_loss: 0.787474,  ce_loss: 0.54442, reg_loss: 1544.5339, acc_loss: 0.863021, l2diff_loss: 0.003041
+grafting test epoch 98   overall_loss: 0.789544,  ce_loss: 2.12651, reg_loss: 1544.533, acc_loss: 0.660457
 Epoch 99: lr decay = 0.2
-grafting train epoch 99   overall_loss: 580.66595,  ce_loss: 0.628392, reg_loss: 16439.873, acc_loss: 0.853626, l2diff_loss: 116.13319
-grafting test epoch 99   overall_loss: 648.63916,  ce_loss: 2.330258, reg_loss: 16439.545, acc_loss: 0.650741
+grafting train epoch 99   overall_loss: 0.787515,  ce_loss: 0.541261, reg_loss: 1544.5321, acc_loss: 0.862099, l2diff_loss: 0.00305
+grafting test epoch 99   overall_loss: 0.789534,  ce_loss: 2.128724, reg_loss: 1544.5316, acc_loss: 0.660256
 Epoch 100: lr decay = 0.2
-grafting train epoch 100   overall_loss: 579.72327,  ce_loss: 0.628576, reg_loss: 16439.242, acc_loss: 0.853806, l2diff_loss: 115.944664
-grafting test epoch 100   overall_loss: 648.561,  ce_loss: 2.332256, reg_loss: 16438.906, acc_loss: 0.650341
+grafting train epoch 100   overall_loss: 0.787462,  ce_loss: 0.546998, reg_loss: 1544.5303, acc_loss: 0.863261, l2diff_loss: 0.003039
+grafting test epoch 100   overall_loss: 0.789536,  ce_loss: 2.127648, reg_loss: 1544.5297, acc_loss: 0.660857
 Epoch 101: lr decay = 0.2
-grafting train epoch 101   overall_loss: 579.5812,  ce_loss: 0.640371, reg_loss: 16438.678, acc_loss: 0.854768, l2diff_loss: 115.91624
-grafting test epoch 101   overall_loss: 648.775,  ce_loss: 2.329731, reg_loss: 16438.361, acc_loss: 0.65004
+grafting train epoch 101   overall_loss: 0.787486,  ce_loss: 0.540362, reg_loss: 1544.5302, acc_loss: 0.864483, l2diff_loss: 0.003044
+grafting test epoch 101   overall_loss: 0.789547,  ce_loss: 2.12549, reg_loss: 1544.5302, acc_loss: 0.660757
 Epoch 102: lr decay = 0.2
-grafting train epoch 102   overall_loss: 580.6967,  ce_loss: 0.640116, reg_loss: 16438.164, acc_loss: 0.854367, l2diff_loss: 116.13934
-grafting test epoch 102   overall_loss: 648.0605,  ce_loss: 2.328952, reg_loss: 16437.879, acc_loss: 0.649439
+grafting train epoch 102   overall_loss: 0.78748,  ce_loss: 0.531907, reg_loss: 1544.5287, acc_loss: 0.865004, l2diff_loss: 0.003043
+grafting test epoch 102   overall_loss: 0.789539,  ce_loss: 2.126064, reg_loss: 1544.5277, acc_loss: 0.660557
 Epoch 103: lr decay = 0.2
-grafting train epoch 103   overall_loss: 577.5608,  ce_loss: 0.638384, reg_loss: 16437.654, acc_loss: 0.854587, l2diff_loss: 115.51216
-grafting test epoch 103   overall_loss: 647.2492,  ce_loss: 2.325294, reg_loss: 16437.486, acc_loss: 0.649639
+grafting train epoch 103   overall_loss: 0.787471,  ce_loss: 0.537379, reg_loss: 1544.5266, acc_loss: 0.864904, l2diff_loss: 0.003042
+grafting test epoch 103   overall_loss: 0.78953,  ce_loss: 2.123938, reg_loss: 1544.5245, acc_loss: 0.661358
 Epoch 104: lr decay = 0.2
-grafting train epoch 104   overall_loss: 582.5579,  ce_loss: 0.63212, reg_loss: 16437.17, acc_loss: 0.855449, l2diff_loss: 116.51158
-grafting test epoch 104   overall_loss: 647.5145,  ce_loss: 2.338818, reg_loss: 16436.89, acc_loss: 0.648137
+grafting train epoch 104   overall_loss: 0.787544,  ce_loss: 0.531905, reg_loss: 1544.525, acc_loss: 0.865304, l2diff_loss: 0.003056
+grafting test epoch 104   overall_loss: 0.789528,  ce_loss: 2.129419, reg_loss: 1544.5254, acc_loss: 0.660757
 Epoch 105: lr decay = 0.2
-grafting train epoch 105   overall_loss: 579.4447,  ce_loss: 0.647866, reg_loss: 16436.654, acc_loss: 0.853265, l2diff_loss: 115.88892
-grafting test epoch 105   overall_loss: 647.8098,  ce_loss: 2.333355, reg_loss: 16436.469, acc_loss: 0.648538
+grafting train epoch 105   overall_loss: 0.787415,  ce_loss: 0.535131, reg_loss: 1544.5247, acc_loss: 0.865144, l2diff_loss: 0.003031
+grafting test epoch 105   overall_loss: 0.789527,  ce_loss: 2.125187, reg_loss: 1544.5237, acc_loss: 0.661258
 Epoch 106: lr decay = 0.2
-grafting train epoch 106   overall_loss: 580.257,  ce_loss: 0.625017, reg_loss: 16436.227, acc_loss: 0.855729, l2diff_loss: 116.0514
-grafting test epoch 106   overall_loss: 646.864,  ce_loss: 2.334634, reg_loss: 16435.984, acc_loss: 0.649038
+grafting train epoch 106   overall_loss: 0.787515,  ce_loss: 0.531982, reg_loss: 1544.5244, acc_loss: 0.865905, l2diff_loss: 0.003051
+grafting test epoch 106   overall_loss: 0.789537,  ce_loss: 2.128489, reg_loss: 1544.5236, acc_loss: 0.661358
 Epoch 107: lr decay = 0.2
-grafting train epoch 107   overall_loss: 578.1589,  ce_loss: 0.635378, reg_loss: 16435.744, acc_loss: 0.854046, l2diff_loss: 115.63179
-grafting test epoch 107   overall_loss: 647.38635,  ce_loss: 2.336491, reg_loss: 16435.432, acc_loss: 0.648938
+grafting train epoch 107   overall_loss: 0.78745,  ce_loss: 0.537466, reg_loss: 1544.5227, acc_loss: 0.864223, l2diff_loss: 0.003038
+grafting test epoch 107   overall_loss: 0.789534,  ce_loss: 2.12459, reg_loss: 1544.5217, acc_loss: 0.660958
 Epoch 108: lr decay = 0.2
-grafting train epoch 108   overall_loss: 577.7288,  ce_loss: 0.64965, reg_loss: 16435.203, acc_loss: 0.852043, l2diff_loss: 115.54578
-grafting test epoch 108   overall_loss: 647.3055,  ce_loss: 2.339855, reg_loss: 16434.965, acc_loss: 0.648838
+grafting train epoch 108   overall_loss: 0.787489,  ce_loss: 0.544191, reg_loss: 1544.5215, acc_loss: 0.86264, l2diff_loss: 0.003046
+grafting test epoch 108   overall_loss: 0.78954,  ce_loss: 2.127281, reg_loss: 1544.5225, acc_loss: 0.660857
 Epoch 109: lr decay = 0.2
-grafting train epoch 109   overall_loss: 575.4533,  ce_loss: 0.636269, reg_loss: 16434.71, acc_loss: 0.854427, l2diff_loss: 115.09065
-grafting test epoch 109   overall_loss: 646.6359,  ce_loss: 2.335393, reg_loss: 16434.447, acc_loss: 0.648938
+grafting train epoch 109   overall_loss: 0.787462,  ce_loss: 0.536447, reg_loss: 1544.5205, acc_loss: 0.864002, l2diff_loss: 0.00304
+grafting test epoch 109   overall_loss: 0.789532,  ce_loss: 2.126498, reg_loss: 1544.5209, acc_loss: 0.660857
 Epoch 110: lr decay = 0.2
-grafting train epoch 110   overall_loss: 577.95135,  ce_loss: 0.647078, reg_loss: 16434.191, acc_loss: 0.853045, l2diff_loss: 115.59027
-grafting test epoch 110   overall_loss: 646.34534,  ce_loss: 2.33547, reg_loss: 16433.92, acc_loss: 0.649139
+grafting train epoch 110   overall_loss: 0.787454,  ce_loss: 0.541648, reg_loss: 1544.5197, acc_loss: 0.864243, l2diff_loss: 0.003039
+grafting test epoch 110   overall_loss: 0.789516,  ce_loss: 2.129504, reg_loss: 1544.5206, acc_loss: 0.660457
 Epoch 111: lr decay = 0.2
-grafting train epoch 111   overall_loss: 579.60065,  ce_loss: 0.620724, reg_loss: 16433.717, acc_loss: 0.855409, l2diff_loss: 115.920135
-grafting test epoch 111   overall_loss: 646.52625,  ce_loss: 2.331546, reg_loss: 16433.47, acc_loss: 0.649139
+grafting train epoch 111   overall_loss: 0.787478,  ce_loss: 0.527273, reg_loss: 1544.5186, acc_loss: 0.866086, l2diff_loss: 0.003044
+grafting test epoch 111   overall_loss: 0.789533,  ce_loss: 2.127491, reg_loss: 1544.5188, acc_loss: 0.660557
 Epoch 112: lr decay = 0.2
-grafting train epoch 112   overall_loss: 578.88855,  ce_loss: 0.638256, reg_loss: 16433.342, acc_loss: 0.854988, l2diff_loss: 115.7777
-grafting test epoch 112   overall_loss: 646.0555,  ce_loss: 2.334922, reg_loss: 16433.098, acc_loss: 0.64994
+grafting train epoch 112   overall_loss: 0.787489,  ce_loss: 0.524966, reg_loss: 1544.5177, acc_loss: 0.867087, l2diff_loss: 0.003046
+grafting test epoch 112   overall_loss: 0.789527,  ce_loss: 2.126334, reg_loss: 1544.5173, acc_loss: 0.660958
 Epoch 113: lr decay = 0.2
-grafting train epoch 113   overall_loss: 575.6823,  ce_loss: 0.632355, reg_loss: 16432.936, acc_loss: 0.853325, l2diff_loss: 115.13647
-grafting test epoch 113   overall_loss: 645.67346,  ce_loss: 2.335914, reg_loss: 16432.715, acc_loss: 0.649339
+grafting train epoch 113   overall_loss: 0.787454,  ce_loss: 0.537504, reg_loss: 1544.5162, acc_loss: 0.862901, l2diff_loss: 0.003039
+grafting test epoch 113   overall_loss: 0.789525,  ce_loss: 2.127327, reg_loss: 1544.5159, acc_loss: 0.660958
 Epoch 114: lr decay = 0.2
-grafting train epoch 114   overall_loss: 578.2424,  ce_loss: 0.629562, reg_loss: 16432.46, acc_loss: 0.85643, l2diff_loss: 115.648476
-grafting test epoch 114   overall_loss: 645.2198,  ce_loss: 2.328275, reg_loss: 16432.277, acc_loss: 0.65014
+grafting train epoch 114   overall_loss: 0.787463,  ce_loss: 0.539128, reg_loss: 1544.5148, acc_loss: 0.863782, l2diff_loss: 0.003041
+grafting test epoch 114   overall_loss: 0.789525,  ce_loss: 2.125069, reg_loss: 1544.5148, acc_loss: 0.660958
 Epoch 115: lr decay = 0.2
-grafting train epoch 115   overall_loss: 576.13885,  ce_loss: 0.642693, reg_loss: 16432.043, acc_loss: 0.853325, l2diff_loss: 115.22777
-grafting test epoch 115   overall_loss: 645.0331,  ce_loss: 2.327363, reg_loss: 16431.834, acc_loss: 0.649439
+grafting train epoch 115   overall_loss: 0.787447,  ce_loss: 0.543689, reg_loss: 1544.5138, acc_loss: 0.864042, l2diff_loss: 0.003038
+grafting test epoch 115   overall_loss: 0.789521,  ce_loss: 2.126635, reg_loss: 1544.513, acc_loss: 0.660657
 Epoch 116: lr decay = 0.2
-grafting train epoch 116   overall_loss: 579.20056,  ce_loss: 0.635531, reg_loss: 16431.566, acc_loss: 0.853205, l2diff_loss: 115.84011
-grafting test epoch 116   overall_loss: 644.72766,  ce_loss: 2.334843, reg_loss: 16431.361, acc_loss: 0.650741
+grafting train epoch 116   overall_loss: 0.787473,  ce_loss: 0.536922, reg_loss: 1544.5125, acc_loss: 0.863301, l2diff_loss: 0.003043
+grafting test epoch 116   overall_loss: 0.789529,  ce_loss: 2.124289, reg_loss: 1544.5128, acc_loss: 0.661158
 Epoch 117: lr decay = 0.2
-grafting train epoch 117   overall_loss: 576.101,  ce_loss: 0.617248, reg_loss: 16431.229, acc_loss: 0.858594, l2diff_loss: 115.2202
-grafting test epoch 117   overall_loss: 644.0841,  ce_loss: 2.34217, reg_loss: 16431.059, acc_loss: 0.649539
+grafting train epoch 117   overall_loss: 0.787496,  ce_loss: 0.5247, reg_loss: 1544.5123, acc_loss: 0.866386, l2diff_loss: 0.003048
+grafting test epoch 117   overall_loss: 0.789525,  ce_loss: 2.126188, reg_loss: 1544.5114, acc_loss: 0.660857
 Epoch 118: lr decay = 0.2
-grafting train epoch 118   overall_loss: 574.5013,  ce_loss: 0.645435, reg_loss: 16430.793, acc_loss: 0.851282, l2diff_loss: 114.90025
-grafting test epoch 118   overall_loss: 643.48193,  ce_loss: 2.339279, reg_loss: 16430.514, acc_loss: 0.65004
+grafting train epoch 118   overall_loss: 0.787526,  ce_loss: 0.540401, reg_loss: 1544.5112, acc_loss: 0.863902, l2diff_loss: 0.003054
+grafting test epoch 118   overall_loss: 0.789537,  ce_loss: 2.131234, reg_loss: 1544.5131, acc_loss: 0.659856
 Epoch 119: lr decay = 0.2
-grafting train epoch 119   overall_loss: 576.25464,  ce_loss: 0.642677, reg_loss: 16430.312, acc_loss: 0.852845, l2diff_loss: 115.25093
-grafting test epoch 119   overall_loss: 644.0383,  ce_loss: 2.334495, reg_loss: 16430.139, acc_loss: 0.650341
+grafting train epoch 119   overall_loss: 0.787432,  ce_loss: 0.549672, reg_loss: 1544.5118, acc_loss: 0.860697, l2diff_loss: 0.003035
+grafting test epoch 119   overall_loss: 0.789521,  ce_loss: 2.129306, reg_loss: 1544.5121, acc_loss: 0.660256
 Epoch 120: lr decay = 0.04000000000000001
-grafting train epoch 120   overall_loss: 575.64545,  ce_loss: 0.635565, reg_loss: 16430.043, acc_loss: 0.854347, l2diff_loss: 115.129074
-grafting test epoch 120   overall_loss: 644.08875,  ce_loss: 2.336354, reg_loss: 16429.979, acc_loss: 0.650541
+grafting train epoch 120   overall_loss: 0.787434,  ce_loss: 0.54426, reg_loss: 1544.5116, acc_loss: 0.863502, l2diff_loss: 0.003036
+grafting test epoch 120   overall_loss: 0.789526,  ce_loss: 2.127092, reg_loss: 1544.511, acc_loss: 0.660657
 Epoch 121: lr decay = 0.04000000000000001
-grafting train epoch 121   overall_loss: 577.91797,  ce_loss: 0.634139, reg_loss: 16429.904, acc_loss: 0.853586, l2diff_loss: 115.583595
-grafting test epoch 121   overall_loss: 643.5311,  ce_loss: 2.338761, reg_loss: 16429.824, acc_loss: 0.64974
+grafting train epoch 121   overall_loss: 0.787444,  ce_loss: 0.541005, reg_loss: 1544.5116, acc_loss: 0.863442, l2diff_loss: 0.003038
+grafting test epoch 121   overall_loss: 0.789518,  ce_loss: 2.128522, reg_loss: 1544.511, acc_loss: 0.660357
 Epoch 122: lr decay = 0.04000000000000001
-grafting train epoch 122   overall_loss: 574.42236,  ce_loss: 0.6405, reg_loss: 16429.76, acc_loss: 0.852244, l2diff_loss: 114.884476
-grafting test epoch 122   overall_loss: 643.55066,  ce_loss: 2.335327, reg_loss: 16429.7, acc_loss: 0.650441
+grafting train epoch 122   overall_loss: 0.787491,  ce_loss: 0.54065, reg_loss: 1544.5111, acc_loss: 0.863642, l2diff_loss: 0.003047
+grafting test epoch 122   overall_loss: 0.789522,  ce_loss: 2.127006, reg_loss: 1544.5104, acc_loss: 0.660457
 Epoch 123: lr decay = 0.04000000000000001
-grafting train epoch 123   overall_loss: 573.43884,  ce_loss: 0.636929, reg_loss: 16429.625, acc_loss: 0.854607, l2diff_loss: 114.68777
-grafting test epoch 123   overall_loss: 643.072,  ce_loss: 2.336891, reg_loss: 16429.568, acc_loss: 0.65024
+grafting train epoch 123   overall_loss: 0.787427,  ce_loss: 0.55205, reg_loss: 1544.5104, acc_loss: 0.860337, l2diff_loss: 0.003034
+grafting test epoch 123   overall_loss: 0.789519,  ce_loss: 2.127616, reg_loss: 1544.51, acc_loss: 0.660256
 Epoch 124: lr decay = 0.04000000000000001
-grafting train epoch 124   overall_loss: 575.71423,  ce_loss: 0.644966, reg_loss: 16429.504, acc_loss: 0.853085, l2diff_loss: 115.142845
-grafting test epoch 124   overall_loss: 643.073,  ce_loss: 2.336838, reg_loss: 16429.455, acc_loss: 0.650441
+grafting train epoch 124   overall_loss: 0.787426,  ce_loss: 0.546552, reg_loss: 1544.5103, acc_loss: 0.861038, l2diff_loss: 0.003034
+grafting test epoch 124   overall_loss: 0.789517,  ce_loss: 2.12739, reg_loss: 1544.5098, acc_loss: 0.660156
 Epoch 125: lr decay = 0.04000000000000001
-grafting train epoch 125   overall_loss: 573.8038,  ce_loss: 0.642094, reg_loss: 16429.379, acc_loss: 0.852584, l2diff_loss: 114.76076
-grafting test epoch 125   overall_loss: 643.27625,  ce_loss: 2.338688, reg_loss: 16429.307, acc_loss: 0.650341
+grafting train epoch 125   overall_loss: 0.787409,  ce_loss: 0.550453, reg_loss: 1544.5101, acc_loss: 0.862841, l2diff_loss: 0.003031
+grafting test epoch 125   overall_loss: 0.78952,  ce_loss: 2.129254, reg_loss: 1544.5098, acc_loss: 0.660557
 Epoch 126: lr decay = 0.04000000000000001
-grafting train epoch 126   overall_loss: 573.3707,  ce_loss: 0.642212, reg_loss: 16429.227, acc_loss: 0.853185, l2diff_loss: 114.67414
-grafting test epoch 126   overall_loss: 643.21295,  ce_loss: 2.336297, reg_loss: 16429.164, acc_loss: 0.65024
+grafting train epoch 126   overall_loss: 0.787386,  ce_loss: 0.534986, reg_loss: 1544.5098, acc_loss: 0.861859, l2diff_loss: 0.003026
+grafting test epoch 126   overall_loss: 0.789512,  ce_loss: 2.124547, reg_loss: 1544.5095, acc_loss: 0.660357
 Epoch 127: lr decay = 0.04000000000000001
-grafting train epoch 127   overall_loss: 574.15186,  ce_loss: 0.622488, reg_loss: 16429.115, acc_loss: 0.857472, l2diff_loss: 114.83037
-grafting test epoch 127   overall_loss: 642.742,  ce_loss: 2.33898, reg_loss: 16429.045, acc_loss: 0.64974
+grafting train epoch 127   overall_loss: 0.787428,  ce_loss: 0.547008, reg_loss: 1544.5094, acc_loss: 0.863241, l2diff_loss: 0.003035
+grafting test epoch 127   overall_loss: 0.789505,  ce_loss: 2.127233, reg_loss: 1544.5089, acc_loss: 0.660357
 Epoch 128: lr decay = 0.04000000000000001
-grafting train epoch 128   overall_loss: 572.71576,  ce_loss: 0.639901, reg_loss: 16428.994, acc_loss: 0.854187, l2diff_loss: 114.54316
-grafting test epoch 128   overall_loss: 643.0485,  ce_loss: 2.338046, reg_loss: 16428.926, acc_loss: 0.649639
+grafting train epoch 128   overall_loss: 0.787452,  ce_loss: 0.544398, reg_loss: 1544.5092, acc_loss: 0.860797, l2diff_loss: 0.003039
+grafting test epoch 128   overall_loss: 0.789517,  ce_loss: 2.126563, reg_loss: 1544.5087, acc_loss: 0.660457
 Epoch 129: lr decay = 0.04000000000000001
-grafting train epoch 129   overall_loss: 575.97205,  ce_loss: 0.638481, reg_loss: 16428.855, acc_loss: 0.853165, l2diff_loss: 115.19441
-grafting test epoch 129   overall_loss: 643.0038,  ce_loss: 2.338955, reg_loss: 16428.777, acc_loss: 0.65004
+grafting train epoch 129   overall_loss: 0.78745,  ce_loss: 0.547989, reg_loss: 1544.5088, acc_loss: 0.860737, l2diff_loss: 0.003039
+grafting test epoch 129   overall_loss: 0.789514,  ce_loss: 2.124338, reg_loss: 1544.5087, acc_loss: 0.660757
 Epoch 130: lr decay = 0.04000000000000001
-grafting train epoch 130   overall_loss: 575.55426,  ce_loss: 0.639371, reg_loss: 16428.744, acc_loss: 0.854868, l2diff_loss: 115.11085
-grafting test epoch 130   overall_loss: 642.7977,  ce_loss: 2.340288, reg_loss: 16428.709, acc_loss: 0.65014
+grafting train epoch 130   overall_loss: 0.78745,  ce_loss: 0.55003, reg_loss: 1544.5085, acc_loss: 0.863642, l2diff_loss: 0.003039
+grafting test epoch 130   overall_loss: 0.789518,  ce_loss: 2.127889, reg_loss: 1544.5087, acc_loss: 0.660357
 Epoch 131: lr decay = 0.04000000000000001
-grafting train epoch 131   overall_loss: 571.8832,  ce_loss: 0.632444, reg_loss: 16428.656, acc_loss: 0.855188, l2diff_loss: 114.37663
-grafting test epoch 131   overall_loss: 642.79114,  ce_loss: 2.336589, reg_loss: 16428.598, acc_loss: 0.649639
+grafting train epoch 131   overall_loss: 0.787453,  ce_loss: 0.533157, reg_loss: 1544.5087, acc_loss: 0.863702, l2diff_loss: 0.00304
+grafting test epoch 131   overall_loss: 0.789516,  ce_loss: 2.12681, reg_loss: 1544.5082, acc_loss: 0.660357
 Epoch 132: lr decay = 0.04000000000000001
-grafting train epoch 132   overall_loss: 573.5908,  ce_loss: 0.637003, reg_loss: 16428.54, acc_loss: 0.852764, l2diff_loss: 114.71817
-grafting test epoch 132   overall_loss: 643.14636,  ce_loss: 2.335856, reg_loss: 16428.48, acc_loss: 0.650341
+grafting train epoch 132   overall_loss: 0.787449,  ce_loss: 0.536241, reg_loss: 1544.5078, acc_loss: 0.864543, l2diff_loss: 0.003039
+grafting test epoch 132   overall_loss: 0.789518,  ce_loss: 2.124794, reg_loss: 1544.5077, acc_loss: 0.660657
 Epoch 133: lr decay = 0.04000000000000001
-grafting train epoch 133   overall_loss: 574.5797,  ce_loss: 0.647643, reg_loss: 16428.42, acc_loss: 0.852184, l2diff_loss: 114.91595
-grafting test epoch 133   overall_loss: 642.63983,  ce_loss: 2.338826, reg_loss: 16428.348, acc_loss: 0.649239
+grafting train epoch 133   overall_loss: 0.787451,  ce_loss: 0.553168, reg_loss: 1544.5077, acc_loss: 0.860938, l2diff_loss: 0.003039
+grafting test epoch 133   overall_loss: 0.789512,  ce_loss: 2.1266, reg_loss: 1544.5079, acc_loss: 0.660557
 Epoch 134: lr decay = 0.04000000000000001
-grafting train epoch 134   overall_loss: 571.31946,  ce_loss: 0.638126, reg_loss: 16428.29, acc_loss: 0.854928, l2diff_loss: 114.2639
-grafting test epoch 134   overall_loss: 642.99963,  ce_loss: 2.335752, reg_loss: 16428.22, acc_loss: 0.65004
+grafting train epoch 134   overall_loss: 0.787424,  ce_loss: 0.548552, reg_loss: 1544.5077, acc_loss: 0.861478, l2diff_loss: 0.003034
+grafting test epoch 134   overall_loss: 0.789513,  ce_loss: 2.125563, reg_loss: 1544.5077, acc_loss: 0.661058
 Epoch 135: lr decay = 0.04000000000000001
-grafting train epoch 135   overall_loss: 577.9198,  ce_loss: 0.640736, reg_loss: 16428.158, acc_loss: 0.852224, l2diff_loss: 115.583954
-grafting test epoch 135   overall_loss: 642.4948,  ce_loss: 2.34012, reg_loss: 16428.11, acc_loss: 0.649639
+grafting train epoch 135   overall_loss: 0.787493,  ce_loss: 0.551693, reg_loss: 1544.5076, acc_loss: 0.861498, l2diff_loss: 0.003048
+grafting test epoch 135   overall_loss: 0.789509,  ce_loss: 2.127713, reg_loss: 1544.5074, acc_loss: 0.660657
 Epoch 136: lr decay = 0.04000000000000001
-grafting train epoch 136   overall_loss: 574.60425,  ce_loss: 0.628834, reg_loss: 16428.043, acc_loss: 0.854006, l2diff_loss: 114.92085
-grafting test epoch 136   overall_loss: 642.40247,  ce_loss: 2.337357, reg_loss: 16427.998, acc_loss: 0.65014
+grafting train epoch 136   overall_loss: 0.787494,  ce_loss: 0.548353, reg_loss: 1544.5076, acc_loss: 0.861819, l2diff_loss: 0.003048
+grafting test epoch 136   overall_loss: 0.78951,  ce_loss: 2.127189, reg_loss: 1544.5076, acc_loss: 0.660657
 Epoch 137: lr decay = 0.04000000000000001
-grafting train epoch 137   overall_loss: 572.3963,  ce_loss: 0.622285, reg_loss: 16427.932, acc_loss: 0.85641, l2diff_loss: 114.47925
-grafting test epoch 137   overall_loss: 642.7227,  ce_loss: 2.336041, reg_loss: 16427.889, acc_loss: 0.65014
+grafting train epoch 137   overall_loss: 0.78746,  ce_loss: 0.535283, reg_loss: 1544.5076, acc_loss: 0.864443, l2diff_loss: 0.003041
+grafting test epoch 137   overall_loss: 0.789513,  ce_loss: 2.125745, reg_loss: 1544.5077, acc_loss: 0.661458
 Epoch 138: lr decay = 0.04000000000000001
-grafting train epoch 138   overall_loss: 573.29987,  ce_loss: 0.634888, reg_loss: 16427.83, acc_loss: 0.854507, l2diff_loss: 114.65997
-grafting test epoch 138   overall_loss: 642.5961,  ce_loss: 2.338749, reg_loss: 16427.764, acc_loss: 0.65024
+grafting train epoch 138   overall_loss: 0.787416,  ce_loss: 0.54399, reg_loss: 1544.5073, acc_loss: 0.863782, l2diff_loss: 0.003032
+grafting test epoch 138   overall_loss: 0.789502,  ce_loss: 2.126124, reg_loss: 1544.5071, acc_loss: 0.660958
 Epoch 139: lr decay = 0.04000000000000001
-grafting train epoch 139   overall_loss: 572.4137,  ce_loss: 0.640808, reg_loss: 16427.697, acc_loss: 0.852644, l2diff_loss: 114.482735
-grafting test epoch 139   overall_loss: 642.2695,  ce_loss: 2.338837, reg_loss: 16427.627, acc_loss: 0.64974
+grafting train epoch 139   overall_loss: 0.787435,  ce_loss: 0.547359, reg_loss: 1544.5071, acc_loss: 0.86242, l2diff_loss: 0.003036
+grafting test epoch 139   overall_loss: 0.78951,  ce_loss: 2.127771, reg_loss: 1544.5068, acc_loss: 0.660557
 Epoch 140: lr decay = 0.04000000000000001
-grafting train epoch 140   overall_loss: 572.7726,  ce_loss: 0.636675, reg_loss: 16427.564, acc_loss: 0.854668, l2diff_loss: 114.554504
-grafting test epoch 140   overall_loss: 642.27167,  ce_loss: 2.335991, reg_loss: 16427.514, acc_loss: 0.65014
+grafting train epoch 140   overall_loss: 0.787442,  ce_loss: 0.542613, reg_loss: 1544.5066, acc_loss: 0.86282, l2diff_loss: 0.003038
+grafting test epoch 140   overall_loss: 0.789509,  ce_loss: 2.126717, reg_loss: 1544.5068, acc_loss: 0.660657
 Epoch 141: lr decay = 0.04000000000000001
-grafting train epoch 141   overall_loss: 572.27545,  ce_loss: 0.635269, reg_loss: 16427.453, acc_loss: 0.854046, l2diff_loss: 114.455086
-grafting test epoch 141   overall_loss: 642.4949,  ce_loss: 2.330415, reg_loss: 16427.408, acc_loss: 0.65004
+grafting train epoch 141   overall_loss: 0.787469,  ce_loss: 0.539692, reg_loss: 1544.5067, acc_loss: 0.863682, l2diff_loss: 0.003043
+grafting test epoch 141   overall_loss: 0.789512,  ce_loss: 2.121546, reg_loss: 1544.5068, acc_loss: 0.661158
 Epoch 142: lr decay = 0.04000000000000001
-grafting train epoch 142   overall_loss: 575.4414,  ce_loss: 0.638294, reg_loss: 16427.334, acc_loss: 0.853906, l2diff_loss: 115.08828
-grafting test epoch 142   overall_loss: 643.081,  ce_loss: 2.337778, reg_loss: 16427.248, acc_loss: 0.650341
+grafting train epoch 142   overall_loss: 0.787431,  ce_loss: 0.551118, reg_loss: 1544.5067, acc_loss: 0.860457, l2diff_loss: 0.003036
+grafting test epoch 142   overall_loss: 0.789518,  ce_loss: 2.125682, reg_loss: 1544.5065, acc_loss: 0.661158
 Epoch 143: lr decay = 0.04000000000000001
-grafting train epoch 143   overall_loss: 574.1353,  ce_loss: 0.640852, reg_loss: 16427.201, acc_loss: 0.853746, l2diff_loss: 114.827065
-grafting test epoch 143   overall_loss: 642.2187,  ce_loss: 2.340685, reg_loss: 16427.152, acc_loss: 0.65004
+grafting train epoch 143   overall_loss: 0.787432,  ce_loss: 0.54823, reg_loss: 1544.5061, acc_loss: 0.862119, l2diff_loss: 0.003036
+grafting test epoch 143   overall_loss: 0.789504,  ce_loss: 2.127334, reg_loss: 1544.506, acc_loss: 0.660457
 Epoch 144: lr decay = 0.04000000000000001
-grafting train epoch 144   overall_loss: 573.7234,  ce_loss: 0.635487, reg_loss: 16427.107, acc_loss: 0.854347, l2diff_loss: 114.74469
-grafting test epoch 144   overall_loss: 642.472,  ce_loss: 2.336461, reg_loss: 16427.068, acc_loss: 0.64984
+grafting train epoch 144   overall_loss: 0.787472,  ce_loss: 0.54196, reg_loss: 1544.5061, acc_loss: 0.862119, l2diff_loss: 0.003044
+grafting test epoch 144   overall_loss: 0.78951,  ce_loss: 2.126354, reg_loss: 1544.5062, acc_loss: 0.660657
 Epoch 145: lr decay = 0.04000000000000001
-grafting train epoch 145   overall_loss: 570.88354,  ce_loss: 0.631967, reg_loss: 16427.014, acc_loss: 0.854948, l2diff_loss: 114.17672
-grafting test epoch 145   overall_loss: 642.24426,  ce_loss: 2.334464, reg_loss: 16426.955, acc_loss: 0.65024
+grafting train epoch 145   overall_loss: 0.787439,  ce_loss: 0.54434, reg_loss: 1544.5061, acc_loss: 0.861879, l2diff_loss: 0.003037
+grafting test epoch 145   overall_loss: 0.789508,  ce_loss: 2.127156, reg_loss: 1544.5061, acc_loss: 0.660958
 Epoch 146: lr decay = 0.04000000000000001
-grafting train epoch 146   overall_loss: 573.4777,  ce_loss: 0.641002, reg_loss: 16426.887, acc_loss: 0.852604, l2diff_loss: 114.69553
-grafting test epoch 146   overall_loss: 642.3308,  ce_loss: 2.336991, reg_loss: 16426.807, acc_loss: 0.65004
+grafting train epoch 146   overall_loss: 0.787447,  ce_loss: 0.541346, reg_loss: 1544.5057, acc_loss: 0.863902, l2diff_loss: 0.003039
+grafting test epoch 146   overall_loss: 0.789497,  ce_loss: 2.126098, reg_loss: 1544.5059, acc_loss: 0.660857
 Epoch 147: lr decay = 0.04000000000000001
-grafting train epoch 147   overall_loss: 576.25726,  ce_loss: 0.635775, reg_loss: 16426.729, acc_loss: 0.855208, l2diff_loss: 115.251465
-grafting test epoch 147   overall_loss: 642.09454,  ce_loss: 2.3421, reg_loss: 16426.666, acc_loss: 0.65004
+grafting train epoch 147   overall_loss: 0.787452,  ce_loss: 0.54144, reg_loss: 1544.5056, acc_loss: 0.86254, l2diff_loss: 0.00304
+grafting test epoch 147   overall_loss: 0.789507,  ce_loss: 2.128463, reg_loss: 1544.5056, acc_loss: 0.660657
 Epoch 148: lr decay = 0.04000000000000001
-grafting train epoch 148   overall_loss: 570.5904,  ce_loss: 0.627105, reg_loss: 16426.643, acc_loss: 0.855088, l2diff_loss: 114.11809
-grafting test epoch 148   overall_loss: 642.4097,  ce_loss: 2.33496, reg_loss: 16426.598, acc_loss: 0.651042
+grafting train epoch 148   overall_loss: 0.787403,  ce_loss: 0.555114, reg_loss: 1544.5051, acc_loss: 0.860938, l2diff_loss: 0.00303
+grafting test epoch 148   overall_loss: 0.789511,  ce_loss: 2.125512, reg_loss: 1544.5051, acc_loss: 0.660958
 Epoch 149: lr decay = 0.04000000000000001
-grafting train epoch 149   overall_loss: 573.7109,  ce_loss: 0.634702, reg_loss: 16426.514, acc_loss: 0.854728, l2diff_loss: 114.74219
-grafting test epoch 149   overall_loss: 642.3754,  ce_loss: 2.339298, reg_loss: 16426.447, acc_loss: 0.650541
+grafting train epoch 149   overall_loss: 0.7875,  ce_loss: 0.545004, reg_loss: 1544.5051, acc_loss: 0.862099, l2diff_loss: 0.00305
+grafting test epoch 149   overall_loss: 0.789511,  ce_loss: 2.127732, reg_loss: 1544.5052, acc_loss: 0.660958
 Epoch 150: lr decay = 0.04000000000000001
-grafting train epoch 150   overall_loss: 574.24084,  ce_loss: 0.6384, reg_loss: 16426.383, acc_loss: 0.853686, l2diff_loss: 114.848175
-grafting test epoch 150   overall_loss: 642.1338,  ce_loss: 2.336167, reg_loss: 16426.33, acc_loss: 0.650541
+grafting train epoch 150   overall_loss: 0.787505,  ce_loss: 0.544845, reg_loss: 1544.5048, acc_loss: 0.86268, l2diff_loss: 0.00305
+grafting test epoch 150   overall_loss: 0.789509,  ce_loss: 2.128226, reg_loss: 1544.5052, acc_loss: 0.660757
 Epoch 151: lr decay = 0.04000000000000001
-grafting train epoch 151   overall_loss: 574.3484,  ce_loss: 0.63201, reg_loss: 16426.277, acc_loss: 0.854447, l2diff_loss: 114.869675
-grafting test epoch 151   overall_loss: 642.59015,  ce_loss: 2.340912, reg_loss: 16426.215, acc_loss: 0.65024
+grafting train epoch 151   overall_loss: 0.787362,  ce_loss: 0.540637, reg_loss: 1544.5048, acc_loss: 0.864002, l2diff_loss: 0.003022
+grafting test epoch 151   overall_loss: 0.789517,  ce_loss: 2.127381, reg_loss: 1544.5051, acc_loss: 0.660857
 Epoch 152: lr decay = 0.04000000000000001
-grafting train epoch 152   overall_loss: 573.31824,  ce_loss: 0.640389, reg_loss: 16426.166, acc_loss: 0.852664, l2diff_loss: 114.66365
-grafting test epoch 152   overall_loss: 641.97644,  ce_loss: 2.337938, reg_loss: 16426.123, acc_loss: 0.65014
+grafting train epoch 152   overall_loss: 0.787419,  ce_loss: 0.550494, reg_loss: 1544.5042, acc_loss: 0.861198, l2diff_loss: 0.003033
+grafting test epoch 152   overall_loss: 0.789511,  ce_loss: 2.123991, reg_loss: 1544.5044, acc_loss: 0.660657
 Epoch 153: lr decay = 0.04000000000000001
-grafting train epoch 153   overall_loss: 574.63776,  ce_loss: 0.632438, reg_loss: 16426.064, acc_loss: 0.855328, l2diff_loss: 114.92754
-grafting test epoch 153   overall_loss: 641.58716,  ce_loss: 2.337581, reg_loss: 16426.01, acc_loss: 0.650741
+grafting train epoch 153   overall_loss: 0.787488,  ce_loss: 0.53801, reg_loss: 1544.5042, acc_loss: 0.863321, l2diff_loss: 0.003047
+grafting test epoch 153   overall_loss: 0.789512,  ce_loss: 2.125576, reg_loss: 1544.5043, acc_loss: 0.660657
 Epoch 154: lr decay = 0.04000000000000001
-grafting train epoch 154   overall_loss: 574.60547,  ce_loss: 0.630592, reg_loss: 16425.938, acc_loss: 0.855168, l2diff_loss: 114.9211
-grafting test epoch 154   overall_loss: 642.0136,  ce_loss: 2.342988, reg_loss: 16425.873, acc_loss: 0.64984
+grafting train epoch 154   overall_loss: 0.787456,  ce_loss: 0.541148, reg_loss: 1544.504, acc_loss: 0.863341, l2diff_loss: 0.003041
+grafting test epoch 154   overall_loss: 0.789506,  ce_loss: 2.128451, reg_loss: 1544.5043, acc_loss: 0.660256
 Epoch 155: lr decay = 0.04000000000000001
-grafting train epoch 155   overall_loss: 574.0649,  ce_loss: 0.637613, reg_loss: 16425.805, acc_loss: 0.854427, l2diff_loss: 114.81297
-grafting test epoch 155   overall_loss: 641.989,  ce_loss: 2.340598, reg_loss: 16425.75, acc_loss: 0.64994
+grafting train epoch 155   overall_loss: 0.787406,  ce_loss: 0.534832, reg_loss: 1544.5039, acc_loss: 0.861899, l2diff_loss: 0.003031
+grafting test epoch 155   overall_loss: 0.789507,  ce_loss: 2.127248, reg_loss: 1544.5035, acc_loss: 0.660357
 Epoch 156: lr decay = 0.04000000000000001
-grafting train epoch 156   overall_loss: 572.5097,  ce_loss: 0.64196, reg_loss: 16425.69, acc_loss: 0.853566, l2diff_loss: 114.501945
-grafting test epoch 156   overall_loss: 642.08795,  ce_loss: 2.340042, reg_loss: 16425.623, acc_loss: 0.65024
+grafting train epoch 156   overall_loss: 0.787451,  ce_loss: 0.54943, reg_loss: 1544.5039, acc_loss: 0.861619, l2diff_loss: 0.00304
+grafting test epoch 156   overall_loss: 0.789508,  ce_loss: 2.125604, reg_loss: 1544.5032, acc_loss: 0.660557
 Epoch 157: lr decay = 0.04000000000000001
-grafting train epoch 157   overall_loss: 571.3583,  ce_loss: 0.63515, reg_loss: 16425.568, acc_loss: 0.853986, l2diff_loss: 114.27165
-grafting test epoch 157   overall_loss: 641.8796,  ce_loss: 2.340716, reg_loss: 16425.51, acc_loss: 0.649439
+grafting train epoch 157   overall_loss: 0.787421,  ce_loss: 0.538492, reg_loss: 1544.5035, acc_loss: 0.861799, l2diff_loss: 0.003034
+grafting test epoch 157   overall_loss: 0.789509,  ce_loss: 2.127846, reg_loss: 1544.5029, acc_loss: 0.660557
 Epoch 158: lr decay = 0.04000000000000001
-grafting train epoch 158   overall_loss: 570.54535,  ce_loss: 0.641036, reg_loss: 16425.453, acc_loss: 0.853806, l2diff_loss: 114.10908
-grafting test epoch 158   overall_loss: 641.82324,  ce_loss: 2.33905, reg_loss: 16425.406, acc_loss: 0.64974
+grafting train epoch 158   overall_loss: 0.787372,  ce_loss: 0.548687, reg_loss: 1544.5029, acc_loss: 0.863081, l2diff_loss: 0.003024
+grafting test epoch 158   overall_loss: 0.789511,  ce_loss: 2.124885, reg_loss: 1544.5027, acc_loss: 0.660757
 Epoch 159: lr decay = 0.04000000000000001
-grafting train epoch 159   overall_loss: 571.7397,  ce_loss: 0.641476, reg_loss: 16425.348, acc_loss: 0.853205, l2diff_loss: 114.34794
-grafting test epoch 159   overall_loss: 641.81,  ce_loss: 2.342296, reg_loss: 16425.291, acc_loss: 0.649539
+grafting train epoch 159   overall_loss: 0.787425,  ce_loss: 0.54393, reg_loss: 1544.5024, acc_loss: 0.863862, l2diff_loss: 0.003035
+grafting test epoch 159   overall_loss: 0.789507,  ce_loss: 2.128309, reg_loss: 1544.5021, acc_loss: 0.660457
 Epoch 160: lr decay = 0.04000000000000001
-grafting train epoch 160   overall_loss: 576.2363,  ce_loss: 0.640057, reg_loss: 16425.23, acc_loss: 0.854046, l2diff_loss: 115.24727
-grafting test epoch 160   overall_loss: 642.06573,  ce_loss: 2.341114, reg_loss: 16425.178, acc_loss: 0.649539
+grafting train epoch 160   overall_loss: 0.787468,  ce_loss: 0.551469, reg_loss: 1544.5024, acc_loss: 0.861959, l2diff_loss: 0.003043
+grafting test epoch 160   overall_loss: 0.789509,  ce_loss: 2.125068, reg_loss: 1544.5021, acc_loss: 0.660958
 Epoch 161: lr decay = 0.04000000000000001
-grafting train epoch 161   overall_loss: 570.7236,  ce_loss: 0.632452, reg_loss: 16425.146, acc_loss: 0.854487, l2diff_loss: 114.144714
-grafting test epoch 161   overall_loss: 642.4242,  ce_loss: 2.33913, reg_loss: 16425.115, acc_loss: 0.64984
+grafting train epoch 161   overall_loss: 0.787437,  ce_loss: 0.541736, reg_loss: 1544.5022, acc_loss: 0.863301, l2diff_loss: 0.003037
+grafting test epoch 161   overall_loss: 0.789514,  ce_loss: 2.127081, reg_loss: 1544.5026, acc_loss: 0.660857
 Epoch 162: lr decay = 0.04000000000000001
-grafting train epoch 162   overall_loss: 573.0562,  ce_loss: 0.643406, reg_loss: 16425.057, acc_loss: 0.855529, l2diff_loss: 114.61124
-grafting test epoch 162   overall_loss: 641.67255,  ce_loss: 2.339873, reg_loss: 16424.986, acc_loss: 0.649639
+grafting train epoch 162   overall_loss: 0.787528,  ce_loss: 0.534, reg_loss: 1544.5026, acc_loss: 0.864463, l2diff_loss: 0.003055
+grafting test epoch 162   overall_loss: 0.789513,  ce_loss: 2.128041, reg_loss: 1544.5026, acc_loss: 0.660657
 Epoch 163: lr decay = 0.04000000000000001
-grafting train epoch 163   overall_loss: 573.2963,  ce_loss: 0.637616, reg_loss: 16424.922, acc_loss: 0.853786, l2diff_loss: 114.659256
-grafting test epoch 163   overall_loss: 641.8905,  ce_loss: 2.344259, reg_loss: 16424.86, acc_loss: 0.64974
+grafting train epoch 163   overall_loss: 0.787376,  ce_loss: 0.54841, reg_loss: 1544.5026, acc_loss: 0.861498, l2diff_loss: 0.003025
+grafting test epoch 163   overall_loss: 0.789512,  ce_loss: 2.126398, reg_loss: 1544.5026, acc_loss: 0.660657
 Epoch 164: lr decay = 0.04000000000000001
-grafting train epoch 164   overall_loss: 572.8726,  ce_loss: 0.632646, reg_loss: 16424.826, acc_loss: 0.853506, l2diff_loss: 114.57452
-grafting test epoch 164   overall_loss: 641.957,  ce_loss: 2.338912, reg_loss: 16424.76, acc_loss: 0.650541
+grafting train epoch 164   overall_loss: 0.78743,  ce_loss: 0.5407, reg_loss: 1544.5029, acc_loss: 0.863181, l2diff_loss: 0.003036
+grafting test epoch 164   overall_loss: 0.789513,  ce_loss: 2.127407, reg_loss: 1544.5026, acc_loss: 0.660857
 Epoch 165: lr decay = 0.04000000000000001
-grafting train epoch 165   overall_loss: 571.9019,  ce_loss: 0.630783, reg_loss: 16424.703, acc_loss: 0.855789, l2diff_loss: 114.38038
-grafting test epoch 165   overall_loss: 641.7552,  ce_loss: 2.339424, reg_loss: 16424.64, acc_loss: 0.649639
+grafting train epoch 165   overall_loss: 0.787436,  ce_loss: 0.547703, reg_loss: 1544.5024, acc_loss: 0.86252, l2diff_loss: 0.003037
+grafting test epoch 165   overall_loss: 0.789505,  ce_loss: 2.123142, reg_loss: 1544.5021, acc_loss: 0.660757
 Epoch 166: lr decay = 0.04000000000000001
-grafting train epoch 166   overall_loss: 572.16315,  ce_loss: 0.628071, reg_loss: 16424.574, acc_loss: 0.855369, l2diff_loss: 114.43263
-grafting test epoch 166   overall_loss: 642.14923,  ce_loss: 2.341432, reg_loss: 16424.514, acc_loss: 0.650441
+grafting train epoch 166   overall_loss: 0.787402,  ce_loss: 0.544719, reg_loss: 1544.5021, acc_loss: 0.861278, l2diff_loss: 0.00303
+grafting test epoch 166   overall_loss: 0.789511,  ce_loss: 2.126066, reg_loss: 1544.5017, acc_loss: 0.661158
 Epoch 167: lr decay = 0.04000000000000001
-grafting train epoch 167   overall_loss: 571.5359,  ce_loss: 0.647482, reg_loss: 16424.457, acc_loss: 0.853406, l2diff_loss: 114.30719
-grafting test epoch 167   overall_loss: 641.6779,  ce_loss: 2.340464, reg_loss: 16424.414, acc_loss: 0.649639
+grafting train epoch 167   overall_loss: 0.787456,  ce_loss: 0.546313, reg_loss: 1544.5021, acc_loss: 0.861278, l2diff_loss: 0.003041
+grafting test epoch 167   overall_loss: 0.78951,  ce_loss: 2.124955, reg_loss: 1544.5017, acc_loss: 0.660457
 Epoch 168: lr decay = 0.04000000000000001
-grafting train epoch 168   overall_loss: 572.0505,  ce_loss: 0.652219, reg_loss: 16424.346, acc_loss: 0.852784, l2diff_loss: 114.410095
-grafting test epoch 168   overall_loss: 641.556,  ce_loss: 2.341867, reg_loss: 16424.281, acc_loss: 0.649639
+grafting train epoch 168   overall_loss: 0.787407,  ce_loss: 0.544196, reg_loss: 1544.5016, acc_loss: 0.861639, l2diff_loss: 0.003031
+grafting test epoch 168   overall_loss: 0.78951,  ce_loss: 2.126225, reg_loss: 1544.5013, acc_loss: 0.660857
 Epoch 169: lr decay = 0.04000000000000001
-grafting train epoch 169   overall_loss: 572.7358,  ce_loss: 0.628341, reg_loss: 16424.223, acc_loss: 0.855369, l2diff_loss: 114.547165
-grafting test epoch 169   overall_loss: 641.2712,  ce_loss: 2.337364, reg_loss: 16424.164, acc_loss: 0.649539
+grafting train epoch 169   overall_loss: 0.787485,  ce_loss: 0.535822, reg_loss: 1544.5017, acc_loss: 0.865865, l2diff_loss: 0.003047
+grafting test epoch 169   overall_loss: 0.789501,  ce_loss: 2.126452, reg_loss: 1544.5018, acc_loss: 0.660457
 Epoch 170: lr decay = 0.04000000000000001
-grafting train epoch 170   overall_loss: 574.5958,  ce_loss: 0.644938, reg_loss: 16424.09, acc_loss: 0.852344, l2diff_loss: 114.919174
-grafting test epoch 170   overall_loss: 641.87537,  ce_loss: 2.342263, reg_loss: 16424.033, acc_loss: 0.65004
+grafting train epoch 170   overall_loss: 0.78743,  ce_loss: 0.542872, reg_loss: 1544.5021, acc_loss: 0.861218, l2diff_loss: 0.003036
+grafting test epoch 170   overall_loss: 0.789513,  ce_loss: 2.126006, reg_loss: 1544.5016, acc_loss: 0.660557
 Epoch 171: lr decay = 0.04000000000000001
-grafting train epoch 171   overall_loss: 571.9296,  ce_loss: 0.636196, reg_loss: 16423.982, acc_loss: 0.855328, l2diff_loss: 114.38592
-grafting test epoch 171   overall_loss: 641.77527,  ce_loss: 2.339468, reg_loss: 16423.92, acc_loss: 0.650641
+grafting train epoch 171   overall_loss: 0.787393,  ce_loss: 0.54839, reg_loss: 1544.501, acc_loss: 0.86244, l2diff_loss: 0.003028
+grafting test epoch 171   overall_loss: 0.789511,  ce_loss: 2.127097, reg_loss: 1544.5009, acc_loss: 0.660657
 Epoch 172: lr decay = 0.04000000000000001
-grafting train epoch 172   overall_loss: 575.8535,  ce_loss: 0.624724, reg_loss: 16423.867, acc_loss: 0.857492, l2diff_loss: 115.17069
-grafting test epoch 172   overall_loss: 641.47736,  ce_loss: 2.343203, reg_loss: 16423.803, acc_loss: 0.64984
+grafting train epoch 172   overall_loss: 0.787438,  ce_loss: 0.526862, reg_loss: 1544.5009, acc_loss: 0.865264, l2diff_loss: 0.003038
+grafting test epoch 172   overall_loss: 0.789511,  ce_loss: 2.127118, reg_loss: 1544.5007, acc_loss: 0.660557
 Epoch 173: lr decay = 0.04000000000000001
-grafting train epoch 173   overall_loss: 574.228,  ce_loss: 0.633461, reg_loss: 16423.771, acc_loss: 0.853786, l2diff_loss: 114.84562
-grafting test epoch 173   overall_loss: 641.0332,  ce_loss: 2.338663, reg_loss: 16423.719, acc_loss: 0.65014
+grafting train epoch 173   overall_loss: 0.787489,  ce_loss: 0.534472, reg_loss: 1544.5006, acc_loss: 0.865164, l2diff_loss: 0.003048
+grafting test epoch 173   overall_loss: 0.789494,  ce_loss: 2.12745, reg_loss: 1544.5007, acc_loss: 0.660457
 Epoch 174: lr decay = 0.04000000000000001
-grafting train epoch 174   overall_loss: 570.3914,  ce_loss: 0.643476, reg_loss: 16423.688, acc_loss: 0.853986, l2diff_loss: 114.078285
-grafting test epoch 174   overall_loss: 641.6025,  ce_loss: 2.339436, reg_loss: 16423.639, acc_loss: 0.650341
+grafting train epoch 174   overall_loss: 0.787457,  ce_loss: 0.552625, reg_loss: 1544.5006, acc_loss: 0.860557, l2diff_loss: 0.003041
+grafting test epoch 174   overall_loss: 0.789508,  ce_loss: 2.12931, reg_loss: 1544.5009, acc_loss: 0.660056
 Epoch 175: lr decay = 0.04000000000000001
-grafting train epoch 175   overall_loss: 574.5955,  ce_loss: 0.630252, reg_loss: 16423.58, acc_loss: 0.85639, l2diff_loss: 114.91911
-grafting test epoch 175   overall_loss: 641.45166,  ce_loss: 2.334535, reg_loss: 16423.53, acc_loss: 0.650641
+grafting train epoch 175   overall_loss: 0.78741,  ce_loss: 0.542242, reg_loss: 1544.501, acc_loss: 0.863281, l2diff_loss: 0.003032
+grafting test epoch 175   overall_loss: 0.78951,  ce_loss: 2.123547, reg_loss: 1544.5009, acc_loss: 0.660357
 Epoch 176: lr decay = 0.04000000000000001
-grafting train epoch 176   overall_loss: 571.2575,  ce_loss: 0.624237, reg_loss: 16423.453, acc_loss: 0.85609, l2diff_loss: 114.2515
-grafting test epoch 176   overall_loss: 640.9664,  ce_loss: 2.339917, reg_loss: 16423.389, acc_loss: 0.65004
+grafting train epoch 176   overall_loss: 0.787418,  ce_loss: 0.527611, reg_loss: 1544.5006, acc_loss: 0.865405, l2diff_loss: 0.003033
+grafting test epoch 176   overall_loss: 0.789503,  ce_loss: 2.126068, reg_loss: 1544.5007, acc_loss: 0.660256
 Epoch 177: lr decay = 0.04000000000000001
-grafting train epoch 177   overall_loss: 573.01337,  ce_loss: 0.616674, reg_loss: 16423.344, acc_loss: 0.85629, l2diff_loss: 114.60266
-grafting test epoch 177   overall_loss: 641.2004,  ce_loss: 2.340422, reg_loss: 16423.299, acc_loss: 0.650841
+grafting train epoch 177   overall_loss: 0.787472,  ce_loss: 0.53839, reg_loss: 1544.5004, acc_loss: 0.862079, l2diff_loss: 0.003044
+grafting test epoch 177   overall_loss: 0.789509,  ce_loss: 2.126809, reg_loss: 1544.5004, acc_loss: 0.660657
 Epoch 178: lr decay = 0.04000000000000001
-grafting train epoch 178   overall_loss: 571.2136,  ce_loss: 0.641, reg_loss: 16423.271, acc_loss: 0.853005, l2diff_loss: 114.24272
-grafting test epoch 178   overall_loss: 641.2527,  ce_loss: 2.340768, reg_loss: 16423.219, acc_loss: 0.65024
+grafting train epoch 178   overall_loss: 0.787407,  ce_loss: 0.54671, reg_loss: 1544.5005, acc_loss: 0.86244, l2diff_loss: 0.003031
+grafting test epoch 178   overall_loss: 0.789501,  ce_loss: 2.126768, reg_loss: 1544.5004, acc_loss: 0.660357
 Epoch 179: lr decay = 0.04000000000000001
-grafting train epoch 179   overall_loss: 570.87274,  ce_loss: 0.642282, reg_loss: 16423.178, acc_loss: 0.854167, l2diff_loss: 114.17456
-grafting test epoch 179   overall_loss: 640.86786,  ce_loss: 2.336808, reg_loss: 16423.135, acc_loss: 0.650441
+grafting train epoch 179   overall_loss: 0.787442,  ce_loss: 0.544581, reg_loss: 1544.5001, acc_loss: 0.863962, l2diff_loss: 0.003038
+grafting test epoch 179   overall_loss: 0.789495,  ce_loss: 2.126772, reg_loss: 1544.5, acc_loss: 0.660557
 Epoch 180: lr decay = 0.008000000000000002
-grafting train epoch 180   overall_loss: 574.76184,  ce_loss: 0.633276, reg_loss: 16423.121, acc_loss: 0.853706, l2diff_loss: 114.95236
-grafting test epoch 180   overall_loss: 640.93884,  ce_loss: 2.337968, reg_loss: 16423.111, acc_loss: 0.650441
+grafting train epoch 180   overall_loss: 0.787429,  ce_loss: 0.540578, reg_loss: 1544.5, acc_loss: 0.86224, l2diff_loss: 0.003036
+grafting test epoch 180   overall_loss: 0.789504,  ce_loss: 2.125733, reg_loss: 1544.4999, acc_loss: 0.660557
 Epoch 181: lr decay = 0.008000000000000002
-grafting train epoch 181   overall_loss: 571.652,  ce_loss: 0.631008, reg_loss: 16423.102, acc_loss: 0.855609, l2diff_loss: 114.33041
-grafting test epoch 181   overall_loss: 641.1008,  ce_loss: 2.336532, reg_loss: 16423.092, acc_loss: 0.650341
+grafting train epoch 181   overall_loss: 0.787516,  ce_loss: 0.540822, reg_loss: 1544.4999, acc_loss: 0.861879, l2diff_loss: 0.003053
+grafting test epoch 181   overall_loss: 0.789499,  ce_loss: 2.126308, reg_loss: 1544.4999, acc_loss: 0.660457
 Epoch 182: lr decay = 0.008000000000000002
-grafting train epoch 182   overall_loss: 573.0468,  ce_loss: 0.643931, reg_loss: 16423.068, acc_loss: 0.854086, l2diff_loss: 114.60937
-grafting test epoch 182   overall_loss: 640.7451,  ce_loss: 2.338508, reg_loss: 16423.05, acc_loss: 0.650341
+grafting train epoch 182   overall_loss: 0.787443,  ce_loss: 0.550431, reg_loss: 1544.4999, acc_loss: 0.861819, l2diff_loss: 0.003039
+grafting test epoch 182   overall_loss: 0.789494,  ce_loss: 2.125813, reg_loss: 1544.4999, acc_loss: 0.660757
 Epoch 183: lr decay = 0.008000000000000002
-grafting train epoch 183   overall_loss: 572.12244,  ce_loss: 0.626797, reg_loss: 16423.041, acc_loss: 0.855629, l2diff_loss: 114.424484
-grafting test epoch 183   overall_loss: 640.9347,  ce_loss: 2.338658, reg_loss: 16423.023, acc_loss: 0.650541
+grafting train epoch 183   overall_loss: 0.787451,  ce_loss: 0.545631, reg_loss: 1544.4999, acc_loss: 0.86272, l2diff_loss: 0.00304
+grafting test epoch 183   overall_loss: 0.789509,  ce_loss: 2.125045, reg_loss: 1544.4999, acc_loss: 0.660757
 Epoch 184: lr decay = 0.008000000000000002
-grafting train epoch 184   overall_loss: 573.10724,  ce_loss: 0.644695, reg_loss: 16423.012, acc_loss: 0.852764, l2diff_loss: 114.62145
-grafting test epoch 184   overall_loss: 640.54266,  ce_loss: 2.341494, reg_loss: 16423.0, acc_loss: 0.650341
+grafting train epoch 184   overall_loss: 0.787433,  ce_loss: 0.544955, reg_loss: 1544.4999, acc_loss: 0.863281, l2diff_loss: 0.003037
+grafting test epoch 184   overall_loss: 0.789499,  ce_loss: 2.128137, reg_loss: 1544.4999, acc_loss: 0.660457
 Epoch 185: lr decay = 0.008000000000000002
-grafting train epoch 185   overall_loss: 571.832,  ce_loss: 0.636328, reg_loss: 16422.986, acc_loss: 0.854447, l2diff_loss: 114.36639
-grafting test epoch 185   overall_loss: 641.4292,  ce_loss: 2.337738, reg_loss: 16422.979, acc_loss: 0.650641
+grafting train epoch 185   overall_loss: 0.787431,  ce_loss: 0.546599, reg_loss: 1544.5, acc_loss: 0.86226, l2diff_loss: 0.003036
+grafting test epoch 185   overall_loss: 0.789512,  ce_loss: 2.126299, reg_loss: 1544.5, acc_loss: 0.660657
 Epoch 186: lr decay = 0.008000000000000002
-grafting train epoch 186   overall_loss: 571.8165,  ce_loss: 0.645824, reg_loss: 16422.965, acc_loss: 0.853926, l2diff_loss: 114.363304
-grafting test epoch 186   overall_loss: 640.9466,  ce_loss: 2.340655, reg_loss: 16422.955, acc_loss: 0.650341
+grafting train epoch 186   overall_loss: 0.78746,  ce_loss: 0.546757, reg_loss: 1544.5, acc_loss: 0.861458, l2diff_loss: 0.003042
+grafting test epoch 186   overall_loss: 0.789504,  ce_loss: 2.12682, reg_loss: 1544.4999, acc_loss: 0.660557
 Epoch 187: lr decay = 0.008000000000000002
-grafting train epoch 187   overall_loss: 572.3861,  ce_loss: 0.649932, reg_loss: 16422.938, acc_loss: 0.852824, l2diff_loss: 114.47723
-grafting test epoch 187   overall_loss: 640.8422,  ce_loss: 2.34054, reg_loss: 16422.918, acc_loss: 0.650341
+grafting train epoch 187   overall_loss: 0.787406,  ce_loss: 0.553308, reg_loss: 1544.4999, acc_loss: 0.862159, l2diff_loss: 0.003031
+grafting test epoch 187   overall_loss: 0.789507,  ce_loss: 2.126956, reg_loss: 1544.4999, acc_loss: 0.660457
 Epoch 188: lr decay = 0.008000000000000002
-grafting train epoch 188   overall_loss: 572.5504,  ce_loss: 0.645709, reg_loss: 16422.912, acc_loss: 0.853866, l2diff_loss: 114.51009
-grafting test epoch 188   overall_loss: 640.77606,  ce_loss: 2.341053, reg_loss: 16422.904, acc_loss: 0.64984
+grafting train epoch 188   overall_loss: 0.787442,  ce_loss: 0.541691, reg_loss: 1544.4999, acc_loss: 0.863522, l2diff_loss: 0.003038
+grafting test epoch 188   overall_loss: 0.789501,  ce_loss: 2.127137, reg_loss: 1544.4998, acc_loss: 0.660457
 Epoch 189: lr decay = 0.008000000000000002
-grafting train epoch 189   overall_loss: 570.7451,  ce_loss: 0.648356, reg_loss: 16422.89, acc_loss: 0.852244, l2diff_loss: 114.14902
-grafting test epoch 189   overall_loss: 641.0448,  ce_loss: 2.337379, reg_loss: 16422.877, acc_loss: 0.650541
+grafting train epoch 189   overall_loss: 0.787397,  ce_loss: 0.558356, reg_loss: 1544.4996, acc_loss: 0.861739, l2diff_loss: 0.003029
+grafting test epoch 189   overall_loss: 0.789505,  ce_loss: 2.125702, reg_loss: 1544.4996, acc_loss: 0.660857
 Epoch 190: lr decay = 0.008000000000000002
-grafting train epoch 190   overall_loss: 573.4472,  ce_loss: 0.631537, reg_loss: 16422.871, acc_loss: 0.855429, l2diff_loss: 114.68943
-grafting test epoch 190   overall_loss: 640.5155,  ce_loss: 2.341207, reg_loss: 16422.86, acc_loss: 0.650441
+grafting train epoch 190   overall_loss: 0.78747,  ce_loss: 0.541886, reg_loss: 1544.4996, acc_loss: 0.861939, l2diff_loss: 0.003044
+grafting test epoch 190   overall_loss: 0.789501,  ce_loss: 2.126084, reg_loss: 1544.4996, acc_loss: 0.660357
 Epoch 191: lr decay = 0.008000000000000002
-grafting train epoch 191   overall_loss: 569.0894,  ce_loss: 0.64046, reg_loss: 16422.844, acc_loss: 0.854828, l2diff_loss: 113.81789
-grafting test epoch 191   overall_loss: 640.08136,  ce_loss: 2.342262, reg_loss: 16422.834, acc_loss: 0.650341
+grafting train epoch 191   overall_loss: 0.787476,  ce_loss: 0.543838, reg_loss: 1544.4996, acc_loss: 0.863281, l2diff_loss: 0.003045
+grafting test epoch 191   overall_loss: 0.78949,  ce_loss: 2.128309, reg_loss: 1544.4996, acc_loss: 0.660256
 Epoch 192: lr decay = 0.008000000000000002
-grafting train epoch 192   overall_loss: 574.6195,  ce_loss: 0.627863, reg_loss: 16422.818, acc_loss: 0.854287, l2diff_loss: 114.92391
-grafting test epoch 192   overall_loss: 641.38794,  ce_loss: 2.337772, reg_loss: 16422.803, acc_loss: 0.650741
+grafting train epoch 192   overall_loss: 0.787505,  ce_loss: 0.546564, reg_loss: 1544.4996, acc_loss: 0.860777, l2diff_loss: 0.003051
+grafting test epoch 192   overall_loss: 0.78951,  ce_loss: 2.12548, reg_loss: 1544.4996, acc_loss: 0.660757
 Epoch 193: lr decay = 0.008000000000000002
-grafting train epoch 193   overall_loss: 572.42847,  ce_loss: 0.636549, reg_loss: 16422.793, acc_loss: 0.854347, l2diff_loss: 114.48568
-grafting test epoch 193   overall_loss: 641.01215,  ce_loss: 2.338342, reg_loss: 16422.781, acc_loss: 0.650741
+grafting train epoch 193   overall_loss: 0.787414,  ce_loss: 0.548204, reg_loss: 1544.4996, acc_loss: 0.860697, l2diff_loss: 0.003033
+grafting test epoch 193   overall_loss: 0.789509,  ce_loss: 2.125097, reg_loss: 1544.4996, acc_loss: 0.660557
 Epoch 194: lr decay = 0.008000000000000002
-grafting train epoch 194   overall_loss: 570.15045,  ce_loss: 0.645865, reg_loss: 16422.771, acc_loss: 0.853926, l2diff_loss: 114.0301
-grafting test epoch 194   overall_loss: 641.3064,  ce_loss: 2.340205, reg_loss: 16422.76, acc_loss: 0.650441
+grafting train epoch 194   overall_loss: 0.787428,  ce_loss: 0.541986, reg_loss: 1544.4996, acc_loss: 0.860577, l2diff_loss: 0.003036
+grafting test epoch 194   overall_loss: 0.789512,  ce_loss: 2.126492, reg_loss: 1544.4996, acc_loss: 0.660357
 Epoch 195: lr decay = 0.008000000000000002
-grafting train epoch 195   overall_loss: 572.14874,  ce_loss: 0.64723, reg_loss: 16422.75, acc_loss: 0.852344, l2diff_loss: 114.42975
-grafting test epoch 195   overall_loss: 640.68677,  ce_loss: 2.34159, reg_loss: 16422.736, acc_loss: 0.65014
+grafting train epoch 195   overall_loss: 0.787449,  ce_loss: 0.556476, reg_loss: 1544.4996, acc_loss: 0.861318, l2diff_loss: 0.00304
+grafting test epoch 195   overall_loss: 0.789502,  ce_loss: 2.127251, reg_loss: 1544.4993, acc_loss: 0.660256
 Epoch 196: lr decay = 0.008000000000000002
-grafting train epoch 196   overall_loss: 569.2863,  ce_loss: 0.643484, reg_loss: 16422.73, acc_loss: 0.854026, l2diff_loss: 113.85727
-grafting test epoch 196   overall_loss: 640.7905,  ce_loss: 2.338336, reg_loss: 16422.72, acc_loss: 0.650641
+grafting train epoch 196   overall_loss: 0.7874,  ce_loss: 0.550565, reg_loss: 1544.4995, acc_loss: 0.861599, l2diff_loss: 0.00303
+grafting test epoch 196   overall_loss: 0.789507,  ce_loss: 2.121542, reg_loss: 1544.4993, acc_loss: 0.660357
 Epoch 197: lr decay = 0.008000000000000002
-grafting train epoch 197   overall_loss: 574.143,  ce_loss: 0.635807, reg_loss: 16422.705, acc_loss: 0.853506, l2diff_loss: 114.82858
-grafting test epoch 197   overall_loss: 641.2218,  ce_loss: 2.339332, reg_loss: 16422.693, acc_loss: 0.650341
+grafting train epoch 197   overall_loss: 0.78749,  ce_loss: 0.546382, reg_loss: 1544.4993, acc_loss: 0.860857, l2diff_loss: 0.003048
+grafting test epoch 197   overall_loss: 0.78951,  ce_loss: 2.126056, reg_loss: 1544.4993, acc_loss: 0.660557
 Epoch 198: lr decay = 0.008000000000000002
-grafting train epoch 198   overall_loss: 572.074,  ce_loss: 0.626293, reg_loss: 16422.684, acc_loss: 0.857091, l2diff_loss: 114.41479
-grafting test epoch 198   overall_loss: 640.7755,  ce_loss: 2.337292, reg_loss: 16422.67, acc_loss: 0.650841
+grafting train epoch 198   overall_loss: 0.787438,  ce_loss: 0.545376, reg_loss: 1544.4993, acc_loss: 0.86234, l2diff_loss: 0.003038
+grafting test epoch 198   overall_loss: 0.789506,  ce_loss: 2.126032, reg_loss: 1544.4993, acc_loss: 0.660457
 Epoch 199: lr decay = 0.008000000000000002
-grafting train epoch 199   overall_loss: 568.5323,  ce_loss: 0.639142, reg_loss: 16422.662, acc_loss: 0.853205, l2diff_loss: 113.70645
-grafting test epoch 199   overall_loss: 640.7344,  ce_loss: 2.3363, reg_loss: 16422.652, acc_loss: 0.650841
-ropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting train epoch 199   overall_loss: 0.78743,  ce_loss: 0.542656, reg_loss: 1544.4993, acc_loss: 0.861458, l2diff_loss: 0.003036
+grafting test epoch 199   overall_loss: 0.789506,  ce_loss: 2.123484, reg_loss: 1544.4993, acc_loss: 0.660657
+ob:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout1/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
+grafting/dropout1/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout1/cond/dropout/keep_prob: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout0/cond/dropout/random_uniform/max: (Const): /job:localhost/replica:0/task:0/device:GPU:0
 grafting/dropout0/cond/dropout/random_uniform/min: (Const): /job:localhost/replica:0/task:0/device:GPU:0
