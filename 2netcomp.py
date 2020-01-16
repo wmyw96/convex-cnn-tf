@@ -22,6 +22,7 @@ parser = argparse.ArgumentParser(description='Image Classification With Two Netw
 parser.add_argument('--logdir', default='../../data/cifar-100-logs/', type=str)
 parser.add_argument('--seed', default=0, type=int)
 parser.add_argument('--exp_id', default='sl.vgg16_nobn_l2', type=str)
+parser.add_argument('--figlogdir', default='.logs/vgg16-l12', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
 parser.add_argument('--model1dir', default='', type=str)
@@ -105,7 +106,7 @@ def semi_matching(dist_mat):
 
 
 def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
-    slid = str(layerid + 1)
+    slid = 'l' + str(layerid + 1)
     values = []
     for batch_idx in range(params[dsdomain]['iter_per_epoch']):
         x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
@@ -161,11 +162,19 @@ def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
 
     # nearest channel in net2 (sorted)
     plt.figure(figsize=(16, 20))
-    ax = plt.subfigure(3, 4, 1)
+    ax = plt.subplot(3, 4, 1)
     plt.plot(np.arange(nchannels) + 1, v[vind])
     plt.xlabel('channel index in net1')
     plt.ylabel('matched l2 distance (after normalization)')
+    plt.ylim(0, 2.0)
 
+    ax = plt.subplot(3, 4, 2)
+    plt.plot(np.arange(nchannels) + 1, net1_std[vind], label='net1 std', color=palette(1))
+    plt.plot(np.arange(nchannels) + 1, net2_std[ind[vind]], label='net2 std', color=palette(2))
+    plt.xlabel('channel index in net1')
+    plt.ylabel('std')
+    plt.legend(loc='lower right', frameon=True)
+    
     ax = plt.subplot(3, 4, 5)
     plt.plot(np.arange(nchannels) + 1, net1_gn[vind])
     plt.xlabel('channel index in net1')

@@ -15,15 +15,15 @@ def generate_params():
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
-        'batch_size': 64,
+        'batch_size': 64 // 2,
         'num_epoches': 200,
-        'iter_per_epoch': 780,
+        'iter_per_epoch': 780 * 2,
         'save_interval': [5, 10, 20, 30, 40, 50, 80, 100, 120, 180],
     }
 
     test = {
-        'batch_size': 128,
-        'iter_per_epoch': 78,
+        'batch_size': 128 // 4,
+        'iter_per_epoch': 78 * 4,
     }
 
     network = {

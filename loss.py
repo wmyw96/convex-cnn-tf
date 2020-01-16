@@ -80,7 +80,7 @@ fork from slackoverflow answer @Yamaneko:
 https://stackoverflow.com/questions/37009647/compute-pairwise-distance-in-a-batch-without-replicating-tensor-in-tensorflow
 '''
 
-def calculate_pairwise_l2_dist(A, B):
+def compute_pairwise_l2_dist(A, B):
     assert A.shape.as_list() == B.shape.as_list()
     row_norms_A = tf.reduce_sum(tf.square(A), axis=1)
     row_norms_A = tf.reshape(row_norms_A, [-1, 1])  # Column vector.
@@ -89,16 +89,26 @@ def calculate_pairwise_l2_dist(A, B):
     return row_norms_A - 2 * tf.matmul(A, tf.transpose(B)) + row_norms_B
 
 
-def calculate_pairwise_l2_ndist(x, y):
-    nx = x / (tf.reduce_std(x, 0, keepdims=True) + 1e-9)
-    ny = y / (tf.reduce_std(y, 0, keepdims=True) + 1e-9)
-    return calculate_pairwise_l2_dist(x, y)
+def get_var(x, axis=0):
+    _, var = tf.nn.moments(x, axis)
+    return tf.expand_dims(var, axis)
+
+
+def compute_pairwise_l2_ndist(x, y):
+    nx = x / tf.sqrt(get_var(x, 1) + 1e-9)
+    ny = y / tf.sqrt(get_var(y, 1) + 1e-9)
+    return compute_pairwise_l2_dist(nx, ny)
+
+
+def compute_std(x, axis):
+    _, var = tf.nn.moments(x, axis)
+    return tf.sqrt(var + 1e-9)
 
 
 def compute_gradient_l2_norm(y, x):
     print('compute_gradient_l2_norm: y shape = {}'.format(y.get_shape()))
     grad = 0.0
-    for i in range(int(y.get_shape()[-1]))
-        dimi_grad = tf.gradient(y[:, i], x)
+    for i in range(int(y.get_shape()[-1])):
+        dimi_grad = tf.gradients(y[:, i], x)[0]
         grad += tf.square(dimi_grad)
     return grad

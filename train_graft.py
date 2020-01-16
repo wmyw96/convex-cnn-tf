@@ -26,6 +26,7 @@ parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
 parser.add_argument('--model1dir', default='', type=str)
 parser.add_argument('--nanase', default=5, type=int)
+parser.add_argument('--statlogdir', default='logs/vgg16-l2/graft5.pkl', type=str)
 args = parser.parse_args()
 
 # GPU settings
@@ -116,6 +117,49 @@ def eval(ph, graph, targets, epoch, dsdomain, data_loader):
     logger.print(epoch, '{} {}'.format('grafting', dsdomain), eval_log)
 
 
+def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
+    slid = 'l' + str(layerid)
+    values = []
+    for batch_idx in range(params[dsdomain]['iter_per_epoch']):
+        x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
+        fetch = sess.run([
+                          targets['cp2net']['graft_er'][layerid],
+                          targets['cp2net'][slid]['net2']['std'],
+                          targets['net1']['eval']['acc_loss'],
+                          targets['net2']['eval']['acc_loss'],
+                          targets['grafting']['eval']['acc_loss']
+                         ],
+                          feed_dict={
+                                ph['x']: x, ph['y']: y,
+                                ph['is_training']: False
+                          })
+        if len(values) == 0:
+            for i in range(len(fetch)):
+                values.append([fetch[i]])
+        else:
+            for i in range(len(fetch)):
+                values[i].append(fetch[i])
+    valuec = []
+    for i in range(len(values)):
+        valuec.append(np.array(values[i]))
+        print(valuec[i].shape)
+        valuec[i] = np.mean(valuec[i], 0)
+
+    nchannels = valuec[0].shape[0]
+
+    gt_er = valuec[0]
+    net2_std = valuec[1]
+    
+    ret = {
+        'error': gt_er,
+        'net2_std': net2_std,
+        'net1_acc': valuec[2],
+        'net2_acc': valuec[3],
+        'graft_acc': valuec[4] 
+    }
+    return ret
+
+   
 gpu_options = tf.GPUOptions(allow_growth=True)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True))
 sess.run(tf.global_variables_initializer())
@@ -149,3 +193,16 @@ for epoch in range(params['train']['num_epoches']):
     train(ph, graph, targets, epoch, train_loader,
         train_scheduler, warmup_scheduler)
     eval(ph, graph, targets, epoch, 'test', test_loader)
+
+
+stat = {}
+for lid in range(args.nanase, params['grafting']['nlayers'] + 1):
+    stat[str(lid) + 'train'] = eval_layer(ph, graph, targets, train_loader, 'train', lid)
+    stat[str(lid) + 'test'] = eval_layer(ph, graph, targets, test_loader, 'test', lid)
+
+import pickle
+
+f = open(args.statlogdir, 'wb')
+pickle.dump(stat, f)
+f.close
+
