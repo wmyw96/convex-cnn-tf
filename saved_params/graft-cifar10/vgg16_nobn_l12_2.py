@@ -1,11 +1,11 @@
 
 def generate_params():
-    nclass = 100
+    nclass = 10
 
     data = {
         'rot': False,
-        'dataset': 'cifar-100',
-        'data_dir': '../../data/cifar-100/',
+        'dataset': 'cifar-10',
+        'data_dir': '../../data/cifar-10/',
         'x_size': [32, 32, 3],
         'nclass': nclass,
     }
@@ -28,7 +28,7 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2 * 3,
+        'regw': 2,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',

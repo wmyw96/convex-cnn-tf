@@ -78,7 +78,17 @@ def pre_cifar_100(x):
     x_mean = np.reshape(np.array(xmean), (1, 1, 1, 3))
     x_std = np.reshape(np.array(xstd), (1, 1, 1, 3))
     return (x - x_mean) / x_std
-    
+
+
+def pre_cifar_10(x):
+    x = x / 255.0
+    xmean = np.mean(x, (0, 1, 2))
+    xstd = np.std(x, (0, 1, 2))
+    x_mean = np.reshape(np.array(xmean), (1, 1, 1, 3))
+    x_std = np.reshape(np.array(xstd), (1, 1, 1, 3))
+    return (x - x_mean) / x_std
+
+
 def load_cifar_100(params):
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar100.load_data(label_mode='fine')
     x_train = pre_cifar_100(x_train)
@@ -94,9 +104,26 @@ def load_cifar_100(params):
     }
 
 
+def load_cifar_10(params):
+    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
+    x_train = pre_cifar_10(x_train)
+    x_test = pre_cifar_10(x_test)
+    if 'noda' in params['data']:
+        train = dataset(x_train, y_train, 100, aug=False)
+    else:
+        train = dataset(x_train, y_train, 100, aug=True)
+    test = dataset(x_test, y_test, 10, aug=False)
+    return {
+        'train': train,
+        'test': test
+    }
+
+
 def load_dataset(params):
     if params['data']['dataset'] == 'cifar-100':
         return load_cifar_100(params)
+    elif params['data']['dataset'] == 'cifar-10':
+        return load_cifar_10(params)
     else:
         raise NotImplemented
 
