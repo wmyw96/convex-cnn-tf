@@ -1,0 +1,15 @@
+
+### setting
+
+- compare the channel layerwise (two different initialized nn: net1 & net2, after convergence)
+- the channel could be represented by feature function (vector): R^{n*w*h}
+- for each channel x_i in net1, find the closet channel y_j* in net2 (normalized l2 difference of feature function is smallest), d(x_i, y_j)
+- sort the channel index in net1 with the value d(x_i, y_j*) (increase)
+
+### findings
+
+- there are a lot of dead channels (decrease as number of channel increases) ?
+- could we claim that there are few important channels (current the evaluation is |{\p f}{\p z_k}|_2^2), and they are easy to match
+- there are a lot of channels, their matched channels are dead channels (in layer 6-7)
+
+

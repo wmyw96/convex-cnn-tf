@@ -25,6 +25,12 @@ then do neural network grafting:
 python train_graft.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/19-12-30-15-36/epoch190/ --exp_id graft.vgg16_nobn_l12 --gpu 1 --seed 0
 ```
 
+compare statistics between 2 nets
+
+```
+python 2netcomp.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/19-12-30-15-36/epoch190/ --exp_id graft.vgg16_nobn_l12 --gpu 1 --seed 0 --figlogdir .logs/vgg16-l12
+```
+
 ## To Reproduce the Results of Neural Network Hybrid
 
 
