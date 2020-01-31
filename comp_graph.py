@@ -276,8 +276,8 @@ def build_grafting_onecut_model(params):
 
     regularizer = get_regularizer_loss(net_vars['grafting'], params['network']['regularizer'])
     l2_diff = tf.reduce_mean(tf.square(net2_feature - graft_feature))
-    loss = regularizer * params['network']['regw'] + l2_diff * params['grafting']['diffw']
-
+    #loss = '''regularizer * params['network']['regw']''' + l2_diff * params['grafting']['diffw']
+    loss = l2_diff * params['grafting']['diffw']
     if 'use_adam' in params['grafting']:
         graft_op = tf.train.AdamOptimizer(params['grafting']['adam_lr'] * ph['lr_decay'])
     else:    

@@ -8,6 +8,7 @@ def generate_params():
         'data_dir': '../../data/cifar-100/',
         'x_size': [32, 32, 3],
         'nclass': nclass,
+        'noda': True
     }
 
     train = {
@@ -28,16 +29,16 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2,
+        'regw': 5e-4,
         'batch_norm': False,
         'dropout': 0.5,
-        'regularizer': 'l12',
+        'regularizer': 'l2',
         'layer_mask': [True] * 13
     }
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-3,
+        'adam_lr': 1e-4,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,

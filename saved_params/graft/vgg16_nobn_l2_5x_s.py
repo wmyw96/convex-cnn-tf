@@ -11,7 +11,7 @@ def generate_params():
     }
 
     train = {
-        'lr': 0.01,
+        'lr': 0.005,
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
@@ -28,10 +28,10 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2,
+        'regw': 5e-4 * 5,
         'batch_norm': False,
         'dropout': 0.5,
-        'regularizer': 'l12',
+        'regularizer': 'l2',
         'layer_mask': [True] * 13
     }
 
@@ -47,7 +47,7 @@ def generate_params():
         'iter_per_epoch': 780,
         'nlayers': 16,
         'nanase': 5,
-        'diffw': 5.0,
+        'diffw': 1.0,
         'layer_mask': [True] * 16
     }
 
