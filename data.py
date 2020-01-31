@@ -83,7 +83,10 @@ def load_cifar_100(params):
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar100.load_data(label_mode='fine')
     x_train = pre_cifar_100(x_train)
     x_test = pre_cifar_100(x_test)
-    train = dataset(x_train, y_train, 100, aug=True)
+    if 'noda' in params['data']:
+        train = dataset(x_train, y_train, 100, aug=False)
+    else:
+        train = dataset(x_train, y_train, 100, aug=True)
     test = dataset(x_test, y_test, 100, aug=False)
     return {
         'train': train,

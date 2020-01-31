@@ -28,7 +28,7 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2,
+        'regw': 2 * 3,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',

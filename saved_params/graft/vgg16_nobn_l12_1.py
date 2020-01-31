@@ -28,7 +28,7 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 2,
+        'regw': 1,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',
@@ -37,7 +37,7 @@ def generate_params():
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-3,
+        'adam_lr': 1e-4,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,

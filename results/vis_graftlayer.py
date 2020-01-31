@@ -15,6 +15,7 @@ with open(args.logdir, 'rb') as f:
 
 import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Times New Roman"
+<<<<<<< HEAD
 
 import numpy as np
 plt.style.use('seaborn-darkgrid')
@@ -30,6 +31,15 @@ value = []
 lyr = []
 
 
+=======
+plt.rc('font',size=22)
+
+import numpy as np
+plt.style.use('seaborn-darkgrid')
+palette = plt.get_cmap('Set1')
+
+deg = args.nlayers - args.nanase + 1
+>>>>>>> 8fad19cdad47d1ca2489627c361ae7f01d9e63d5
 for lid in range(args.nanase, args.nlayers + 1):
     lstat_train, lstat_test = stat[str(lid) + 'train'], stat[str(lid) + 'test']
 
@@ -37,6 +47,7 @@ for lid in range(args.nanase, args.nlayers + 1):
     nc = lstat_train['error'].shape[0]
 
     x = (np.arange(nc) + 0.0) / nc
+<<<<<<< HEAD
     train_er = lstat_train['error'] #/ lstat_train['net2_std']
     test_er = lstat_test['error'] / lstat_test['net2_std']
     ind = np.argsort(train_er)
@@ -60,3 +71,16 @@ ax.set(yscale="log")
 plt.savefig(os.path.join(args.outdir, 'graft{}b.pdf'.format(args.nanase)))
 plt.close()
 plt.clf()
+=======
+    train_er = lstat_train['error'] / lstat_train['net2_std']
+    test_er = lstat_test['error'] / lstat_test['net2_std']
+    ind = np.argsort(train_er)
+    
+    alpha = (args.nlayers - lid + 1.0) / deg
+    plt.plot(x, train_er[ind], color=palette(0), label='train', alpha=alpha)
+    plt.plot(x, test_er[ind], color=palette(1), label='test', alpha=alpha)
+    
+
+plt.savefig(os.path.join(args.outdir, 'graft{}c.pdf'.format(args.nanase)))
+
+>>>>>>> 8fad19cdad47d1ca2489627c361ae7f01d9e63d5
