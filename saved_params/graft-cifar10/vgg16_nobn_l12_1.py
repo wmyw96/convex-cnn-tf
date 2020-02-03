@@ -18,7 +18,7 @@ def generate_params():
         'batch_size': 64,
         'num_epoches': 200,
         'iter_per_epoch': 780,
-        'save_interval': [5, 10, 20, 30, 40, 50, 80, 100, 120, 180],
+        'save_interval': [1, 2, 5, 8, 10, 20, 30, 40, 50, 60, 80, 100, 120, 180],
     }
 
     test = {
@@ -37,7 +37,7 @@ def generate_params():
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-4,
+        'adam_lr': 1e-3,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,

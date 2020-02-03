@@ -28,10 +28,10 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 0.5,
+        'regw': 4 * 5e-4,
         'batch_norm': False,
         'dropout': 0.5,
-        'regularizer': 'l12',
+        'regularizer': 'l2',
         'layer_mask': [True] * 13
     }
 

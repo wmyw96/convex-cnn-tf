@@ -189,7 +189,7 @@ eval(ph, graph, targets, -1, 'train', train_loader)
 eval(ph, graph, targets, -1, 'test', test_loader)
 
 
-for epoch in range(params['train']['num_epoches']):
+for epoch in range(20): #params['train']['num_epoches']):
     train(ph, graph, targets, epoch, train_loader,
         train_scheduler, warmup_scheduler)
     eval(ph, graph, targets, epoch, 'test', test_loader)

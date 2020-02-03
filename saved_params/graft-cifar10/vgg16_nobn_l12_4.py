@@ -37,7 +37,7 @@ def generate_params():
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-4,
+        'adam_lr': 1e-3,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,

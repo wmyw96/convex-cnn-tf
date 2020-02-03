@@ -11,7 +11,7 @@ def generate_params():
     }
 
     train = {
-        'lr': 0.01,
+        'lr': 0.002,
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
@@ -28,7 +28,7 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 0.5,
+        'regw': 16,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',
