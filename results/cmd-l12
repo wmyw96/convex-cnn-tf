@@ -1,0 +1,135 @@
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_2/20-01-31-12-22/epoch180
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180/
+
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_8/20-02-01-20-46/epoch180/
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/
+
+
+gpu == 0: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-1/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_1_$i.log
+
+gpu == 1: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_4 --statlogdir logs/c10-vgg16-l12-4/graft_$i.pkl --gpu 1 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_4_$i.log
+
+gpu == 3: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-41/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_41_$i.log
+
+gpu == 0: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --exp_id graft-cifar10.vgg16_nobn_l12_4 --statlogdir logs/c10-vgg16-l12-14/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_14_$i.log
+
+gpu == 2: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_2/20-01-31-12-22/epoch180 --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_2/20-01-31-12-22/epoch180 --exp_id graft-cifar10.vgg16_nobn_l12_2 --statlogdir logs/c10-vgg16-l12-2/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_2_$i.log
+
+gpu == 1: python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_z5 --statlogdir logs/c10-vgg16-l12-z5/graft_$i.pkl --gpu 1 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_z5_$i.log
+
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_z5 --statlogdir logs/c10-vgg16-l12-4z/graft_$i.pkl --gpu 1 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_4z_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_4/20-01-31-12-23/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_z5/20-01-31-12-23/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_4 --statlogdir logs/c10-vgg16-l12-z4/graft_$i.pkl --gpu 1 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_z4_$i.log
+
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_8/20-02-01-20-46/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --exp_id graft-cifar10.vgg16_nobn_l12_8 --statlogdir logs/c10-vgg16-l12-18/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_18_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_8/20-02-01-20-46/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-81/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_81_$i.log
+
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_8/20-02-01-20-46/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_8/20-02-01-20-46/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_8 --statlogdir logs/c10-vgg16-l12-8/graft_$i.pkl --gpu 1 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_8_$i.log
+
+
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-1-10/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_1_10_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-01-31-12-17/epoch180 --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-10-1/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_10_1_$i.log
+done
+
+
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-10/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_10_$i.log
+done
+
+
+
+
+for i in $(seq 2 12)
+do
+let jmin=$i+1
+for j in $(seq $jmin 13)
+do
+echo $i $j
+python train_graft2.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --gpu 1 --seed 0 --pnanase $i --nanase $j >log/c10_vgg16_l12_sep_$i,$j.log
+done
+done
+
+
+
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_10/20-02-02-13-22/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/c10-vgg16-l12-10/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l12_10_$i.log
+done
+
+
+
+
+timeline
+
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-03-21-47/epoch
+
+epoch 1
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch1/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e1f/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e1f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch1/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e1b/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e1b_$i.log
+done
+
+
+epoch 2
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch2/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e2f/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e2f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch2/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e2b/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e2b_$i.log
+done
+
+epoch 5
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch5/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e5f/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e5f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch5/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e5b/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e5b_$i.log
+done
+
+
+epoch 8
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch8/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e8f/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e8f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch8/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e8b/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e8b_$i.log
+done
+
+
+
+epoch 20
+
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch20/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e20f/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e20f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch20/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e20b/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e20b_$i.log
+done
+
+
+
+
+epoch 40
+
+
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch40/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e40f/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e40f_$i.log
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch40/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l12_1/20-02-04-09-47/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l12_1 --statlogdir logs/tl-c10-vgg16-l12-e40b/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/tl_c10_vgg16_l12_e40b_$i.log
+done
+
+
+
+
+epoch 60

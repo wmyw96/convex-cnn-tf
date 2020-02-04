@@ -14,6 +14,24 @@ def random_select(x, m):
     print('random select {}'.format(vv.get_shape()))
     return vv
 
+
+def fixed_random_select(x, m):
+    samples = np.random.choice(x.get_shape()[-1], m)
+    print('fixed random select = {}'.format(samples))
+    xsamples = tf.gather(x, samples, axis=int(x.shape.ndims) - 1)
+    return xsamples
+
+
+def allocate_channels(channels, pweight):
+    total_left = channels
+    alloc = []
+    for i in range(len(pweight) - 1):
+        cur = pweight[i] * channels
+        alloc.append(cur)
+        total_left -= cur
+    alloc.append(total_left)
+
+
 def show_params(domain, var_list):
     print('Domain {}:'.format(domain))
     for var in var_list:
@@ -399,6 +417,9 @@ def build_neural_network_hybrid_model(params):
         'one_hot_y': tf.one_hot(label, nclass)
     }
     for domain in domains:
+        scaling = 1
+        if domain == 'hybrid':
+            scaling = params['hybrid']['scaling']
         modules[domain] = \
             make_layers_vgg_net(scope=domain,
                                 input_x=inp_x, 
@@ -407,7 +428,8 @@ def build_neural_network_hybrid_model(params):
                                 dropout_rate=params['network']['dropout'],
                                 is_training=is_training,
                                 batch_norm=use_bn,
-                                layer_mask=None)
+                                layer_mask=None,
+                                scaling=scaling)
         graph[domain] = modules[domain]
 
     net_vars = {}
@@ -474,16 +496,25 @@ def build_neural_network_hybrid_model(params):
         layer_name = 'l{}-'.format(lid + 1)
         print('Layerwise Feature Matching Building at Layer {}'.format(lid + 1))
         weight_lid = [weight for weight in net_vars['hybrid'] if layer_name in weight.name]
+
+        hybrid_feature = find_layer_feature_map(modules['hybrid'], layer_name)
+        nchannels = int(hybrid_feature.get_shape()[-1])
+        cnl_alloc = allocate_channels(nchannels, params['hybrid']['pweight'])
+        print('-- number of channles = {}, allocation = {}'.format(nchannels, cnl_alloc))
+
         nets_feature = []
         for k in range(num_nets):
             netk_feature = find_layer_feature_map(modules['net' + str(k)], layer_name)
-            nets_feature.append(netk_feature)
+            if cnl_alloc[k] > 0:
+                netk_feature = fixed_random_select(netk_feature, cnl_alloc[k])
+                print('-- part {}, feature shape = {}'.format(k, netk_feature.get_shape()))
+                nets_feature.append(netk_feature)
+            else:
+                print('-- part {}, empty'.format(k))
+
         all_feature = tf.concat(nets_feature, -1)
-        hybrid_feature = find_layer_feature_map(modules['hybrid'], layer_name)
         
-        all_feature = random_select(all_feature, params['hybrid']['matchk'])
-        hybrid_feature = random_select(hybrid_feature, params['hybrid']['matchk'])
-        fm_loss_l = mmd_loss_lst(hybrid_feature, all_feature, params['hybrid']['sigmas'])
+        fm_loss_l = tf.reduce_mean(tf.square(all_feature - hybrid_feature))
         reg_loss_l = get_regularizer_loss(weight_lid, params['network']['regularizer'])
 
         if params['hybrid']['cum']:
@@ -497,7 +528,7 @@ def build_neural_network_hybrid_model(params):
 
         loss = fm_loss * params['hybrid']['fmw'] + reg_loss * params['network']['regw']
 
-        fml_op = tf.train.MomentumOptimizer(params['hybrid']['fm_lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
+        fml_op = tf.train.AdamOptimizer(1e-3)
         fml_grads = sl_op.compute_gradients(loss=loss, var_list=train_weights)
         fml_train_op = sl_op.apply_gradients(grads_and_vars=fml_grads)
     
@@ -533,7 +564,7 @@ def build_neural_network_hybrid_model(params):
         loss = ce_loss + regularizer * params['network']['regw']
         lst_weights = [weight for weight in net_vars[domain] if 'output' in weight.name]
 
-        lst_op = tf.train.MomentumOptimizer(params['train']['lr'] * ph['lr_decay'], 0.9, use_nesterov=True)
+        lst_op = tf.train.AdamOptimizer(1e-3)
         lst_grads = sl_op.compute_gradients(loss=loss, var_list=lst_weights)
         lst_train_op = sl_op.apply_gradients(grads_and_vars=lst_grads)
     
@@ -546,9 +577,7 @@ def build_neural_network_hybrid_model(params):
             'reg_loss': regularizer,
             'acc_loss': acc
         }
-        #for gd, var in sl_grads:
-        #    train[var.name + '_gd_loss'] = tf.reduce_mean(tf.abs(gd)) - 5e-4 * tf.reduce_mean(tf.abs(var))
-    
+
         test = {
             'overall_loss': loss,
             'ce_loss': ce_loss,

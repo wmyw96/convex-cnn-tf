@@ -183,14 +183,7 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_plac
 sess.run(tf.global_variables_initializer())
 
 saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
-'''
-train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
-warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])
-for epoch in range(params['hybrid']['num_epoches']):
-    train_lst(ph, graph, targets, epoch, train_loader,
-              train_scheduler, warmup_scheduler)
-    eval_lst(ph, graph, targets, epoch, 'test', test_loader)
-'''
+
 for lid in range(params['hybrid']['nlayers']):
     train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
     warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])

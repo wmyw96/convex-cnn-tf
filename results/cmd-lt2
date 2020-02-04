@@ -1,0 +1,29 @@
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_1/20-02-02-22-14/epoch180/
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_4/20-02-02-22-17/epoch180/
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_16/20-02-03-08-38/epoch180/
+../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_24/20-02-03-12-49/epoch180/
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_1/20-02-02-22-14/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_1/20-02-02-22-14/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l2_1 --statlogdir logs/c10-vgg16-l2-1/graft_$i.pkl --gpu 2 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l2_1_$i.log
+done
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_4/20-02-02-22-17/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_4/20-02-02-22-17/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l2_4 --statlogdir logs/c10-vgg16-l2-4/graft_$i.pkl --gpu 3 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l2_4_$i.log
+done
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_16/20-02-03-08-38/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_16/20-02-03-08-38/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l2_16 --statlogdir logs/c10-vgg16-l2-16/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l2_16_$i.log
+done
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_24/20-02-03-12-49/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_24/20-02-03-12-49/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l2_24 --statlogdir logs/c10-vgg16-l2-24/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l2_24_$i.log
+done
+
+for i in $(seq 2 13)
+do
+python train_graft.py --modeldir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_28/20-02-03-21-37/epoch180/ --model1dir ../../data/cifar-100-models/graft-cifar10.vgg16_nobn_l2_28/20-02-03-21-37/epoch180/ --exp_id graft-cifar10.vgg16_nobn_l2_28 --statlogdir logs/c10-vgg16-l2-28/graft_$i.pkl --gpu 0 --seed 0 --nanase $i >log/c10_vgg16_epoch180_l2_28_$i.log
+done
