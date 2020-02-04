@@ -60,7 +60,7 @@ train_loader, test_loader = dataset['train'], dataset['test']
 
 # build model
 ph, graph, save_vars, graph_vars, targets = build_grafting_onecut_model(params)
-saver = tf.train.Saver(var_list=save_vars, max_to_keep=10)
+saver = tf.train.Saver(var_list=save_vars, max_to_keep=20)
 iter_per_epoch = params['train']['iter_per_epoch']
 train_scheduler = MultiStepLR(params['train']['milestone'], params['train']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['train']['warmup'])
