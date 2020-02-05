@@ -24,8 +24,8 @@ parser.add_argument('--seed', default=0, type=int)
 parser.add_argument('--exp_id', default='sl.vgg16_nobn_l2', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
-parser.add_argument('--model1dir', default='', type=str)
 parser.add_argument('--nanase', default=5, type=int)
+parser.add_argument('--pweight', default=0.5, type=float)
 args = parser.parse_args()
 
 # GPU settings
@@ -40,9 +40,6 @@ time.sleep(2)
 # Experiment parameters
 mod = importlib.import_module('saved_params.' + args.exp_id)
 params = mod.generate_params()
-
-# set grafting layer
-#params['grafting']['nanase'] = args.nanase
 
 # set seed
 params['train']['seed'] = args.seed
@@ -70,37 +67,25 @@ time.sleep(5)
 dnets = ['net' + str(k) for k in range(params['hybrid']['num_nets'])] + ['hybrid']
 
 
-def train_layerwise(lid, ph, graph, targets, epoch, data_loader, train_scheduler, 
-    warmup_scheduler, debug=False):
-    base_lr = train_scheduler.step()
+def train_layerwise(lid, ph, graph, targets, epoch, data_loader, debug=False):
     train_log = {}
     layern = 'layer{}'.format(lid)
-    print('Train Layer {} Epoch {}: lr decay = {}'.format(lid, epoch, base_lr))
     for batch_idx in range(params['train']['iter_per_epoch']):
-        if epoch < params['hybrid']['warmup']:
-            lr = base_lr * warmup_scheduler.step()
-        else:
-            lr = base_lr
-        
-        if debug:
-            print('Epoch {} Batch {}: Learning Decay = {}'.format(epoch, batch_idx, lr))
-
         x, y = data_loader.next_batch(params['hybrid']['batch_size'])
         fetch = sess.run(targets['hybrid'][layern]['train'],
             feed_dict={
                 ph['x']: x,
                 ph['y']: y,
-                ph['lr_decay']: lr,
                 ph['is_training']: True
             }
         )
         update_loss(fetch, train_log)
+    print('=' * 32)
     print_log('hybrid train', epoch, train_log)
     logger.print(epoch, 'hybrid layer {} train'.format(lid), train_log)
 
     
 def eval_layerwise(lid, ph, graph, targets, epoch, dsdomain, data_loader):
-    #base_lr = train_scheduler.step()
     eval_log = {}
     layern = 'layer{}'.format(lid)
     for batch_idx in range(params[dsdomain]['iter_per_epoch']):
@@ -114,41 +99,29 @@ def eval_layerwise(lid, ph, graph, targets, epoch, dsdomain, data_loader):
             }
         )
         update_loss(fetch, eval_log)
-
+    print('=' * 32)
     print_log('Layer {} {} {}'.format(lid, 'hybrid', dsdomain), epoch, eval_log)
     logger.print(epoch, 'Layer {} {} {}'.format(lid, 'hybrid', dsdomain), eval_log)
 
 
 
-def train_lst(ph, graph, targets, epoch, data_loader, train_scheduler, 
-    warmup_scheduler, debug=False):
-    base_lr = train_scheduler.step()
-
+def train_lst(ph, graph, targets, epoch, data_loader, debug=False):
     train_log = {}
     for d in dnets:
         train_log[d] = {}
 
-    print('Epoch {}: lr decay = {}'.format(epoch, base_lr))
     for batch_idx in range(params['train']['iter_per_epoch']):
-        if epoch < params['train']['warmup']:
-            lr = base_lr * warmup_scheduler.step()
-        else:
-            lr = base_lr
-        
-        if debug:
-            print('Epoch {} Batch {}: Learning Decay = {}'.format(epoch, batch_idx, lr))
-
         x, y = data_loader.next_batch(params['train']['batch_size'])
         for domain in dnets:
             fetch = sess.run(targets[domain]['lst']['train'],
                 feed_dict={
                     ph['x']: x,
                     ph['y']: y,
-                    ph['lr_decay']: lr,
                     ph['is_training']: True
                 }
             )
             update_loss(fetch, train_log[domain])
+    print('=' * 32)
     for domain in dnets:
         print_log('Domain Lst {} train'.format(domain), epoch, train_log[domain])
         logger.print(epoch, 'Lst {} train'.format(domain), train_log[domain])
@@ -172,6 +145,7 @@ def eval_lst(ph, graph, targets, epoch, dsdomain, data_loader):
                 }
             )
             update_loss(fetch, eval_log[domain])
+    print('=' * 32)
     for domain in dnets:
         print_log('Domain Lst {} {}'.format(domain, dsdomain), epoch, eval_log[domain])
         logger.print(epoch, 'Lst {} {}'.format(domain, dsdomain), eval_log[domain])
@@ -184,18 +158,15 @@ sess.run(tf.global_variables_initializer())
 
 saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
 
-for lid in range(params['hybrid']['nlayers']):
-    train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
-    warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])
+for epoch in range(params['hybrid']['num_epoches']):
+    train_lst(ph, graph, targets, epoch, train_loader)
+    eval_lst(ph, graph, targets, epoch, 'test', test_loader)
 
+for lid in range(params['hybrid']['nlayers'] - 1):
     for epoch in range(params['hybrid']['num_epoches']):
-        train_layerwise(lid + 1, ph, graph, targets, epoch, train_loader,
-            train_scheduler, warmup_scheduler)
+        train_layerwise(lid + 1, ph, graph, targets, epoch, train_loader)
         eval_layerwise(lid + 1, ph, graph, targets, epoch, 'test', test_loader)
 
-train_scheduler = MultiStepLR(params['hybrid']['milestone'], params['hybrid']['gamma'])
-warmup_scheduler = WarmupLR(iter_per_epoch * params['hybrid']['warmup'])
 for epoch in range(params['hybrid']['num_epoches']):
-    train_lst(ph, graph, targets, epoch, train_loader,
-              train_scheduler, warmup_scheduler)
+    train_lst(ph, graph, targets, epoch, train_loader)
     eval_lst(ph, graph, targets, epoch, 'test', test_loader)
