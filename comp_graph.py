@@ -429,6 +429,7 @@ def build_neural_network_hybrid_model(params):
                                 is_training=is_training,
                                 batch_norm=use_bn,
                                 layer_mask=None,
+                                preact=True,
                                 scaling=scaling)
         graph[domain] = modules[domain]
 
@@ -514,7 +515,13 @@ def build_neural_network_hybrid_model(params):
 
         all_feature = tf.concat(nets_feature, -1)
         
-        fm_loss_l = tf.reduce_mean(tf.abs(all_feature - hybrid_feature))
+        def relu_feat_match(x, y):
+            #ind = tf.cast(tf.greater(0.0, x), tf.float32) * tf.cast(tf.greater(0.0, y), tf.float32)
+            #dif = (1 - ind) * tf.square(x - y)
+            dif = tf.square(tf.nn.relu(x) - tf.nn.relu(y))
+            return tf.reduce_mean(dif)
+            
+        fm_loss_l = tf.reduce_mean(relu_feat_match(all_feature, hybrid_feature))
         reg_loss_l = get_regularizer_loss(weight_lid, params['network']['regularizer'])
 
         if params['hybrid']['cum']:
@@ -528,7 +535,7 @@ def build_neural_network_hybrid_model(params):
 
         loss = fm_loss * params['hybrid']['fmw'] + reg_loss * params['network']['regw']
 
-        fml_op = tf.train.AdamOptimizer(5e-4)
+        fml_op = tf.train.AdamOptimizer(1e-3)
         fml_grads = fml_op.compute_gradients(loss=loss, var_list=train_weights)
         fml_train_op = fml_op.apply_gradients(grads_and_vars=fml_grads)
     
@@ -564,7 +571,7 @@ def build_neural_network_hybrid_model(params):
         loss = ce_loss + regularizer * params['network']['regw']
         lst_weights = [weight for weight in net_vars[domain] if 'output' in weight.name]
 
-        lst_op = tf.train.AdamOptimizer(5e-4)
+        lst_op = tf.train.AdamOptimizer(1e-3)
         lst_grads = lst_op.compute_gradients(loss=loss, var_list=lst_weights)
         lst_train_op = lst_op.apply_gradients(grads_and_vars=lst_grads)
     

@@ -37,11 +37,11 @@ def generate_params():
 
     hybrid = {
         'batch_size': 64,
-        'num_epoches': 10,
+        'num_epoches': 7,
         'iter_per_epoch': 780,
         'nlayers': 16,
         'num_nets': 2,
-        'fmw': 100.0,
+        'fmw': 300.0,
         'layer_mask': [True] * 16,
         'cum': False,
         'pweight': [0.5, 0.5],
