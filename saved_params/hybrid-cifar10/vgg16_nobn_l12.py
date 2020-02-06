@@ -18,7 +18,7 @@ def generate_params():
         'batch_size': 64,
         'num_epoches': 200,
         'iter_per_epoch': 780,
-        'save_interval': [5, 10, 20, 30, 40, 50, 80, 100, 120, 180],
+        'save_interval': [1, 2, 3, 4, 5, 8, 10, 20, 30, 40, 50, 60, 80, 100, 120, 180],
     }
 
     test = {
@@ -36,13 +36,12 @@ def generate_params():
     }
 
     hybrid = {
-        'warmup': 1,
         'batch_size': 64,
-        'num_epoches': 200,
+        'num_epoches': 7,
         'iter_per_epoch': 780,
         'nlayers': 16,
         'num_nets': 2,
-        'fmw': 30.0,
+        'fmw': 300.0,
         'layer_mask': [True] * 16,
         'cum': False,
         'pweight': [0.5, 0.5],

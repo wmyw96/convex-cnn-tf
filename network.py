@@ -9,7 +9,7 @@ config = {
     'vgg19': [[64, 64], [128, 128], [256, 256, 256, 256], [512, 512, 512, 512], [512, 512, 512, 512]],
 }
 
-def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None, scaling=1):
+def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None, scaling=1, preact=False):
     modules = {}
     layers = [input_x]
     nc = 0
@@ -31,12 +31,22 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                     scope=unit_name)
                 if batch_norm:
                     h = tf.layers.batch_normalization(h, training=is_training)
+                pre = tf.identity(h)
                 h = tf.nn.relu(h)
-                modules[unit_name] = h
+                if preact:
+                    modules[unit_name] = h
+                else:
+                    modules[unit_name] = pre
                 if layer_mask is not None:
                     if layer_mask[nc - 1]: 
+                        #if preact:
+                        #    layers.append(pre)
+                        #else:
                         layers.append(h)
                 else:
+                    #if preact:
+                    #    layers.append(pre)
+                    #else:
                     layers.append(h)
 
             # pooling layers in one block
@@ -57,6 +67,6 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
         fc2 = slim.fully_connected(fc1_drop, 4096, activation_fn=tf.nn.relu, scope='l{}-fc2'.format(nc + 2))
         fc2_drop = slim.dropout(fc2, dropout_rate, is_training=is_training, scope='dropout2')
         out = slim.fully_connected(fc2_drop, num_classes, activation_fn=None, scope='l{}-output'.format(nc + 3))
-
+        
         modules['l{}-fc1'.format(nc + 1)], modules['l{}-fc2'.format(nc + 2)], modules['out'] = fc1, fc2, out
         return modules
