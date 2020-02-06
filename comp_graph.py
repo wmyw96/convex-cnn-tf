@@ -335,7 +335,7 @@ def build_grafting_onecut_model(params):
         layer_name = 'l{}-'.format(layer_id + 1)
         net1_feat = find_layer_feature_map(modules['net1'], layer_name)
         net2_feat = find_layer_feature_map(modules['net2'], layer_name)
-
+        
         nchannels = int(net1_feat.get_shape()[-1])
         print('layer {} feature shape = {}, # channels = {}'.format(
             layer_id + 1, net1_feat.get_shape(), nchannels))
@@ -365,6 +365,7 @@ def build_grafting_onecut_model(params):
         targets['cp2net']['l{}'.format(layer_id + 1)] = {
             'l2_dist': l2_dist,
             'l2_ndist': l2_ndist,
+            'mmd_dist': normalized_mmd_loss(net1_feat_c, net2_feat_c)
             'net1': net1v,
             'net2': net2v
         }

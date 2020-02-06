@@ -72,8 +72,33 @@ def mmd_loss_lst(x, y, sigmas):
         y_kernel = compute_kernel_lst(y, y, sigma)
         xy_kernel = compute_kernel_lst(x, y, sigma)
         mmd_loss_avg += tf.reduce_mean(x_kernel) + tf.reduce_mean(y_kernel) - 2 * tf.reduce_mean(xy_kernel)
+    mmd_loss_avg /= (len(sigmas) + 0.0)
     return mmd_loss_avg
 
+
+def compute_kernel(x, y, sigma):
+    # x: [nx, d]
+    # y: [ny, d]
+    nx = int(x.get_shape()[0])
+    ny = int(y.get_shape()[0])
+    print('compute_kernel d = {}, nx = {}, ny = {}'.format(rk, nx, ny))
+    tilde_x = tf.tile(tf.expand_dims(x, 1), tf.stack([1, ny, 1]))  # [nx, ny, d]
+    tilde_y = tf.tile(tf.expand_dims(y, 0), tf.stack([nx, 1, 1]))  # [nx, ny, d]
+    l2_dist = tf.square(tilde_x - tilde_y) / (2 * sigma**2)
+    return tf.reduce_mean(tf.exp(-l2_dist))
+
+
+def normalized_mmd_loss(x, y, sigmas):
+    nx = x / tf.sqrt(get_var(x, 1) + 1e-9)
+    ny = y / tf.sqrt(get_var(y, 1) + 1e-9)
+    mmd_loss_avg = 0.
+    for sigma in sigmas:
+        x_kernel = compute_kernel(x, x, sigma)
+        y_kernel = compute_kernel(y, y, sigma)
+        xy_kernel = compute_kernel(x, y, sigma)
+        mmd_loss_avg += tf.reduce_mean(x_kernel) + tf.reduce_mean(y_kernel) - 2 * tf.reduce_mean(xy_kernel)
+    mmd_loss_avg /= (len(sigmas) + 0.0)
+    return mmd_loss_avg
 
 '''
 fork from slackoverflow answer @Yamaneko:
