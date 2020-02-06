@@ -50,7 +50,7 @@ tf.set_random_seed(args.seed)
 params['hybrid']['pweight'] = [args.pweight, 1 - args.pweight]
 
 # target log dir
-log_dir = os.path.join(args.logdir, datetime.datetime.now().strftime('[%m_%d_%H_%M]') + args.exp_id)
+log_dir = os.path.join(args.logdir, datetime.datetime.now().strftime('[%m_%d_%H_%M]') + args.exp_id + '_hybrid_' + str(args.pweight))
 print('Experiment Logs will be written at {}'.format(log_dir))
 logger = LogWriter(log_dir, 'main.log')
 
