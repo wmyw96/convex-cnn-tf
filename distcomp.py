@@ -92,11 +92,6 @@ gpu_options = tf.GPUOptions(allow_growth=True)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True))
 sess.run(tf.global_variables_initializer())
 
-saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
-
-if len(args.model1dir) > 5:
-    saver1 = tf.train.Saver(var_list=graph_vars['net1'])
-    saver1.restore(sess, os.path.join(args.model1dir, 'vgg2.ckpt'))
 
 
 def semi_matching(dist_mat):
@@ -112,9 +107,9 @@ def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
         x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
         fetch = sess.run([targets['cp2net'][slid]['l2_dist'],
                           targets['cp2net'][slid]['l2_ndist'],
-                          targets['cp2net'][slid]['net1']['gradnorm'],
+                          targets['cp2net'][slid]['net1']['l1_norm'],
                           targets['cp2net'][slid]['net1']['l2_norm'],
-                          targets['cp2net'][slid]['net2']['gradnorm'],
+                          targets['cp2net'][slid]['net2']['l1_norm'],
                           targets['cp2net'][slid]['net2']['l2_norm'],
                           targets['cp2net'][slid]['net1']['std'],
                           targets['cp2net'][slid]['net2']['std'],
@@ -167,6 +162,7 @@ test_l2 = np.zeros((dd1, dd2))
 test_mmd = np.zeros((dd1, dd2))
 
 for e, eid in enumerate(params['train']['save_interval']):
+    saver.restore(sess, os.path.join(os.path.join(model_dir, 'epoch'+str(eid-1)), 'vgg2.ckpt'))
     for i in range(params['grafting']['nlayers'] - 1):
         train_l2[e, i], train_mmd[e, i] = eval_layer(ph, graph, targets, train_loader, 'train', i)
         test_l2[e, i], test_mmd[e, i] = eval_layer(ph, graph, targets, test_loader, 'test', i)

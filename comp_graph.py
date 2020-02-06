@@ -365,7 +365,7 @@ def build_grafting_onecut_model(params):
         targets['cp2net']['l{}'.format(layer_id + 1)] = {
             'l2_dist': l2_dist,
             'l2_ndist': l2_ndist,
-            'mmd_dist': normalized_mmd_loss(net1_feat_c, net2_feat_c)
+            'mmd_dist': normalized_mmd_loss(net1_feat_c, net2_feat_c, [0.1, 0.5, 1, 2, 5, 10]),
             'net1': net1v,
             'net2': net2v
         }

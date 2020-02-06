@@ -24,6 +24,7 @@ parser.add_argument('--seed', default=0, type=int)
 parser.add_argument('--exp_id', default='sl.vgg16_nobn_l2', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
+parser.add_argument('--model2dir', default='../../data/cifar-100-models/', type=str)
 parser.add_argument('--nanase', default=5, type=int)
 parser.add_argument('--pweight', default=0.5, type=float)
 args = parser.parse_args()
@@ -158,7 +159,12 @@ gpu_options = tf.GPUOptions(allow_growth=True)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True))
 sess.run(tf.global_variables_initializer())
 
+
 saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
+
+if len(args.model2dir) > 5:
+    saver2 = tf.train.Saver(var_list=graph_vars['net1'])
+    saver2.restore(sess, os.path.join(args.model2dir, 'vgg2.ckpt'))
 
 for epoch in range(params['hybrid']['num_epoches']):
     train_lst(ph, graph, targets, epoch, train_loader)
