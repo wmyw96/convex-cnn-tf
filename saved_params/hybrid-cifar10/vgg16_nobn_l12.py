@@ -45,7 +45,7 @@ def generate_params():
         'layer_mask': [True] * 16,
         'cum': False,
         'pweight': [0.5, 0.5],
-        'scaling': 1.5
+        'scaling': 1.0
     }
 
     params = {

@@ -163,14 +163,15 @@ def build_grafting_onecut_model(params):
                            name='label')
     is_training = tf.placeholder(dtype=tf.bool, shape=[], name='is_training')
     lr_decay = tf.placeholder(dtype=tf.float32, shape=[], name='lr_decay')
-
+    inter_w = tf.placeholder(dtype=tf.float32, shape=[], name='interpolation_weight')
     ph = {
         'x': inp_x,
         'y': label,
         'is_training': is_training,
-        'lr_decay': lr_decay
+        'lr_decay': lr_decay,
+        'inter_weight': inter_w
     }
-
+    
     # build computation graph
     nclass = params['data']['nclass']
     model_name = params['network']['model']    # vgg16, vgg16-large, vgg19 
@@ -398,15 +399,15 @@ def build_neural_network_hybrid_model(params):
                            name='label')
     is_training = tf.placeholder(dtype=tf.bool, shape=[], name='is_training')
     lr_decay = tf.placeholder(dtype=tf.float32, shape=[], name='lr_decay')
-
+    inter_w = tf.placeholder(dtype=tf.float32, shape=[], name='interpolation_weight')
     ph = {
         'x': inp_x,
         'y': label,
         'is_training': is_training,
-        'lr_decay': lr_decay
+        'lr_decay': lr_decay,
+        'inter_weight': inter_w
     }
-
-    # build computation graph
+  # build computation graph
     nclass = params['data']['nclass']
     model_name = params['network']['model']    # vgg16, vgg16-large, vgg19 
     use_bn = params['network']['batch_norm']
@@ -598,6 +599,26 @@ def build_neural_network_hybrid_model(params):
             'eval': test
         }
 
+    var_dict = create_var_dict(net_vars['hybrid'])
+    var_dict_net1 = create_var_dict(net_vars['net0'])
+    var_dict_net2 = create_var_dict(net_vars['net1'])
+    targets['hybrid']['linear_inter'] = []
+
+    for layer_id in range(params['hybrid']['nlayers']):
+        # fetch all weights in layer l
+        weights, assigns = [], []
+        for weight in net_vars['hybrid']:
+            if ('l{}-'.format(layer_id + 1)) in weight.name:
+                weights.append(weight)
+        for weight in weights:
+            weight_name = weight.name[len('hybrid')+1:]
+            print('drafting variable {}'.format(var_dict['hybrid/' + weight_name].name))
+            net1_weight = var_dict_net1['net0/' + weight_name]
+            net2_weight = var_dict_net2['net1/' + weight_name]
+            value = net1_weight * ph['inter_weight'] + (1 - ph['inter_weight']) * net2_weight
+            assigns.append(tf.assign(weight, value))
+        targets['hybrid']['linear_inter'] += assigns
+    
     return ph, graph, save_vars, net_vars, targets
 
 

@@ -155,6 +155,9 @@ def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
     return np.mean(v), mmd_dist
 
 
+params['train']['save_interval'] = [1, 180]
+params['grafting']['nlayers'] = 13
+
 dd1, dd2 = len(params['train']['save_interval']), params['grafting']['nlayers'] - 1
 train_l2 = np.zeros((dd1, dd2))
 train_mmd = np.zeros((dd1, dd2))
