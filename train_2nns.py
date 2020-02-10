@@ -50,7 +50,8 @@ print('Experiment Logs will be written at {}'.format(log_dir))
 logger = LogWriter(log_dir, 'main.log')
 
 # model save log dir
-model_dir = os.path.join(args.modeldir, args.exp_id, datetime.datetime.now().strftime('%y-%m-%d-%H-%M'))
+model_dir = os.path.join(args.modeldir, args.exp_id, 
+    'sd' + str(args.seed) + '_' + datetime.datetime.now().strftime('%y-%m-%d-%H-%M'))
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
@@ -60,7 +61,7 @@ train_loader, test_loader = dataset['train'], dataset['test']
 
 # build model
 ph, graph, save_vars, graph_vars, targets = build_grafting_onecut_model(params)
-saver = tf.train.Saver(var_list=save_vars, max_to_keep=20)
+saver = tf.train.Saver(var_list=save_vars, max_to_keep=30)
 iter_per_epoch = params['train']['iter_per_epoch']
 train_scheduler = MultiStepLR(params['train']['milestone'], params['train']['gamma'])
 warmup_scheduler = WarmupLR(iter_per_epoch * params['train']['warmup'])
@@ -126,5 +127,5 @@ for epoch in range(params['train']['num_epoches']):
         train_scheduler, warmup_scheduler)
     eval(ph, graph, targets, epoch, 'test', test_loader)
 
-    if epoch in params['train']['save_interval']:
-        saver.save(sess, os.path.join(model_dir, 'epoch{}'.format(epoch), 'vgg2.ckpt'))
+    if epoch + 1 in params['train']['save_interval']:
+        saver.save(sess, os.path.join(model_dir, 'epoch{}'.format(epoch + 1), 'vgg2.ckpt'))

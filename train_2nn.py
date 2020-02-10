@@ -50,7 +50,8 @@ print('Experiment Logs will be written at {}'.format(log_dir))
 logger = LogWriter(log_dir, 'main.log')
 
 # model save log dir
-model_dir = os.path.join(args.modeldir, args.exp_id, datetime.datetime.now().strftime('%y-%m-%d-%H-%M'))
+model_dir = os.path.join(args.modeldir, args.exp_id, 
+    'sd' + str(args.seed) + '_' + datetime.datetime.now().strftime('%y-%m-%d-%H-%M'))
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
@@ -126,4 +127,4 @@ for epoch in range(params['train']['num_epoches']):
     eval(ph, graph, targets, epoch, 'test', test_loader)
 
     if epoch + 1 in params['train']['save_interval']:
-        saver.save(sess, os.path.join(model_dir, 'epoch{}'.format(epoch), 'vgg2.ckpt'))
+        saver.save(sess, os.path.join(model_dir, 'epoch{}'.format(epoch + 1), 'vgg2.ckpt'))
