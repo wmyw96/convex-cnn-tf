@@ -1,0 +1,29 @@
+python train_knn.py --logdir train-logs/ --seed 0 --exp_id hybrid-cifar10.vgg16_nobn_l12 --modeldir cifar10-models
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight [p] --logdir hybrid-logs/ --modeldir cifar10-models/hybrid-cifar10.vgg16_nobn_l12/[具体时间的文件夹]/epoch0/ --model2dir cifar10-models/hybrid-cifar10.vgg16_nobn_l12/[具体时间的文件夹]/epoch1/
+
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.1 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 1 --seed 0
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.2 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.3 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.4 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.5 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.6 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.7 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 3 --seed 0
+
+
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.8 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 1 --seed 0
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 0.9 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 1 --seed 0
+
+
+python train_hybrid.py --exp_id hybrid-cifar10.vgg16_nobn_l12 --pweight 1.0 --logdir hybrid-logs/ --modeldir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch0 --model2dir ../../data/cifar-100-models/hybrid-cifar10.vgg16_nobn_l12/20-02-07-00-59/epoch1 --gpu 1 --seed 0

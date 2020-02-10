@@ -37,17 +37,17 @@ for (i, num_epoch) in enumerate([1, 2, 5, 8, 20, 40, 60]):
 
     y = np.array(val_te) 
     lyr = np.array(lyr)
-    plt.plot(lyr, y, color=palette(i/6.0), label='e={}'.format(num_epoch))
-    plt.plot(np.arange(1, 14), np.array([acc[i]] * 13), color=palette(i/6.0), linestyle=':', linewidth=1.0)
+    plt.plot(lyr, (1-y)*100, color=palette(i/6.0), label='e={}'.format(num_epoch))
+    plt.plot(np.arange(1, 14), (1-np.array([acc[i]] * 13)) * 100, color=palette(i/6.0), linestyle=':', linewidth=0.8)
 
 
-plt.plot(np.arange(1, 14), np.array([0.9192] * 13), color='black', linestyle=':', linewidth=1.0)
+plt.plot(np.arange(1, 14), (1-np.array([0.9192] * 13)) * 100, color='black', linestyle=':', linewidth=0.8)
 
-plt.ylim(0.0, 1.0)
+plt.ylim(0, 100)
 plt.xlim(1, 13)
-plt.yticks(acc)
+plt.yticks((1-np.array(acc)) * 100)
 plt.xlabel('grafted layer')
-plt.ylabel('accuracy')
-plt.legend(loc='lower left', frameon=True)
+plt.ylabel('valid error')
+plt.legend(loc='upper right', frameon=True)
 plt.show()
 plt.clf()

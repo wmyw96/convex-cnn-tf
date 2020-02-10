@@ -9,10 +9,13 @@ import pickle
 import numpy as np
 plt.style.use('seaborn-darkgrid')
 palette = plt.get_cmap('Set3')
-plt.rc('font',size=22)
+plt.rc('font',size=20)
+#plt.gcf().subplots_adjust(bottom=0.0)
+plt.rc('figure', autolayout=True)
 
+#plt.tight_layout()
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 4))
 import pandas as pd
 
 def tod(x):
@@ -38,11 +41,14 @@ for (i, num_str) in enumerate(r):
     print(val_te)
     y = acc[i] - np.array(val_te) 
     lyr = np.array(lyr)
-    plt.plot(lyr, y, color=palette(i), label='w={}$w_0$'.format(tod(num_str)))
+    plt.plot(lyr - 1, y * 100, color=palette(i), label='$\lambda$={}$w_0$'.format(tod(num_str)), marker='o')
 
-plt.ylim(-0.1, 0.6)
+plt.ylim(-10, 60)
+plt.xlim(0, 14.5)
+plt.xticks([2, 4, 6, 8, 10])
 plt.xlabel('grafted layer')
-plt.ylabel('increased validation error')
-plt.legend(loc='upper left', frameon=True)
+plt.ylabel('increased valid error (%)')
+plt.legend(loc='upper right', fontsize=18, frameon=True)
+
 plt.show()
 plt.clf()
