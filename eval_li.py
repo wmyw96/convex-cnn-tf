@@ -63,71 +63,12 @@ train_loader, test_loader = dataset['train'], dataset['test']
 
 # build model
 ph, graph, save_vars, graph_vars, targets = build_neural_network_hybrid_model(params)
+save_vars = graph_vars['net0'] + graph_vars['net1']
 saver = tf.train.Saver(var_list=save_vars)
 iter_per_epoch = params['train']['iter_per_epoch']
 time.sleep(5)
 
 dnets = ['net' + str(k) for k in range(params['hybrid']['num_nets'])] + ['hybrid']
-
-
-def train_layerwise(lid, ph, graph, targets, epoch, data_loader, debug=False):
-    train_log = {}
-    layern = 'layer{}'.format(lid)
-    for batch_idx in range(params['train']['iter_per_epoch']):
-        x, y = data_loader.next_batch(params['hybrid']['batch_size'])
-        fetch = sess.run(targets['hybrid'][layern]['train'],
-            feed_dict={
-                ph['x']: x,
-                ph['y']: y,
-                ph['is_training']: True
-            }
-        )
-        update_loss(fetch, train_log)
-    print('=' * 32)
-    print_log('hybrid train', epoch, train_log)
-    logger.print(epoch, 'hybrid layer {} train'.format(lid), train_log)
-
-    
-def eval_layerwise(lid, ph, graph, targets, epoch, dsdomain, data_loader):
-    eval_log = {}
-    layern = 'layer{}'.format(lid)
-    for batch_idx in range(params[dsdomain]['iter_per_epoch']):
-        x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
-
-        fetch = sess.run(targets['hybrid'][layern]['eval'],
-            feed_dict={
-                ph['x']: x,
-                ph['y']: y,
-                ph['is_training']: False
-            }
-        )
-        update_loss(fetch, eval_log)
-    print('=' * 32)
-    print_log('Layer {} {} {}'.format(lid, 'hybrid', dsdomain), epoch, eval_log)
-    logger.print(epoch, 'Layer {} {} {}'.format(lid, 'hybrid', dsdomain), eval_log)
-
-
-
-def train_lst(ph, graph, targets, epoch, data_loader, debug=False):
-    train_log = {}
-    for d in dnets:
-        train_log[d] = {}
-
-    for batch_idx in range(params['train']['iter_per_epoch']):
-        x, y = data_loader.next_batch(params['train']['batch_size'])
-        for domain in dnets:
-            fetch = sess.run(targets[domain]['lst']['train'],
-                feed_dict={
-                    ph['x']: x,
-                    ph['y']: y,
-                    ph['is_training']: True
-                }
-            )
-            update_loss(fetch, train_log[domain])
-    print('=' * 32)
-    for domain in dnets:
-        print_log('Domain Lst {} train'.format(domain), epoch, train_log[domain])
-        logger.print(epoch, 'Lst {} train'.format(domain), train_log[domain])
 
     
 def eval_lst(ph, graph, targets, epoch, dsdomain, data_loader):
@@ -149,10 +90,7 @@ def eval_lst(ph, graph, targets, epoch, dsdomain, data_loader):
             )
             update_loss(fetch, eval_log[domain])
     print('=' * 32)
-    for domain in dnets:
-        print_log('Domain Lst {} {}'.format(domain, dsdomain), epoch, eval_log[domain])
-        logger.print(epoch, 'Lst {} {}'.format(domain, dsdomain), eval_log[domain])
-
+    return eval_log['hybrid']
 
 
 gpu_options = tf.GPUOptions(allow_growth=True)
@@ -166,15 +104,24 @@ if len(args.model2dir) > 5:
     saver2 = tf.train.Saver(var_list=graph_vars['net1'])
     saver2.restore(sess, os.path.join(args.model2dir, 'vgg2.ckpt'))
 
-for epoch in range(params['hybrid']['num_epoches']):
-    train_lst(ph, graph, targets, epoch, train_loader)
-    eval_lst(ph, graph, targets, epoch, 'test', test_loader)
 
-for lid in range(params['hybrid']['nlayers'] - 1):
-    for epoch in range(params['hybrid']['num_epoches']):
-        train_layerwise(lid + 1, ph, graph, targets, epoch, train_loader)
-        eval_layerwise(lid + 1, ph, graph, targets, epoch, 'test', test_loader)
+points = 101
+xx = np.arange(points) / (points - 1 + 0.0)
+tablev = np.zeros((points, 5))
+tablev[:, 0] = xx
+#tablev[:, 1] 
 
-for epoch in range(params['hybrid']['num_epoches']):
-    train_lst(ph, graph, targets, epoch, train_loader)
-    eval_lst(ph, graph, targets, epoch, 'test', test_loader)
+for epoch in range(points):
+    sess.run(targets['hybrid']['linear_inter'], feed_dict={ph['inter_weight']: xx[epoch]})
+    #train_lst(ph, graph, targets, epoch, train_loader)
+    logfile = eval_lst(ph, graph, targets, epoch, 'train', train_loader)
+    overall, ce, reg, acc = logfile['overall_loss'], logfile['ce_loss'], logfile['reg_loss'], logfile['acc_loss']
+    overall = np.mean(overall)
+    ce = np.mean(ce)
+    reg = np.mean(reg)
+    acc = np.mean(acc)
+    print('{} {} {} {} {}'.format(xx[epoch], overall, ce, reg, acc))
+    tablev[epoch, 1], tablev[epoch, 2], tablev[epoch, 3], tablev[epoch, 4] = overall, ce, reg, acc
+
+np.savetxt('results/linear_inter', tablev, delimiter=',')
+

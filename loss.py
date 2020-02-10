@@ -81,7 +81,7 @@ def compute_kernel(x, y, sigma):
     # y: [ny, d]
     nx = int(x.get_shape()[0])
     ny = int(y.get_shape()[0])
-    print('compute_kernel d = {}, nx = {}, ny = {}'.format(rk, nx, ny))
+    print('compute_kernel d = {}, nx = {}, ny = {}'.format(0, nx, ny))
     tilde_x = tf.tile(tf.expand_dims(x, 1), tf.stack([1, ny, 1]))  # [nx, ny, d]
     tilde_y = tf.tile(tf.expand_dims(y, 0), tf.stack([nx, 1, 1]))  # [nx, ny, d]
     l2_dist = tf.square(tilde_x - tilde_y) / (2 * sigma**2)
