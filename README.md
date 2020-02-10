@@ -1,44 +1,23 @@
 # Results of VGG16
 
-## To Reproduce the Result of VGG training
+## To Reproduce the Results of Neural Network Grafting
+
+### Preliminaries
+
+- build dir `[MDIR]` to save trained neural networks
+- build dir `[MLDIR]` to save training logs
+- build dir `[GLDIR]` to save grafting los
+
+### Train the neural network with different regularizers
+
+- to train the neural networks with $l_{1,2}$ regularizer: where `[S]` is the random seed (could be set from {1, 2, 3, 4, 5}), `[W]` is the regularization parameter (could be set from {z5, 1, 2, 4, 8, 10})
 
 ```
-python train.py --gpu 0 --seed 0 --exp_id sl.vgg16_nobn_l2
-python train.py --gpu 0 --seed 0 --exp_id sl.vgg16_bn_l2
+python train_2nn.py --seed [S] --gpu 0 --exp_id graft-cifar10.vgg16_nobn_l12_[W] --modeldir [MDIR] --logdir [MLDIR]
 ```
 
-Top-1 Test Accuracy: 70.91% (no batchnorm), 71.94% (batchnorm)
-
-Top-1 Train Accuracy: 99.80% (no batchnorm)
-
-## To Reproduce the Result of Neural Network Grafting
-
-First train two neural networks separately with different inintializations
+- to train the neural network with $l_{2}$ regularizer: where `[S]` is the random seed (could be set from {1, 2, 3, 4, 5}), `[W]` is the regularization parameter (could be set from {1, 4, 16, 24, 28})
 
 ```
-python train_2nn.py --gpu 0 --seed 0 --exp_id graft.vgg16_nobn_l12
-```
-
-then do neural network grafting:
-
-```
-python train_graft.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/19-12-30-15-36/epoch190/ --exp_id graft.vgg16_nobn_l12 --gpu 1 --seed 0
-```
-
-compare statistics between 2 nets
-
-```
-python 2netcomp.py --modeldir ../../data/cifar-100-models/graft.vgg16_nobn_l12/19-12-30-15-36/epoch190/ --exp_id graft.vgg16_nobn_l12 --gpu 1 --seed 0 --figlogdir .logs/vgg16-l12
-```
-
-## To Reproduce the Results of Neural Network Hybrid
-
-
-```
-python train_knn.py --gpu 0 --seed 0 --exp_id hybrid.vgg16_nobn_l12
-```
-
-```
-python train_hybrid.py --modeldir ../../data/cifar-100-models/hybrid.vgg16_nobn_l12/20-01-06-02-47/epoch180/ --exp_id hybrid.vgg16_nobn_l12 --gpu 1 --seed 0
-
+python train_2nn.py --seed [S] --gpu 0 --exp_id graft-cifar10.vgg16_nobn_l2_[W] --modeldir [MDIR] --logdir [MLDIR]
 ```
