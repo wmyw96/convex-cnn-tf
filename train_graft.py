@@ -169,6 +169,8 @@ def assign_weights(assign_handle, layer_l, layer_r):
         layer_id = layer_l + i
         sess.run(assign_handle['l{}'.format(layer_id)])
 
+print(args.model1dir)
+print(model_dir)
 if len(args.model1dir) > 5:
     saver1 = tf.train.Saver(var_list=graph_vars['net1'])
     saver1.restore(sess, os.path.join(args.model1dir, 'vgg2.ckpt'))

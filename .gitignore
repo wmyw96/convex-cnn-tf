@@ -4,4 +4,6 @@ logs/
 __pycache__/
 log/
 logs-old/
+glogs/
+mlogs
 
