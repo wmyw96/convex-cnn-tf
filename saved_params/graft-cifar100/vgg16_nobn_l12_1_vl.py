@@ -1,11 +1,11 @@
 
 def generate_params():
-    nclass = 10
+    nclass = 100
 
     data = {
         'rot': False,
-        'dataset': 'cifar-10',
-        'data_dir': '../../data/cifar-10/',
+        'dataset': 'cifar-100',
+        'data_dir': '../../data/cifar-100/',
         'x_size': [32, 32, 3],
         'nclass': nclass,
     }
@@ -15,7 +15,7 @@ def generate_params():
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
-        'batch_size': 64,
+        'batch_size': 64 // 4,
         'num_epoches': 200,
         'iter_per_epoch': 780,
         'save_interval': [1, 2, 5, 8, 10, 20, 30, 40, 50, 60, 70, 80, 90, 
@@ -23,7 +23,7 @@ def generate_params():
     }
 
     test = {
-        'batch_size': 128,
+        'batch_size': 128 // 8,
         'iter_per_epoch': 78,
     }
 
@@ -38,14 +38,14 @@ def generate_params():
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-4,
+        'adam_lr': 1e-3,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
-        'batch_size': 64,
+        'batch_size': 64 // 8,
         'num_epoches': 200,
-        'iter_per_epoch': 780,
+        'iter_per_epoch': 780 * 8,
         'nlayers': 16,
         'nanase': 5,
         'diffw': 5.0,

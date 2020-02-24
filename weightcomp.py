@@ -27,6 +27,7 @@ parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
 parser.add_argument('--model1dir', default='', type=str)
 parser.add_argument('--nanase', default=5, type=int)
+parser.add_argument('--bias', default=0, type=int)
 parser.add_argument('--outpath', default='', type=str)
 args = parser.parse_args()
 
@@ -70,13 +71,13 @@ iter_per_epoch = params['train']['iter_per_epoch']
 time.sleep(5)
 
     
-def eval(ph, graph, targets, epoch, dsdomain, data_loader):
+def eval(ph, sess, graph, targets, epoch, domain, dsdomain, data_loader):
     #base_lr = train_scheduler.step()
     eval_log = {}
     for batch_idx in range(params[dsdomain]['iter_per_epoch']):
         x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
 
-        fetch = sess.run(targets['grafting']['eval'],
+        fetch = sess.run(targets[domain]['eval'],
             feed_dict={
                 ph['x']: x,
                 ph['y']: y,
@@ -94,82 +95,27 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_plac
 sess.run(tf.global_variables_initializer())
 
 
-
-def semi_matching(dist_mat):
-    value = np.min(dist_mat, 1)
-    ind = np.argmin(dist_mat, 1)
-    return value, ind
-
-
-def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
-    slid = 'l' + str(layerid + 1)
-    values = []
-    for batch_idx in range(params[dsdomain]['iter_per_epoch']):
-        x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
-        fetch = sess.run([targets['cp2net'][slid]['l2_dist'],
-                          targets['cp2net'][slid]['l2_ndist'],
-                          targets['cp2net'][slid]['net1']['l1_norm'],
-                          targets['cp2net'][slid]['net1']['l2_norm'],
-                          targets['cp2net'][slid]['net2']['l1_norm'],
-                          targets['cp2net'][slid]['net2']['l2_norm'],
-                          targets['cp2net'][slid]['net1']['std'],
-                          targets['cp2net'][slid]['net2']['std'],
-                          targets['net1']['eval']['acc_loss'],
-                          targets['net2']['eval']['acc_loss'],
-                          targets['cp2net'][slid]['mmd_dist']
-                         ],
-                          feed_dict={
-                                ph['x']: x, ph['y']: y,
-                                ph['is_training']: False
-                          })
-        if len(values) == 0:
-            for i in range(len(fetch)):
-                values.append([fetch[i]])
-        else:
-            for i in range(len(fetch)):
-                values[i].append(fetch[i])
-    
-    valuec = []
-    for i in range(len(values)):
-        valuec.append(np.array(values[i]))
-        print(valuec[i].shape)
-        valuec[i] = np.mean(valuec[i], 0)
-
-    nchannels = valuec[0].shape[0]
-
-    l2_dist = valuec[0]
-    l2_ndist = valuec[1]
-    net1_gn = valuec[2]
-    net2_gn = valuec[4]
-    net1_l2n = valuec[3]
-    net2_l2n = valuec[5]
-    net1_std = valuec[6]
-    net2_std = valuec[7]
-    mmd_dist = valuec[10]
-
-    print('Domain {} Layer {}: Net1 acc = {}, Net2 acc = {}'.format(
-        dsdomain, layerid, valuec[8], valuec[9]))
-    
-    v, ind = semi_matching(l2_ndist)
-    vind = np.argsort(v)
-
-    return np.mean(v), mmd_dist
-
-ts = [1, 5, 10, 30, 60, 120, 180, 200]
-params['train']['save_interval'] = ts #[1, 180]
+#params['train']['save_interval'] = [1, 180]
 params['grafting']['nlayers'] = 13
 
 dd1, dd2 = len(params['train']['save_interval']), params['grafting']['nlayers'] - 1
-train_l2 = np.zeros((dd1, dd2))
-train_mmd = np.zeros((dd1, dd2))
-test_l2 = np.zeros((dd1, dd2))
-test_mmd = np.zeros((dd1, dd2))
+weight_l2 = np.zeros((dd1, dd2))
+
 
 for e, eid in enumerate(params['train']['save_interval']):
-    saver.restore(sess, os.path.join(os.path.join(model_dir, 'epoch'+str(eid)), 'vgg2.ckpt'))
-    for i in range(params['grafting']['nlayers'] - 1):
-        train_l2[e, i], train_mmd[e, i] = eval_layer(ph, graph, targets, train_loader, 'train', i)
-        test_l2[e, i], test_mmd[e, i] = eval_layer(ph, graph, targets, test_loader, 'test', i)
+    saver.restore(sess, os.path.join(os.path.join(model_dir, 'epoch'+str(eid+args.bias)), 'vgg2.ckpt'))
+    eval(ph, sess, graph, targets, eid, 'net1', 'test', test_loader)
+    eval(ph, sess, graph, targets, eid, 'net2', 'test', test_loader)
 
-output = np.array([train_l2, test_l2, train_mmd, test_mmd])
+    for i in range(params['grafting']['nlayers'] - 1):
+        net1_weight = find_weight(graph_vars['net1'], 'l{}-'.format(i+1))
+        net2_weight = find_weight(graph_vars['net2'], 'l{}-'.format(i+1))
+        net1_weight, net2_weight = sess.run([net1_weight, net2_weight])
+        print(net1_weight.shape)
+        diff = np.mean(np.square(net1_weight - net2_weight)) #* net1_weight.shape[2]
+        base = np.mean(np.square(net1_weight)) + np.mean(np.square(net2_weight)) 
+        weight_l2[e, i] = diff / (base * 0.5)
+
+output = np.array([weight_l2])
 np.save(args.outpath, output)
+

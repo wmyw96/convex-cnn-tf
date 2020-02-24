@@ -22,12 +22,11 @@ parser = argparse.ArgumentParser(description='Image Classification With Two Netw
 parser.add_argument('--logdir', default='../../data/cifar-100-logs/', type=str)
 parser.add_argument('--seed', default=0, type=int)
 parser.add_argument('--exp_id', default='sl.vgg16_nobn_l2', type=str)
-parser.add_argument('--figlogdir', default='.logs/vgg16-l12', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--modeldir', default='../../data/cifar-100-models/', type=str)
 parser.add_argument('--model1dir', default='', type=str)
 parser.add_argument('--nanase', default=5, type=int)
-parser.add_argument('--outpath', default='', type=str)
+parser.add_argument('--statlogdir', default='logs/vgg16-l2/graft5.pkl', type=str)
 args = parser.parse_args()
 
 # GPU settings
@@ -67,7 +66,36 @@ train_loader, test_loader = dataset['train'], dataset['test']
 ph, graph, save_vars, graph_vars, targets = build_grafting_onecut_model(params)
 saver = tf.train.Saver(var_list=graph_vars['net1'] + graph_vars['net2'])
 iter_per_epoch = params['train']['iter_per_epoch']
+train_scheduler = MultiStepLR(params['grafting']['milestone'], params['grafting']['gamma'])
+warmup_scheduler = WarmupLR(iter_per_epoch * params['grafting']['warmup'])
 time.sleep(5)
+
+def train(ph, graph, targets, epoch, data_loader, train_scheduler, 
+    warmup_scheduler, debug=False):
+    base_lr = train_scheduler.step()
+    train_log = {}
+    print('Epoch {}: lr decay = {}'.format(epoch, base_lr))
+    for batch_idx in range(params['train']['iter_per_epoch']):
+        if epoch < params['grafting']['warmup']:
+            lr = base_lr * warmup_scheduler.step()
+        else:
+            lr = base_lr
+        
+        if debug:
+            print('Epoch {} Batch {}: Learning Decay = {}'.format(epoch, batch_idx, lr))
+
+        x, y = data_loader.next_batch(params['grafting']['batch_size'])
+        fetch = sess.run(targets['grafting']['train'],
+            feed_dict={
+                ph['x']: x,
+                ph['y']: y,
+                ph['lr_decay']: lr,
+                ph['is_training']: True
+            }
+        )
+        update_loss(fetch, train_log)
+    print_log('grafting train', epoch, train_log)
+    logger.print(epoch, 'grafting train', train_log)
 
     
 def eval(ph, graph, targets, epoch, dsdomain, data_loader):
@@ -89,34 +117,17 @@ def eval(ph, graph, targets, epoch, dsdomain, data_loader):
     logger.print(epoch, '{} {}'.format('grafting', dsdomain), eval_log)
 
 
-gpu_options = tf.GPUOptions(allow_growth=True)
-sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True))
-sess.run(tf.global_variables_initializer())
-
-
-
-def semi_matching(dist_mat):
-    value = np.min(dist_mat, 1)
-    ind = np.argmin(dist_mat, 1)
-    return value, ind
-
-
 def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
-    slid = 'l' + str(layerid + 1)
+    slid = 'l' + str(layerid)
     values = []
     for batch_idx in range(params[dsdomain]['iter_per_epoch']):
         x, y = data_loader.next_batch(params[dsdomain]['batch_size'])
-        fetch = sess.run([targets['cp2net'][slid]['l2_dist'],
-                          targets['cp2net'][slid]['l2_ndist'],
-                          targets['cp2net'][slid]['net1']['l1_norm'],
-                          targets['cp2net'][slid]['net1']['l2_norm'],
-                          targets['cp2net'][slid]['net2']['l1_norm'],
-                          targets['cp2net'][slid]['net2']['l2_norm'],
-                          targets['cp2net'][slid]['net1']['std'],
+        fetch = sess.run([
+                          targets['cp2net']['graft_er'][layerid],
                           targets['cp2net'][slid]['net2']['std'],
                           targets['net1']['eval']['acc_loss'],
                           targets['net2']['eval']['acc_loss'],
-                          targets['cp2net'][slid]['mmd_dist']
+                          targets['grafting']['eval']['acc_loss']
                          ],
                           feed_dict={
                                 ph['x']: x, ph['y']: y,
@@ -128,7 +139,6 @@ def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
         else:
             for i in range(len(fetch)):
                 values[i].append(fetch[i])
-    
     valuec = []
     for i in range(len(values)):
         valuec.append(np.array(values[i]))
@@ -137,39 +147,66 @@ def eval_layer(ph, graph, targets, data_loader, dsdomain, layerid):
 
     nchannels = valuec[0].shape[0]
 
-    l2_dist = valuec[0]
-    l2_ndist = valuec[1]
-    net1_gn = valuec[2]
-    net2_gn = valuec[4]
-    net1_l2n = valuec[3]
-    net2_l2n = valuec[5]
-    net1_std = valuec[6]
-    net2_std = valuec[7]
-    mmd_dist = valuec[10]
-
-    print('Domain {} Layer {}: Net1 acc = {}, Net2 acc = {}'.format(
-        dsdomain, layerid, valuec[8], valuec[9]))
+    gt_er = valuec[0]
+    net2_std = valuec[1]
     
-    v, ind = semi_matching(l2_ndist)
-    vind = np.argsort(v)
+    ret = {
+        'error': gt_er,
+        'net2_std': net2_std,
+        'net1_acc': valuec[2],
+        'net2_acc': valuec[3],
+        'graft_acc': valuec[4] 
+    }
+    return ret
 
-    return np.mean(v), mmd_dist
+   
+gpu_options = tf.GPUOptions(allow_growth=True)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True))
+sess.run(tf.global_variables_initializer())
 
-ts = [1, 5, 10, 30, 60, 120, 180, 200]
-params['train']['save_interval'] = ts #[1, 180]
-params['grafting']['nlayers'] = 13
+def assign_weights(assign_handle, layer_l, layer_r):
+    for i in range(layer_r - layer_l + 1):
+        layer_id = layer_l + i
+        sess.run(assign_handle['l{}'.format(layer_id)])
 
-dd1, dd2 = len(params['train']['save_interval']), params['grafting']['nlayers'] - 1
-train_l2 = np.zeros((dd1, dd2))
-train_mmd = np.zeros((dd1, dd2))
-test_l2 = np.zeros((dd1, dd2))
-test_mmd = np.zeros((dd1, dd2))
+print(args.model1dir)
+print(model_dir)
+if len(args.model1dir) > 5:
+    vvar = graph_vars['net1']
+    myvar = [item for item in vvar if 'output' not in item.name]
+    saver1 = tf.train.Saver(var_list=myvar)
+    saver1.restore(sess, os.path.join(args.model1dir, 'vgg2.ckpt'))
+    assign_weights(targets['grafting']['assign_net1'], 1, params['grafting']['nlayers'])
 
-for e, eid in enumerate(params['train']['save_interval']):
-    saver.restore(sess, os.path.join(os.path.join(model_dir, 'epoch'+str(eid)), 'vgg2.ckpt'))
-    for i in range(params['grafting']['nlayers'] - 1):
-        train_l2[e, i], train_mmd[e, i] = eval_layer(ph, graph, targets, train_loader, 'train', i)
-        test_l2[e, i], test_mmd[e, i] = eval_layer(ph, graph, targets, test_loader, 'test', i)
+saver.restore(sess, os.path.join(model_dir, 'vgg2.ckpt'))
+eval(ph, graph, targets, -1, 'train', train_loader)
+eval(ph, graph, targets, -1, 'test', test_loader)
 
-output = np.array([train_l2, test_l2, train_mmd, test_mmd])
-np.save(args.outpath, output)
+#assign_weights(targets['grafting']['assign_net1'], 1, params['grafting']['nlayers'])
+#eval(ph, graph, targets, -1, 'train', train_loader)
+#eval(ph, graph, targets, -1, 'test', test_loader)
+
+
+#assign_weights(targets['grafting']['assign_net1'], 1, args.nanase - 1)
+assign_weights(targets['grafting']['assign_net2'], args.nanase, params['grafting']['nlayers'])
+eval(ph, graph, targets, -1, 'train', train_loader)
+eval(ph, graph, targets, -1, 'test', test_loader)
+
+
+for epoch in range(20): #params['train']['num_epoches']):
+    train(ph, graph, targets, epoch, train_loader,
+        train_scheduler, warmup_scheduler)
+    eval(ph, graph, targets, epoch, 'test', test_loader)
+
+
+stat = {}
+for lid in range(args.nanase, params['grafting']['nlayers'] + 1):
+    stat[str(lid) + 'train'] = eval_layer(ph, graph, targets, train_loader, 'train', lid)
+    stat[str(lid) + 'test'] = eval_layer(ph, graph, targets, test_loader, 'test', lid)
+
+import pickle
+
+f = open(args.statlogdir, 'wb')
+pickle.dump(stat, f)
+f.close
+

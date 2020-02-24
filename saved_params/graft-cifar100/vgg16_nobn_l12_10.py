@@ -1,11 +1,11 @@
 
 def generate_params():
-    nclass = 10
+    nclass = 100
 
     data = {
         'rot': False,
-        'dataset': 'cifar-10',
-        'data_dir': '../../data/cifar-10/',
+        'dataset': 'cifar-100',
+        'data_dir': '../../data/cifar-100/',
         'x_size': [32, 32, 3],
         'nclass': nclass,
     }
@@ -29,7 +29,7 @@ def generate_params():
 
     network = {
         'model': 'vgg16',
-        'regw': 1,
+        'regw': 10,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',
@@ -38,7 +38,7 @@ def generate_params():
 
     graft = {
         'use_adam': True,
-        'adam_lr': 1e-4,
+        'adam_lr': 1e-3,
         'lr': 0.01,
         'milestone': [60, 120, 180],
         'gamma': 0.2,
