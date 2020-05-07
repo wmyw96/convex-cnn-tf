@@ -108,6 +108,24 @@ def load_cifar_10(params):
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
     x_train = pre_cifar_10(x_train)
     x_test = pre_cifar_10(x_test)
+
+    if 'p' in params['data']:
+        p = params['data']['p']
+        concat_images = np.concatenate([x_train, x_test], 0)
+        concat_labels = np.concatenate([y_train, y_test], 0)
+
+        train_set_idx = []
+        test_set_idx = []
+        for i in range(concat_images.shape[0]):
+            pv = np.random.uniform(0, 1.0)
+            if pv < p[int(concat_labels[i])]:
+                train_set_idx.append(i)
+            else:
+                test_set_idx.append(i)
+
+        x_train, y_train = concat_images[train_set_idx, :], concat_labels[train_set_idx]
+        x_test, y_test = concat_images[test_set_idx, :], concat_labels[test_set_idx]
+
     if 'noda' in params['data']:
         train = dataset(x_train, y_train, 100, aug=False)
     else:
