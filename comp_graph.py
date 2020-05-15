@@ -184,8 +184,17 @@ def build_grafting_onecut_model(params):
     }
     for domain in domains:
         mask = params['network']['layer_mask']
+        scale = None
         if 'graft' in domain:
             mask = params['grafting']['layer_mask']
+        if 'diff_scale' in params['grafting']:
+            if domain in set(['net1', 'net2']):
+                scale = (0, params['grafting']['diff_scale'][domain], 
+                    params['grafting']['diff_scale'][domain])
+            else:
+                l = params['grafting']['nanase']
+                scale = (l, params['grafting']['diff_scale']['net1'], 
+                    params['grafting']['diff_scale']['net2'])
         modules[domain] = \
             make_layers_vgg_net(scope=domain,
                                 input_x=inp_x, 
@@ -194,7 +203,8 @@ def build_grafting_onecut_model(params):
                                 dropout_rate=params['network']['dropout'],
                                 is_training=is_training,
                                 batch_norm=use_bn,
-                                layer_mask=mask)
+                                layer_mask=mask,
+                                scale=scale)
         graph[domain] = modules[domain]
 
     net_vars = {}
@@ -261,6 +271,10 @@ def build_grafting_onecut_model(params):
         
         for layer_id in range(params['grafting']['nlayers']):
             # fetch all weights in layer l
+            if layer_id + 1 <= params['grafting']['nanase'] and domain == 'net2':
+                continue
+            if layer_id + 1 >= params['grafting']['nanase'] and domain == 'net1':
+                continue
             weights = []
             for weight in net_vars[domain]:
                 if ('l{}-'.format(layer_id + 1)) in weight.name:

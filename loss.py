@@ -35,7 +35,7 @@ def getw_l2_norm(weight):
     return value
 
 
-def get_regularizer_loss(weights, reg_type):
+def get_regularizer_loss(weights, reg_type, scale=1.0):
     if reg_type == 'l2':
         reg_loss = 0.0
         for weight in weights:

@@ -9,10 +9,12 @@ config = {
     'vgg19': [[64, 64], [128, 128], [256, 256, 256, 256], [512, 512, 512, 512], [512, 512, 512, 512]],
 }
 
-def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None, scaling=1, preact=False):
+def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None, scaling=1, scale=None, preact=False):
     modules = {}
     layers = [input_x]
     nc = 0
+    if scale is None:
+        scale = (0, scaling, scaling)
     with tf.variable_scope(scope, reuse=tf.AUTO_REUSE):
         for block_id, sizes in enumerate(config):
 
@@ -24,7 +26,13 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                 if layer_mask is not None:
                     if not layer_mask[nc - 2] and layer_mask[nc - 1]:
                         unit_name += 'graft'
-                num_channels = int(channels * scaling)
+                
+                if nc < scale[0]:
+                    scaling_val = scale[1]
+                else:
+                    scaling_val = scale[2]
+                num_channels = int(channels * scaling_val)
+                
                 h = slim.conv2d(h, num_outputs=num_channels, kernel_size=3, stride=1,
                     activation_fn=None, weights_initializer=tf.contrib.layers.variance_scaling_initializer(),#tf.truncated_normal_initializer(stddev=0.01), 
                     biases_initializer=tf.zeros_initializer(), #tf.contrib.layers.xavier_initializer(uniform=False),
