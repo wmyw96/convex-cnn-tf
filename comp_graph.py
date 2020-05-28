@@ -195,6 +195,10 @@ def build_grafting_onecut_model(params):
                 l = params['grafting']['nanase']
                 scale = (l, params['grafting']['diff_scale']['net1'], 
                     params['grafting']['diff_scale']['net2'])
+        if 'init' in params['grafting']:
+            init = params['grafting']['init'][domain]
+        else:
+            init = 'normal'
         modules[domain] = \
             make_layers_vgg_net(scope=domain,
                                 input_x=inp_x, 
@@ -204,7 +208,7 @@ def build_grafting_onecut_model(params):
                                 is_training=is_training,
                                 batch_norm=use_bn,
                                 layer_mask=mask,
-                                scale=scale)
+                                scale=scale, init=init)
         graph[domain] = modules[domain]
 
     net_vars = {}

@@ -9,7 +9,9 @@ config = {
     'vgg19': [[64, 64], [128, 128], [256, 256, 256, 256], [512, 512, 512, 512], [512, 512, 512, 512]],
 }
 
-def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, batch_norm=False, layer_mask=None, scaling=1, scale=None, preact=False):
+def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=100, is_training=None, 
+                        batch_norm=False, layer_mask=None, scaling=1, scale=None, preact=False,
+                        init='he'):
     modules = {}
     layers = [input_x]
     nc = 0
@@ -31,10 +33,14 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                     scaling_val = scale[1]
                 else:
                     scaling_val = scale[2]
+                if init == 'normal':
+                    weight_init = tf.contrib.layers.variance_scaling_initializer(factor=2.0, mode='FAN_IN', uniform=False)
+                elif init == 'uniform':
+                    weight_init = tf.contrib.layers.variance_scaling_initializer(factor=1.0, mode='FAN_IN', uniform=True)
                 num_channels = int(channels * scaling_val)
-                
+                            
                 h = slim.conv2d(h, num_outputs=num_channels, kernel_size=3, stride=1,
-                    activation_fn=None, weights_initializer=tf.contrib.layers.variance_scaling_initializer(),#tf.truncated_normal_initializer(stddev=0.01), 
+                    activation_fn=None, weights_initializer=weight_init,#tf.truncated_normal_initializer(stddev=0.01), 
                     biases_initializer=tf.zeros_initializer(), #tf.contrib.layers.xavier_initializer(uniform=False),
                     scope=unit_name)
                 if batch_norm:
