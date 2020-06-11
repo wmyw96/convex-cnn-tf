@@ -33,7 +33,7 @@ def make_layers_vgg_net(scope, input_x, config, dropout_rate=0.2, num_classes=10
                     scaling_val = scale[1]
                 else:
                     scaling_val = scale[2]
-                if init == 'normal':
+                if init == 'normal' or init == 'uniform' and nc % 4 == 0:
                     weight_init = tf.contrib.layers.variance_scaling_initializer(factor=2.0, mode='FAN_IN', uniform=False)
                 elif init == 'uniform':
                     weight_init = tf.contrib.layers.variance_scaling_initializer(factor=1.0, mode='FAN_IN', uniform=True)

@@ -1,11 +1,11 @@
 
 def generate_params():
-    nclass = 10
+    nclass = 100
 
     data = {
         'rot': False,
-        'dataset': 'cifar-10',
-        'data_dir': '../../data/cifar-10/',
+        'dataset': 'cifar-100',
+        'data_dir': '../../data/cifar-100/',
         'x_size': [32, 32, 3],
         'nclass': nclass,
     }
@@ -47,10 +47,10 @@ def generate_params():
         'num_epoches': 200,
         'iter_per_epoch': 780,
         'nlayers': 16,
-        'conv_layers': 14,
         'nanase': 5,
         'diffw': 5.0,
-        'layer_mask': [True] * 16
+        'layer_mask': [True] * 16,
+        'init': {'net1': 'uniform', 'net2': 'normal', 'grafting': 'normal'}
     }
 
     params = {

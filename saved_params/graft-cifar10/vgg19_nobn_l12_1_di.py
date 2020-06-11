@@ -11,7 +11,7 @@ def generate_params():
     }
 
     train = {
-        'lr': 0.01,
+        'lr': 0.002,
         'milestone': [60, 120, 180],
         'gamma': 0.2,
         'warmup': 1,
@@ -28,12 +28,12 @@ def generate_params():
     }
 
     network = {
-        'model': 'vgg16',
+        'model': 'vgg19',
         'regw': 1,
         'batch_norm': False,
         'dropout': 0.5,
         'regularizer': 'l12',
-        'layer_mask': [True] * 13
+        'layer_mask': [True] * 16
     }
 
     graft = {
@@ -46,11 +46,11 @@ def generate_params():
         'batch_size': 64,
         'num_epoches': 200,
         'iter_per_epoch': 780,
-        'nlayers': 16,
-        'conv_layers': 14,
+        'nlayers': 19,
         'nanase': 5,
         'diffw': 5.0,
-        'layer_mask': [True] * 16
+        'layer_mask': [True] * 19,
+        'init': {'net1': 'uniform', 'net2': 'normal', 'grafting': 'normal'}
     }
 
     params = {

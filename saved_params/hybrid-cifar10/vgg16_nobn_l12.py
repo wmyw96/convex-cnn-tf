@@ -36,6 +36,7 @@ def generate_params():
     }
 
     hybrid = {
+        'weight_inter': False,
         'batch_size': 64,
         'num_epoches': 7,
         'iter_per_epoch': 780,
@@ -45,7 +46,8 @@ def generate_params():
         'layer_mask': [True] * 16,
         'cum': False,
         'pweight': [0.5, 0.5],
-        'scaling': 1.0
+        'scaling': 2.0,
+        'init': {'net0': 'uniform', 'net1': 'normal', 'hybrid': 'normal'}
     }
 
     params = {

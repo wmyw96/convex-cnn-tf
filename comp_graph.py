@@ -436,21 +436,25 @@ def build_neural_network_hybrid_model(params):
     graph = {
         'one_hot_y': tf.one_hot(label, nclass)
     }
+
     for domain in domains:
         scaling = 1
         if domain == 'hybrid':
             scaling = params['hybrid']['scaling']
+        if 'init' in params['hybrid']:
+            init = params['hybrid']['init'][domain]
+        else:
+            init = 'normal'
         modules[domain] = \
             make_layers_vgg_net(scope=domain,
-                                input_x=inp_x, 
+                                input_x=inp_x,
                                 config=config[model_name],
                                 num_classes=nclass,
                                 dropout_rate=params['network']['dropout'],
                                 is_training=is_training,
                                 batch_norm=use_bn,
-                                layer_mask=None,
-                                preact=True,
-                                scaling=scaling)
+                                layer_mask=None, preact=True,
+                                scaling=scaling, scale=None, init=init)
         graph[domain] = modules[domain]
 
     net_vars = {}
@@ -622,20 +626,21 @@ def build_neural_network_hybrid_model(params):
     var_dict_net2 = create_var_dict(net_vars['net1'])
     targets['hybrid']['linear_inter'] = []
 
-    for layer_id in range(params['hybrid']['nlayers']):
-        # fetch all weights in layer l
-        weights, assigns = [], []
-        for weight in net_vars['hybrid']:
-            if ('l{}-'.format(layer_id + 1)) in weight.name:
-                weights.append(weight)
-        for weight in weights:
-            weight_name = weight.name[len('hybrid')+1:]
-            print('drafting variable {}'.format(var_dict['hybrid/' + weight_name].name))
-            net1_weight = var_dict_net1['net0/' + weight_name]
-            net2_weight = var_dict_net2['net1/' + weight_name]
-            value = net1_weight * ph['inter_weight'] + (1 - ph['inter_weight']) * net2_weight
-            assigns.append(tf.assign(weight, value))
-        targets['hybrid']['linear_inter'] += assigns
+    if params['hybrid']['weight_inter']:
+        for layer_id in range(params['hybrid']['nlayers']):
+            # fetch all weights in layer l
+            weights, assigns = [], []
+            for weight in net_vars['hybrid']:
+                if ('l{}-'.format(layer_id + 1)) in weight.name:
+                    weights.append(weight)
+            for weight in weights:
+                weight_name = weight.name[len('hybrid')+1:]
+                print('drafting variable {}'.format(var_dict['hybrid/' + weight_name].name))
+                net1_weight = var_dict_net1['net0/' + weight_name]
+                net2_weight = var_dict_net2['net1/' + weight_name]
+                value = net1_weight * ph['inter_weight'] + (1 - ph['inter_weight']) * net2_weight
+                assigns.append(tf.assign(weight, value))
+            targets['hybrid']['linear_inter'] += assigns
     
     return ph, graph, save_vars, net_vars, targets
 

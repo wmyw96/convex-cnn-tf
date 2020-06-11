@@ -18,8 +18,7 @@ def generate_params():
         'batch_size': 64,
         'num_epoches': 200,
         'iter_per_epoch': 780,
-        'save_interval': [1, 2, 5, 8, 10, 20, 30, 40, 50, 60, 70, 80, 90, 
-                          100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+        'save_interval': [1, 2, 3, 4, 5, 8, 10, 20, 30, 40, 50, 60, 80, 100, 120, 180],
     }
 
     test = {
@@ -36,21 +35,19 @@ def generate_params():
         'layer_mask': [True] * 13
     }
 
-    graft = {
-        'use_adam': True,
-        'adam_lr': 1e-4,
-        'lr': 0.01,
-        'milestone': [60, 120, 180],
-        'gamma': 0.2,
-        'warmup': 1,
+    hybrid = {
+        'weight_inter': True,
         'batch_size': 64,
-        'num_epoches': 200,
+        'num_epoches': 7,
         'iter_per_epoch': 780,
         'nlayers': 16,
-        'conv_layers': 14,
-        'nanase': 5,
-        'diffw': 5.0,
-        'layer_mask': [True] * 16
+        'num_nets': 2,
+        'fmw': 300.0,
+        'layer_mask': [True] * 16,
+        'cum': False,
+        'pweight': [0.5, 0.5],
+        'scaling': 1.0,
+        'init': {'net0': 'uniform', 'net1': 'normal', 'hybrid': 'normal'}
     }
 
     params = {
@@ -58,7 +55,7 @@ def generate_params():
         'train': train,
         'test': test, 
         'network': network,
-        'grafting': graft
+        'hybrid': hybrid
     }
 
     return params

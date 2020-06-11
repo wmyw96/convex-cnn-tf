@@ -102,17 +102,44 @@ dd1, dd2 = len(params['train']['save_interval']), params['grafting']['nlayers'] 
 weight_l2 = np.zeros((dd1, dd2))
 
 
+def hungarian_matching_algo(dist_mat):
+    np.savetxt('mat.in', dist_mat, delimiter=' ')
+    os.system("./hungarian {}".format(dist_mat.shape[0]))
+    perm = np.loadtxt('mat_perm.out', delimiter=' ')
+    perm = perm.astype(np.int64)
+    values = np.loadtxt('mat_val.out', delimiter=' ')
+    values = float(values)
+    #values = np.zeros(dist_mat.shape[0])
+    #for i in range(dist_mat.shape[0]):
+    #    values[i] = dist_mat[i, perm[i]]
+    return values, perm
+
+
 for e, eid in enumerate(params['train']['save_interval']):
     saver.restore(sess, os.path.join(os.path.join(model_dir, 'epoch'+str(eid+args.bias)), 'vgg2.ckpt'))
     eval(ph, sess, graph, targets, eid, 'net1', 'test', test_loader)
     eval(ph, sess, graph, targets, eid, 'net2', 'test', test_loader)
 
+    pre_perm = [0, 1, 2]
     for i in range(params['grafting']['nlayers'] - 1):
         net1_weight = find_weight(graph_vars['net1'], 'l{}-'.format(i+1))
         net2_weight = find_weight(graph_vars['net2'], 'l{}-'.format(i+1))
         net1_weight, net2_weight = sess.run([net1_weight, net2_weight])
         print(net1_weight.shape)
-        diff = np.mean(np.square(net1_weight - net2_weight)) #* net1_weight.shape[2]
+        n = net1_weight.shape[3]
+        weight1 = net1_weight[:, :, :, :]
+        weight2 = net2_weight[:, :, pre_perm, :]
+        weight1_2d = np.transpose(np.reshape(weight1, [-1, n]))
+        weight2_2d = np.transpose(np.reshape(weight2, [-1, n]))
+        from sklearn.metrics.pairwise import euclidean_distances
+        l2_dist = euclidean_distances(weight1_2d, weight2_2d, squared=True)
+        
+        value, next_perm = hungarian_matching_algo(l2_dist)
+        value = value / net1_weight.shape[0] / net1_weight.shape[1] / net1_weight.shape[2] / n
+        diff = np.mean(np.square(weight1 - weight2[:, :, :, next_perm])) #* net1_weight.shape[2]
+        print('value of hungarian = {}, value of l_2 diff = {}'.format(value, round(float(diff), 4)))
+        pre_perm = next_perm
+        
         base = np.mean(np.square(net1_weight)) + np.mean(np.square(net2_weight)) 
         weight_l2[e, i] = diff / (base * 0.5)
 

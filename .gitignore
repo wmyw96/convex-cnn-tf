@@ -7,4 +7,21 @@ logs-old/
 glogs/
 mlogs/
 glogsnew/
+glogs-exp1/
+glogs-exp2/
+glogs-exp3/
+glogs-exp4/
+glogs-exp5/
+glogs-exp6/
+glogs-exp7/
+tmp
+tmp0
+tmp1
+tmp2
+tmp3
+tmp4
+mat.in
+mat_perm.out
+mat_val.out
+hungarian
 
